@@ -17,7 +17,7 @@
 
 ## Description
 
-AI for language, text, speech, dialogue, retrieval, and communication.
+AI for understanding, generating, translating, retrieving, and speaking human language.
 
 ## Level 2 branches
 
@@ -27,7 +27,7 @@ AI for language, text, speech, dialogue, retrieval, and communication.
 - [[Level 2/Dialogue Systems|Dialogue Systems]]
 - [[Level 2/Information Retrieval|Information Retrieval]]
 - [[Level 2/Machine Translation|Machine Translation]]
-- [[Level 2/Text Generation|Text Generation]]
+- [[Level 2/Natural Language Generation|Natural Language Generation]]
 - [[Level 2/Language Understanding|Language Understanding]]
 
 ## Notes
