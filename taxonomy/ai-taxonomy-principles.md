@@ -27,8 +27,10 @@ Examples:
 
 - Deep Learning belongs under Machine Learning.
 - Reinforcement Learning belongs under Machine Learning.
+- Continual Learning belongs under Machine Learning, not under future AI.
+- Autonomous Agents belong under Agentic and Multi-Agent Systems, not only under future AI.
 - Transformers should appear later under Deep Learning or Foundation Models, not at Level 1.
-- Large Language Models belong under Foundation and General-Purpose Models.
+- Large Language Models belong under Foundation Models and General-Purpose AI.
 
 ## 3. Allow cross-cutting branches when necessary
 
@@ -68,6 +70,7 @@ A node has both:
 Examples:
 
 - Machine Learning is Level 1 and concept type `Major Area`.
+- Generative AI is Level 1 and concept type `Cross-Cutting Area`.
 - Deep Learning is Level 2 and concept type `Subfield`.
 - Reinforcement Learning is Level 2 and concept type `Paradigm`.
 - Transformers will probably be Level 3 and concept type `Architecture`.
@@ -90,3 +93,14 @@ Examples:
 - Future Level 3 nodes may include methods, architectures, model families, system patterns, techniques, or other deeper concepts.
 
 Folder names such as `Level 1`, `Level 2`, and future `Level 3` represent hierarchy depth for navigation and generation. They should not be treated as folders for concept types.
+
+## 8. Resolve duplicates before expanding depth
+
+Before adding Level 3, exact duplicate Level 2 names should be resolved or intentionally documented as cross-cutting concepts.
+
+Current cleanup decisions:
+
+- `Knowledge Representation` is canonical under `Knowledge and Reasoning`.
+- The Symbolic AI branch uses `Symbolic Knowledge Representation` to avoid an exact duplicate.
+- `Text Generation` is kept under `Generative AI`.
+- The language branch uses `Natural Language Generation` to avoid an exact duplicate.
