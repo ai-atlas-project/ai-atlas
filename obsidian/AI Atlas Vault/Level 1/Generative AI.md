@@ -28,7 +28,7 @@ AI systems and methods that generate new text, images, audio, video, code, data,
 - [[Level 2/Code Generation|Code Generation]]
 - [[Level 2/3D Generation|3D Generation]]
 - [[Level 2/Synthetic Data Generation|Synthetic Data Generation]]
-- [[Level 2/Generative Modeling|Generative Modeling]]
+- [[Level 2/Generative Model Families|Generative Modeling]]
 
 ## Notes
 
