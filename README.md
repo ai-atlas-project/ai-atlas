@@ -58,6 +58,38 @@ This matters because AI concepts do not all belong to the same kind of category.
 - [Markmap version](markmap/ai-atlas-markmap.md)
 - [Mermaid mindmap version](mermaid/ai-atlas-mindmap.md)
 
+## Licensing
+
+AI Atlas uses mixed licensing.
+
+- Code and scripts are licensed under the MIT License.
+- Taxonomy content, Markdown, JSON, Obsidian notes, Markmap exports, Mermaid exports, and documentation are licensed under Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0).
+- The AI Atlas name, logo, visual identity, and official paid print/PDF designs are not automatically licensed for commercial reuse unless explicitly stated.
+
+See:
+
+- [Licensing overview](LICENSES.md)
+- [Code license](CODE_LICENSE)
+- [Content license](CONTENT_LICENSE)
+- [Notice](NOTICE.md)
+
+Recommended attribution for open content:
+
+> AI Atlas by Alyaksandr Stzhalkouski / elvistudio, licensed under CC BY-SA 4.0.
+
+## Commercial products
+
+The open taxonomy is intended to remain community-reviewable and reusable.
+
+Future official commercial products may include:
+
+- print-ready posters,
+- premium PDF editions,
+- curated visual maps,
+- official design packs.
+
+These products may build on the open taxonomy, but their specific visual design, branding, and packaging are separate from the open taxonomy license unless explicitly stated.
+
 ## Review questions
 
 - Are any Level 1 branches missing?
