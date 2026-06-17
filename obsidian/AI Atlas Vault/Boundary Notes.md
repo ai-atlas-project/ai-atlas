@@ -31,3 +31,8 @@ This version tries to be:
 - clean enough for taxonomy,
 - practical enough for learning,
 - defensible enough for colleague review.
+
+## Related
+
+- [[Concept Types]]
+- [[Visual Grammar]]

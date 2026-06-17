@@ -6,9 +6,9 @@ Welcome to the Obsidian version of **AI Atlas**.
 
 This vault contains the clean AI hierarchy at:
 
-- Level 0: Artificial Intelligence
-- Level 1: major AI areas
-- Level 2: sub-areas
+- Level 0 — Field
+- Level 1 — Major Area
+- Level 2 — Subfield
 
 This vault intentionally does **not** include Level 3 yet.
 
@@ -17,6 +17,8 @@ This vault intentionally does **not** include Level 3 yet.
 Open:
 
 - [[00 Artificial Intelligence]]
+- [[Concept Types]]
+- [[Visual Grammar]]
 - [[Taxonomy Principles]]
 - [[Boundary Notes]]
 
@@ -28,20 +30,24 @@ AI Atlas is not only a hierarchy.
 
 Each node has:
 
-- hierarchy level,
-- concept type,
-- stability.
+- hierarchy level
+- hierarchy level name
+- concept type
+- stability
+- description
 
-Open:
+The hierarchy level answers:
 
-- [[Concept Types]]
-- [[Visual Grammar]]
+> Where is this concept in the tree?
+
+The concept type answers:
+
+> What kind of thing is this concept?
 
 ## Canonical source
 
-The canonical source files are outside this vault:
+The canonical source is:
 
-- `../../taxonomy/ai-taxonomy-l1-l2.md`
 - `../../taxonomy/ai-taxonomy-l1-l2.json`
 
 This Obsidian vault is a generated view of that taxonomy.

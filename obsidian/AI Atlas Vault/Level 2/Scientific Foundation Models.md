@@ -2,23 +2,34 @@
 
 #level-2 #ai-atlas
 
+## Metadata
+
+| Field | Value |
+|---|---|
+| Hierarchy level | 2 |
+| Hierarchy level name | Subfield |
+| Concept type | Model Family |
+| Stability | stable |
+
 ## Parent branch
 
 - [[Level 1/Foundation and General-Purpose Models|Foundation and General-Purpose Models]]
 
-## What it is
+## Description
 
-A Level 2 concept in the AI Atlas clean hierarchy.
+Scientific Foundation Models is a Level 2 Model Family within Foundation and General-Purpose Models in the AI Atlas clean hierarchy.
 
 ## Scope
 
-This page is a placeholder for the next expansion.
+This page is part of the clean Level 1–Level 2 hierarchy.
 
-For now, the vault intentionally stops at two levels so the top-level model can be reviewed cleanly.
+The vault intentionally stops here for now.
 
-## Future Level 3 examples
+## Future Level 3
 
-To be added in v0.3 after review.
+Level 3 concepts will be added later.
+
+Do not add them yet.
 
 ## Related
 

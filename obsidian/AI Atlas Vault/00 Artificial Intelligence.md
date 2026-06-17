@@ -1,8 +1,19 @@
 # Artificial Intelligence
 
-#level-0 #ai-atlas
+#level-0 #field #ai-atlas
 
-Artificial Intelligence is the broad field of creating systems that can perceive, learn, reason, plan, communicate, generate, decide, or act in ways associated with intelligence.
+## Metadata
+
+| Field | Value |
+|---|---|
+| Hierarchy level | 0 |
+| Hierarchy level name | Field |
+| Concept type | Field |
+| Stability | stable |
+
+## Description
+
+The broad field of creating systems that can perceive, learn, reason, plan, communicate, generate, decide, or act in ways associated with intelligence.
 
 ## Level 1 branches
 
@@ -19,6 +30,12 @@ Artificial Intelligence is the broad field of creating systems that can perceive
 - [[Level 1/Human-AI Interaction|Human-AI Interaction]]
 - [[Level 1/AI Safety, Alignment and Governance|AI Safety, Alignment and Governance]]
 - [[Level 1/AGI and Future AI|AGI and Future AI]]
+
+## Notes
+
+This is the root of the AI Atlas hierarchy.
+
+The current vault stops at Level 2.
 
 ## Review questions
 

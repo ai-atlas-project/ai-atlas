@@ -2,11 +2,20 @@
 
 #level-1 #ai-atlas
 
+## Metadata
+
+| Field | Value |
+|---|---|
+| Hierarchy level | 1 |
+| Hierarchy level name | Major Area |
+| Concept type | Future Area |
+| Stability | speculative |
+
 ## Parent
 
 - [[00 Artificial Intelligence]]
 
-## Definition
+## Description
 
 Longer-term AI concepts involving broad autonomy, general intelligence, and future trajectories.
 

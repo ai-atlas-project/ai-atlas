@@ -2,11 +2,20 @@
 
 #level-1 #ai-atlas
 
+## Metadata
+
+| Field | Value |
+|---|---|
+| Hierarchy level | 1 |
+| Hierarchy level name | Major Area |
+| Concept type | Major Area |
+| Stability | stable |
+
 ## Parent
 
 - [[00 Artificial Intelligence]]
 
-## Definition
+## Description
 
 AI involving multiple agents that cooperate, compete, negotiate, or coordinate.
 

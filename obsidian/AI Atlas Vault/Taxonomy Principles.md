@@ -74,3 +74,8 @@ Examples:
 - ChatGPT would be a later Level 5 node and concept type `Product / Concrete System`.
 
 This separation helps prevent the taxonomy from becoming confused when deeper levels are added.
+
+## Related
+
+- [[Concept Types]]
+- [[Visual Grammar]]
