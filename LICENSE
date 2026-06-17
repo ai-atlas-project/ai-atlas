@@ -1,21 +1,24 @@
-MIT License
+AI Atlas uses mixed licensing.
 
-Copyright (c) 2026 AI Atlas
+This repository contains different kinds of material:
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+1. Code and scripts
+2. Taxonomy content, Markdown, JSON, Obsidian notes, Markmap and Mermaid exports
+3. Project name, branding, logos, and official commercial visual products
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+These materials are not all licensed the same way.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+See:
+
+- LICENSES.md
+- CODE_LICENSE
+- CONTENT_LICENSE
+- NOTICE.md
+
+Summary:
+
+- Code and scripts are licensed under the MIT License.
+- Taxonomy content and documentation are licensed under Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0).
+- The AI Atlas name, logo, branding, and official paid print/PDF designs are not automatically licensed for commercial reuse unless explicitly stated.
+
+Copyright (c) 2026 Alyaksandr Stzhalkouski / elvistudio
