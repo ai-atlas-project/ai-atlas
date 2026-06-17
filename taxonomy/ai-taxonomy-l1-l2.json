@@ -1,0 +1,182 @@
+{
+  "project": "AI Atlas",
+  "version": "0.1",
+  "status": "Clean hierarchy draft, Level 1 and Level 2 only",
+  "level_0": "Artificial Intelligence",
+  "level_1": [
+    {
+      "name": "Symbolic AI",
+      "level_2": [
+        "Rule-Based Systems",
+        "Expert Systems",
+        "Logic Programming",
+        "Knowledge Representation",
+        "Automated Reasoning",
+        "Constraint Satisfaction",
+        "Knowledge Graphs",
+        "Neuro-Symbolic AI"
+      ]
+    },
+    {
+      "name": "Machine Learning",
+      "level_2": [
+        "Supervised Learning",
+        "Unsupervised Learning",
+        "Semi-Supervised Learning",
+        "Self-Supervised Learning",
+        "Reinforcement Learning",
+        "Deep Learning",
+        "Transfer Learning",
+        "Federated Learning",
+        "Online Learning",
+        "Active Learning",
+        "Meta-Learning",
+        "Ensemble Learning"
+      ]
+    },
+    {
+      "name": "Search, Planning and Optimization",
+      "level_2": [
+        "State-Space Search",
+        "Heuristic Search",
+        "Adversarial Search",
+        "Automated Planning",
+        "Scheduling",
+        "Optimization",
+        "Evolutionary Computation",
+        "Monte Carlo Tree Search"
+      ]
+    },
+    {
+      "name": "Knowledge and Reasoning",
+      "level_2": [
+        "Commonsense Reasoning",
+        "Probabilistic Reasoning",
+        "Causal Reasoning",
+        "Temporal Reasoning",
+        "Spatial Reasoning",
+        "Explainable AI",
+        "Knowledge Representation",
+        "Ontologies"
+      ]
+    },
+    {
+      "name": "Robotics and Embodied AI",
+      "level_2": [
+        "Classical Control",
+        "Robot Perception",
+        "Localization and Mapping",
+        "Motion Planning",
+        "Manipulation",
+        "Autonomous Vehicles",
+        "Human-Robot Interaction",
+        "Robot Learning",
+        "Embodied Agents"
+      ]
+    },
+    {
+      "name": "Natural Language and Speech",
+      "level_2": [
+        "Natural Language Processing",
+        "Speech Recognition",
+        "Speech Synthesis",
+        "Dialogue Systems",
+        "Information Retrieval",
+        "Machine Translation",
+        "Text Generation",
+        "Language Understanding"
+      ]
+    },
+    {
+      "name": "Computer Vision and Perception",
+      "level_2": [
+        "Image Classification",
+        "Object Detection",
+        "Image Segmentation",
+        "Video Understanding",
+        "3D Vision",
+        "Multimodal Perception",
+        "Scene Understanding",
+        "Optical Character Recognition"
+      ]
+    },
+    {
+      "name": "Generative AI",
+      "level_2": [
+        "Text Generation",
+        "Image Generation",
+        "Audio Generation",
+        "Video Generation",
+        "Code Generation",
+        "3D Generation",
+        "Synthetic Data Generation",
+        "Generative Model Families"
+      ]
+    },
+    {
+      "name": "Foundation and General-Purpose Models",
+      "level_2": [
+        "Large Language Models",
+        "Vision Foundation Models",
+        "Multimodal Foundation Models",
+        "Audio Foundation Models",
+        "Video Foundation Models",
+        "Code Models",
+        "Scientific Foundation Models",
+        "World Models"
+      ]
+    },
+    {
+      "name": "Multi-Agent Systems",
+      "level_2": [
+        "Cooperative Multi-Agent Systems",
+        "Competitive Multi-Agent Systems",
+        "Agent Communication",
+        "Coordination and Negotiation",
+        "Multi-Agent Reinforcement Learning",
+        "Swarm Intelligence",
+        "Agent Societies",
+        "Market-Based Systems"
+      ]
+    },
+    {
+      "name": "Human-AI Interaction",
+      "level_2": [
+        "AI Assistants",
+        "Recommender Systems",
+        "Human-in-the-Loop AI",
+        "Interactive Machine Learning",
+        "Personalization",
+        "Decision Support Systems",
+        "Human Feedback",
+        "AI UX and Trust"
+      ]
+    },
+    {
+      "name": "AI Safety, Alignment and Governance",
+      "level_2": [
+        "AI Alignment",
+        "Robustness",
+        "Interpretability",
+        "Evaluation and Benchmarking",
+        "Bias and Fairness",
+        "Privacy and Security",
+        "Misuse Prevention",
+        "Governance and Policy"
+      ]
+    },
+    {
+      "name": "AGI and Future AI",
+      "level_2": [
+        "Artificial General Intelligence",
+        "Autonomous Agents",
+        "Continual Learning",
+        "Self-Improving Systems",
+        "AI Scientists",
+        "Human-AI Symbiosis",
+        "Superintelligence",
+        "Long-Term AI Futures"
+      ]
+    }
+  ]
+}
