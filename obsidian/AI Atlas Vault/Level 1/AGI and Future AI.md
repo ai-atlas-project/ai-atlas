@@ -17,13 +17,11 @@
 
 ## Description
 
-Longer-term AI concepts involving broad autonomy, general intelligence, and future trajectories.
+Future-facing ideas about general intelligence, self-improving systems, and long-term AI trajectories.
 
 ## Level 2 branches
 
 - [[Level 2/Artificial General Intelligence|Artificial General Intelligence]]
-- [[Level 2/Autonomous Agents|Autonomous Agents]]
-- [[Level 2/Continual Learning|Continual Learning]]
 - [[Level 2/Self-Improving Systems|Self-Improving Systems]]
 - [[Level 2/AI Scientists|AI Scientists]]
 - [[Level 2/Human-AI Symbiosis|Human-AI Symbiosis]]
