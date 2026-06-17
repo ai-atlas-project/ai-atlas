@@ -8,16 +8,6 @@ The first goal is not to create the deepest possible map.
 
 The first goal is to create a stable Level 1 and Level 2 model that can be reviewed by colleagues.
 
-## Working agreements
-
-Project shorthand and collaboration rules are documented in:
-
-- [Working Agreements](working-agreements.md)
-
-Important shorthand:
-
-- `реао` means `ai-atlas` / `AI Atlas` / `elvistudio/ai-atlas`.
-
 ## Important design decisions
 
 - Transformers are not Level 1.
