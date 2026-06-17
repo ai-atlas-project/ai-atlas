@@ -1,5 +1,20 @@
 # AI Atlas — Clean Hierarchy v0.1
 
+## Metadata model
+
+Each concept can have:
+
+- hierarchy level,
+- hierarchy level name,
+- concept type,
+- stability.
+
+This Markdown file remains human-readable.
+
+The machine-readable metadata lives in:
+
+- `ai-taxonomy-l1-l2.json`
+
 ## Level 0
 
 - Artificial Intelligence

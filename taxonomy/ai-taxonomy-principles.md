@@ -57,3 +57,20 @@ Each branch should be clear enough that a reviewer can say:
 - this is missing,
 - this is too broad,
 - this is too narrow.
+
+## 6. Separate hierarchy depth from concept type
+
+A node has both:
+
+- hierarchy level — where it appears in the tree,
+- concept type — what kind of concept it is.
+
+Examples:
+
+- Machine Learning is Level 1 and concept type `Major Area`.
+- Deep Learning is Level 2 and concept type `Subfield`.
+- Reinforcement Learning is Level 2 and concept type `Paradigm`.
+- Transformers will probably be Level 3 and concept type `Architecture`.
+- ChatGPT would be a later Level 5 node and concept type `Product / Concrete System`.
+
+This separation helps prevent the taxonomy from becoming confused when deeper levels are added.

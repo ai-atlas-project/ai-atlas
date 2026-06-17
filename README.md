@@ -20,10 +20,41 @@ The project starts with a clean hierarchy before expanding into detailed concept
 
 For now, the canonical source is the Level 1 and Level 2 taxonomy.
 
+## Typed knowledge map
+
+AI Atlas is not only a tree.
+
+Each concept has:
+
+- a hierarchy level,
+- a hierarchy level name,
+- a concept type,
+- stability metadata.
+
+This allows the project to distinguish between:
+
+- fields,
+- major areas,
+- subfields,
+- paradigms,
+- methods,
+- architectures,
+- model families,
+- techniques,
+- systems,
+- products,
+- safety concepts,
+- evaluation concepts,
+- future concepts.
+
+This matters because AI concepts do not all belong to the same kind of category.
+
 ## Core files
 
 - [Level 1 and Level 2 taxonomy](taxonomy/ai-taxonomy-l1-l2.md)
 - [Taxonomy principles](taxonomy/ai-taxonomy-principles.md)
+- [Concept types](taxonomy/concept-types.md)
+- [Visual grammar](taxonomy/visual-grammar.md)
 - [Markmap version](markmap/ai-atlas-markmap.md)
 - [Mermaid mindmap version](mermaid/ai-atlas-mindmap.md)
 

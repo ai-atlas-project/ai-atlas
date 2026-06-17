@@ -17,6 +17,17 @@ The first goal is to create a stable Level 1 and Level 2 model that can be revie
 - Generative AI remains Level 1 because it is a major cross-cutting modern AI category.
 - AI Safety, Alignment and Governance remains Level 1 because it cuts across the whole field.
 
+## Typed knowledge map
+
+We decided to separate hierarchy depth from concept type.
+
+This means:
+
+- depth describes where a concept sits in the tree,
+- type describes what kind of concept it is.
+
+This prepares the project for future Level 3, Level 4, and visual formats such as posters, Markmap, Mermaid, Obsidian, and a possible website.
+
 ## Future versions
 
 ### v0.2

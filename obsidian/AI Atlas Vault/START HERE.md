@@ -22,6 +22,21 @@ Open:
 
 Then open Graph View in Obsidian.
 
+## Typed knowledge map
+
+AI Atlas is not only a hierarchy.
+
+Each node has:
+
+- hierarchy level,
+- concept type,
+- stability.
+
+Open:
+
+- [[Concept Types]]
+- [[Visual Grammar]]
+
 ## Canonical source
 
 The canonical source files are outside this vault:

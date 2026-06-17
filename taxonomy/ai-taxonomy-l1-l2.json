@@ -2,11 +2,69 @@
   "project": "AI Atlas",
   "version": "0.1",
   "status": "Clean hierarchy draft, Level 1 and Level 2 only",
-  "level_0": "Artificial Intelligence",
+  "hierarchy_levels": [
+    {
+      "level": 0,
+      "name": "Field",
+      "description": "The whole domain of Artificial Intelligence."
+    },
+    {
+      "level": 1,
+      "name": "Major Area",
+      "description": "Large, relatively stable areas of AI."
+    },
+    {
+      "level": 2,
+      "name": "Subfield",
+      "description": "Main subareas inside each major area."
+    },
+    {
+      "level": 3,
+      "name": "Method, Architecture, or Model Family",
+      "description": "Future level. Deeper technical families and approaches."
+    },
+    {
+      "level": 4,
+      "name": "Technique, Component, or Variant",
+      "description": "Future level. Internal mechanisms and variants."
+    },
+    {
+      "level": 5,
+      "name": "System, Application, Product, or Concrete Model",
+      "description": "Future level. Concrete systems, products, and examples."
+    }
+  ],
+  "level_0": {
+    "name": "Artificial Intelligence",
+    "hierarchy_level": 0,
+    "hierarchy_level_name": "Field",
+    "concept_type": "Field",
+    "stability": "stable",
+    "description": "The broad field of creating systems that can perceive, learn, reason, plan, communicate, generate, decide, or act in ways associated with intelligence.",
+    "children": [
+      "Symbolic AI",
+      "Machine Learning",
+      "Search, Planning and Optimization",
+      "Knowledge and Reasoning",
+      "Robotics and Embodied AI",
+      "Natural Language and Speech",
+      "Computer Vision and Perception",
+      "Generative AI",
+      "Foundation and General-Purpose Models",
+      "Multi-Agent Systems",
+      "Human-AI Interaction",
+      "AI Safety, Alignment and Governance",
+      "AGI and Future AI"
+    ]
+  },
   "level_1": [
     {
       "name": "Symbolic AI",
-      "level_2": [
+      "hierarchy_level": 1,
+      "hierarchy_level_name": "Major Area",
+      "concept_type": "Major Area",
+      "parent": "Artificial Intelligence",
+      "children": [
         "Rule-Based Systems",
         "Expert Systems",
         "Logic Programming",
@@ -15,11 +73,99 @@
         "Constraint Satisfaction",
         "Knowledge Graphs",
         "Neuro-Symbolic AI"
+      ],
+      "stability": "stable",
+      "description": "AI based on explicit symbols, rules, logic, and structured knowledge.",
+      "level_2": [
+        {
+          "name": "Rule-Based Systems",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Method",
+          "parent": "Symbolic AI",
+          "children": [],
+          "stability": "stable",
+          "description": "Rule-Based Systems is a Level 2 Method within Symbolic AI in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Expert Systems",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "System Pattern",
+          "parent": "Symbolic AI",
+          "children": [],
+          "stability": "stable",
+          "description": "Expert Systems is a Level 2 System Pattern within Symbolic AI in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Logic Programming",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Paradigm",
+          "parent": "Symbolic AI",
+          "children": [],
+          "stability": "stable",
+          "description": "Logic Programming is a Level 2 Paradigm within Symbolic AI in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Knowledge Representation",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Subfield",
+          "parent": "Symbolic AI",
+          "children": [],
+          "stability": "stable",
+          "description": "Knowledge Representation is a Level 2 Subfield within Symbolic AI in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Automated Reasoning",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Subfield",
+          "parent": "Symbolic AI",
+          "children": [],
+          "stability": "stable",
+          "description": "Automated Reasoning is a Level 2 Subfield within Symbolic AI in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Constraint Satisfaction",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Method",
+          "parent": "Symbolic AI",
+          "children": [],
+          "stability": "stable",
+          "description": "Constraint Satisfaction is a Level 2 Method within Symbolic AI in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Knowledge Graphs",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "System Pattern",
+          "parent": "Symbolic AI",
+          "children": [],
+          "stability": "stable",
+          "description": "Knowledge Graphs is a Level 2 System Pattern within Symbolic AI in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Neuro-Symbolic AI",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Paradigm",
+          "parent": "Symbolic AI",
+          "children": [],
+          "stability": "stable",
+          "description": "Neuro-Symbolic AI is a Level 2 Paradigm within Symbolic AI in the AI Atlas clean hierarchy."
+        }
       ]
     },
     {
       "name": "Machine Learning",
-      "level_2": [
+      "hierarchy_level": 1,
+      "hierarchy_level_name": "Major Area",
+      "concept_type": "Major Area",
+      "parent": "Artificial Intelligence",
+      "children": [
         "Supervised Learning",
         "Unsupervised Learning",
         "Semi-Supervised Learning",
@@ -32,11 +178,139 @@
         "Active Learning",
         "Meta-Learning",
         "Ensemble Learning"
+      ],
+      "stability": "stable",
+      "description": "AI systems that learn patterns from data rather than relying only on hand-written rules.",
+      "level_2": [
+        {
+          "name": "Supervised Learning",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Paradigm",
+          "parent": "Machine Learning",
+          "children": [],
+          "stability": "stable",
+          "description": "Supervised Learning is a Level 2 Paradigm within Machine Learning in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Unsupervised Learning",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Paradigm",
+          "parent": "Machine Learning",
+          "children": [],
+          "stability": "stable",
+          "description": "Unsupervised Learning is a Level 2 Paradigm within Machine Learning in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Semi-Supervised Learning",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Paradigm",
+          "parent": "Machine Learning",
+          "children": [],
+          "stability": "stable",
+          "description": "Semi-Supervised Learning is a Level 2 Paradigm within Machine Learning in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Self-Supervised Learning",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Paradigm",
+          "parent": "Machine Learning",
+          "children": [],
+          "stability": "stable",
+          "description": "Self-Supervised Learning is a Level 2 Paradigm within Machine Learning in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Reinforcement Learning",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Paradigm",
+          "parent": "Machine Learning",
+          "children": [],
+          "stability": "stable",
+          "description": "Reinforcement Learning is a Level 2 Paradigm within Machine Learning in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Deep Learning",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Subfield",
+          "parent": "Machine Learning",
+          "children": [],
+          "stability": "stable",
+          "description": "Deep Learning is a Level 2 Subfield within Machine Learning in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Transfer Learning",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Method",
+          "parent": "Machine Learning",
+          "children": [],
+          "stability": "stable",
+          "description": "Transfer Learning is a Level 2 Method within Machine Learning in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Federated Learning",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Method",
+          "parent": "Machine Learning",
+          "children": [],
+          "stability": "stable",
+          "description": "Federated Learning is a Level 2 Method within Machine Learning in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Online Learning",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Method",
+          "parent": "Machine Learning",
+          "children": [],
+          "stability": "stable",
+          "description": "Online Learning is a Level 2 Method within Machine Learning in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Active Learning",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Method",
+          "parent": "Machine Learning",
+          "children": [],
+          "stability": "stable",
+          "description": "Active Learning is a Level 2 Method within Machine Learning in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Meta-Learning",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Method",
+          "parent": "Machine Learning",
+          "children": [],
+          "stability": "stable",
+          "description": "Meta-Learning is a Level 2 Method within Machine Learning in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Ensemble Learning",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Method",
+          "parent": "Machine Learning",
+          "children": [],
+          "stability": "stable",
+          "description": "Ensemble Learning is a Level 2 Method within Machine Learning in the AI Atlas clean hierarchy."
+        }
       ]
     },
     {
       "name": "Search, Planning and Optimization",
-      "level_2": [
+      "hierarchy_level": 1,
+      "hierarchy_level_name": "Major Area",
+      "concept_type": "Major Area",
+      "parent": "Artificial Intelligence",
+      "children": [
         "State-Space Search",
         "Heuristic Search",
         "Adversarial Search",
@@ -45,11 +319,99 @@
         "Optimization",
         "Evolutionary Computation",
         "Monte Carlo Tree Search"
+      ],
+      "stability": "stable",
+      "description": "Methods for finding good actions, paths, plans, or solutions across possible states.",
+      "level_2": [
+        {
+          "name": "State-Space Search",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Method",
+          "parent": "Search, Planning and Optimization",
+          "children": [],
+          "stability": "stable",
+          "description": "State-Space Search is a Level 2 Method within Search, Planning and Optimization in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Heuristic Search",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Method",
+          "parent": "Search, Planning and Optimization",
+          "children": [],
+          "stability": "stable",
+          "description": "Heuristic Search is a Level 2 Method within Search, Planning and Optimization in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Adversarial Search",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Method",
+          "parent": "Search, Planning and Optimization",
+          "children": [],
+          "stability": "stable",
+          "description": "Adversarial Search is a Level 2 Method within Search, Planning and Optimization in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Automated Planning",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Method",
+          "parent": "Search, Planning and Optimization",
+          "children": [],
+          "stability": "stable",
+          "description": "Automated Planning is a Level 2 Method within Search, Planning and Optimization in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Scheduling",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Method",
+          "parent": "Search, Planning and Optimization",
+          "children": [],
+          "stability": "stable",
+          "description": "Scheduling is a Level 2 Method within Search, Planning and Optimization in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Optimization",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Method",
+          "parent": "Search, Planning and Optimization",
+          "children": [],
+          "stability": "stable",
+          "description": "Optimization is a Level 2 Method within Search, Planning and Optimization in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Evolutionary Computation",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Method",
+          "parent": "Search, Planning and Optimization",
+          "children": [],
+          "stability": "stable",
+          "description": "Evolutionary Computation is a Level 2 Method within Search, Planning and Optimization in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Monte Carlo Tree Search",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Method",
+          "parent": "Search, Planning and Optimization",
+          "children": [],
+          "stability": "stable",
+          "description": "Monte Carlo Tree Search is a Level 2 Method within Search, Planning and Optimization in the AI Atlas clean hierarchy."
+        }
       ]
     },
     {
       "name": "Knowledge and Reasoning",
-      "level_2": [
+      "hierarchy_level": 1,
+      "hierarchy_level_name": "Major Area",
+      "concept_type": "Major Area",
+      "parent": "Artificial Intelligence",
+      "children": [
         "Commonsense Reasoning",
         "Probabilistic Reasoning",
         "Causal Reasoning",
@@ -58,11 +420,99 @@
         "Explainable AI",
         "Knowledge Representation",
         "Ontologies"
+      ],
+      "stability": "stable",
+      "description": "Methods for representing facts, uncertainty, causality, explanations, and inference.",
+      "level_2": [
+        {
+          "name": "Commonsense Reasoning",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Subfield",
+          "parent": "Knowledge and Reasoning",
+          "children": [],
+          "stability": "stable",
+          "description": "Commonsense Reasoning is a Level 2 Subfield within Knowledge and Reasoning in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Probabilistic Reasoning",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Method",
+          "parent": "Knowledge and Reasoning",
+          "children": [],
+          "stability": "stable",
+          "description": "Probabilistic Reasoning is a Level 2 Method within Knowledge and Reasoning in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Causal Reasoning",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Method",
+          "parent": "Knowledge and Reasoning",
+          "children": [],
+          "stability": "stable",
+          "description": "Causal Reasoning is a Level 2 Method within Knowledge and Reasoning in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Temporal Reasoning",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Method",
+          "parent": "Knowledge and Reasoning",
+          "children": [],
+          "stability": "stable",
+          "description": "Temporal Reasoning is a Level 2 Method within Knowledge and Reasoning in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Spatial Reasoning",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Method",
+          "parent": "Knowledge and Reasoning",
+          "children": [],
+          "stability": "stable",
+          "description": "Spatial Reasoning is a Level 2 Method within Knowledge and Reasoning in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Explainable AI",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Evaluation Concept",
+          "parent": "Knowledge and Reasoning",
+          "children": [],
+          "stability": "stable",
+          "description": "Explainable AI is a Level 2 Evaluation Concept within Knowledge and Reasoning in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Knowledge Representation",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Subfield",
+          "parent": "Knowledge and Reasoning",
+          "children": [],
+          "stability": "stable",
+          "description": "Knowledge Representation is a Level 2 Subfield within Knowledge and Reasoning in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Ontologies",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Method",
+          "parent": "Knowledge and Reasoning",
+          "children": [],
+          "stability": "stable",
+          "description": "Ontologies is a Level 2 Method within Knowledge and Reasoning in the AI Atlas clean hierarchy."
+        }
       ]
     },
     {
       "name": "Robotics and Embodied AI",
-      "level_2": [
+      "hierarchy_level": 1,
+      "hierarchy_level_name": "Major Area",
+      "concept_type": "Major Area",
+      "parent": "Artificial Intelligence",
+      "children": [
         "Classical Control",
         "Robot Perception",
         "Localization and Mapping",
@@ -72,11 +522,109 @@
         "Human-Robot Interaction",
         "Robot Learning",
         "Embodied Agents"
+      ],
+      "stability": "stable",
+      "description": "AI connected to physical agents that perceive, decide, and act in the real world.",
+      "level_2": [
+        {
+          "name": "Classical Control",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Method",
+          "parent": "Robotics and Embodied AI",
+          "children": [],
+          "stability": "stable",
+          "description": "Classical Control is a Level 2 Method within Robotics and Embodied AI in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Robot Perception",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Subfield",
+          "parent": "Robotics and Embodied AI",
+          "children": [],
+          "stability": "stable",
+          "description": "Robot Perception is a Level 2 Subfield within Robotics and Embodied AI in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Localization and Mapping",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Method",
+          "parent": "Robotics and Embodied AI",
+          "children": [],
+          "stability": "stable",
+          "description": "Localization and Mapping is a Level 2 Method within Robotics and Embodied AI in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Motion Planning",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Method",
+          "parent": "Robotics and Embodied AI",
+          "children": [],
+          "stability": "stable",
+          "description": "Motion Planning is a Level 2 Method within Robotics and Embodied AI in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Manipulation",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Subfield",
+          "parent": "Robotics and Embodied AI",
+          "children": [],
+          "stability": "stable",
+          "description": "Manipulation is a Level 2 Subfield within Robotics and Embodied AI in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Autonomous Vehicles",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Application Area",
+          "parent": "Robotics and Embodied AI",
+          "children": [],
+          "stability": "stable",
+          "description": "Autonomous Vehicles is a Level 2 Application Area within Robotics and Embodied AI in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Human-Robot Interaction",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Subfield",
+          "parent": "Robotics and Embodied AI",
+          "children": [],
+          "stability": "stable",
+          "description": "Human-Robot Interaction is a Level 2 Subfield within Robotics and Embodied AI in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Robot Learning",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Subfield",
+          "parent": "Robotics and Embodied AI",
+          "children": [],
+          "stability": "stable",
+          "description": "Robot Learning is a Level 2 Subfield within Robotics and Embodied AI in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Embodied Agents",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "System Pattern",
+          "parent": "Robotics and Embodied AI",
+          "children": [],
+          "stability": "stable",
+          "description": "Embodied Agents is a Level 2 System Pattern within Robotics and Embodied AI in the AI Atlas clean hierarchy."
+        }
       ]
     },
     {
       "name": "Natural Language and Speech",
-      "level_2": [
+      "hierarchy_level": 1,
+      "hierarchy_level_name": "Major Area",
+      "concept_type": "Major Area",
+      "parent": "Artificial Intelligence",
+      "children": [
         "Natural Language Processing",
         "Speech Recognition",
         "Speech Synthesis",
@@ -85,11 +633,99 @@
         "Machine Translation",
         "Text Generation",
         "Language Understanding"
+      ],
+      "stability": "stable",
+      "description": "AI for language, text, speech, dialogue, retrieval, and communication.",
+      "level_2": [
+        {
+          "name": "Natural Language Processing",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Subfield",
+          "parent": "Natural Language and Speech",
+          "children": [],
+          "stability": "stable",
+          "description": "Natural Language Processing is a Level 2 Subfield within Natural Language and Speech in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Speech Recognition",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Application Area",
+          "parent": "Natural Language and Speech",
+          "children": [],
+          "stability": "stable",
+          "description": "Speech Recognition is a Level 2 Application Area within Natural Language and Speech in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Speech Synthesis",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Application Area",
+          "parent": "Natural Language and Speech",
+          "children": [],
+          "stability": "stable",
+          "description": "Speech Synthesis is a Level 2 Application Area within Natural Language and Speech in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Dialogue Systems",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "System Pattern",
+          "parent": "Natural Language and Speech",
+          "children": [],
+          "stability": "stable",
+          "description": "Dialogue Systems is a Level 2 System Pattern within Natural Language and Speech in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Information Retrieval",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Subfield",
+          "parent": "Natural Language and Speech",
+          "children": [],
+          "stability": "stable",
+          "description": "Information Retrieval is a Level 2 Subfield within Natural Language and Speech in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Machine Translation",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Application Area",
+          "parent": "Natural Language and Speech",
+          "children": [],
+          "stability": "stable",
+          "description": "Machine Translation is a Level 2 Application Area within Natural Language and Speech in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Text Generation",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Application Area",
+          "parent": "Natural Language and Speech",
+          "children": [],
+          "stability": "stable",
+          "description": "Text Generation is a Level 2 Application Area within Natural Language and Speech in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Language Understanding",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Subfield",
+          "parent": "Natural Language and Speech",
+          "children": [],
+          "stability": "stable",
+          "description": "Language Understanding is a Level 2 Subfield within Natural Language and Speech in the AI Atlas clean hierarchy."
+        }
       ]
     },
     {
       "name": "Computer Vision and Perception",
-      "level_2": [
+      "hierarchy_level": 1,
+      "hierarchy_level_name": "Major Area",
+      "concept_type": "Major Area",
+      "parent": "Artificial Intelligence",
+      "children": [
         "Image Classification",
         "Object Detection",
         "Image Segmentation",
@@ -98,11 +734,99 @@
         "Multimodal Perception",
         "Scene Understanding",
         "Optical Character Recognition"
+      ],
+      "stability": "stable",
+      "description": "AI for interpreting images, video, scenes, objects, and sensory information.",
+      "level_2": [
+        {
+          "name": "Image Classification",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Application Area",
+          "parent": "Computer Vision and Perception",
+          "children": [],
+          "stability": "stable",
+          "description": "Image Classification is a Level 2 Application Area within Computer Vision and Perception in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Object Detection",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Application Area",
+          "parent": "Computer Vision and Perception",
+          "children": [],
+          "stability": "stable",
+          "description": "Object Detection is a Level 2 Application Area within Computer Vision and Perception in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Image Segmentation",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Application Area",
+          "parent": "Computer Vision and Perception",
+          "children": [],
+          "stability": "stable",
+          "description": "Image Segmentation is a Level 2 Application Area within Computer Vision and Perception in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Video Understanding",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Application Area",
+          "parent": "Computer Vision and Perception",
+          "children": [],
+          "stability": "stable",
+          "description": "Video Understanding is a Level 2 Application Area within Computer Vision and Perception in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "3D Vision",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Subfield",
+          "parent": "Computer Vision and Perception",
+          "children": [],
+          "stability": "stable",
+          "description": "3D Vision is a Level 2 Subfield within Computer Vision and Perception in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Multimodal Perception",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Subfield",
+          "parent": "Computer Vision and Perception",
+          "children": [],
+          "stability": "stable",
+          "description": "Multimodal Perception is a Level 2 Subfield within Computer Vision and Perception in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Scene Understanding",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Application Area",
+          "parent": "Computer Vision and Perception",
+          "children": [],
+          "stability": "stable",
+          "description": "Scene Understanding is a Level 2 Application Area within Computer Vision and Perception in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Optical Character Recognition",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Application Area",
+          "parent": "Computer Vision and Perception",
+          "children": [],
+          "stability": "stable",
+          "description": "Optical Character Recognition is a Level 2 Application Area within Computer Vision and Perception in the AI Atlas clean hierarchy."
+        }
       ]
     },
     {
       "name": "Generative AI",
-      "level_2": [
+      "hierarchy_level": 1,
+      "hierarchy_level_name": "Major Area",
+      "concept_type": "Cross-Cutting Area",
+      "parent": "Artificial Intelligence",
+      "children": [
         "Text Generation",
         "Image Generation",
         "Audio Generation",
@@ -111,11 +835,99 @@
         "3D Generation",
         "Synthetic Data Generation",
         "Generative Model Families"
+      ],
+      "stability": "stable",
+      "description": "AI systems that create new content such as text, images, audio, video, code, or 3D objects.",
+      "level_2": [
+        {
+          "name": "Text Generation",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Application Area",
+          "parent": "Generative AI",
+          "children": [],
+          "stability": "stable",
+          "description": "Text Generation is a Level 2 Application Area within Generative AI in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Image Generation",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Application Area",
+          "parent": "Generative AI",
+          "children": [],
+          "stability": "stable",
+          "description": "Image Generation is a Level 2 Application Area within Generative AI in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Audio Generation",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Application Area",
+          "parent": "Generative AI",
+          "children": [],
+          "stability": "stable",
+          "description": "Audio Generation is a Level 2 Application Area within Generative AI in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Video Generation",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Application Area",
+          "parent": "Generative AI",
+          "children": [],
+          "stability": "stable",
+          "description": "Video Generation is a Level 2 Application Area within Generative AI in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Code Generation",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Application Area",
+          "parent": "Generative AI",
+          "children": [],
+          "stability": "stable",
+          "description": "Code Generation is a Level 2 Application Area within Generative AI in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "3D Generation",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Application Area",
+          "parent": "Generative AI",
+          "children": [],
+          "stability": "stable",
+          "description": "3D Generation is a Level 2 Application Area within Generative AI in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Synthetic Data Generation",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Application Area",
+          "parent": "Generative AI",
+          "children": [],
+          "stability": "stable",
+          "description": "Synthetic Data Generation is a Level 2 Application Area within Generative AI in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Generative Model Families",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Model Family",
+          "parent": "Generative AI",
+          "children": [],
+          "stability": "stable",
+          "description": "Generative Model Families is a Level 2 Model Family within Generative AI in the AI Atlas clean hierarchy."
+        }
       ]
     },
     {
       "name": "Foundation and General-Purpose Models",
-      "level_2": [
+      "hierarchy_level": 1,
+      "hierarchy_level_name": "Major Area",
+      "concept_type": "Major Area",
+      "parent": "Artificial Intelligence",
+      "children": [
         "Large Language Models",
         "Vision Foundation Models",
         "Multimodal Foundation Models",
@@ -124,11 +936,99 @@
         "Code Models",
         "Scientific Foundation Models",
         "World Models"
+      ],
+      "stability": "stable",
+      "description": "Large broadly trained models that can be adapted to many downstream tasks.",
+      "level_2": [
+        {
+          "name": "Large Language Models",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Model Family",
+          "parent": "Foundation and General-Purpose Models",
+          "children": [],
+          "stability": "stable",
+          "description": "Large Language Models is a Level 2 Model Family within Foundation and General-Purpose Models in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Vision Foundation Models",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Model Family",
+          "parent": "Foundation and General-Purpose Models",
+          "children": [],
+          "stability": "stable",
+          "description": "Vision Foundation Models is a Level 2 Model Family within Foundation and General-Purpose Models in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Multimodal Foundation Models",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Model Family",
+          "parent": "Foundation and General-Purpose Models",
+          "children": [],
+          "stability": "stable",
+          "description": "Multimodal Foundation Models is a Level 2 Model Family within Foundation and General-Purpose Models in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Audio Foundation Models",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Model Family",
+          "parent": "Foundation and General-Purpose Models",
+          "children": [],
+          "stability": "stable",
+          "description": "Audio Foundation Models is a Level 2 Model Family within Foundation and General-Purpose Models in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Video Foundation Models",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Model Family",
+          "parent": "Foundation and General-Purpose Models",
+          "children": [],
+          "stability": "stable",
+          "description": "Video Foundation Models is a Level 2 Model Family within Foundation and General-Purpose Models in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Code Models",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Model Family",
+          "parent": "Foundation and General-Purpose Models",
+          "children": [],
+          "stability": "stable",
+          "description": "Code Models is a Level 2 Model Family within Foundation and General-Purpose Models in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Scientific Foundation Models",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Model Family",
+          "parent": "Foundation and General-Purpose Models",
+          "children": [],
+          "stability": "stable",
+          "description": "Scientific Foundation Models is a Level 2 Model Family within Foundation and General-Purpose Models in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "World Models",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Model Family",
+          "parent": "Foundation and General-Purpose Models",
+          "children": [],
+          "stability": "stable",
+          "description": "World Models is a Level 2 Model Family within Foundation and General-Purpose Models in the AI Atlas clean hierarchy."
+        }
       ]
     },
     {
       "name": "Multi-Agent Systems",
-      "level_2": [
+      "hierarchy_level": 1,
+      "hierarchy_level_name": "Major Area",
+      "concept_type": "Major Area",
+      "parent": "Artificial Intelligence",
+      "children": [
         "Cooperative Multi-Agent Systems",
         "Competitive Multi-Agent Systems",
         "Agent Communication",
@@ -137,11 +1037,99 @@
         "Swarm Intelligence",
         "Agent Societies",
         "Market-Based Systems"
+      ],
+      "stability": "stable",
+      "description": "AI involving multiple agents that cooperate, compete, negotiate, or coordinate.",
+      "level_2": [
+        {
+          "name": "Cooperative Multi-Agent Systems",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "System Pattern",
+          "parent": "Multi-Agent Systems",
+          "children": [],
+          "stability": "stable",
+          "description": "Cooperative Multi-Agent Systems is a Level 2 System Pattern within Multi-Agent Systems in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Competitive Multi-Agent Systems",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "System Pattern",
+          "parent": "Multi-Agent Systems",
+          "children": [],
+          "stability": "stable",
+          "description": "Competitive Multi-Agent Systems is a Level 2 System Pattern within Multi-Agent Systems in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Agent Communication",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Method",
+          "parent": "Multi-Agent Systems",
+          "children": [],
+          "stability": "stable",
+          "description": "Agent Communication is a Level 2 Method within Multi-Agent Systems in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Coordination and Negotiation",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Method",
+          "parent": "Multi-Agent Systems",
+          "children": [],
+          "stability": "stable",
+          "description": "Coordination and Negotiation is a Level 2 Method within Multi-Agent Systems in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Multi-Agent Reinforcement Learning",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Method",
+          "parent": "Multi-Agent Systems",
+          "children": [],
+          "stability": "stable",
+          "description": "Multi-Agent Reinforcement Learning is a Level 2 Method within Multi-Agent Systems in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Swarm Intelligence",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Paradigm",
+          "parent": "Multi-Agent Systems",
+          "children": [],
+          "stability": "stable",
+          "description": "Swarm Intelligence is a Level 2 Paradigm within Multi-Agent Systems in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Agent Societies",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "System Pattern",
+          "parent": "Multi-Agent Systems",
+          "children": [],
+          "stability": "stable",
+          "description": "Agent Societies is a Level 2 System Pattern within Multi-Agent Systems in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Market-Based Systems",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "System Pattern",
+          "parent": "Multi-Agent Systems",
+          "children": [],
+          "stability": "stable",
+          "description": "Market-Based Systems is a Level 2 System Pattern within Multi-Agent Systems in the AI Atlas clean hierarchy."
+        }
       ]
     },
     {
       "name": "Human-AI Interaction",
-      "level_2": [
+      "hierarchy_level": 1,
+      "hierarchy_level_name": "Major Area",
+      "concept_type": "Major Area",
+      "parent": "Artificial Intelligence",
+      "children": [
         "AI Assistants",
         "Recommender Systems",
         "Human-in-the-Loop AI",
@@ -150,11 +1138,99 @@
         "Decision Support Systems",
         "Human Feedback",
         "AI UX and Trust"
+      ],
+      "stability": "stable",
+      "description": "How humans use, guide, trust, correct, and collaborate with AI systems.",
+      "level_2": [
+        {
+          "name": "AI Assistants",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "System Pattern",
+          "parent": "Human-AI Interaction",
+          "children": [],
+          "stability": "stable",
+          "description": "AI Assistants is a Level 2 System Pattern within Human-AI Interaction in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Recommender Systems",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Application Area",
+          "parent": "Human-AI Interaction",
+          "children": [],
+          "stability": "stable",
+          "description": "Recommender Systems is a Level 2 Application Area within Human-AI Interaction in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Human-in-the-Loop AI",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "System Pattern",
+          "parent": "Human-AI Interaction",
+          "children": [],
+          "stability": "stable",
+          "description": "Human-in-the-Loop AI is a Level 2 System Pattern within Human-AI Interaction in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Interactive Machine Learning",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Method",
+          "parent": "Human-AI Interaction",
+          "children": [],
+          "stability": "stable",
+          "description": "Interactive Machine Learning is a Level 2 Method within Human-AI Interaction in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Personalization",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Application Area",
+          "parent": "Human-AI Interaction",
+          "children": [],
+          "stability": "stable",
+          "description": "Personalization is a Level 2 Application Area within Human-AI Interaction in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Decision Support Systems",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Application Area",
+          "parent": "Human-AI Interaction",
+          "children": [],
+          "stability": "stable",
+          "description": "Decision Support Systems is a Level 2 Application Area within Human-AI Interaction in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Human Feedback",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Method",
+          "parent": "Human-AI Interaction",
+          "children": [],
+          "stability": "stable",
+          "description": "Human Feedback is a Level 2 Method within Human-AI Interaction in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "AI UX and Trust",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Subfield",
+          "parent": "Human-AI Interaction",
+          "children": [],
+          "stability": "stable",
+          "description": "AI UX and Trust is a Level 2 Subfield within Human-AI Interaction in the AI Atlas clean hierarchy."
+        }
       ]
     },
     {
       "name": "AI Safety, Alignment and Governance",
-      "level_2": [
+      "hierarchy_level": 1,
+      "hierarchy_level_name": "Major Area",
+      "concept_type": "Cross-Cutting Area",
+      "parent": "Artificial Intelligence",
+      "children": [
         "AI Alignment",
         "Robustness",
         "Interpretability",
@@ -163,11 +1239,99 @@
         "Privacy and Security",
         "Misuse Prevention",
         "Governance and Policy"
+      ],
+      "stability": "stable",
+      "description": "Cross-cutting work on making AI reliable, controllable, fair, secure, and socially governed.",
+      "level_2": [
+        {
+          "name": "AI Alignment",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Safety Concept",
+          "parent": "AI Safety, Alignment and Governance",
+          "children": [],
+          "stability": "stable",
+          "description": "AI Alignment is a Level 2 Safety Concept within AI Safety, Alignment and Governance in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Robustness",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Safety Concept",
+          "parent": "AI Safety, Alignment and Governance",
+          "children": [],
+          "stability": "stable",
+          "description": "Robustness is a Level 2 Safety Concept within AI Safety, Alignment and Governance in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Interpretability",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Evaluation Concept",
+          "parent": "AI Safety, Alignment and Governance",
+          "children": [],
+          "stability": "stable",
+          "description": "Interpretability is a Level 2 Evaluation Concept within AI Safety, Alignment and Governance in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Evaluation and Benchmarking",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Evaluation Concept",
+          "parent": "AI Safety, Alignment and Governance",
+          "children": [],
+          "stability": "stable",
+          "description": "Evaluation and Benchmarking is a Level 2 Evaluation Concept within AI Safety, Alignment and Governance in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Bias and Fairness",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Safety Concept",
+          "parent": "AI Safety, Alignment and Governance",
+          "children": [],
+          "stability": "stable",
+          "description": "Bias and Fairness is a Level 2 Safety Concept within AI Safety, Alignment and Governance in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Privacy and Security",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Safety Concept",
+          "parent": "AI Safety, Alignment and Governance",
+          "children": [],
+          "stability": "stable",
+          "description": "Privacy and Security is a Level 2 Safety Concept within AI Safety, Alignment and Governance in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Misuse Prevention",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Governance Concept",
+          "parent": "AI Safety, Alignment and Governance",
+          "children": [],
+          "stability": "stable",
+          "description": "Misuse Prevention is a Level 2 Governance Concept within AI Safety, Alignment and Governance in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Governance and Policy",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Governance Concept",
+          "parent": "AI Safety, Alignment and Governance",
+          "children": [],
+          "stability": "stable",
+          "description": "Governance and Policy is a Level 2 Governance Concept within AI Safety, Alignment and Governance in the AI Atlas clean hierarchy."
+        }
       ]
     },
     {
       "name": "AGI and Future AI",
-      "level_2": [
+      "hierarchy_level": 1,
+      "hierarchy_level_name": "Major Area",
+      "concept_type": "Future Area",
+      "parent": "Artificial Intelligence",
+      "children": [
         "Artificial General Intelligence",
         "Autonomous Agents",
         "Continual Learning",
@@ -176,6 +1340,90 @@
         "Human-AI Symbiosis",
         "Superintelligence",
         "Long-Term AI Futures"
+      ],
+      "stability": "speculative",
+      "description": "Longer-term AI concepts involving broad autonomy, general intelligence, and future trajectories.",
+      "level_2": [
+        {
+          "name": "Artificial General Intelligence",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Future Concept",
+          "parent": "AGI and Future AI",
+          "children": [],
+          "stability": "speculative",
+          "description": "Artificial General Intelligence is a Level 2 Future Concept within AGI and Future AI in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Autonomous Agents",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Future Concept",
+          "parent": "AGI and Future AI",
+          "children": [],
+          "stability": "speculative",
+          "description": "Autonomous Agents is a Level 2 Future Concept within AGI and Future AI in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Continual Learning",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Method",
+          "parent": "AGI and Future AI",
+          "children": [],
+          "stability": "stable",
+          "description": "Continual Learning is a Level 2 Method within AGI and Future AI in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Self-Improving Systems",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Future Concept",
+          "parent": "AGI and Future AI",
+          "children": [],
+          "stability": "speculative",
+          "description": "Self-Improving Systems is a Level 2 Future Concept within AGI and Future AI in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "AI Scientists",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Future Concept",
+          "parent": "AGI and Future AI",
+          "children": [],
+          "stability": "speculative",
+          "description": "AI Scientists is a Level 2 Future Concept within AGI and Future AI in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Human-AI Symbiosis",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Future Concept",
+          "parent": "AGI and Future AI",
+          "children": [],
+          "stability": "speculative",
+          "description": "Human-AI Symbiosis is a Level 2 Future Concept within AGI and Future AI in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Superintelligence",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Future Concept",
+          "parent": "AGI and Future AI",
+          "children": [],
+          "stability": "speculative",
+          "description": "Superintelligence is a Level 2 Future Concept within AGI and Future AI in the AI Atlas clean hierarchy."
+        },
+        {
+          "name": "Long-Term AI Futures",
+          "hierarchy_level": 2,
+          "hierarchy_level_name": "Subfield",
+          "concept_type": "Future Concept",
+          "parent": "AGI and Future AI",
+          "children": [],
+          "stability": "speculative",
+          "description": "Long-Term AI Futures is a Level 2 Future Concept within AGI and Future AI in the AI Atlas clean hierarchy."
+        }
       ]
     }
   ]
