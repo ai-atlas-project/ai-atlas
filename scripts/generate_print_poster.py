@@ -247,7 +247,7 @@ def generate_svg(data: dict[str, Any], *, size_name: str) -> str:
     parts = [
         '<?xml version="1.0" encoding="UTF-8"?>',
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}mm" height="{height}mm" viewBox="0 0 {width} {height}">',
-        '<rect x="0" y="0" width="100%" height="100%" fill="#FFFFFF" />',
+        f'<rect x="0" y="0" width="{width}" height="{height}" fill="#FFFFFF" />',
         '<style>text { font-family: Inter, Arial, Helvetica, sans-serif; }</style>',
         f'<text x="{margin:.2f}" y="{title_y:.2f}" font-size="9.5" font-weight="800" fill="#111111">{project}: {root_name}</text>',
         f'<text x="{margin:.2f}" y="{subtitle_y:.2f}" font-size="3.6" fill="#444444">Draft printable prototype · Full L1-L2 modular grid · version {version} · {status}</text>',
