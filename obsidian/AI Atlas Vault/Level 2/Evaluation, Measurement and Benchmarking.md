@@ -1,36 +1,23 @@
+---
+project: "AI Atlas"
+hierarchy_level: 2
+hierarchy_level_name: "Main Subarea"
+concept_type: "Evaluation Concept"
+stability: "stable"
+parent: "AI Safety, Alignment and Governance"
+children: []
+---
+
 # Evaluation, Measurement and Benchmarking
-
-#level-2 #ai-atlas
-
-## Metadata
-
-| Field | Value |
-|---|---|
-| Hierarchy level | 2 |
-| Hierarchy level name | Subfield |
-| Concept type | Evaluation Concept |
-| Stability | stable |
-
-## Parent branch
-
-- [[Level 1/AI Safety, Alignment and Governance|AI Safety, Alignment and Governance]]
 
 ## Description
 
 Evaluation, Measurement and Benchmarking is a Level 2 Evaluation Concept within AI Safety, Alignment and Governance.
 
-## Scope
+## Parent
 
-This page is part of the clean Level 1–Level 2 hierarchy.
+- [[Level 1/AI Safety, Alignment and Governance|AI Safety, Alignment and Governance]]
 
-The vault intentionally stops here for now.
+## Children
 
-## Future Level 3
-
-Level 3 concepts will be added later.
-
-Do not add them yet.
-
-## Related
-
-- [[00 Artificial Intelligence]]
+No children are included in the current Level 1–Level 2 taxonomy.

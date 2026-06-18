@@ -1,23 +1,31 @@
+---
+project: "AI Atlas"
+hierarchy_level: 1
+hierarchy_level_name: "Major Area"
+concept_type: "Major Area"
+stability: "emerging"
+parent: "Artificial Intelligence"
+children:
+  - "Autonomous Agents"
+  - "Cooperative Multi-Agent Systems"
+  - "Competitive Multi-Agent Systems"
+  - "Agent Communication"
+  - "Coordination and Negotiation"
+  - "Multi-Agent Reinforcement Learning"
+  - "Swarm Intelligence"
+  - "Agent Societies"
+  - "Market-Based Systems"
+---
+
 # Agentic and Multi-Agent Systems
-
-#level-1 #ai-atlas
-
-## Metadata
-
-| Field | Value |
-|---|---|
-| Hierarchy level | 1 |
-| Hierarchy level name | Major Area |
-| Concept type | Major Area |
-| Stability | emerging |
-
-## Parent
-
-- [[00 Artificial Intelligence]]
 
 ## Description
 
 AI systems involving autonomous agents and multiple interacting agents.
+
+## Parent
+
+- [[00 Artificial Intelligence]]
 
 ## Level 2 branches
 
@@ -30,9 +38,3 @@ AI systems involving autonomous agents and multiple interacting agents.
 - [[Level 2/Swarm Intelligence|Swarm Intelligence]]
 - [[Level 2/Agent Societies|Agent Societies]]
 - [[Level 2/Market-Based Systems|Market-Based Systems]]
-
-## Notes
-
-This page intentionally stops at Level 2.
-
-Level 3 should be added later only after Level 1 and Level 2 are reviewed.

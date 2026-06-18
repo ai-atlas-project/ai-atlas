@@ -1,23 +1,30 @@
+---
+project: "AI Atlas"
+hierarchy_level: 1
+hierarchy_level_name: "Major Area"
+concept_type: "Cross-Cutting Area"
+stability: "stable"
+parent: "Artificial Intelligence"
+children:
+  - "AI Assistants"
+  - "Recommender Systems"
+  - "Human-in-the-Loop AI"
+  - "Interactive Machine Learning"
+  - "Personalization"
+  - "Decision Support Systems"
+  - "Human Feedback and Preference Learning"
+  - "AI User Experience and Trust"
+---
+
 # Human-AI Interaction
-
-#level-1 #ai-atlas
-
-## Metadata
-
-| Field | Value |
-|---|---|
-| Hierarchy level | 1 |
-| Hierarchy level name | Major Area |
-| Concept type | Cross-Cutting Area |
-| Stability | stable |
-
-## Parent
-
-- [[00 Artificial Intelligence]]
 
 ## Description
 
 Human interaction with AI systems.
+
+## Parent
+
+- [[00 Artificial Intelligence]]
 
 ## Level 2 branches
 
@@ -29,9 +36,3 @@ Human interaction with AI systems.
 - [[Level 2/Decision Support Systems|Decision Support Systems]]
 - [[Level 2/Human Feedback and Preference Learning|Human Feedback and Preference Learning]]
 - [[Level 2/AI User Experience and Trust|AI User Experience and Trust]]
-
-## Notes
-
-This page intentionally stops at Level 2.
-
-Level 3 should be added later only after Level 1 and Level 2 are reviewed.

@@ -1,23 +1,30 @@
+---
+project: "AI Atlas"
+hierarchy_level: 1
+hierarchy_level_name: "Major Area"
+concept_type: "Major Area"
+stability: "stable"
+parent: "Artificial Intelligence"
+children:
+  - "Commonsense Reasoning"
+  - "Probabilistic Reasoning"
+  - "Causal Reasoning"
+  - "Temporal Reasoning"
+  - "Spatial Reasoning"
+  - "Explainable AI"
+  - "Knowledge Representation"
+  - "Ontologies"
+---
+
 # Knowledge and Reasoning
-
-#level-1 #ai-atlas
-
-## Metadata
-
-| Field | Value |
-|---|---|
-| Hierarchy level | 1 |
-| Hierarchy level name | Major Area |
-| Concept type | Major Area |
-| Stability | stable |
-
-## Parent
-
-- [[00 Artificial Intelligence]]
 
 ## Description
 
 Methods for representing facts, uncertainty, causality, explanations, and inference.
+
+## Parent
+
+- [[00 Artificial Intelligence]]
 
 ## Level 2 branches
 
@@ -29,9 +36,3 @@ Methods for representing facts, uncertainty, causality, explanations, and infere
 - [[Level 2/Explainable AI|Explainable AI]]
 - [[Level 2/Knowledge Representation|Knowledge Representation]]
 - [[Level 2/Ontologies|Ontologies]]
-
-## Notes
-
-This page intentionally stops at Level 2.
-
-Level 3 should be added later only after Level 1 and Level 2 are reviewed.

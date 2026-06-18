@@ -1,36 +1,23 @@
+---
+project: "AI Atlas"
+hierarchy_level: 2
+hierarchy_level_name: "Main Subarea"
+concept_type: "Method"
+stability: "stable"
+parent: "Search, Planning and Optimization"
+children: []
+---
+
 # State-Space Search
-
-#level-2 #ai-atlas
-
-## Metadata
-
-| Field | Value |
-|---|---|
-| Hierarchy level | 2 |
-| Hierarchy level name | Subfield |
-| Concept type | Method |
-| Stability | stable |
-
-## Parent branch
-
-- [[Level 1/Search, Planning and Optimization|Search, Planning and Optimization]]
 
 ## Description
 
 State-Space Search is a Level 2 Method within Search, Planning and Optimization.
 
-## Scope
+## Parent
 
-This page is part of the clean Level 1–Level 2 hierarchy.
+- [[Level 1/Search, Planning and Optimization|Search, Planning and Optimization]]
 
-The vault intentionally stops here for now.
+## Children
 
-## Future Level 3
-
-Level 3 concepts will be added later.
-
-Do not add them yet.
-
-## Related
-
-- [[00 Artificial Intelligence]]
+No children are included in the current Level 1–Level 2 taxonomy.

@@ -1,23 +1,30 @@
+---
+project: "AI Atlas"
+hierarchy_level: 1
+hierarchy_level_name: "Major Area"
+concept_type: "Cross-Cutting Area"
+stability: "stable"
+parent: "Artificial Intelligence"
+children:
+  - "AI Alignment"
+  - "Robustness"
+  - "Interpretability"
+  - "Evaluation, Measurement and Benchmarking"
+  - "Bias and Fairness"
+  - "Privacy and Security"
+  - "Misuse Prevention"
+  - "Governance and Policy"
+---
+
 # AI Safety, Alignment and Governance
-
-#level-1 #ai-atlas
-
-## Metadata
-
-| Field | Value |
-|---|---|
-| Hierarchy level | 1 |
-| Hierarchy level name | Major Area |
-| Concept type | Cross-Cutting Area |
-| Stability | stable |
-
-## Parent
-
-- [[00 Artificial Intelligence]]
 
 ## Description
 
 Cross-cutting work on making AI reliable, controllable, fair, secure, and socially governed.
+
+## Parent
+
+- [[00 Artificial Intelligence]]
 
 ## Level 2 branches
 
@@ -29,9 +36,3 @@ Cross-cutting work on making AI reliable, controllable, fair, secure, and social
 - [[Level 2/Privacy and Security|Privacy and Security]]
 - [[Level 2/Misuse Prevention|Misuse Prevention]]
 - [[Level 2/Governance and Policy|Governance and Policy]]
-
-## Notes
-
-This page intentionally stops at Level 2.
-
-Level 3 should be added later only after Level 1 and Level 2 are reviewed.

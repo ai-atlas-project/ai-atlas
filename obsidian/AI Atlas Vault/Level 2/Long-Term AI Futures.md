@@ -1,36 +1,23 @@
+---
+project: "AI Atlas"
+hierarchy_level: 2
+hierarchy_level_name: "Main Subarea"
+concept_type: "Future Concept"
+stability: "speculative"
+parent: "AGI and Future AI"
+children: []
+---
+
 # Long-Term AI Futures
-
-#level-2 #ai-atlas
-
-## Metadata
-
-| Field | Value |
-|---|---|
-| Hierarchy level | 2 |
-| Hierarchy level name | Subfield |
-| Concept type | Future Concept |
-| Stability | speculative |
-
-## Parent branch
-
-- [[Level 1/AGI and Future AI|AGI and Future AI]]
 
 ## Description
 
 Long-Term AI Futures is a Level 2 Future Concept within AGI and Future AI.
 
-## Scope
+## Parent
 
-This page is part of the clean Level 1–Level 2 hierarchy.
+- [[Level 1/AGI and Future AI|AGI and Future AI]]
 
-The vault intentionally stops here for now.
+## Children
 
-## Future Level 3
-
-Level 3 concepts will be added later.
-
-Do not add them yet.
-
-## Related
-
-- [[00 Artificial Intelligence]]
+No children are included in the current Level 1–Level 2 taxonomy.

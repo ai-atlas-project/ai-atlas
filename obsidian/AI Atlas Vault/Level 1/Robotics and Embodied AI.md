@@ -1,23 +1,31 @@
+---
+project: "AI Atlas"
+hierarchy_level: 1
+hierarchy_level_name: "Major Area"
+concept_type: "Major Area"
+stability: "stable"
+parent: "Artificial Intelligence"
+children:
+  - "Control Systems"
+  - "Robot Perception"
+  - "Localization and Mapping"
+  - "Motion Planning"
+  - "Manipulation"
+  - "Autonomous Vehicles"
+  - "Human-Robot Interaction"
+  - "Robot Learning"
+  - "Embodied Agents"
+---
+
 # Robotics and Embodied AI
-
-#level-1 #ai-atlas
-
-## Metadata
-
-| Field | Value |
-|---|---|
-| Hierarchy level | 1 |
-| Hierarchy level name | Major Area |
-| Concept type | Major Area |
-| Stability | stable |
-
-## Parent
-
-- [[00 Artificial Intelligence]]
 
 ## Description
 
 AI systems that perceive, act, and learn in physical or embodied environments.
+
+## Parent
+
+- [[00 Artificial Intelligence]]
 
 ## Level 2 branches
 
@@ -30,9 +38,3 @@ AI systems that perceive, act, and learn in physical or embodied environments.
 - [[Level 2/Human-Robot Interaction|Human-Robot Interaction]]
 - [[Level 2/Robot Learning|Robot Learning]]
 - [[Level 2/Embodied Agents|Embodied Agents]]
-
-## Notes
-
-This page intentionally stops at Level 2.
-
-Level 3 should be added later only after Level 1 and Level 2 are reviewed.

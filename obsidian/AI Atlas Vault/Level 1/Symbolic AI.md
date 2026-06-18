@@ -1,23 +1,30 @@
+---
+project: "AI Atlas"
+hierarchy_level: 1
+hierarchy_level_name: "Major Area"
+concept_type: "Major Area"
+stability: "stable"
+parent: "Artificial Intelligence"
+children:
+  - "Rule-Based Systems"
+  - "Expert Systems"
+  - "Logic Programming"
+  - "Symbolic Knowledge Representation"
+  - "Automated Reasoning"
+  - "Constraint Satisfaction"
+  - "Knowledge Graphs"
+  - "Neuro-Symbolic AI"
+---
+
 # Symbolic AI
-
-#level-1 #ai-atlas
-
-## Metadata
-
-| Field | Value |
-|---|---|
-| Hierarchy level | 1 |
-| Hierarchy level name | Major Area |
-| Concept type | Major Area |
-| Stability | stable |
-
-## Parent
-
-- [[00 Artificial Intelligence]]
 
 ## Description
 
 AI based on explicit symbols, rules, logic, and structured knowledge.
+
+## Parent
+
+- [[00 Artificial Intelligence]]
 
 ## Level 2 branches
 
@@ -29,9 +36,3 @@ AI based on explicit symbols, rules, logic, and structured knowledge.
 - [[Level 2/Constraint Satisfaction|Constraint Satisfaction]]
 - [[Level 2/Knowledge Graphs|Knowledge Graphs]]
 - [[Level 2/Neuro-Symbolic AI|Neuro-Symbolic AI]]
-
-## Notes
-
-This page intentionally stops at Level 2.
-
-Level 3 should be added later only after Level 1 and Level 2 are reviewed.

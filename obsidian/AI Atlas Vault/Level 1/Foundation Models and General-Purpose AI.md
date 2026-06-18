@@ -1,23 +1,30 @@
+---
+project: "AI Atlas"
+hierarchy_level: 1
+hierarchy_level_name: "Major Area"
+concept_type: "Major Area"
+stability: "emerging"
+parent: "Artificial Intelligence"
+children:
+  - "Large Language Models"
+  - "Vision Foundation Models"
+  - "Multimodal Foundation Models"
+  - "Audio Foundation Models"
+  - "Video Foundation Models"
+  - "Code Foundation Models"
+  - "Scientific Foundation Models"
+  - "World Models"
+---
+
 # Foundation Models and General-Purpose AI
-
-#level-1 #ai-atlas
-
-## Metadata
-
-| Field | Value |
-|---|---|
-| Hierarchy level | 1 |
-| Hierarchy level name | Major Area |
-| Concept type | Major Area |
-| Stability | emerging |
-
-## Parent
-
-- [[00 Artificial Intelligence]]
 
 ## Description
 
 Large, broadly trained models and systems that can be adapted to many downstream tasks.
+
+## Parent
+
+- [[00 Artificial Intelligence]]
 
 ## Level 2 branches
 
@@ -29,9 +36,3 @@ Large, broadly trained models and systems that can be adapted to many downstream
 - [[Level 2/Code Foundation Models|Code Foundation Models]]
 - [[Level 2/Scientific Foundation Models|Scientific Foundation Models]]
 - [[Level 2/World Models|World Models]]
-
-## Notes
-
-This page intentionally stops at Level 2.
-
-Level 3 should be added later only after Level 1 and Level 2 are reviewed.

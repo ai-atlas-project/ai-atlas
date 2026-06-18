@@ -1,36 +1,23 @@
+---
+project: "AI Atlas"
+hierarchy_level: 2
+hierarchy_level_name: "Main Subarea"
+concept_type: "System Pattern"
+stability: "stable"
+parent: "Human-AI Interaction"
+children: []
+---
+
 # Human-in-the-Loop AI
-
-#level-2 #ai-atlas
-
-## Metadata
-
-| Field | Value |
-|---|---|
-| Hierarchy level | 2 |
-| Hierarchy level name | Subfield |
-| Concept type | System Pattern |
-| Stability | stable |
-
-## Parent branch
-
-- [[Level 1/Human-AI Interaction|Human-AI Interaction]]
 
 ## Description
 
 Human-in-the-Loop AI is a Level 2 System Pattern within Human-AI Interaction.
 
-## Scope
+## Parent
 
-This page is part of the clean Level 1–Level 2 hierarchy.
+- [[Level 1/Human-AI Interaction|Human-AI Interaction]]
 
-The vault intentionally stops here for now.
+## Children
 
-## Future Level 3
-
-Level 3 concepts will be added later.
-
-Do not add them yet.
-
-## Related
-
-- [[00 Artificial Intelligence]]
+No children are included in the current Level 1–Level 2 taxonomy.

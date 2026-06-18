@@ -1,23 +1,30 @@
+---
+project: "AI Atlas"
+hierarchy_level: 1
+hierarchy_level_name: "Major Area"
+concept_type: "Cross-Cutting Area"
+stability: "emerging"
+parent: "Artificial Intelligence"
+children:
+  - "Text Generation"
+  - "Image Generation"
+  - "Audio Generation"
+  - "Video Generation"
+  - "Code Generation"
+  - "3D Generation"
+  - "Synthetic Data Generation"
+  - "Generative Modeling"
+---
+
 # Generative AI
-
-#level-1 #ai-atlas
-
-## Metadata
-
-| Field | Value |
-|---|---|
-| Hierarchy level | 1 |
-| Hierarchy level name | Major Area |
-| Concept type | Cross-Cutting Area |
-| Stability | emerging |
-
-## Parent
-
-- [[00 Artificial Intelligence]]
 
 ## Description
 
 AI systems and methods that generate new text, images, audio, video, code, data, or other artifacts.
+
+## Parent
+
+- [[00 Artificial Intelligence]]
 
 ## Level 2 branches
 
@@ -29,9 +36,3 @@ AI systems and methods that generate new text, images, audio, video, code, data,
 - [[Level 2/3D Generation|3D Generation]]
 - [[Level 2/Synthetic Data Generation|Synthetic Data Generation]]
 - [[Level 2/Generative Modeling|Generative Modeling]]
-
-## Notes
-
-This page intentionally stops at Level 2.
-
-Level 3 should be added later only after Level 1 and Level 2 are reviewed.

@@ -1,23 +1,37 @@
+---
+project: "AI Atlas"
+hierarchy_level: 1
+hierarchy_level_name: "Major Area"
+concept_type: "Major Area"
+stability: "stable"
+parent: "Artificial Intelligence"
+children:
+  - "Supervised Learning"
+  - "Unsupervised Learning"
+  - "Semi-Supervised Learning"
+  - "Self-Supervised Learning"
+  - "Reinforcement Learning"
+  - "Deep Learning"
+  - "Representation Learning"
+  - "Transfer Learning"
+  - "Federated Learning"
+  - "Online Learning"
+  - "Active Learning"
+  - "Meta-Learning"
+  - "Ensemble Learning"
+  - "Continual Learning"
+  - "Data-Centric AI"
+---
+
 # Machine Learning
-
-#level-1 #ai-atlas
-
-## Metadata
-
-| Field | Value |
-|---|---|
-| Hierarchy level | 1 |
-| Hierarchy level name | Major Area |
-| Concept type | Major Area |
-| Stability | stable |
-
-## Parent
-
-- [[00 Artificial Intelligence]]
 
 ## Description
 
 AI systems that learn patterns from data rather than relying only on hand-written rules.
+
+## Parent
+
+- [[00 Artificial Intelligence]]
 
 ## Level 2 branches
 
@@ -36,9 +50,3 @@ AI systems that learn patterns from data rather than relying only on hand-writte
 - [[Level 2/Ensemble Learning|Ensemble Learning]]
 - [[Level 2/Continual Learning|Continual Learning]]
 - [[Level 2/Data-Centric AI|Data-Centric AI]]
-
-## Notes
-
-This page intentionally stops at Level 2.
-
-Level 3 should be added later only after Level 1 and Level 2 are reviewed.

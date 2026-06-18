@@ -1,15 +1,27 @@
+---
+project: "AI Atlas"
+hierarchy_level: 0
+hierarchy_level_name: "Field"
+concept_type: "Field"
+stability: "stable"
+parent: null
+children:
+  - "Symbolic AI"
+  - "Machine Learning"
+  - "Search, Planning and Optimization"
+  - "Knowledge and Reasoning"
+  - "Robotics and Embodied AI"
+  - "Natural Language and Speech"
+  - "Computer Vision and Perception"
+  - "Generative AI"
+  - "Foundation Models and General-Purpose AI"
+  - "Agentic and Multi-Agent Systems"
+  - "Human-AI Interaction"
+  - "AI Safety, Alignment and Governance"
+  - "AGI and Future AI"
+---
+
 # Artificial Intelligence
-
-#level-0 #field #ai-atlas
-
-## Metadata
-
-| Field | Value |
-|---|---|
-| Hierarchy level | 0 |
-| Hierarchy level name | Field |
-| Concept type | Field |
-| Stability | stable |
 
 ## Description
 
@@ -30,17 +42,3 @@ The broad field of creating systems that can perceive, learn, reason, plan, comm
 - [[Level 1/Human-AI Interaction|Human-AI Interaction]]
 - [[Level 1/AI Safety, Alignment and Governance|AI Safety, Alignment and Governance]]
 - [[Level 1/AGI and Future AI|AGI and Future AI]]
-
-## Notes
-
-This is the root of the AI Atlas hierarchy.
-
-The current vault stops at Level 2.
-
-## Review questions
-
-- Are any Level 1 branches missing?
-- Are any Level 1 branches actually Level 2?
-- Are some branches overlapping too much?
-- Are any important Level 2 areas missing?
-- Is this hierarchy useful for explaining AI to technical colleagues?

@@ -1,36 +1,23 @@
+---
+project: "AI Atlas"
+hierarchy_level: 2
+hierarchy_level_name: "Main Subarea"
+concept_type: "System Pattern"
+stability: "stable"
+parent: "Robotics and Embodied AI"
+children: []
+---
+
 # Embodied Agents
-
-#level-2 #ai-atlas
-
-## Metadata
-
-| Field | Value |
-|---|---|
-| Hierarchy level | 2 |
-| Hierarchy level name | Subfield |
-| Concept type | System Pattern |
-| Stability | stable |
-
-## Parent branch
-
-- [[Level 1/Robotics and Embodied AI|Robotics and Embodied AI]]
 
 ## Description
 
 Embodied Agents is a Level 2 System Pattern within Robotics and Embodied AI.
 
-## Scope
+## Parent
 
-This page is part of the clean Level 1–Level 2 hierarchy.
+- [[Level 1/Robotics and Embodied AI|Robotics and Embodied AI]]
 
-The vault intentionally stops here for now.
+## Children
 
-## Future Level 3
-
-Level 3 concepts will be added later.
-
-Do not add them yet.
-
-## Related
-
-- [[00 Artificial Intelligence]]
+No children are included in the current Level 1–Level 2 taxonomy.

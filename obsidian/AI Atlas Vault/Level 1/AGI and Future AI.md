@@ -1,23 +1,28 @@
+---
+project: "AI Atlas"
+hierarchy_level: 1
+hierarchy_level_name: "Major Area"
+concept_type: "Future Area"
+stability: "speculative"
+parent: "Artificial Intelligence"
+children:
+  - "Artificial General Intelligence"
+  - "Self-Improving Systems"
+  - "AI Scientists"
+  - "Human-AI Symbiosis"
+  - "Superintelligence"
+  - "Long-Term AI Futures"
+---
+
 # AGI and Future AI
-
-#level-1 #ai-atlas
-
-## Metadata
-
-| Field | Value |
-|---|---|
-| Hierarchy level | 1 |
-| Hierarchy level name | Major Area |
-| Concept type | Future Area |
-| Stability | speculative |
-
-## Parent
-
-- [[00 Artificial Intelligence]]
 
 ## Description
 
 Future-facing ideas about general intelligence, self-improving systems, and long-term AI trajectories.
+
+## Parent
+
+- [[00 Artificial Intelligence]]
 
 ## Level 2 branches
 
@@ -27,9 +32,3 @@ Future-facing ideas about general intelligence, self-improving systems, and long
 - [[Level 2/Human-AI Symbiosis|Human-AI Symbiosis]]
 - [[Level 2/Superintelligence|Superintelligence]]
 - [[Level 2/Long-Term AI Futures|Long-Term AI Futures]]
-
-## Notes
-
-This page intentionally stops at Level 2.
-
-Level 3 should be added later only after Level 1 and Level 2 are reviewed.
