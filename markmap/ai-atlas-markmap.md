@@ -214,7 +214,7 @@
 
 ### Human Feedback and Preference Learning
 
-### AI UX and Trust
+### AI User Experience and Trust
 
 ## AI Safety, Alignment and Governance
 
