@@ -149,7 +149,7 @@ The machine-readable metadata lives in:
 - Personalization
 - Decision Support Systems
 - Human Feedback and Preference Learning
-- AI UX and Trust
+- AI User Experience and Trust
 
 ### 12. AI Safety, Alignment and Governance
 
