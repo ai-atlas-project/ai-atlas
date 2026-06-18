@@ -57,7 +57,6 @@ This matters because AI concepts do not all belong to the same kind of category.
 - [Visual grammar](taxonomy/visual-grammar.md)
 - [Print poster generation](docs/print-poster-generation.md)
 - [Obsidian vault generation](docs/obsidian-vault.md)
-- [Agent review team](docs/agent-team.md)
 - [Markmap version](markmap/ai-atlas-markmap.md)
 - [Mermaid mindmap version](mermaid/ai-atlas-mindmap.md)
 
