@@ -42,11 +42,13 @@ Examples:
 - Human-AI Interaction
 - Generative AI
 
-## 4. Stop at Level 2 for now
+## 4. Add Level 3 only after Level 1 and Level 2 cleanup
 
-Do not add Level 3 yet.
+Level 3 may be added after Level 1 and Level 2 have passed cleanup review.
 
-The first goal is to review and stabilize Level 1 and Level 2.
+Initial Level 3 work should be treated as a draft expansion or encyclopedia draft, not as the final canonical taxonomy.
+
+The goal is to expand carefully while keeping Level 1 and Level 2 stable, reviewable, and easy to critique.
 
 ## 5. Make the model reviewable
 
