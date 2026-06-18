@@ -32,6 +32,17 @@ In future visualizations:
 - stability can control border style,
 - cross-cutting concepts can use dashed links.
 
+## Obsidian graph view
+
+For generated Obsidian taxonomy notes, the graph should prioritize the taxonomy neighborhood:
+
+- parent links,
+- child links.
+
+Metadata should be stored in YAML frontmatter instead of graph-visible body links or tags.
+
+Generated concept notes should not create graph noise by linking every node to project documentation pages such as Concept Types, Taxonomy Principles, or Visual Grammar.
+
 ## Important distinction
 
 Hierarchy level is not always the same as concept type.
