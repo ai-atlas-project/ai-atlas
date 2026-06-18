@@ -25,6 +25,7 @@ Review agents must use the repository as the source of truth, especially:
 - [Ontology and Knowledge Graph Reviewer](ontology-knowledge-graph-reviewer.md)
 - [Repo Consistency QA](repo-consistency-qa.md)
 - [Documentation and Community Editor](documentation-community-editor.md)
+- [Iris — Visual Map and Print Design Reviewer](visual-map-print-designer.md)
 - [Consolidated Reviewer](consolidated-reviewer.md)
 
 ## Shared review principles
