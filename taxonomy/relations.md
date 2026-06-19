@@ -14,6 +14,78 @@ Relations do not replace the primary parent. They record additional structure ar
 
 Cross-links should not be used to hide unresolved hierarchy problems. If a concept has no defensible primary parent yet, keep it in draft review instead of forcing it into the canonical tree.
 
+## Primary parent policy
+
+The primary parent is the single canonical parent used for the main taxonomy tree.
+
+Choose a primary parent by asking:
+
+1. Where would a knowledgeable reader first expect to find this concept?
+2. Which parent best explains the concept's main technical identity?
+3. Which placement creates the fewest misleading implications?
+4. Which placement is most stable across current research and practice?
+
+A primary parent is required before a concept can be promoted into the canonical hierarchy.
+
+A primary parent should not be chosen only because:
+
+- the concept is popular in that branch,
+- the concept is used by that branch,
+- the concept appears in products associated with that branch,
+- the concept has no better place yet,
+- the placement avoids a harder architecture decision.
+
+If no primary parent is defensible, keep the concept in draft review and record the competing placements as review notes or `alternative-parent` relations.
+
+## Alternative parents
+
+Use `alternative-parent` when a concept already has a chosen primary parent, but reviewers should know that another parent was plausible.
+
+An alternative parent is not a second canonical parent. It is a documented review signal.
+
+Use alternative parents to preserve reasoning without duplicating the node.
+
+Examples of concepts likely to need alternative-parent review in future drafts:
+
+- `Transformers`
+- `Embeddings`
+- `Retrieval-Augmented Generation`
+- `Fine-Tuning`
+- `Tool Use`
+- `Evaluation`
+- `Multimodal Learning`
+- `World Models`
+
+## Related concepts
+
+Use relations to record meaningful non-parent links.
+
+Good related links answer concrete questions:
+
+- What does this concept use?
+- What is it part of?
+- What applies to it?
+- What evaluates it?
+- What implements it?
+- What concept is near it but not its parent?
+
+Avoid vague related links. A relation should improve graph clarity and reviewer understanding.
+
+## Duplicate concept rule
+
+Do not create multiple canonical nodes for the same concept just because it touches several branches.
+
+Prefer:
+
+1. one canonical node,
+2. one primary parent,
+3. documented aliases when needed,
+4. documented relations or alternative parents when needed.
+
+Duplicate canonical nodes under multiple parents are not allowed unless a deliberate exception is documented during review.
+
+Duplicates may be justified only when similar names represent genuinely different concepts.
+
 ## Relation direction
 
 Some relations are directional:
@@ -172,34 +244,6 @@ Examples:
 
 - `Transformers` alternative-parent `Foundation Models and General-Purpose AI` if its primary parent is under `Deep Learning` in a future draft context.
 - `Embeddings` alternative-parent `Natural Language and Speech` if its primary parent is under `Representation Learning` in a future draft context.
-
-## Primary parent vs relations
-
-Use the primary hierarchy for the main navigational answer to the question: where should a reader first look for this concept?
-
-Use relations for secondary questions:
-
-- What else is this concept related to?
-- What does it use?
-- What is it part of?
-- What applies to it?
-- What evaluates it?
-- What other parent might reviewers reasonably consider?
-
-A relation should make the graph clearer. If it makes the taxonomy harder to understand, it should stay out of the canonical public model until reviewed.
-
-## Duplicate concept rule
-
-Do not create multiple canonical nodes for the same concept just because it touches several branches.
-
-Prefer:
-
-1. one canonical node,
-2. one primary parent,
-3. documented aliases when needed,
-4. documented relations or alternative parents when needed.
-
-Duplicates may be allowed only when the terms look similar but represent genuinely different concepts, or when a deliberate exception is documented during review.
 
 ## Draft and canonical use
 
