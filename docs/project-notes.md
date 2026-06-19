@@ -33,6 +33,8 @@ Generated public views:
 - `mermaid/`
 - `obsidian/`
 
+These public generated views should remain aligned with the current canonical taxonomy scope. Until Level 3 is promoted, canonical public generated views should remain Level 1–Level 2 only. Draft Level 3 views, if generated, should live separately and be clearly marked as draft.
+
 ## Current hierarchy policy
 
 Level means hierarchy depth, not concept type.
@@ -76,7 +78,6 @@ Internal workflows, reusable review agents, raw draft notes, private links, and 
 The following decisions are still open before canonical Level 3 promotion:
 
 - where the first public Level 3 draft should live,
-- whether draft Level 3 views should be generated separately from canonical views,
 - how validation should distinguish canonical taxonomy files from draft files,
 - how cross-links should be represented beyond parent-child hierarchy,
 - when Level 3 is mature enough to become part of the public canonical taxonomy.
@@ -86,5 +87,6 @@ The following decisions are still open before canonical Level 3 promotion:
 - The public taxonomy currently remains Level 1 and Level 2 only.
 - Level 3 is explicitly draft/review work until promoted.
 - Public Level 3 draft policy lives at `taxonomy/level-3-draft-policy.md`.
+- Canonical public generated views remain Level 1–Level 2 only until Level 3 is promoted; draft Level 3 views must be separate and clearly marked.
 - Obsidian hierarchy terminology uses `Level 2 — Main Subarea`.
 - Concept type `Subfield` remains valid as a concept type, separate from hierarchy level name.
