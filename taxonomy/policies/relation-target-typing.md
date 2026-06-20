@@ -27,6 +27,7 @@ Fields:
 Proposed `target_status` values:
 
 - `canonical`
+- `canonical_pending_id`
 - `private_draft`
 - `public_draft`
 - `future_candidate`
@@ -44,6 +45,7 @@ Every typed relation target should include:
 `target_id` requirements depend on target status:
 
 - `canonical`: required and must resolve to an approved stable ID;
+- `canonical_pending_id`: omitted; `note` is required and must explain that the public canonical target is awaiting stable ID assignment;
 - `private_draft`: include when the private target has an assigned provisional or approved ID; omission should produce a review warning;
 - `public_draft`: include when the public draft has an assigned ID; omission should produce a review warning;
 - `future_candidate`: optional because the target may not have an ID;
@@ -51,6 +53,51 @@ Every typed relation target should include:
 - `unresolved`: omitted until identity is resolved.
 
 `target_name` remains required even when `target_id` is present so reviews and diffs remain readable.
+
+## Canonical targets before approved stable IDs
+
+`target_status: "canonical"` should eventually and consistently require `target_id`.
+
+During the transition, do not use `target_status: "canonical"` without `target_id`. Use:
+
+```text
+canonical_pending_id
+```
+
+This status means:
+
+- the target is a public canonical taxonomy concept by name;
+- the target does not yet have an approved stable ID;
+- the relation is usable for private migration review but is not fully resolvable for canonical graph generation.
+
+Required fields for `canonical`:
+
+- `type`
+- `target_id`
+- `target_name`
+- `target_status`
+
+Required fields for `canonical_pending_id`:
+
+- `type`
+- `target_name`
+- `target_status`
+- `note`
+
+`target_id` must be omitted for `canonical_pending_id`.
+
+Example:
+
+```json
+{
+  "type": "related-to",
+  "target_name": "Text Generation",
+  "target_status": "canonical_pending_id",
+  "note": "Public canonical Level 2 concept; stable ID assignment is pending."
+}
+```
+
+The private Surface Realization pilot used `canonical` without `target_id` as a limited pilot exception. That exception identified this policy gap and should not become the general pattern. A future private cleanup may adopt `canonical_pending_id`, but this policy refinement does not modify the pilot or any structured JSON.
 
 ## Optional descriptive fields
 
@@ -91,6 +138,9 @@ Validators should eventually:
 - reject a canonical target without `target_id`;
 - reject a canonical `target_id` that does not resolve;
 - require `target_name` and `target_status` for every relation;
+- allow `canonical_pending_id` only during migration or policy review;
+- require `note` and reject `target_id` for `canonical_pending_id`;
+- warn when `canonical_pending_id` remains after stable IDs have been assigned;
 - warn when a private or public draft target has no ID;
 - allow future and unresolved targets without IDs when their status is explicit;
 - require a useful `note` for unresolved targets;
@@ -107,9 +157,15 @@ Whether external URIs require a dedicated field remains an open question.
 
 ## Migration dependency
 
-Migration must wait until the stable ID convention is approved. Otherwise relation targets could be migrated twice or linked to IDs that later change.
+Broad migration must wait until:
 
-Existing structured draft JSON files and their plain relation targets remain provisional. This policy draft does not authorize mass updates.
+- the stable ID convention is approved;
+- public L1/L2 stable IDs are assigned, or transitional target-status handling is explicitly approved;
+- validator behavior for `canonical_pending_id` is defined.
+
+Otherwise relation targets could be migrated twice or linked to IDs that later change.
+
+Existing structured draft JSON files and their plain or pilot target representations remain provisional. This policy draft does not authorize mass updates.
 
 ## Open questions
 
@@ -118,3 +174,5 @@ Existing structured draft JSON files and their plain relation targets remain pro
 - When should missing IDs on private or public draft targets become errors rather than warnings?
 - How should renamed, aliased, deprecated, or successor IDs resolve?
 - Should unresolved targets be allowed in public draft proposals?
+- Should `canonical_pending_id` be permitted in public draft proposals or private migration work only?
+- When must transitional `canonical_pending_id` relations be upgraded to `canonical`?
