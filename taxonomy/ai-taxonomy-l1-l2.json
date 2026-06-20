@@ -35,6 +35,7 @@
     }
   ],
   "level_0": {
+    "id": "ai:artificial-intelligence",
     "name": "Artificial Intelligence",
     "hierarchy_level": 0,
     "hierarchy_level_name": "Field",
@@ -59,6 +60,7 @@
   },
   "level_1": [
     {
+      "id": "ai:symbolic-ai",
       "name": "Symbolic AI",
       "hierarchy_level": 1,
       "hierarchy_level_name": "Major Area",
@@ -78,6 +80,7 @@
       "description": "AI based on explicit symbols, rules, logic, and structured knowledge.",
       "level_2": [
         {
+          "id": "ai:rule-based-systems",
           "name": "Rule-Based Systems",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -88,6 +91,7 @@
           "description": "Rule-Based Systems is a Level 2 Method within Symbolic AI."
         },
         {
+          "id": "ai:expert-systems",
           "name": "Expert Systems",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -98,6 +102,7 @@
           "description": "Expert Systems is a Level 2 System Pattern within Symbolic AI."
         },
         {
+          "id": "ai:logic-programming",
           "name": "Logic Programming",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -108,6 +113,7 @@
           "description": "Logic Programming is a Level 2 Paradigm within Symbolic AI."
         },
         {
+          "id": "ai:symbolic-knowledge-representation",
           "name": "Symbolic Knowledge Representation",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -118,6 +124,7 @@
           "description": "Symbolic Knowledge Representation is a Level 2 Subfield within Symbolic AI."
         },
         {
+          "id": "ai:automated-reasoning",
           "name": "Automated Reasoning",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -128,6 +135,7 @@
           "description": "Automated Reasoning is a Level 2 Subfield within Symbolic AI."
         },
         {
+          "id": "ai:constraint-satisfaction",
           "name": "Constraint Satisfaction",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -138,6 +146,7 @@
           "description": "Constraint Satisfaction is a Level 2 Method within Symbolic AI."
         },
         {
+          "id": "ai:knowledge-graphs",
           "name": "Knowledge Graphs",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -148,6 +157,7 @@
           "description": "Knowledge Graphs is a Level 2 System Pattern within Symbolic AI."
         },
         {
+          "id": "ai:neuro-symbolic-ai",
           "name": "Neuro-Symbolic AI",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -160,6 +170,7 @@
       ]
     },
     {
+      "id": "ai:machine-learning",
       "name": "Machine Learning",
       "hierarchy_level": 1,
       "hierarchy_level_name": "Major Area",
@@ -186,6 +197,7 @@
       "description": "AI systems that learn patterns from data rather than relying only on hand-written rules.",
       "level_2": [
         {
+          "id": "ai:supervised-learning",
           "name": "Supervised Learning",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -196,6 +208,7 @@
           "description": "Supervised Learning is a Level 2 Paradigm within Machine Learning."
         },
         {
+          "id": "ai:unsupervised-learning",
           "name": "Unsupervised Learning",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -206,6 +219,7 @@
           "description": "Unsupervised Learning is a Level 2 Paradigm within Machine Learning."
         },
         {
+          "id": "ai:semi-supervised-learning",
           "name": "Semi-Supervised Learning",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -216,6 +230,7 @@
           "description": "Semi-Supervised Learning is a Level 2 Paradigm within Machine Learning."
         },
         {
+          "id": "ai:self-supervised-learning",
           "name": "Self-Supervised Learning",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -226,6 +241,7 @@
           "description": "Self-Supervised Learning is a Level 2 Paradigm within Machine Learning."
         },
         {
+          "id": "ai:reinforcement-learning",
           "name": "Reinforcement Learning",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -236,6 +252,7 @@
           "description": "Reinforcement Learning is a Level 2 Paradigm within Machine Learning."
         },
         {
+          "id": "ai:deep-learning",
           "name": "Deep Learning",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -246,6 +263,7 @@
           "description": "Deep Learning is a Level 2 Subfield within Machine Learning."
         },
         {
+          "id": "ai:representation-learning",
           "name": "Representation Learning",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -256,6 +274,7 @@
           "description": "Representation Learning is a Level 2 Paradigm within Machine Learning."
         },
         {
+          "id": "ai:transfer-learning",
           "name": "Transfer Learning",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -266,6 +285,7 @@
           "description": "Transfer Learning is a Level 2 Method within Machine Learning."
         },
         {
+          "id": "ai:federated-learning",
           "name": "Federated Learning",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -276,6 +296,7 @@
           "description": "Federated Learning is a Level 2 Method within Machine Learning."
         },
         {
+          "id": "ai:online-learning",
           "name": "Online Learning",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -286,6 +307,7 @@
           "description": "Online Learning is a Level 2 Method within Machine Learning."
         },
         {
+          "id": "ai:active-learning",
           "name": "Active Learning",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -296,6 +318,7 @@
           "description": "Active Learning is a Level 2 Method within Machine Learning."
         },
         {
+          "id": "ai:meta-learning",
           "name": "Meta-Learning",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -306,6 +329,7 @@
           "description": "Meta-Learning is a Level 2 Method within Machine Learning."
         },
         {
+          "id": "ai:ensemble-learning",
           "name": "Ensemble Learning",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -316,6 +340,7 @@
           "description": "Ensemble Learning is a Level 2 Method within Machine Learning."
         },
         {
+          "id": "ai:continual-learning",
           "name": "Continual Learning",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -326,6 +351,7 @@
           "description": "Continual Learning is a Level 2 Paradigm within Machine Learning."
         },
         {
+          "id": "ai:data-centric-ai",
           "name": "Data-Centric AI",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -338,6 +364,7 @@
       ]
     },
     {
+      "id": "ai:search-planning-and-optimization",
       "name": "Search, Planning and Optimization",
       "hierarchy_level": 1,
       "hierarchy_level_name": "Major Area",
@@ -357,6 +384,7 @@
       "description": "Methods for finding good actions, paths, plans, or solutions across possible states.",
       "level_2": [
         {
+          "id": "ai:state-space-search",
           "name": "State-Space Search",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -367,6 +395,7 @@
           "description": "State-Space Search is a Level 2 Method within Search, Planning and Optimization."
         },
         {
+          "id": "ai:heuristic-search",
           "name": "Heuristic Search",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -377,6 +406,7 @@
           "description": "Heuristic Search is a Level 2 Method within Search, Planning and Optimization."
         },
         {
+          "id": "ai:adversarial-search",
           "name": "Adversarial Search",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -387,6 +417,7 @@
           "description": "Adversarial Search is a Level 2 Method within Search, Planning and Optimization."
         },
         {
+          "id": "ai:automated-planning",
           "name": "Automated Planning",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -397,6 +428,7 @@
           "description": "Automated Planning is a Level 2 Method within Search, Planning and Optimization."
         },
         {
+          "id": "ai:scheduling",
           "name": "Scheduling",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -407,6 +439,7 @@
           "description": "Scheduling is a Level 2 Method within Search, Planning and Optimization."
         },
         {
+          "id": "ai:optimization",
           "name": "Optimization",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -417,6 +450,7 @@
           "description": "Optimization is a Level 2 Method within Search, Planning and Optimization."
         },
         {
+          "id": "ai:evolutionary-computation",
           "name": "Evolutionary Computation",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -427,6 +461,7 @@
           "description": "Evolutionary Computation is a Level 2 Method within Search, Planning and Optimization."
         },
         {
+          "id": "ai:monte-carlo-tree-search",
           "name": "Monte Carlo Tree Search",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -439,6 +474,7 @@
       ]
     },
     {
+      "id": "ai:knowledge-and-reasoning",
       "name": "Knowledge and Reasoning",
       "hierarchy_level": 1,
       "hierarchy_level_name": "Major Area",
@@ -458,6 +494,7 @@
       "description": "Methods for representing facts, uncertainty, causality, explanations, and inference.",
       "level_2": [
         {
+          "id": "ai:commonsense-reasoning",
           "name": "Commonsense Reasoning",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -468,6 +505,7 @@
           "description": "Commonsense Reasoning is a Level 2 Subfield within Knowledge and Reasoning."
         },
         {
+          "id": "ai:probabilistic-reasoning",
           "name": "Probabilistic Reasoning",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -478,6 +516,7 @@
           "description": "Probabilistic Reasoning is a Level 2 Method within Knowledge and Reasoning."
         },
         {
+          "id": "ai:causal-reasoning",
           "name": "Causal Reasoning",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -488,6 +527,7 @@
           "description": "Causal Reasoning is a Level 2 Method within Knowledge and Reasoning."
         },
         {
+          "id": "ai:temporal-reasoning",
           "name": "Temporal Reasoning",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -498,6 +538,7 @@
           "description": "Temporal Reasoning is a Level 2 Method within Knowledge and Reasoning."
         },
         {
+          "id": "ai:spatial-reasoning",
           "name": "Spatial Reasoning",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -508,6 +549,7 @@
           "description": "Spatial Reasoning is a Level 2 Method within Knowledge and Reasoning."
         },
         {
+          "id": "ai:explainable-ai",
           "name": "Explainable AI",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -518,6 +560,7 @@
           "description": "Explainable AI is a Level 2 Evaluation Concept within Knowledge and Reasoning."
         },
         {
+          "id": "ai:knowledge-representation",
           "name": "Knowledge Representation",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -528,6 +571,7 @@
           "description": "Knowledge Representation is a Level 2 Subfield within Knowledge and Reasoning."
         },
         {
+          "id": "ai:ontologies",
           "name": "Ontologies",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -540,6 +584,7 @@
       ]
     },
     {
+      "id": "ai:robotics-and-embodied-ai",
       "name": "Robotics and Embodied AI",
       "hierarchy_level": 1,
       "hierarchy_level_name": "Major Area",
@@ -560,6 +605,7 @@
       "description": "AI systems that perceive, act, and learn in physical or embodied environments.",
       "level_2": [
         {
+          "id": "ai:control-systems",
           "name": "Control Systems",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -570,6 +616,7 @@
           "description": "Control Systems is a Level 2 Subfield within Robotics and Embodied AI."
         },
         {
+          "id": "ai:robot-perception",
           "name": "Robot Perception",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -580,6 +627,7 @@
           "description": "Robot Perception is a Level 2 Subfield within Robotics and Embodied AI."
         },
         {
+          "id": "ai:localization-and-mapping",
           "name": "Localization and Mapping",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -590,6 +638,7 @@
           "description": "Localization and Mapping is a Level 2 Method within Robotics and Embodied AI."
         },
         {
+          "id": "ai:motion-planning",
           "name": "Motion Planning",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -600,6 +649,7 @@
           "description": "Motion Planning is a Level 2 Method within Robotics and Embodied AI."
         },
         {
+          "id": "ai:manipulation",
           "name": "Manipulation",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -610,6 +660,7 @@
           "description": "Manipulation is a Level 2 Subfield within Robotics and Embodied AI."
         },
         {
+          "id": "ai:autonomous-vehicles",
           "name": "Autonomous Vehicles",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -620,6 +671,7 @@
           "description": "Autonomous Vehicles is a Level 2 Application Area within Robotics and Embodied AI."
         },
         {
+          "id": "ai:human-robot-interaction",
           "name": "Human-Robot Interaction",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -630,6 +682,7 @@
           "description": "Human-Robot Interaction is a Level 2 Subfield within Robotics and Embodied AI."
         },
         {
+          "id": "ai:robot-learning",
           "name": "Robot Learning",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -640,6 +693,7 @@
           "description": "Robot Learning is a Level 2 Subfield within Robotics and Embodied AI."
         },
         {
+          "id": "ai:embodied-agents",
           "name": "Embodied Agents",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -652,6 +706,7 @@
       ]
     },
     {
+      "id": "ai:natural-language-and-speech",
       "name": "Natural Language and Speech",
       "hierarchy_level": 1,
       "hierarchy_level_name": "Major Area",
@@ -671,6 +726,7 @@
       "description": "AI for understanding, generating, translating, retrieving, and speaking human language.",
       "level_2": [
         {
+          "id": "ai:natural-language-processing",
           "name": "Natural Language Processing",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -681,6 +737,7 @@
           "description": "Natural Language Processing is a Level 2 Subfield within Natural Language and Speech."
         },
         {
+          "id": "ai:speech-recognition",
           "name": "Speech Recognition",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -691,6 +748,7 @@
           "description": "Speech Recognition is a Level 2 Application Area within Natural Language and Speech."
         },
         {
+          "id": "ai:speech-synthesis",
           "name": "Speech Synthesis",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -701,6 +759,7 @@
           "description": "Speech Synthesis is a Level 2 Application Area within Natural Language and Speech."
         },
         {
+          "id": "ai:dialogue-systems",
           "name": "Dialogue Systems",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -711,6 +770,7 @@
           "description": "Dialogue Systems is a Level 2 System Pattern within Natural Language and Speech."
         },
         {
+          "id": "ai:information-retrieval",
           "name": "Information Retrieval",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -721,6 +781,7 @@
           "description": "Information Retrieval is a Level 2 Subfield within Natural Language and Speech."
         },
         {
+          "id": "ai:machine-translation",
           "name": "Machine Translation",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -731,6 +792,7 @@
           "description": "Machine Translation is a Level 2 Application Area within Natural Language and Speech."
         },
         {
+          "id": "ai:natural-language-generation",
           "name": "Natural Language Generation",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -741,6 +803,7 @@
           "description": "Natural Language Generation is a Level 2 Application Area within Natural Language and Speech."
         },
         {
+          "id": "ai:language-understanding",
           "name": "Language Understanding",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -753,6 +816,7 @@
       ]
     },
     {
+      "id": "ai:computer-vision-and-perception",
       "name": "Computer Vision and Perception",
       "hierarchy_level": 1,
       "hierarchy_level_name": "Major Area",
@@ -772,6 +836,7 @@
       "description": "AI for interpreting images, video, scenes, objects, and sensory information.",
       "level_2": [
         {
+          "id": "ai:image-classification",
           "name": "Image Classification",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -782,6 +847,7 @@
           "description": "Image Classification is a Level 2 Application Area within Computer Vision and Perception."
         },
         {
+          "id": "ai:object-detection",
           "name": "Object Detection",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -792,6 +858,7 @@
           "description": "Object Detection is a Level 2 Application Area within Computer Vision and Perception."
         },
         {
+          "id": "ai:image-segmentation",
           "name": "Image Segmentation",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -802,6 +869,7 @@
           "description": "Image Segmentation is a Level 2 Application Area within Computer Vision and Perception."
         },
         {
+          "id": "ai:video-understanding",
           "name": "Video Understanding",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -812,6 +880,7 @@
           "description": "Video Understanding is a Level 2 Application Area within Computer Vision and Perception."
         },
         {
+          "id": "ai:3d-vision",
           "name": "3D Vision",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -822,6 +891,7 @@
           "description": "3D Vision is a Level 2 Subfield within Computer Vision and Perception."
         },
         {
+          "id": "ai:multimodal-perception",
           "name": "Multimodal Perception",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -832,6 +902,7 @@
           "description": "Multimodal Perception is a Level 2 Subfield within Computer Vision and Perception."
         },
         {
+          "id": "ai:scene-understanding",
           "name": "Scene Understanding",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -842,6 +913,7 @@
           "description": "Scene Understanding is a Level 2 Application Area within Computer Vision and Perception."
         },
         {
+          "id": "ai:optical-character-recognition",
           "name": "Optical Character Recognition",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -854,6 +926,7 @@
       ]
     },
     {
+      "id": "ai:generative-ai",
       "name": "Generative AI",
       "hierarchy_level": 1,
       "hierarchy_level_name": "Major Area",
@@ -873,6 +946,7 @@
       "description": "AI systems and methods that generate new text, images, audio, video, code, data, or other artifacts.",
       "level_2": [
         {
+          "id": "ai:text-generation",
           "name": "Text Generation",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -883,6 +957,7 @@
           "description": "Text Generation is a Level 2 Application Area within Generative AI."
         },
         {
+          "id": "ai:image-generation",
           "name": "Image Generation",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -893,6 +968,7 @@
           "description": "Image Generation is a Level 2 Application Area within Generative AI."
         },
         {
+          "id": "ai:audio-generation",
           "name": "Audio Generation",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -903,6 +979,7 @@
           "description": "Audio Generation is a Level 2 Application Area within Generative AI."
         },
         {
+          "id": "ai:video-generation",
           "name": "Video Generation",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -913,6 +990,7 @@
           "description": "Video Generation is a Level 2 Application Area within Generative AI."
         },
         {
+          "id": "ai:code-generation",
           "name": "Code Generation",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -923,6 +1001,7 @@
           "description": "Code Generation is a Level 2 Application Area within Generative AI."
         },
         {
+          "id": "ai:3d-generation",
           "name": "3D Generation",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -933,6 +1012,7 @@
           "description": "3D Generation is a Level 2 Application Area within Generative AI."
         },
         {
+          "id": "ai:synthetic-data-generation",
           "name": "Synthetic Data Generation",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -943,6 +1023,7 @@
           "description": "Synthetic Data Generation is a Level 2 Application Area within Generative AI."
         },
         {
+          "id": "ai:generative-modeling",
           "name": "Generative Modeling",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -955,6 +1036,7 @@
       ]
     },
     {
+      "id": "ai:foundation-models-and-general-purpose-ai",
       "name": "Foundation Models and General-Purpose AI",
       "hierarchy_level": 1,
       "hierarchy_level_name": "Major Area",
@@ -974,6 +1056,7 @@
       "description": "Large, broadly trained models and systems that can be adapted to many downstream tasks.",
       "level_2": [
         {
+          "id": "ai:large-language-models",
           "name": "Large Language Models",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -984,6 +1067,7 @@
           "description": "Large Language Models is a Level 2 Model Family within Foundation Models and General-Purpose AI."
         },
         {
+          "id": "ai:vision-foundation-models",
           "name": "Vision Foundation Models",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -994,6 +1078,7 @@
           "description": "Vision Foundation Models is a Level 2 Model Family within Foundation Models and General-Purpose AI."
         },
         {
+          "id": "ai:multimodal-foundation-models",
           "name": "Multimodal Foundation Models",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -1004,6 +1089,7 @@
           "description": "Multimodal Foundation Models is a Level 2 Model Family within Foundation Models and General-Purpose AI."
         },
         {
+          "id": "ai:audio-foundation-models",
           "name": "Audio Foundation Models",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -1014,6 +1100,7 @@
           "description": "Audio Foundation Models is a Level 2 Model Family within Foundation Models and General-Purpose AI."
         },
         {
+          "id": "ai:video-foundation-models",
           "name": "Video Foundation Models",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -1024,6 +1111,7 @@
           "description": "Video Foundation Models is a Level 2 Model Family within Foundation Models and General-Purpose AI."
         },
         {
+          "id": "ai:code-foundation-models",
           "name": "Code Foundation Models",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -1034,6 +1122,7 @@
           "description": "Code Foundation Models is a Level 2 Model Family within Foundation Models and General-Purpose AI."
         },
         {
+          "id": "ai:scientific-foundation-models",
           "name": "Scientific Foundation Models",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -1044,6 +1133,7 @@
           "description": "Scientific Foundation Models is a Level 2 Model Family within Foundation Models and General-Purpose AI."
         },
         {
+          "id": "ai:world-models",
           "name": "World Models",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -1056,6 +1146,7 @@
       ]
     },
     {
+      "id": "ai:agentic-and-multi-agent-systems",
       "name": "Agentic and Multi-Agent Systems",
       "hierarchy_level": 1,
       "hierarchy_level_name": "Major Area",
@@ -1076,6 +1167,7 @@
       "description": "AI systems involving autonomous agents and multiple interacting agents.",
       "level_2": [
         {
+          "id": "ai:autonomous-agents",
           "name": "Autonomous Agents",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -1086,6 +1178,7 @@
           "description": "Autonomous Agents is a Level 2 System Pattern within Agentic and Multi-Agent Systems."
         },
         {
+          "id": "ai:cooperative-multi-agent-systems",
           "name": "Cooperative Multi-Agent Systems",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -1096,6 +1189,7 @@
           "description": "Cooperative Multi-Agent Systems is a Level 2 System Pattern within Agentic and Multi-Agent Systems."
         },
         {
+          "id": "ai:competitive-multi-agent-systems",
           "name": "Competitive Multi-Agent Systems",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -1106,6 +1200,7 @@
           "description": "Competitive Multi-Agent Systems is a Level 2 System Pattern within Agentic and Multi-Agent Systems."
         },
         {
+          "id": "ai:agent-communication",
           "name": "Agent Communication",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -1116,6 +1211,7 @@
           "description": "Agent Communication is a Level 2 Method within Agentic and Multi-Agent Systems."
         },
         {
+          "id": "ai:coordination-and-negotiation",
           "name": "Coordination and Negotiation",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -1126,6 +1222,7 @@
           "description": "Coordination and Negotiation is a Level 2 Method within Agentic and Multi-Agent Systems."
         },
         {
+          "id": "ai:multi-agent-reinforcement-learning",
           "name": "Multi-Agent Reinforcement Learning",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -1136,6 +1233,7 @@
           "description": "Multi-Agent Reinforcement Learning is a Level 2 Method within Agentic and Multi-Agent Systems."
         },
         {
+          "id": "ai:swarm-intelligence",
           "name": "Swarm Intelligence",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -1146,6 +1244,7 @@
           "description": "Swarm Intelligence is a Level 2 Paradigm within Agentic and Multi-Agent Systems."
         },
         {
+          "id": "ai:agent-societies",
           "name": "Agent Societies",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -1156,6 +1255,7 @@
           "description": "Agent Societies is a Level 2 System Pattern within Agentic and Multi-Agent Systems."
         },
         {
+          "id": "ai:market-based-systems",
           "name": "Market-Based Systems",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -1168,6 +1268,7 @@
       ]
     },
     {
+      "id": "ai:human-ai-interaction",
       "name": "Human-AI Interaction",
       "hierarchy_level": 1,
       "hierarchy_level_name": "Major Area",
@@ -1187,6 +1288,7 @@
       "description": "Human interaction with AI systems.",
       "level_2": [
         {
+          "id": "ai:ai-assistants",
           "name": "AI Assistants",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -1197,6 +1299,7 @@
           "description": "AI Assistants is a Level 2 System Pattern within Human-AI Interaction."
         },
         {
+          "id": "ai:recommender-systems",
           "name": "Recommender Systems",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -1207,6 +1310,7 @@
           "description": "Recommender Systems is a Level 2 Application Area within Human-AI Interaction."
         },
         {
+          "id": "ai:human-in-the-loop-ai",
           "name": "Human-in-the-Loop AI",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -1217,6 +1321,7 @@
           "description": "Human-in-the-Loop AI is a Level 2 System Pattern within Human-AI Interaction."
         },
         {
+          "id": "ai:interactive-machine-learning",
           "name": "Interactive Machine Learning",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -1227,6 +1332,7 @@
           "description": "Interactive Machine Learning is a Level 2 Method within Human-AI Interaction."
         },
         {
+          "id": "ai:personalization",
           "name": "Personalization",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -1237,6 +1343,7 @@
           "description": "Personalization is a Level 2 Application Area within Human-AI Interaction."
         },
         {
+          "id": "ai:decision-support-systems",
           "name": "Decision Support Systems",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -1247,6 +1354,7 @@
           "description": "Decision Support Systems is a Level 2 Application Area within Human-AI Interaction."
         },
         {
+          "id": "ai:human-feedback-and-preference-learning",
           "name": "Human Feedback and Preference Learning",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -1257,6 +1365,7 @@
           "description": "Human Feedback and Preference Learning is a Level 2 Method within Human-AI Interaction."
         },
         {
+          "id": "ai:ai-user-experience-and-trust",
           "name": "AI User Experience and Trust",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -1269,6 +1378,7 @@
       ]
     },
     {
+      "id": "ai:ai-safety-alignment-and-governance",
       "name": "AI Safety, Alignment and Governance",
       "hierarchy_level": 1,
       "hierarchy_level_name": "Major Area",
@@ -1288,6 +1398,7 @@
       "description": "Cross-cutting work on making AI reliable, controllable, fair, secure, and socially governed.",
       "level_2": [
         {
+          "id": "ai:ai-alignment",
           "name": "AI Alignment",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -1298,6 +1409,7 @@
           "description": "AI Alignment is a Level 2 Safety Concept within AI Safety, Alignment and Governance."
         },
         {
+          "id": "ai:robustness",
           "name": "Robustness",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -1308,6 +1420,7 @@
           "description": "Robustness is a Level 2 Safety Concept within AI Safety, Alignment and Governance."
         },
         {
+          "id": "ai:interpretability",
           "name": "Interpretability",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -1318,6 +1431,7 @@
           "description": "Interpretability is a Level 2 Evaluation Concept within AI Safety, Alignment and Governance."
         },
         {
+          "id": "ai:evaluation-measurement-and-benchmarking",
           "name": "Evaluation, Measurement and Benchmarking",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -1328,6 +1442,7 @@
           "description": "Evaluation, Measurement and Benchmarking is a Level 2 Evaluation Concept within AI Safety, Alignment and Governance."
         },
         {
+          "id": "ai:bias-and-fairness",
           "name": "Bias and Fairness",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -1338,6 +1453,7 @@
           "description": "Bias and Fairness is a Level 2 Safety Concept within AI Safety, Alignment and Governance."
         },
         {
+          "id": "ai:privacy-and-security",
           "name": "Privacy and Security",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -1348,6 +1464,7 @@
           "description": "Privacy and Security is a Level 2 Safety Concept within AI Safety, Alignment and Governance."
         },
         {
+          "id": "ai:misuse-prevention",
           "name": "Misuse Prevention",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -1358,6 +1475,7 @@
           "description": "Misuse Prevention is a Level 2 Governance Concept within AI Safety, Alignment and Governance."
         },
         {
+          "id": "ai:governance-and-policy",
           "name": "Governance and Policy",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -1370,6 +1488,7 @@
       ]
     },
     {
+      "id": "ai:agi-and-future-ai",
       "name": "AGI and Future AI",
       "hierarchy_level": 1,
       "hierarchy_level_name": "Major Area",
@@ -1387,6 +1506,7 @@
       "description": "Future-facing ideas about general intelligence, self-improving systems, and long-term AI trajectories.",
       "level_2": [
         {
+          "id": "ai:artificial-general-intelligence",
           "name": "Artificial General Intelligence",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -1397,6 +1517,7 @@
           "description": "Artificial General Intelligence is a Level 2 Future Concept within AGI and Future AI."
         },
         {
+          "id": "ai:self-improving-systems",
           "name": "Self-Improving Systems",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -1407,6 +1528,7 @@
           "description": "Self-Improving Systems is a Level 2 Future Concept within AGI and Future AI."
         },
         {
+          "id": "ai:ai-scientists",
           "name": "AI Scientists",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -1417,6 +1539,7 @@
           "description": "AI Scientists is a Level 2 Future Concept within AGI and Future AI."
         },
         {
+          "id": "ai:human-ai-symbiosis",
           "name": "Human-AI Symbiosis",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -1427,6 +1550,7 @@
           "description": "Human-AI Symbiosis is a Level 2 Future Concept within AGI and Future AI."
         },
         {
+          "id": "ai:superintelligence",
           "name": "Superintelligence",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
@@ -1437,6 +1561,7 @@
           "description": "Superintelligence is a Level 2 Future Concept within AGI and Future AI."
         },
         {
+          "id": "ai:long-term-ai-futures",
           "name": "Long-Term AI Futures",
           "hierarchy_level": 2,
           "hierarchy_level_name": "Main Subarea",
