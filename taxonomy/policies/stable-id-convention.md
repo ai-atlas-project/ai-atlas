@@ -58,6 +58,39 @@ Canonical IDs should:
 
 Hierarchy level, primary parent, concept type, and status belong in separate metadata fields.
 
+## Public L1/L2 stable ID assignment
+
+Public canonical Level 1 and Level 2 concepts should receive approved stable IDs before broad typed-relation migration.
+
+The preferred draft direction is:
+
+- derive IDs from canonical English names;
+- do not encode hierarchy level;
+- do not encode concept type;
+- do not encode parent placement;
+- keep IDs stable when a node moves, changes concept type, or changes hierarchy depth.
+
+Draft examples for current public concepts:
+
+| Public canonical name | Proposed stable ID |
+| --- | --- |
+| Natural Language and Speech | `ai:natural-language-and-speech` |
+| Natural Language Processing | `ai:natural-language-processing` |
+| Natural Language Generation | `ai:natural-language-generation` |
+| Language Understanding | `ai:language-understanding` |
+| Text Generation | `ai:text-generation` |
+| Deep Learning | `ai:deep-learning` |
+| Autonomous Agents | `ai:autonomous-agents` |
+| Information Retrieval | `ai:information-retrieval` |
+| Evaluation, Measurement and Benchmarking | `ai:evaluation-measurement-and-benchmarking` |
+| Large Language Models | `ai:large-language-models` |
+
+These are draft proposals, not approved canonical IDs.
+
+Stable ID assignment for public L1/L2 concepts should occur in a separate explicit PR. That PR should add identity metadata without changing taxonomy meaning, hierarchy placement, concept type, names, or generated views unless those additional changes are separately authorized.
+
+The assignment PR should also include an alias and deprecation plan for existing private provisional IDs that refer to public concepts, such as `ai.subarea.text_generation`.
+
 ## Lifecycle behavior
 
 ### Move
@@ -94,11 +127,12 @@ Deprecated IDs should remain resolvable. They should carry status and successor 
 
 A future migration should:
 
-1. inventory current canonical and provisional IDs;
-2. assign approved stable IDs;
-3. record old-to-new aliases or successor mappings;
-4. update relation targets only after relation-target typing is approved;
-5. validate that no ID was changed solely because of level, parent, or concept type.
+1. inventory current public concepts and private provisional IDs;
+2. approve the stable ID format;
+3. assign stable IDs to public L1/L2 concepts in a separate explicit PR;
+4. record old-to-new aliases or successor mappings;
+5. update relation targets only after relation-target typing is approved;
+6. validate that no ID was changed solely because of level, parent, or concept type.
 
 This draft does not authorize that migration.
 
@@ -110,5 +144,9 @@ This draft does not authorize that migration.
 - How should deprecated IDs redirect in files, APIs, and generated views?
 - Should canonical slugs be generated only from English canonical names?
 - What exact alias and successor metadata fields are required?
+- Should every public L1/L2 node receive a stable ID before any Level 3 promotion?
+- Should stable IDs live in canonical JSON, a sidecar registry, or generated metadata?
+- How should IDs be represented in Markdown taxonomy views?
+- How should renamed L1/L2 nodes preserve old IDs?
 
 No canonical IDs, relation targets, or structured draft files are changed by this proposal.
