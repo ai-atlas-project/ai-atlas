@@ -1,10 +1,16 @@
 # AI Atlas
 
-A clean, open map of modern Artificial Intelligence.
+A clean, open map of modern Artificial Intelligence — built to make the AI landscape easier to navigate, review, and discuss.
 
 ## Mission
 
 To build an open, community-reviewed map of modern AI that helps people understand how the field fits together.
+
+## Why this exists
+
+AI is no longer a single topic. A real-world system such as lane keeping in a car can involve computer vision, perception, planning, control, robotics, safety, and human-AI interaction at the same time.
+
+AI Atlas exists to make this landscape easier to navigate: to show the main areas of modern AI, how they relate, and where specific concepts may belong.
 
 ## Current status
 
