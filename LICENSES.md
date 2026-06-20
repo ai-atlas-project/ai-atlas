@@ -19,7 +19,7 @@ See:
 
 Recommended attribution:
 
-> AI Atlas by Alyaksandr Stzhalkouski / elvistudio, licensed under CC BY-SA 4.0.
+> AI Atlas by Alyaksandr Stzhalkouski, licensed under CC BY-SA 4.0.
 
 ## Brand and official commercial products
 

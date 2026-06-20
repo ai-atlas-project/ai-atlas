@@ -2,13 +2,13 @@
 
 Status: draft policy / under review / not canonical
 
-Source issue: [#22 — Formalize canonical taxonomy JSON](https://github.com/elvistudio/ai-atlas/issues/22)
+Source issue: [#22 — Formalize canonical taxonomy JSON](https://github.com/ai-atlas-project/ai-atlas/issues/22)
 
 Related issues:
 
-- [#15 — Define stable ID convention for taxonomy nodes](https://github.com/elvistudio/ai-atlas/issues/15)
-- [#16 — Define relation target typing for structured taxonomy nodes](https://github.com/elvistudio/ai-atlas/issues/16)
-- [#18 — Normalize structured draft schema for Level 3 nodes](https://github.com/elvistudio/ai-atlas/issues/18)
+- [#15 — Define stable ID convention for taxonomy nodes](https://github.com/ai-atlas-project/ai-atlas/issues/15)
+- [#16 — Define relation target typing for structured taxonomy nodes](https://github.com/ai-atlas-project/ai-atlas/issues/16)
+- [#18 — Normalize structured draft schema for Level 3 nodes](https://github.com/ai-atlas-project/ai-atlas/issues/18)
 
 ## Purpose
 

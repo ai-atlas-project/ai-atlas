@@ -2,7 +2,7 @@
 
 Status: draft policy / under review / not canonical
 
-Source issue: [#16 — Define relation target typing for structured taxonomy nodes](https://github.com/elvistudio/ai-atlas/issues/16)
+Source issue: [#16 — Define relation target typing for structured taxonomy nodes](https://github.com/ai-atlas-project/ai-atlas/issues/16)
 
 ## Purpose
 

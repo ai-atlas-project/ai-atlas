@@ -2,7 +2,7 @@
 
 Status: draft policy / under review / not canonical
 
-Source issue: [#19 — Review capability-category policy for Level 3 drafts](https://github.com/elvistudio/ai-atlas/issues/19)
+Source issue: [#19 — Review capability-category policy for Level 3 drafts](https://github.com/ai-atlas-project/ai-atlas/issues/19)
 
 ## Purpose
 

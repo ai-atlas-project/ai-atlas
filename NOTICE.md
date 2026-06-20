@@ -1,6 +1,6 @@
 # Notice
 
-AI Atlas is an open taxonomy and knowledge-map project created by Alyaksandr Stzhalkouski / elvistudio.
+AI Atlas is an open taxonomy and knowledge-map project created by Alyaksandr Stzhalkouski.
 
 ## Open taxonomy
 
@@ -28,4 +28,4 @@ The goal is to keep the taxonomy open while allowing official curated and design
 
 Recommended attribution for the open content:
 
-> AI Atlas by Alyaksandr Stzhalkouski / elvistudio, licensed under CC BY-SA 4.0.
+> AI Atlas by Alyaksandr Stzhalkouski, licensed under CC BY-SA 4.0.

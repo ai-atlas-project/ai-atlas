@@ -2,7 +2,7 @@
 
 Status: draft policy / under review / not canonical
 
-Source issue: [#20 — Review Process Stage concept type and hierarchy-level policy](https://github.com/elvistudio/ai-atlas/issues/20)
+Source issue: [#20 — Review Process Stage concept type and hierarchy-level policy](https://github.com/ai-atlas-project/ai-atlas/issues/20)
 
 ## Purpose
 

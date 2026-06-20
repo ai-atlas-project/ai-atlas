@@ -2,7 +2,7 @@
 
 Status: draft policy / under review / not canonical
 
-Source issue: [#17 — Define cross-branch file placement policy for Level 3 drafts](https://github.com/elvistudio/ai-atlas/issues/17)
+Source issue: [#17 — Define cross-branch file placement policy for Level 3 drafts](https://github.com/ai-atlas-project/ai-atlas/issues/17)
 
 ## Purpose
 

@@ -63,7 +63,7 @@ See:
 
 Recommended attribution for open content:
 
-> AI Atlas by Alyaksandr Stzhalkouski / elvistudio, licensed under CC BY-SA 4.0.
+> AI Atlas by Alyaksandr Stzhalkouski, licensed under CC BY-SA 4.0.
 
 ## Review questions
 

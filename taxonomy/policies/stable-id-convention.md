@@ -2,7 +2,7 @@
 
 Status: draft policy / under review / not canonical
 
-Source issue: [#15 — Define stable ID convention for taxonomy nodes](https://github.com/elvistudio/ai-atlas/issues/15)
+Source issue: [#15 — Define stable ID convention for taxonomy nodes](https://github.com/ai-atlas-project/ai-atlas/issues/15)
 
 ## Purpose
 

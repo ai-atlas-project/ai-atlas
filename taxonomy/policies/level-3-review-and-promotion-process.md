@@ -2,7 +2,7 @@
 
 Status: draft policy / under review / not canonical
 
-Source issue: [#21 — Define public Level 3 review and promotion process](https://github.com/elvistudio/ai-atlas/issues/21)
+Source issue: [#21 — Define public Level 3 review and promotion process](https://github.com/ai-atlas-project/ai-atlas/issues/21)
 
 ## Purpose
 

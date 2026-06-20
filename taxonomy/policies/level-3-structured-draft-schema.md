@@ -2,7 +2,7 @@
 
 Status: draft policy / under review / not canonical
 
-Source issue: [#18 — Normalize structured draft schema for Level 3 nodes](https://github.com/elvistudio/ai-atlas/issues/18)
+Source issue: [#18 — Normalize structured draft schema for Level 3 nodes](https://github.com/ai-atlas-project/ai-atlas/issues/18)
 
 ## Purpose
 
