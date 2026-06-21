@@ -87,9 +87,25 @@ Draft examples for current public concepts:
 
 These are draft proposals, not approved canonical IDs.
 
-Stable ID assignment for public L1/L2 concepts should occur in a separate explicit PR. That PR should add identity metadata without changing taxonomy meaning, hierarchy placement, concept type, names, or generated views unless those additional changes are separately authorized.
+Any future ID correction or identity metadata expansion should occur in a separate explicit PR. That PR should update identity metadata without changing taxonomy meaning, hierarchy placement, concept type, names, or generated views unless those additional changes are separately authorized.
 
-The assignment PR should also include an alias and deprecation plan for existing private provisional IDs that refer to public concepts, such as `ai.subarea.text_generation`.
+That PR should also include an alias and deprecation plan for existing private provisional IDs that refer to public concepts, such as `ai.subarea.text_generation`.
+
+## Current public L1/L2 ID state
+
+The current public canonical taxonomy JSON already contains `id` fields for Level 0, Level 1, and Level 2 nodes.
+
+This policy should therefore treat the remaining work as review, validation, and lifecycle finalization rather than initial ID assignment.
+
+Remaining work:
+
+- confirm the `ai:<slug>` delimiter and slug rules;
+- validate uniqueness and format across public canonical nodes;
+- decide alias, former ID, and successor metadata;
+- decide how IDs appear, or do not appear, in Markdown and generated views;
+- document how renamed L1/L2 nodes preserve IDs.
+
+Do not change taxonomy meaning, names, hierarchy placement, concept type, generated views, or Level 3 promotion status as part of this policy reconciliation.
 
 ## Lifecycle behavior
 
@@ -129,7 +145,7 @@ A future migration should:
 
 1. inventory current public concepts and private provisional IDs;
 2. approve the stable ID format;
-3. assign stable IDs to public L1/L2 concepts in a separate explicit PR;
+3. validate and approve the existing public L1/L2 IDs, correcting them only through a separate explicit PR if needed;
 4. record old-to-new aliases or successor mappings;
 5. update relation targets only after relation-target typing is approved;
 6. validate that no ID was changed solely because of level, parent, or concept type.
