@@ -45,7 +45,7 @@ Every typed relation target should include:
 `target_id` requirements depend on target status:
 
 - `canonical`: required and must resolve to an approved stable ID;
-- `canonical_pending_id`: omitted; `note` is required and must explain that the public canonical target is awaiting stable ID assignment;
+- `canonical_pending_id`: omitted; `note` is required and must explain that the public canonical target's existing ID is awaiting validation and approval;
 - `private_draft`: include when the private target has an assigned provisional or approved ID; omission should produce a review warning;
 - `public_draft`: include when the public draft has an assigned ID; omission should produce a review warning;
 - `future_candidate`: optional because the target may not have an ID;
@@ -67,7 +67,7 @@ canonical_pending_id
 This status means:
 
 - the target is a public canonical taxonomy concept by name;
-- the target does not yet have an approved stable ID;
+- the target's existing public ID has not yet been validated and accepted as an approved stable ID;
 - the relation is usable for private migration review but is not fully resolvable for canonical graph generation.
 
 Required fields for `canonical`:
@@ -93,7 +93,7 @@ Example:
   "type": "related-to",
   "target_name": "Text Generation",
   "target_status": "canonical_pending_id",
-  "note": "Public canonical Level 2 concept; stable ID assignment is pending."
+  "note": "Public canonical Level 2 concept; validation and approval of its existing stable-looking ID are pending."
 }
 ```
 
@@ -140,7 +140,7 @@ Validators should eventually:
 - require `target_name` and `target_status` for every relation;
 - allow `canonical_pending_id` only during migration or policy review;
 - require `note` and reject `target_id` for `canonical_pending_id`;
-- warn when `canonical_pending_id` remains after stable IDs have been assigned;
+- warn when `canonical_pending_id` remains after stable IDs have been validated and accepted;
 - warn when a private or public draft target has no ID;
 - allow future and unresolved targets without IDs when their status is explicit;
 - require a useful `note` for unresolved targets;
@@ -157,10 +157,14 @@ Whether external URIs require a dedicated field remains an open question.
 
 ## Migration dependency
 
+Current public L1/L2 IDs appear to exist in canonical JSON. Before broad relation migration, validators should confirm that these IDs are unique, well-formed, and accepted as approved stable IDs.
+
+After that confirmation, relation targets pointing to public L1/L2 concepts should migrate from `canonical_pending_id` toward `canonical` with `target_id`.
+
 Broad migration must wait until:
 
 - the stable ID convention is approved;
-- public L1/L2 stable IDs are assigned, or transitional target-status handling is explicitly approved;
+- public L1/L2 stable IDs are validated and accepted, or transitional target-status handling is explicitly approved;
 - validator behavior for `canonical_pending_id` is defined.
 
 Otherwise relation targets could be migrated twice or linked to IDs that later change.
