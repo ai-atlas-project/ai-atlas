@@ -29,7 +29,6 @@ Proposed `target_status` values:
 - `canonical`
 - `canonical_pending_id`
 - `private_draft`
-- `public_draft`
 - `future_candidate`
 - `external_reference`
 - `unresolved`
@@ -45,9 +44,8 @@ Every typed relation target should include:
 `target_id` requirements depend on target status:
 
 - `canonical`: required and must resolve to an approved stable ID;
-- `canonical_pending_id`: omitted; `note` is required and must explain that the public canonical target's existing ID is awaiting validation and approval;
+- `canonical_pending_id`: optional and should usually be omitted until public ID acceptance and validator behavior are settled; `note` is required and must explain the transitional state;
 - `private_draft`: include when the private target has an assigned provisional or approved ID; omission should produce a review warning;
-- `public_draft`: include when the public draft has an assigned ID; omission should produce a review warning;
 - `future_candidate`: optional because the target may not have an ID;
 - `external_reference`: normally omitted unless the external resource has a separately defined identifier field in a future policy;
 - `unresolved`: omitted until identity is resolved.
@@ -84,7 +82,7 @@ Required fields for `canonical_pending_id`:
 - `target_status`
 - `note`
 
-`target_id` must be omitted for `canonical_pending_id`.
+`target_id` is optional for `canonical_pending_id` and should usually be omitted until public ID acceptance and validator behavior are settled.
 
 Example:
 
@@ -139,9 +137,9 @@ Validators should eventually:
 - reject a canonical `target_id` that does not resolve;
 - require `target_name` and `target_status` for every relation;
 - allow `canonical_pending_id` only during migration or policy review;
-- require `note` and reject `target_id` for `canonical_pending_id`;
+- require `note` for `canonical_pending_id` and allow an omitted `target_id`;
 - warn when `canonical_pending_id` remains after stable IDs have been validated and accepted;
-- warn when a private or public draft target has no ID;
+- warn when a private draft target has no ID;
 - allow future and unresolved targets without IDs when their status is explicit;
 - require a useful `note` for unresolved targets;
 - avoid treating future or unresolved targets as canonical graph nodes;
@@ -183,6 +181,83 @@ Use `unresolved` when equivalence is unclear.
 
 The private LLM package/context file may be used as a first relation migration pilot only after package-vs-standalone source-of-truth handling is clear.
 
+## Target status vocabulary and validation behavior
+
+The accepted `target_status` values are:
+
+- `canonical`
+- `canonical_pending_id`
+- `private_draft`
+- `future_candidate`
+- `unresolved`
+- `external_reference`
+
+### `canonical`
+
+- Requires `target_id`.
+- `target_id` must resolve to an accepted public canonical taxonomy concept.
+- `target_name` should match or be an accepted display name for that target.
+- Use only after public ID acceptance and validator behavior are approved.
+
+### `canonical_pending_id`
+
+- Transitional status for exact public L1/L2 name matches while public ID acceptance or validator behavior is still pending.
+- `target_name` is required.
+- `target_id` is optional and should usually be omitted until acceptance rules are settled.
+- Must not be treated as a graph-ready canonical reference.
+
+### `private_draft`
+
+- For targets that are private Level 3 draft concepts.
+- `target_name` is required.
+- `target_id` may be present if it is a private draft ID.
+- Must not imply public canonical status.
+
+### `future_candidate`
+
+- For future branches or candidates that are not yet drafted or canonical.
+- `target_name` is required.
+- `target_id` should be omitted.
+- Must not invent branch IDs.
+
+### `unresolved`
+
+- For targets whose equivalence is unclear.
+- `target_name` is required.
+- A reviewer note is recommended.
+- Must not be silently mapped to a broader or narrower canonical concept.
+
+### `external_reference`
+
+- For targets outside the AI Atlas taxonomy.
+- `target_name` is required.
+- External URI handling remains open unless covered by a later policy decision.
+
+### Upgrade rules
+
+- `canonical_pending_id` may become `canonical` only after:
+  - the public target ID is accepted;
+  - validators can resolve the ID;
+  - the relation target meaning is unchanged.
+- `future_candidate` may become `private_draft` only after the target draft exists.
+- `private_draft` may become `canonical` only through the approved Level 3 review and promotion process.
+- `unresolved` must remain unresolved until an explicit review decision.
+
+### Ambiguous target rule
+
+`Evaluation` must not be automatically mapped to `Evaluation, Measurement and Benchmarking`.
+
+Any such mapping requires explicit review because it may change target meaning.
+
+### Validator severity guidance
+
+- `canonical` without a resolvable `target_id`: error.
+- `canonical_pending_id` without `target_id`: allowed warning or informational result.
+- `private_draft` pointing to a missing private draft ID: warning.
+- `future_candidate` with an invented `target_id`: warning or error.
+- `unresolved`: allowed during review but blocks promotion.
+- Unknown `target_status`: error.
+
 ## Migration dependency
 
 Current public L1/L2 IDs appear to exist in canonical JSON. Before broad relation migration, validators should confirm that these IDs are unique, well-formed, and accepted as approved stable IDs.
@@ -203,7 +278,7 @@ Existing structured draft JSON files and their plain or pilot target representat
 
 - Should private and canonical relations use one schema?
 - Should external targets use `target_uri` or another dedicated field?
-- When should missing IDs on private or public draft targets become errors rather than warnings?
+- When should missing IDs on `private_draft` targets become errors rather than warnings?
 - How should renamed, aliased, deprecated, or successor IDs resolve?
 - Should unresolved targets be allowed in public draft proposals?
 - Should `canonical_pending_id` be permitted in public draft proposals or private migration work only?
