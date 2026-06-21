@@ -1,0 +1,20 @@
+name: Validate taxonomy
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Validate canonical L1/L2 taxonomy JSON
+        run: node scripts/validate-canonical-l1-l2-json.mjs
