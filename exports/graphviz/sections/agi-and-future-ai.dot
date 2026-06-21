@@ -1,0 +1,24 @@
+digraph AIAtlasSection_agi_and_future_ai {
+  graph [rankdir="LR", splines="true", overlap="false", nodesep="0.38", ranksep="1.15", pad="0.25", bgcolor="#FFFFFF"];
+  node [shape="box", style="rounded,filled", fontname="Helvetica"];
+  edge [color="#94A3B8", penwidth="1.0", arrowsize="0.7"];
+
+  // Canonical Level 1 section root
+  "ai:agi-and-future-ai" [label="AGI and Future AI", fillcolor="#CCFBF1", color="#0F766E", fontcolor="#134E4A", fontsize="13", penwidth="1.8", margin="0.16,0.11"];
+
+  // Canonical Level 2 subareas
+  "ai:artificial-general-intelligence" [label="Artificial General\nIntelligence", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:self-improving-systems" [label="Self-Improving Systems", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:ai-scientists" [label="AI Scientists", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:human-ai-symbiosis" [label="Human-AI Symbiosis", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:superintelligence" [label="Superintelligence", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:long-term-ai-futures" [label="Long-Term AI Futures", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+
+  // Directed Level 1 to Level 2 edges
+  "ai:agi-and-future-ai" -> "ai:artificial-general-intelligence";
+  "ai:agi-and-future-ai" -> "ai:self-improving-systems";
+  "ai:agi-and-future-ai" -> "ai:ai-scientists";
+  "ai:agi-and-future-ai" -> "ai:human-ai-symbiosis";
+  "ai:agi-and-future-ai" -> "ai:superintelligence";
+  "ai:agi-and-future-ai" -> "ai:long-term-ai-futures";
+}

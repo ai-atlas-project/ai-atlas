@@ -1,0 +1,38 @@
+digraph AIAtlasOverview {
+  graph [layout="twopi", root="ai:artificial-intelligence", overlap="false", splines="true", ranksep="2.25", pad="0.35", bgcolor="#FFFFFF"];
+  node [shape="box", style="rounded,filled", fontname="Helvetica"];
+  edge [color="#94A3B8", penwidth="1.2", arrowsize="0.75"];
+
+  // Canonical Level 0 root
+  "ai:artificial-intelligence" [label="Artificial Intelligence", fillcolor="#0F766E", color="#115E59", fontcolor="#FFFFFF", fontsize="20", penwidth="2.6", margin="0.22,0.16"];
+
+  // Canonical Level 1 major areas
+  "ai:symbolic-ai" [label="Symbolic AI", fillcolor="#CCFBF1", color="#0F766E", fontcolor="#134E4A", fontsize="13", penwidth="1.8", margin="0.16,0.11"];
+  "ai:machine-learning" [label="Machine Learning", fillcolor="#CCFBF1", color="#0F766E", fontcolor="#134E4A", fontsize="13", penwidth="1.8", margin="0.16,0.11"];
+  "ai:search-planning-and-optimization" [label="Search, Planning and\nOptimization", fillcolor="#CCFBF1", color="#0F766E", fontcolor="#134E4A", fontsize="13", penwidth="1.8", margin="0.16,0.11"];
+  "ai:knowledge-and-reasoning" [label="Knowledge and Reasoning", fillcolor="#CCFBF1", color="#0F766E", fontcolor="#134E4A", fontsize="13", penwidth="1.8", margin="0.16,0.11"];
+  "ai:robotics-and-embodied-ai" [label="Robotics and Embodied AI", fillcolor="#CCFBF1", color="#0F766E", fontcolor="#134E4A", fontsize="13", penwidth="1.8", margin="0.16,0.11"];
+  "ai:natural-language-and-speech" [label="Natural Language and\nSpeech", fillcolor="#CCFBF1", color="#0F766E", fontcolor="#134E4A", fontsize="13", penwidth="1.8", margin="0.16,0.11"];
+  "ai:computer-vision-and-perception" [label="Computer Vision and\nPerception", fillcolor="#CCFBF1", color="#0F766E", fontcolor="#134E4A", fontsize="13", penwidth="1.8", margin="0.16,0.11"];
+  "ai:generative-ai" [label="Generative AI", fillcolor="#CCFBF1", color="#0F766E", fontcolor="#134E4A", fontsize="13", penwidth="1.8", margin="0.16,0.11"];
+  "ai:foundation-models-and-general-purpose-ai" [label="Foundation Models and\nGeneral-Purpose AI", fillcolor="#CCFBF1", color="#0F766E", fontcolor="#134E4A", fontsize="13", penwidth="1.8", margin="0.16,0.11"];
+  "ai:agentic-and-multi-agent-systems" [label="Agentic and Multi-Agent\nSystems", fillcolor="#CCFBF1", color="#0F766E", fontcolor="#134E4A", fontsize="13", penwidth="1.8", margin="0.16,0.11"];
+  "ai:human-ai-interaction" [label="Human-AI Interaction", fillcolor="#CCFBF1", color="#0F766E", fontcolor="#134E4A", fontsize="13", penwidth="1.8", margin="0.16,0.11"];
+  "ai:ai-safety-alignment-and-governance" [label="AI Safety, Alignment and\nGovernance", fillcolor="#CCFBF1", color="#0F766E", fontcolor="#134E4A", fontsize="13", penwidth="1.8", margin="0.16,0.11"];
+  "ai:agi-and-future-ai" [label="AGI and Future AI", fillcolor="#CCFBF1", color="#0F766E", fontcolor="#134E4A", fontsize="13", penwidth="1.8", margin="0.16,0.11"];
+
+  // Directed Level 0 to Level 1 edges
+  "ai:artificial-intelligence" -> "ai:symbolic-ai";
+  "ai:artificial-intelligence" -> "ai:machine-learning";
+  "ai:artificial-intelligence" -> "ai:search-planning-and-optimization";
+  "ai:artificial-intelligence" -> "ai:knowledge-and-reasoning";
+  "ai:artificial-intelligence" -> "ai:robotics-and-embodied-ai";
+  "ai:artificial-intelligence" -> "ai:natural-language-and-speech";
+  "ai:artificial-intelligence" -> "ai:computer-vision-and-perception";
+  "ai:artificial-intelligence" -> "ai:generative-ai";
+  "ai:artificial-intelligence" -> "ai:foundation-models-and-general-purpose-ai";
+  "ai:artificial-intelligence" -> "ai:agentic-and-multi-agent-systems";
+  "ai:artificial-intelligence" -> "ai:human-ai-interaction";
+  "ai:artificial-intelligence" -> "ai:ai-safety-alignment-and-governance";
+  "ai:artificial-intelligence" -> "ai:agi-and-future-ai";
+}

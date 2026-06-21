@@ -1,0 +1,28 @@
+digraph AIAtlasSection_knowledge_and_reasoning {
+  graph [rankdir="LR", splines="true", overlap="false", nodesep="0.38", ranksep="1.15", pad="0.25", bgcolor="#FFFFFF"];
+  node [shape="box", style="rounded,filled", fontname="Helvetica"];
+  edge [color="#94A3B8", penwidth="1.0", arrowsize="0.7"];
+
+  // Canonical Level 1 section root
+  "ai:knowledge-and-reasoning" [label="Knowledge and Reasoning", fillcolor="#CCFBF1", color="#0F766E", fontcolor="#134E4A", fontsize="13", penwidth="1.8", margin="0.16,0.11"];
+
+  // Canonical Level 2 subareas
+  "ai:commonsense-reasoning" [label="Commonsense Reasoning", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:probabilistic-reasoning" [label="Probabilistic Reasoning", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:causal-reasoning" [label="Causal Reasoning", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:temporal-reasoning" [label="Temporal Reasoning", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:spatial-reasoning" [label="Spatial Reasoning", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:explainable-ai" [label="Explainable AI", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:knowledge-representation" [label="Knowledge Representation", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:ontologies" [label="Ontologies", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+
+  // Directed Level 1 to Level 2 edges
+  "ai:knowledge-and-reasoning" -> "ai:commonsense-reasoning";
+  "ai:knowledge-and-reasoning" -> "ai:probabilistic-reasoning";
+  "ai:knowledge-and-reasoning" -> "ai:causal-reasoning";
+  "ai:knowledge-and-reasoning" -> "ai:temporal-reasoning";
+  "ai:knowledge-and-reasoning" -> "ai:spatial-reasoning";
+  "ai:knowledge-and-reasoning" -> "ai:explainable-ai";
+  "ai:knowledge-and-reasoning" -> "ai:knowledge-representation";
+  "ai:knowledge-and-reasoning" -> "ai:ontologies";
+}

@@ -1,0 +1,28 @@
+digraph AIAtlasSection_generative_ai {
+  graph [rankdir="LR", splines="true", overlap="false", nodesep="0.38", ranksep="1.15", pad="0.25", bgcolor="#FFFFFF"];
+  node [shape="box", style="rounded,filled", fontname="Helvetica"];
+  edge [color="#94A3B8", penwidth="1.0", arrowsize="0.7"];
+
+  // Canonical Level 1 section root
+  "ai:generative-ai" [label="Generative AI", fillcolor="#CCFBF1", color="#0F766E", fontcolor="#134E4A", fontsize="13", penwidth="1.8", margin="0.16,0.11"];
+
+  // Canonical Level 2 subareas
+  "ai:text-generation" [label="Text Generation", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:image-generation" [label="Image Generation", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:audio-generation" [label="Audio Generation", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:video-generation" [label="Video Generation", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:code-generation" [label="Code Generation", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:3d-generation" [label="3D Generation", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:synthetic-data-generation" [label="Synthetic Data Generation", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:generative-modeling" [label="Generative Modeling", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+
+  // Directed Level 1 to Level 2 edges
+  "ai:generative-ai" -> "ai:text-generation";
+  "ai:generative-ai" -> "ai:image-generation";
+  "ai:generative-ai" -> "ai:audio-generation";
+  "ai:generative-ai" -> "ai:video-generation";
+  "ai:generative-ai" -> "ai:code-generation";
+  "ai:generative-ai" -> "ai:3d-generation";
+  "ai:generative-ai" -> "ai:synthetic-data-generation";
+  "ai:generative-ai" -> "ai:generative-modeling";
+}

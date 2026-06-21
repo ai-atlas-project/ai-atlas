@@ -1,0 +1,28 @@
+digraph AIAtlasSection_foundation_models_and_general_purpose_ai {
+  graph [rankdir="LR", splines="true", overlap="false", nodesep="0.38", ranksep="1.15", pad="0.25", bgcolor="#FFFFFF"];
+  node [shape="box", style="rounded,filled", fontname="Helvetica"];
+  edge [color="#94A3B8", penwidth="1.0", arrowsize="0.7"];
+
+  // Canonical Level 1 section root
+  "ai:foundation-models-and-general-purpose-ai" [label="Foundation Models and\nGeneral-Purpose AI", fillcolor="#CCFBF1", color="#0F766E", fontcolor="#134E4A", fontsize="13", penwidth="1.8", margin="0.16,0.11"];
+
+  // Canonical Level 2 subareas
+  "ai:large-language-models" [label="Large Language Models", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:vision-foundation-models" [label="Vision Foundation Models", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:multimodal-foundation-models" [label="Multimodal Foundation Models", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:audio-foundation-models" [label="Audio Foundation Models", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:video-foundation-models" [label="Video Foundation Models", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:code-foundation-models" [label="Code Foundation Models", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:scientific-foundation-models" [label="Scientific Foundation Models", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:world-models" [label="World Models", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+
+  // Directed Level 1 to Level 2 edges
+  "ai:foundation-models-and-general-purpose-ai" -> "ai:large-language-models";
+  "ai:foundation-models-and-general-purpose-ai" -> "ai:vision-foundation-models";
+  "ai:foundation-models-and-general-purpose-ai" -> "ai:multimodal-foundation-models";
+  "ai:foundation-models-and-general-purpose-ai" -> "ai:audio-foundation-models";
+  "ai:foundation-models-and-general-purpose-ai" -> "ai:video-foundation-models";
+  "ai:foundation-models-and-general-purpose-ai" -> "ai:code-foundation-models";
+  "ai:foundation-models-and-general-purpose-ai" -> "ai:scientific-foundation-models";
+  "ai:foundation-models-and-general-purpose-ai" -> "ai:world-models";
+}

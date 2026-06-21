@@ -1,0 +1,28 @@
+digraph AIAtlasSection_computer_vision_and_perception {
+  graph [rankdir="LR", splines="true", overlap="false", nodesep="0.38", ranksep="1.15", pad="0.25", bgcolor="#FFFFFF"];
+  node [shape="box", style="rounded,filled", fontname="Helvetica"];
+  edge [color="#94A3B8", penwidth="1.0", arrowsize="0.7"];
+
+  // Canonical Level 1 section root
+  "ai:computer-vision-and-perception" [label="Computer Vision and\nPerception", fillcolor="#CCFBF1", color="#0F766E", fontcolor="#134E4A", fontsize="13", penwidth="1.8", margin="0.16,0.11"];
+
+  // Canonical Level 2 subareas
+  "ai:image-classification" [label="Image Classification", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:object-detection" [label="Object Detection", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:image-segmentation" [label="Image Segmentation", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:video-understanding" [label="Video Understanding", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:3d-vision" [label="3D Vision", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:multimodal-perception" [label="Multimodal Perception", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:scene-understanding" [label="Scene Understanding", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:optical-character-recognition" [label="Optical Character\nRecognition", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+
+  // Directed Level 1 to Level 2 edges
+  "ai:computer-vision-and-perception" -> "ai:image-classification";
+  "ai:computer-vision-and-perception" -> "ai:object-detection";
+  "ai:computer-vision-and-perception" -> "ai:image-segmentation";
+  "ai:computer-vision-and-perception" -> "ai:video-understanding";
+  "ai:computer-vision-and-perception" -> "ai:3d-vision";
+  "ai:computer-vision-and-perception" -> "ai:multimodal-perception";
+  "ai:computer-vision-and-perception" -> "ai:scene-understanding";
+  "ai:computer-vision-and-perception" -> "ai:optical-character-recognition";
+}

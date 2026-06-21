@@ -1,0 +1,42 @@
+digraph AIAtlasSection_machine_learning {
+  graph [rankdir="LR", splines="true", overlap="false", nodesep="0.38", ranksep="1.15", pad="0.25", bgcolor="#FFFFFF"];
+  node [shape="box", style="rounded,filled", fontname="Helvetica"];
+  edge [color="#94A3B8", penwidth="1.0", arrowsize="0.7"];
+
+  // Canonical Level 1 section root
+  "ai:machine-learning" [label="Machine Learning", fillcolor="#CCFBF1", color="#0F766E", fontcolor="#134E4A", fontsize="13", penwidth="1.8", margin="0.16,0.11"];
+
+  // Canonical Level 2 subareas
+  "ai:supervised-learning" [label="Supervised Learning", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:unsupervised-learning" [label="Unsupervised Learning", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:semi-supervised-learning" [label="Semi-Supervised Learning", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:self-supervised-learning" [label="Self-Supervised Learning", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:reinforcement-learning" [label="Reinforcement Learning", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:deep-learning" [label="Deep Learning", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:representation-learning" [label="Representation Learning", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:transfer-learning" [label="Transfer Learning", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:federated-learning" [label="Federated Learning", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:online-learning" [label="Online Learning", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:active-learning" [label="Active Learning", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:meta-learning" [label="Meta-Learning", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:ensemble-learning" [label="Ensemble Learning", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:continual-learning" [label="Continual Learning", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:data-centric-ai" [label="Data-Centric AI", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+
+  // Directed Level 1 to Level 2 edges
+  "ai:machine-learning" -> "ai:supervised-learning";
+  "ai:machine-learning" -> "ai:unsupervised-learning";
+  "ai:machine-learning" -> "ai:semi-supervised-learning";
+  "ai:machine-learning" -> "ai:self-supervised-learning";
+  "ai:machine-learning" -> "ai:reinforcement-learning";
+  "ai:machine-learning" -> "ai:deep-learning";
+  "ai:machine-learning" -> "ai:representation-learning";
+  "ai:machine-learning" -> "ai:transfer-learning";
+  "ai:machine-learning" -> "ai:federated-learning";
+  "ai:machine-learning" -> "ai:online-learning";
+  "ai:machine-learning" -> "ai:active-learning";
+  "ai:machine-learning" -> "ai:meta-learning";
+  "ai:machine-learning" -> "ai:ensemble-learning";
+  "ai:machine-learning" -> "ai:continual-learning";
+  "ai:machine-learning" -> "ai:data-centric-ai";
+}

@@ -1,0 +1,30 @@
+digraph AIAtlasSection_robotics_and_embodied_ai {
+  graph [rankdir="LR", splines="true", overlap="false", nodesep="0.38", ranksep="1.15", pad="0.25", bgcolor="#FFFFFF"];
+  node [shape="box", style="rounded,filled", fontname="Helvetica"];
+  edge [color="#94A3B8", penwidth="1.0", arrowsize="0.7"];
+
+  // Canonical Level 1 section root
+  "ai:robotics-and-embodied-ai" [label="Robotics and Embodied AI", fillcolor="#CCFBF1", color="#0F766E", fontcolor="#134E4A", fontsize="13", penwidth="1.8", margin="0.16,0.11"];
+
+  // Canonical Level 2 subareas
+  "ai:control-systems" [label="Control Systems", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:robot-perception" [label="Robot Perception", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:localization-and-mapping" [label="Localization and Mapping", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:motion-planning" [label="Motion Planning", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:manipulation" [label="Manipulation", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:autonomous-vehicles" [label="Autonomous Vehicles", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:human-robot-interaction" [label="Human-Robot Interaction", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:robot-learning" [label="Robot Learning", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:embodied-agents" [label="Embodied Agents", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+
+  // Directed Level 1 to Level 2 edges
+  "ai:robotics-and-embodied-ai" -> "ai:control-systems";
+  "ai:robotics-and-embodied-ai" -> "ai:robot-perception";
+  "ai:robotics-and-embodied-ai" -> "ai:localization-and-mapping";
+  "ai:robotics-and-embodied-ai" -> "ai:motion-planning";
+  "ai:robotics-and-embodied-ai" -> "ai:manipulation";
+  "ai:robotics-and-embodied-ai" -> "ai:autonomous-vehicles";
+  "ai:robotics-and-embodied-ai" -> "ai:human-robot-interaction";
+  "ai:robotics-and-embodied-ai" -> "ai:robot-learning";
+  "ai:robotics-and-embodied-ai" -> "ai:embodied-agents";
+}

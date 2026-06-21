@@ -1,0 +1,28 @@
+digraph AIAtlasSection_symbolic_ai {
+  graph [rankdir="LR", splines="true", overlap="false", nodesep="0.38", ranksep="1.15", pad="0.25", bgcolor="#FFFFFF"];
+  node [shape="box", style="rounded,filled", fontname="Helvetica"];
+  edge [color="#94A3B8", penwidth="1.0", arrowsize="0.7"];
+
+  // Canonical Level 1 section root
+  "ai:symbolic-ai" [label="Symbolic AI", fillcolor="#CCFBF1", color="#0F766E", fontcolor="#134E4A", fontsize="13", penwidth="1.8", margin="0.16,0.11"];
+
+  // Canonical Level 2 subareas
+  "ai:rule-based-systems" [label="Rule-Based Systems", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:expert-systems" [label="Expert Systems", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:logic-programming" [label="Logic Programming", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:symbolic-knowledge-representation" [label="Symbolic Knowledge\nRepresentation", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:automated-reasoning" [label="Automated Reasoning", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:constraint-satisfaction" [label="Constraint Satisfaction", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:knowledge-graphs" [label="Knowledge Graphs", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:neuro-symbolic-ai" [label="Neuro-Symbolic AI", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+
+  // Directed Level 1 to Level 2 edges
+  "ai:symbolic-ai" -> "ai:rule-based-systems";
+  "ai:symbolic-ai" -> "ai:expert-systems";
+  "ai:symbolic-ai" -> "ai:logic-programming";
+  "ai:symbolic-ai" -> "ai:symbolic-knowledge-representation";
+  "ai:symbolic-ai" -> "ai:automated-reasoning";
+  "ai:symbolic-ai" -> "ai:constraint-satisfaction";
+  "ai:symbolic-ai" -> "ai:knowledge-graphs";
+  "ai:symbolic-ai" -> "ai:neuro-symbolic-ai";
+}

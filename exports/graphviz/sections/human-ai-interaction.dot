@@ -1,0 +1,28 @@
+digraph AIAtlasSection_human_ai_interaction {
+  graph [rankdir="LR", splines="true", overlap="false", nodesep="0.38", ranksep="1.15", pad="0.25", bgcolor="#FFFFFF"];
+  node [shape="box", style="rounded,filled", fontname="Helvetica"];
+  edge [color="#94A3B8", penwidth="1.0", arrowsize="0.7"];
+
+  // Canonical Level 1 section root
+  "ai:human-ai-interaction" [label="Human-AI Interaction", fillcolor="#CCFBF1", color="#0F766E", fontcolor="#134E4A", fontsize="13", penwidth="1.8", margin="0.16,0.11"];
+
+  // Canonical Level 2 subareas
+  "ai:ai-assistants" [label="AI Assistants", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:recommender-systems" [label="Recommender Systems", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:human-in-the-loop-ai" [label="Human-in-the-Loop AI", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:interactive-machine-learning" [label="Interactive Machine Learning", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:personalization" [label="Personalization", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:decision-support-systems" [label="Decision Support Systems", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:human-feedback-and-preference-learning" [label="Human Feedback and\nPreference Learning", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:ai-user-experience-and-trust" [label="AI User Experience and Trust", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+
+  // Directed Level 1 to Level 2 edges
+  "ai:human-ai-interaction" -> "ai:ai-assistants";
+  "ai:human-ai-interaction" -> "ai:recommender-systems";
+  "ai:human-ai-interaction" -> "ai:human-in-the-loop-ai";
+  "ai:human-ai-interaction" -> "ai:interactive-machine-learning";
+  "ai:human-ai-interaction" -> "ai:personalization";
+  "ai:human-ai-interaction" -> "ai:decision-support-systems";
+  "ai:human-ai-interaction" -> "ai:human-feedback-and-preference-learning";
+  "ai:human-ai-interaction" -> "ai:ai-user-experience-and-trust";
+}

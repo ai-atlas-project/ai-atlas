@@ -1,0 +1,30 @@
+digraph AIAtlasSection_agentic_and_multi_agent_systems {
+  graph [rankdir="LR", splines="true", overlap="false", nodesep="0.38", ranksep="1.15", pad="0.25", bgcolor="#FFFFFF"];
+  node [shape="box", style="rounded,filled", fontname="Helvetica"];
+  edge [color="#94A3B8", penwidth="1.0", arrowsize="0.7"];
+
+  // Canonical Level 1 section root
+  "ai:agentic-and-multi-agent-systems" [label="Agentic and Multi-Agent\nSystems", fillcolor="#CCFBF1", color="#0F766E", fontcolor="#134E4A", fontsize="13", penwidth="1.8", margin="0.16,0.11"];
+
+  // Canonical Level 2 subareas
+  "ai:autonomous-agents" [label="Autonomous Agents", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:cooperative-multi-agent-systems" [label="Cooperative Multi-Agent\nSystems", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:competitive-multi-agent-systems" [label="Competitive Multi-Agent\nSystems", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:agent-communication" [label="Agent Communication", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:coordination-and-negotiation" [label="Coordination and Negotiation", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:multi-agent-reinforcement-learning" [label="Multi-Agent Reinforcement\nLearning", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:swarm-intelligence" [label="Swarm Intelligence", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:agent-societies" [label="Agent Societies", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:market-based-systems" [label="Market-Based Systems", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+
+  // Directed Level 1 to Level 2 edges
+  "ai:agentic-and-multi-agent-systems" -> "ai:autonomous-agents";
+  "ai:agentic-and-multi-agent-systems" -> "ai:cooperative-multi-agent-systems";
+  "ai:agentic-and-multi-agent-systems" -> "ai:competitive-multi-agent-systems";
+  "ai:agentic-and-multi-agent-systems" -> "ai:agent-communication";
+  "ai:agentic-and-multi-agent-systems" -> "ai:coordination-and-negotiation";
+  "ai:agentic-and-multi-agent-systems" -> "ai:multi-agent-reinforcement-learning";
+  "ai:agentic-and-multi-agent-systems" -> "ai:swarm-intelligence";
+  "ai:agentic-and-multi-agent-systems" -> "ai:agent-societies";
+  "ai:agentic-and-multi-agent-systems" -> "ai:market-based-systems";
+}

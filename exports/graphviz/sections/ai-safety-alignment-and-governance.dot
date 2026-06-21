@@ -1,0 +1,28 @@
+digraph AIAtlasSection_ai_safety_alignment_and_governance {
+  graph [rankdir="LR", splines="true", overlap="false", nodesep="0.38", ranksep="1.15", pad="0.25", bgcolor="#FFFFFF"];
+  node [shape="box", style="rounded,filled", fontname="Helvetica"];
+  edge [color="#94A3B8", penwidth="1.0", arrowsize="0.7"];
+
+  // Canonical Level 1 section root
+  "ai:ai-safety-alignment-and-governance" [label="AI Safety, Alignment and\nGovernance", fillcolor="#CCFBF1", color="#0F766E", fontcolor="#134E4A", fontsize="13", penwidth="1.8", margin="0.16,0.11"];
+
+  // Canonical Level 2 subareas
+  "ai:ai-alignment" [label="AI Alignment", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:robustness" [label="Robustness", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:interpretability" [label="Interpretability", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:evaluation-measurement-and-benchmarking" [label="Evaluation, Measurement and\nBenchmarking", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:bias-and-fairness" [label="Bias and Fairness", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:privacy-and-security" [label="Privacy and Security", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:misuse-prevention" [label="Misuse Prevention", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:governance-and-policy" [label="Governance and Policy", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+
+  // Directed Level 1 to Level 2 edges
+  "ai:ai-safety-alignment-and-governance" -> "ai:ai-alignment";
+  "ai:ai-safety-alignment-and-governance" -> "ai:robustness";
+  "ai:ai-safety-alignment-and-governance" -> "ai:interpretability";
+  "ai:ai-safety-alignment-and-governance" -> "ai:evaluation-measurement-and-benchmarking";
+  "ai:ai-safety-alignment-and-governance" -> "ai:bias-and-fairness";
+  "ai:ai-safety-alignment-and-governance" -> "ai:privacy-and-security";
+  "ai:ai-safety-alignment-and-governance" -> "ai:misuse-prevention";
+  "ai:ai-safety-alignment-and-governance" -> "ai:governance-and-policy";
+}

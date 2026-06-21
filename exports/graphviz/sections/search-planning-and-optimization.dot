@@ -1,0 +1,28 @@
+digraph AIAtlasSection_search_planning_and_optimization {
+  graph [rankdir="LR", splines="true", overlap="false", nodesep="0.38", ranksep="1.15", pad="0.25", bgcolor="#FFFFFF"];
+  node [shape="box", style="rounded,filled", fontname="Helvetica"];
+  edge [color="#94A3B8", penwidth="1.0", arrowsize="0.7"];
+
+  // Canonical Level 1 section root
+  "ai:search-planning-and-optimization" [label="Search, Planning and\nOptimization", fillcolor="#CCFBF1", color="#0F766E", fontcolor="#134E4A", fontsize="13", penwidth="1.8", margin="0.16,0.11"];
+
+  // Canonical Level 2 subareas
+  "ai:state-space-search" [label="State-Space Search", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:heuristic-search" [label="Heuristic Search", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:adversarial-search" [label="Adversarial Search", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:automated-planning" [label="Automated Planning", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:scheduling" [label="Scheduling", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:optimization" [label="Optimization", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:evolutionary-computation" [label="Evolutionary Computation", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+  "ai:monte-carlo-tree-search" [label="Monte Carlo Tree Search", fillcolor="#F0FDFA", color="#5EEAD4", fontcolor="#134E4A", fontsize="11", penwidth="1.1", margin="0.13,0.09"];
+
+  // Directed Level 1 to Level 2 edges
+  "ai:search-planning-and-optimization" -> "ai:state-space-search";
+  "ai:search-planning-and-optimization" -> "ai:heuristic-search";
+  "ai:search-planning-and-optimization" -> "ai:adversarial-search";
+  "ai:search-planning-and-optimization" -> "ai:automated-planning";
+  "ai:search-planning-and-optimization" -> "ai:scheduling";
+  "ai:search-planning-and-optimization" -> "ai:optimization";
+  "ai:search-planning-and-optimization" -> "ai:evolutionary-computation";
+  "ai:search-planning-and-optimization" -> "ai:monte-carlo-tree-search";
+}
