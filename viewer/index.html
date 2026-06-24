@@ -11,32 +11,55 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="hero" aria-labelledby="page-title">
+    <header class="hero compact" aria-labelledby="page-title">
       <div>
         <p class="eyebrow">AI Atlas / v0.1 public preview</p>
-        <h1 id="page-title">Explore the map of modern AI.</h1>
+        <h1 id="page-title">Explore the AI map.</h1>
         <p class="lede">
           Browse the Level 1–Level 2 taxonomy visually. You do not need to read JSON to review AI Atlas.
         </p>
       </div>
       <nav class="actions" aria-label="Project links">
-        <a href="../taxonomy/ai-taxonomy-l1-l2.md">Read taxonomy</a>
-        <a href="../PUBLIC_REVIEW.md">Review guide</a>
+        <a href="doc.html?doc=taxonomy">Read taxonomy</a>
+        <a href="doc.html?doc=review">Review guide</a>
         <a href="https://github.com/ai-atlas-project/ai-atlas/issues/new">Give feedback</a>
       </nav>
     </header>
 
-    <main class="layout">
+    <main class="layout wide-map">
       <section class="map-card" aria-label="Interactive AI Atlas taxonomy map">
-        <div class="toolbar">
-          <label class="search-label" for="search">Search concepts</label>
-          <input id="search" type="search" placeholder="Try “Machine Learning”, “Robotics”, “Safety”…" />
-          <button id="reset" type="button">Reset</button>
+        <div class="toolbar advanced">
+          <div class="control search-control">
+            <label class="search-label" for="search">Search concepts</label>
+            <input id="search" type="search" placeholder="Try “Machine Learning”, “Robotics”, “Safety”…" />
+          </div>
+
+          <div class="control">
+            <label class="search-label" for="type-filter">Concept type</label>
+            <select id="type-filter">
+              <option value="">All types</option>
+            </select>
+          </div>
+
+          <div class="control">
+            <label class="search-label" for="status-filter">Status</label>
+            <select id="status-filter">
+              <option value="">All statuses</option>
+            </select>
+          </div>
+
+          <div class="button-group" aria-label="Expansion controls">
+            <button id="collapse-all" type="button">Level 1 only</button>
+            <button id="expand-all" type="button">Expand Level 2</button>
+            <button id="reset" type="button">Reset</button>
+          </div>
         </div>
-        <div class="map-wrap">
+        <div class="map-wrap large">
           <svg id="map" role="img" aria-label="AI Atlas Level 0 to Level 2 taxonomy graph"></svg>
         </div>
-        <p class="hint">Click a Level 1 node to expand or collapse its Level 2 subareas. Drag nodes to explore.</p>
+        <p class="hint">
+          Click a node to select it. Use the buttons above or the selected concept panel to expand and collapse Level 2.
+        </p>
       </section>
 
       <aside class="details" aria-labelledby="details-title">
@@ -59,7 +82,8 @@
         <p id="node-description" class="description">
           The broad field of creating systems that can perceive, learn, reason, plan, communicate, generate, decide, or act in ways associated with intelligence.
         </p>
-        <div class="details-actions">
+        <div class="details-actions stacked">
+          <button id="toggle-selected" type="button" hidden>Expand this area</button>
           <a id="feedback-link" href="https://github.com/ai-atlas-project/ai-atlas/issues/new">Suggest feedback</a>
         </div>
       </aside>
