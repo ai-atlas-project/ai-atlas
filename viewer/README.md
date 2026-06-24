@@ -14,6 +14,18 @@ The viewer currently shows:
 
 It does not include canonical Level 3 content. Level 3 remains draft/review work only.
 
+## Features
+
+- Visual D3 graph for Level 0–2.
+- Click a node to select it without automatically changing expansion state.
+- Expand all Level 2 nodes.
+- Collapse back to Level 1 only.
+- Expand or collapse the selected Level 1 area from the details panel.
+- Search by concept text.
+- Filter by concept type.
+- Filter by status/stability.
+- Render selected Markdown documents through `viewer/doc.html` instead of showing raw Markdown text in the browser.
+
 ## Source of truth
 
 The viewer loads data from:
@@ -36,6 +48,14 @@ Then open:
 
 ```text
 http://localhost:8000/viewer/
+```
+
+Rendered Markdown helper pages:
+
+```text
+http://localhost:8000/viewer/doc.html?doc=taxonomy
+http://localhost:8000/viewer/doc.html?doc=review
+http://localhost:8000/viewer/doc.html?doc=release
 ```
 
 ## Public hosting
