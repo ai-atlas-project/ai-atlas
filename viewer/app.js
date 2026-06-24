@@ -6,11 +6,18 @@ const state = {
   selectedId: "ai:artificial-intelligence",
   expanded: new Set(),
   query: "",
+  conceptType: "",
+  status: "",
 };
 
 const svg = d3.select("#map");
 const searchInput = document.querySelector("#search");
+const typeFilter = document.querySelector("#type-filter");
+const statusFilter = document.querySelector("#status-filter");
 const resetButton = document.querySelector("#reset");
+const expandAllButton = document.querySelector("#expand-all");
+const collapseAllButton = document.querySelector("#collapse-all");
+const toggleSelectedButton = document.querySelector("#toggle-selected");
 
 const detailsTitle = document.querySelector("#details-title");
 const nodeLevel = document.querySelector("#node-level");
@@ -30,6 +37,7 @@ fetch(DATA_URL)
   })
   .then((taxonomy) => {
     state.taxonomy = taxonomy;
+    populateFilters(taxonomy);
     render();
   })
   .catch((error) => {
@@ -38,18 +46,18 @@ fetch(DATA_URL)
 
 searchInput.addEventListener("input", (event) => {
   state.query = event.target.value.trim().toLowerCase();
+  render();
+});
 
-  if (state.query) {
-    for (const area of state.taxonomy.level_1) {
-      const areaMatches = matches(area, state.query);
-      const childMatches = area.level_2?.some((child) => matches(child, state.query));
+typeFilter.addEventListener("change", (event) => {
+  state.conceptType = event.target.value;
+  expandParentsForActiveFilters();
+  render();
+});
 
-      if (areaMatches || childMatches) {
-        state.expanded.add(area.id);
-      }
-    }
-  }
-
+statusFilter.addEventListener("change", (event) => {
+  state.status = event.target.value;
+  expandParentsForActiveFilters();
   render();
 });
 
@@ -57,15 +65,45 @@ resetButton.addEventListener("click", () => {
   state.selectedId = "ai:artificial-intelligence";
   state.expanded.clear();
   state.query = "";
+  state.conceptType = "";
+  state.status = "";
   searchInput.value = "";
+  typeFilter.value = "";
+  statusFilter.value = "";
+  render();
+});
+
+expandAllButton.addEventListener("click", () => {
+  for (const area of state.taxonomy.level_1) {
+    state.expanded.add(area.id);
+  }
+  render();
+});
+
+collapseAllButton.addEventListener("click", () => {
+  state.expanded.clear();
+  state.selectedId = "ai:artificial-intelligence";
+  render();
+});
+
+toggleSelectedButton.addEventListener("click", () => {
+  const selected = findNodeById(state.selectedId);
+  if (!selected || selected.hierarchy_level !== 1) return;
+
+  if (state.expanded.has(selected.id)) {
+    state.expanded.delete(selected.id);
+  } else {
+    state.expanded.add(selected.id);
+  }
+
   render();
 });
 
 function render() {
   if (!state.taxonomy) return;
 
-  const width = svg.node().clientWidth || 900;
-  const height = svg.node().clientHeight || 560;
+  const width = svg.node().clientWidth || 1000;
+  const height = svg.node().clientHeight || 680;
   const graph = buildGraph(state.taxonomy);
   const nodeById = new Map(graph.nodes.map((node) => [node.id, node]));
 
@@ -83,7 +121,8 @@ function render() {
     .selectAll("line")
     .data(graph.links)
     .join("line")
-    .attr("class", "link");
+    .attr("class", "link")
+    .classed("dimmed", (link) => !passesActiveFilters(link.target));
 
   const nodes = nodeLayer
     .selectAll("g")
@@ -99,16 +138,8 @@ function render() {
     )
     .on("click", (_event, node) => {
       state.selectedId = node.id;
-
-      if (node.hierarchy_level === 1) {
-        if (state.expanded.has(node.id)) {
-          state.expanded.delete(node.id);
-        } else {
-          state.expanded.add(node.id);
-        }
-      }
-
-      render();
+      updateDetails(node);
+      nodeLayer.selectAll("g").attr("class", (item) => nodeClass(item));
     });
 
   nodes
@@ -133,8 +164,10 @@ function render() {
     .force("charge", d3.forceManyBody().strength((node) => chargeFor(node)))
     .force("center", d3.forceCenter(0, 0))
     .force("collision", d3.forceCollide().radius((node) => radiusFor(node) + labelPaddingFor(node)))
-    .force("x", d3.forceX((node) => xFor(node, width)).strength((node) => (node.hierarchy_level === 0 ? 0.22 : 0.035)))
-    .force("y", d3.forceY((node) => yFor(node, height)).strength((node) => (node.hierarchy_level === 0 ? 0.22 : 0.035)))
+    .force("x", d3.forceX((node) => xFor(node, width)).strength((node) => (node.hierarchy_level === 0 ? 0.2 : 0.03)))
+    .force("y", d3.forceY((node) => yFor(node, height)).strength((node) => (node.hierarchy_level === 0 ? 0.2 : 0.03)))
+    .alphaDecay(0.075)
+    .velocityDecay(0.68)
     .on("tick", () => {
       links
         .attr("x1", (link) => link.source.x)
@@ -160,7 +193,7 @@ function buildGraph(taxonomy) {
     nodes.push(areaNode);
     links.push({ source: root.id, target: area.id });
 
-    const isExpanded = state.expanded.has(area.id) || state.query;
+    const isExpanded = state.expanded.has(area.id) || activeFiltersRequireExpansion(area);
     if (isExpanded) {
       for (const [childIndex, child] of (area.level_2 || []).entries()) {
         nodes.push({
@@ -180,17 +213,70 @@ function buildGraph(taxonomy) {
   return { nodes, links };
 }
 
+function populateFilters(taxonomy) {
+  const nodes = flattenTaxonomy(taxonomy);
+  const conceptTypes = uniqueSorted(nodes.map((node) => node.concept_type).filter(Boolean));
+  const statuses = uniqueSorted(nodes.map((node) => node.stability).filter(Boolean));
+
+  for (const type of conceptTypes) {
+    typeFilter.append(new Option(type, type));
+  }
+
+  for (const status of statuses) {
+    statusFilter.append(new Option(status, status));
+  }
+}
+
+function flattenTaxonomy(taxonomy) {
+  return [
+    taxonomy.level_0,
+    ...taxonomy.level_1,
+    ...taxonomy.level_1.flatMap((area) => area.level_2 || []),
+  ];
+}
+
+function uniqueSorted(values) {
+  return [...new Set(values)].sort((a, b) => a.localeCompare(b));
+}
+
+function expandParentsForActiveFilters() {
+  if (!hasActiveFilters()) return;
+
+  for (const area of state.taxonomy.level_1) {
+    if (activeFiltersRequireExpansion(area)) {
+      state.expanded.add(area.id);
+    }
+  }
+}
+
+function activeFiltersRequireExpansion(area) {
+  if (!hasActiveFilters()) return false;
+  return passesActiveFilters(area) || (area.level_2 || []).some((child) => passesActiveFilters(child));
+}
+
+function hasActiveFilters() {
+  return Boolean(state.query || state.conceptType || state.status);
+}
+
+function passesActiveFilters(node) {
+  if (state.query && !matches(node, state.query)) return false;
+  if (state.conceptType && node.concept_type !== state.conceptType) return false;
+  if (state.status && node.stability !== state.status) return false;
+  return true;
+}
+
 function nodeClass(node) {
   const classes = [`node`, `level-${node.hierarchy_level}`];
 
   if (node.id === state.selectedId) classes.push("selected");
-  if (state.query && matches(node, state.query)) classes.push("matched");
+  if (hasActiveFilters() && passesActiveFilters(node)) classes.push("matched");
+  if (hasActiveFilters() && !passesActiveFilters(node)) classes.push("dimmed");
 
   return classes.join(" ");
 }
 
 function matches(node, query) {
-  const haystack = [node.name, node.description, node.concept_type, node.hierarchy_level_name]
+  const haystack = [node.name, node.description, node.concept_type, node.hierarchy_level_name, node.stability]
     .filter(Boolean)
     .join(" ")
     .toLowerCase();
@@ -210,26 +296,26 @@ function labelPaddingFor(node) {
 }
 
 function linkDistance(link) {
-  return link.source.hierarchy_level === 0 ? 138 : 96;
+  return link.source.hierarchy_level === 0 ? 150 : 108;
 }
 
 function chargeFor(node) {
-  if (node.hierarchy_level === 0) return -650;
-  if (node.hierarchy_level === 1) return -280;
-  return -95;
+  if (node.hierarchy_level === 0) return -720;
+  if (node.hierarchy_level === 1) return -320;
+  return -105;
 }
 
 function xFor(node, width) {
-  if (node.hierarchy_level === 0) return -width * 0.08;
+  if (node.hierarchy_level === 0) return -width * 0.06;
   const angle = angleFor(node);
-  const radius = node.hierarchy_level === 1 ? width * 0.26 : width * 0.38;
+  const radius = node.hierarchy_level === 1 ? width * 0.27 : width * 0.42;
   return Math.cos(angle) * radius;
 }
 
 function yFor(node, height) {
   if (node.hierarchy_level === 0) return 0;
   const angle = angleFor(node);
-  const radius = node.hierarchy_level === 1 ? height * 0.28 : height * 0.41;
+  const radius = node.hierarchy_level === 1 ? height * 0.28 : height * 0.42;
   return Math.sin(angle) * radius;
 }
 
@@ -256,6 +342,13 @@ function updateDetails(node) {
   nodeStatus.textContent = node.stability || "Not specified";
   nodeDescription.textContent = node.description || "No description yet.";
 
+  if (node.hierarchy_level === 1) {
+    toggleSelectedButton.hidden = false;
+    toggleSelectedButton.textContent = state.expanded.has(node.id) ? "Collapse this area" : "Expand this area";
+  } else {
+    toggleSelectedButton.hidden = true;
+  }
+
   const params = new URLSearchParams({
     title: `Feedback on ${node.name}`,
     body: `Concept: ${node.name}\n\nFeedback:\n`,
@@ -263,8 +356,12 @@ function updateDetails(node) {
   feedbackLink.href = `${FEEDBACK_URL}?${params.toString()}`;
 }
 
+function findNodeById(id) {
+  return flattenTaxonomy(state.taxonomy).find((node) => node.id === id);
+}
+
 function dragStarted(event) {
-  if (!event.active) simulation.alphaTarget(0.3).restart();
+  if (!event.active) simulation.alphaTarget(0.14).restart();
   event.subject.fx = event.subject.x;
   event.subject.fy = event.subject.y;
 }
