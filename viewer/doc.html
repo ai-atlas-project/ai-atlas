@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Atlas document</title>
+    <meta name="description" content="Rendered AI Atlas Markdown document." />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="doc-page">
+      <nav class="actions" aria-label="Viewer links">
+        <a href="./">Back to viewer</a>
+        <a href="https://github.com/ai-atlas-project/ai-atlas">GitHub repo</a>
+      </nav>
+      <article id="doc" class="doc-card">
+        <p>Loading document…</p>
+      </article>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+      const DOCS = {
+        taxonomy: {
+          title: "AI Atlas taxonomy",
+          path: "../taxonomy/ai-taxonomy-l1-l2.md",
+        },
+        review: {
+          title: "AI Atlas public review guide",
+          path: "../PUBLIC_REVIEW.md",
+        },
+        release: {
+          title: "AI Atlas v0.1 release notes",
+          path: "../docs/releases/v0.1-public-preview.md",
+        },
+      };
+
+      const params = new URLSearchParams(window.location.search);
+      const docKey = params.get("doc") || "taxonomy";
+      const doc = DOCS[docKey] || DOCS.taxonomy;
+
+      document.title = doc.title;
+
+      fetch(doc.path)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`Failed to load ${doc.path}: ${response.status}`);
+          }
+          return response.text();
+        })
+        .then((markdown) => {
+          marked.setOptions({ gfm: true, breaks: false });
+          document.querySelector("#doc").innerHTML = marked.parse(markdown);
+        })
+        .catch((error) => {
+          document.querySelector("#doc").innerHTML = `
+            <h1>Could not load document</h1>
+            <p>${escapeHtml(error.message)}</p>
+          `;
+        });
+
+      function escapeHtml(value) {
+        return String(value)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+    </script>
+  </body>
+</html>
