@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Atlas v0.1 Viewer</title>
+    <meta
+      name="description"
+      content="Explore the AI Atlas v0.1 Level 1 and Level 2 taxonomy without reading raw JSON."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">AI Atlas / v0.1 public preview</p>
+        <h1 id="page-title">Explore the map of modern AI.</h1>
+        <p class="lede">
+          Browse the Level 1–Level 2 taxonomy visually. You do not need to read JSON to review AI Atlas.
+        </p>
+      </div>
+      <nav class="actions" aria-label="Project links">
+        <a href="../taxonomy/ai-taxonomy-l1-l2.md">Read taxonomy</a>
+        <a href="../PUBLIC_REVIEW.md">Review guide</a>
+        <a href="https://github.com/ai-atlas-project/ai-atlas/issues/new">Give feedback</a>
+      </nav>
+    </header>
+
+    <main class="layout">
+      <section class="map-card" aria-label="Interactive AI Atlas taxonomy map">
+        <div class="toolbar">
+          <label class="search-label" for="search">Search concepts</label>
+          <input id="search" type="search" placeholder="Try “Machine Learning”, “Robotics”, “Safety”…" />
+          <button id="reset" type="button">Reset</button>
+        </div>
+        <div class="map-wrap">
+          <svg id="map" role="img" aria-label="AI Atlas Level 0 to Level 2 taxonomy graph"></svg>
+        </div>
+        <p class="hint">Click a Level 1 node to expand or collapse its Level 2 subareas. Drag nodes to explore.</p>
+      </section>
+
+      <aside class="details" aria-labelledby="details-title">
+        <p class="eyebrow">Selected concept</p>
+        <h2 id="details-title">Artificial Intelligence</h2>
+        <dl>
+          <div>
+            <dt>Level</dt>
+            <dd id="node-level">Level 0 · Field</dd>
+          </div>
+          <div>
+            <dt>Concept type</dt>
+            <dd id="node-type">Field</dd>
+          </div>
+          <div>
+            <dt>Status</dt>
+            <dd id="node-status">stable</dd>
+          </div>
+        </dl>
+        <p id="node-description" class="description">
+          The broad field of creating systems that can perceive, learn, reason, plan, communicate, generate, decide, or act in ways associated with intelligence.
+        </p>
+        <div class="details-actions">
+          <a id="feedback-link" href="https://github.com/ai-atlas-project/ai-atlas/issues/new">Suggest feedback</a>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <p>
+        This viewer is a visual aid for AI Atlas v0.1. The GitHub repository and canonical taxonomy files remain the source of truth. Level 3 is draft/review work only and is not canonical yet.
+      </p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
