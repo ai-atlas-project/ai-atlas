@@ -6,6 +6,118 @@
     <title>AI Atlas document</title>
     <meta name="description" content="Rendered AI Atlas Markdown and JSON documents." />
     <link rel="stylesheet" href="styles.css" />
+    <style>
+      .json-toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.55rem;
+        margin: 1rem 0;
+      }
+
+      .json-tree {
+        max-height: 74vh;
+        overflow: auto;
+        margin: 0;
+        padding: 1rem;
+        border: 1px solid rgba(244, 241, 234, 0.12);
+        border-radius: 14px;
+        background: rgba(0, 0, 0, 0.34);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+        font-size: 0.82rem;
+        line-height: 1.55;
+        tab-size: 2;
+      }
+
+      .json-node {
+        margin-left: 1.1rem;
+      }
+
+      .json-row {
+        display: flex;
+        align-items: baseline;
+        gap: 0.25rem;
+        min-height: 1.45em;
+        white-space: nowrap;
+      }
+
+      .json-toggle {
+        width: 1.25rem;
+        min-width: 1.25rem;
+        min-height: 1.25rem;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        color: var(--muted);
+        font-family: inherit;
+        font-size: 0.82rem;
+        line-height: 1;
+      }
+
+      .json-toggle:hover {
+        background: transparent;
+        color: var(--text);
+      }
+
+      .json-children {
+        margin-left: 1.25rem;
+        border-left: 1px solid rgba(244, 241, 234, 0.08);
+        padding-left: 0.75rem;
+      }
+
+      .json-node.collapsed > .json-children {
+        display: none;
+      }
+
+      .json-node.collapsed > .json-row .json-toggle::before {
+        content: "▸";
+      }
+
+      .json-node:not(.collapsed) > .json-row .json-toggle::before {
+        content: "▾";
+      }
+
+      .json-key {
+        color: #8fc7ff;
+      }
+
+      .json-string {
+        color: #d7ba7d;
+      }
+
+      .json-number {
+        color: #b5cea8;
+      }
+
+      .json-boolean,
+      .json-null {
+        color: #c586c0;
+      }
+
+      .json-punctuation {
+        color: var(--dim);
+      }
+
+      .json-summary {
+        color: var(--dim);
+      }
+
+      @media (max-width: 700px) {
+        .json-tree {
+          max-height: 64vh;
+          font-size: 0.7rem;
+          padding: 0.72rem;
+        }
+
+        .json-node {
+          margin-left: 0.5rem;
+        }
+
+        .json-children {
+          margin-left: 0.7rem;
+          padding-left: 0.55rem;
+        }
+      }
+    </style>
   </head>
   <body>
     <main class="doc-page">
@@ -88,19 +200,132 @@
         });
 
       function renderJson(data) {
-        const formatted = JSON.stringify(data, null, 2);
         docEl.classList.add("json-doc");
         docEl.innerHTML = `
           <header class="json-header">
             <div>
               <p class="eyebrow">Canonical source data</p>
               <h1>AI Atlas taxonomy JSON</h1>
-              <p class="description">Formatted view of the Level 1-Level 2 public preview JSON.</p>
+              <p class="description">Formatted interactive view of the Level 1-Level 2 public preview JSON.</p>
             </div>
             <a class="raw-link" href="../taxonomy/ai-taxonomy-l1-l2.json">Open raw JSON</a>
           </header>
-          <pre class="json-viewer"><code>${escapeHtml(formatted)}</code></pre>
+          <div class="json-toolbar" aria-label="JSON viewer controls">
+            <button id="json-expand-all" type="button">Expand all</button>
+            <button id="json-collapse-all" type="button">Collapse all</button>
+            <button id="json-collapse-children" type="button">Collapse children</button>
+          </div>
+          <div id="json-tree" class="json-tree" role="tree" aria-label="Formatted taxonomy JSON"></div>
         `;
+
+        const tree = document.querySelector("#json-tree");
+        tree.append(renderJsonValue(data, "root"));
+
+        document.querySelector("#json-expand-all").addEventListener("click", () => {
+          tree.querySelectorAll(".json-node.collapsed").forEach((node) => node.classList.remove("collapsed"));
+        });
+
+        document.querySelector("#json-collapse-all").addEventListener("click", () => {
+          tree.querySelectorAll(".json-node").forEach((node) => node.classList.add("collapsed"));
+          tree.firstElementChild?.classList.remove("collapsed");
+        });
+
+        document.querySelector("#json-collapse-children").addEventListener("click", () => {
+          tree.querySelectorAll(".json-node").forEach((node) => node.classList.add("collapsed"));
+          tree.firstElementChild?.classList.remove("collapsed");
+          tree.firstElementChild?.querySelectorAll(":scope > .json-children > .json-node").forEach((node) => node.classList.remove("collapsed"));
+        });
+      }
+
+      function renderJsonValue(value, key = null) {
+        if (Array.isArray(value)) {
+          return renderExpandable(value, key, "array");
+        }
+
+        if (value && typeof value === "object") {
+          return renderExpandable(value, key, "object");
+        }
+
+        const row = document.createElement("div");
+        row.className = "json-row";
+        row.append(blankToggle());
+        if (key !== null && key !== "root") {
+          row.append(renderKey(key), textNode(": "));
+        }
+        row.append(renderPrimitive(value));
+        return row;
+      }
+
+      function renderExpandable(value, key, type) {
+        const isArray = type === "array";
+        const entries = isArray ? value.map((item, index) => [index, item]) : Object.entries(value);
+        const node = document.createElement("div");
+        node.className = "json-node";
+
+        const row = document.createElement("div");
+        row.className = "json-row";
+
+        const toggle = document.createElement("button");
+        toggle.className = "json-toggle";
+        toggle.type = "button";
+        toggle.setAttribute("aria-label", `Toggle ${key || type}`);
+        toggle.addEventListener("click", () => node.classList.toggle("collapsed"));
+        row.append(toggle);
+
+        if (key !== null && key !== "root") {
+          row.append(renderKey(key), textNode(": "));
+        }
+
+        row.append(span("json-punctuation", isArray ? "[" : "{"));
+        row.append(span("json-summary", ` ${entries.length} ${entries.length === 1 ? "item" : "items"} `));
+        row.append(span("json-punctuation", isArray ? "]" : "}"));
+        node.append(row);
+
+        const children = document.createElement("div");
+        children.className = "json-children";
+        for (const [childKey, childValue] of entries) {
+          children.append(renderJsonValue(childValue, childKey));
+        }
+        node.append(children);
+
+        return node;
+      }
+
+      function renderKey(key) {
+        return span("json-key", `"${escapeHtml(String(key))}"`);
+      }
+
+      function renderPrimitive(value) {
+        if (typeof value === "string") {
+          return span("json-string", `"${escapeHtml(value)}"`);
+        }
+        if (typeof value === "number") {
+          return span("json-number", String(value));
+        }
+        if (typeof value === "boolean") {
+          return span("json-boolean", String(value));
+        }
+        if (value === null) {
+          return span("json-null", "null");
+        }
+        return span("json-string", `"${escapeHtml(String(value))}"`);
+      }
+
+      function blankToggle() {
+        const spacer = document.createElement("span");
+        spacer.className = "json-toggle";
+        return spacer;
+      }
+
+      function span(className, text) {
+        const el = document.createElement("span");
+        el.className = className;
+        el.innerHTML = text;
+        return el;
+      }
+
+      function textNode(text) {
+        return document.createTextNode(text);
       }
 
       function escapeHtml(value) {
