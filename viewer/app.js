@@ -500,9 +500,27 @@ function updateDetails(node) {
     toggleSelectedButton.hidden = true;
   }
 
+  const issueBody = [
+    `Concept: ${node.name}`,
+    `Concept ID: ${node.id}`,
+    `Level: ${node.hierarchy_level} - ${node.hierarchy_level_name}`,
+    `Concept type: ${node.concept_type || "Not specified"}`,
+    `Status: ${node.stability || "Not specified"}`,
+    "",
+    "What kind of feedback is this?",
+    "- [ ] Missing concept",
+    "- [ ] Misplaced concept",
+    "- [ ] Overlapping or unclear concept",
+    "- [ ] Description/name improvement",
+    "- [ ] Other",
+    "",
+    "Feedback:",
+    "",
+  ].join("\n");
+
   const params = new URLSearchParams({
     title: `Feedback on ${node.name}`,
-    body: `Concept: ${node.name}\n\nFeedback:\n`,
+    body: issueBody,
   });
   feedbackLink.href = `${FEEDBACK_URL}?${params.toString()}`;
 }
