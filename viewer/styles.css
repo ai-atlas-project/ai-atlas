@@ -6,8 +6,8 @@
   --text: #f4f1ea;
   --muted: #b6b1a8;
   --dim: #7b766e;
-  --line: rgba(244, 241, 234, 0.16);
-  --line-strong: rgba(244, 241, 234, 0.34);
+  --line: rgba(244, 241, 234, 0.14);
+  --line-strong: rgba(244, 241, 234, 0.28);
   --focus: #ffffff;
   --shadow: rgba(0, 0, 0, 0.5);
 }
@@ -76,9 +76,9 @@ h1 {
 
 h2 {
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: clamp(1.25rem, 1.7vw, 1.65rem);
-  font-weight: 850;
-  letter-spacing: -0.04em;
+  font-size: clamp(1.18rem, 1.4vw, 1.45rem);
+  font-weight: 820;
+  letter-spacing: -0.035em;
   line-height: 1.08;
 }
 
@@ -103,23 +103,23 @@ button,
 select {
   border: 1px solid var(--line-strong);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.028);
   color: var(--text);
-  font-size: 0.86rem;
+  font-size: 0.82rem;
   font-weight: 700;
   line-height: 1;
 }
 
 .actions a,
 .details-actions a {
-  padding: 0.75rem 0.9rem;
+  padding: 0.7rem 0.84rem;
   text-decoration: none;
 }
 
 button,
 select {
   cursor: pointer;
-  padding: 0.72rem 0.9rem;
+  padding: 0.64rem 0.78rem;
 }
 
 select {
@@ -136,18 +136,17 @@ select:hover {
 
 .layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 330px);
+  grid-template-columns: minmax(0, 1fr);
   gap: 0.75rem;
   align-items: stretch;
 }
 
 .layout.wide-map {
-  grid-template-columns: minmax(0, 4.4fr) minmax(260px, 0.85fr);
   min-height: calc(100vh - 112px);
 }
 
 .map-card,
-.details,
+.concept-card,
 .doc-card {
   border: 1px solid var(--line);
   border-radius: 24px;
@@ -157,6 +156,7 @@ select:hover {
 }
 
 .map-card {
+  position: relative;
   min-height: calc(100vh - 112px);
   overflow: hidden;
 }
@@ -164,32 +164,37 @@ select:hover {
 .toolbar {
   display: grid;
   grid-template-columns: auto minmax(180px, 1fr) auto;
-  gap: 0.7rem;
+  gap: 0.55rem;
   align-items: center;
-  padding: 0.8rem;
-  border-bottom: 1px solid var(--line);
+  padding: 0.56rem 0.62rem;
+  border-bottom: 1px solid rgba(244, 241, 234, 0.1);
+  background: rgba(255, 255, 255, 0.012);
 }
 
 .toolbar.advanced {
-  grid-template-columns: minmax(260px, 1fr) minmax(150px, 190px) minmax(120px, 160px) auto;
+  grid-template-columns: minmax(280px, 1.35fr) minmax(140px, 0.5fr) minmax(120px, 0.42fr) auto;
   align-items: end;
 }
 
 .control {
   display: grid;
-  gap: 0.34rem;
+  gap: 0.24rem;
+}
+
+.filter-control {
+  opacity: 0.88;
 }
 
 .button-group {
   display: flex;
-  gap: 0.45rem;
+  gap: 0.4rem;
   flex-wrap: wrap;
   justify-content: end;
 }
 
 .search-label {
   color: var(--muted);
-  font-size: 0.74rem;
+  font-size: 0.66rem;
   font-weight: 800;
   letter-spacing: 0.04em;
 }
@@ -198,9 +203,9 @@ input[type="search"] {
   width: 100%;
   border: 1px solid var(--line);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.042);
   color: var(--text);
-  padding: 0.78rem 0.9rem;
+  padding: 0.64rem 0.78rem;
   outline: none;
 }
 
@@ -223,8 +228,8 @@ a:focus-visible {
 }
 
 .map-wrap.large {
-  height: calc(100vh - 215px);
-  min-height: 700px;
+  height: calc(100vh - 192px);
+  min-height: 720px;
 }
 
 #map {
@@ -242,63 +247,94 @@ a:focus-visible {
 
 .hint {
   margin: 0;
-  padding: 0 0.9rem 0.8rem;
+  padding: 0 0.82rem 0.7rem;
   color: var(--dim);
-  font-size: 0.84rem;
+  font-size: 0.8rem;
 }
 
-.details {
-  padding: 1rem;
-  min-height: calc(100vh - 112px);
+.concept-card {
+  position: absolute;
+  left: 0.9rem;
+  bottom: 2.25rem;
+  z-index: 3;
+  width: min(420px, calc(100% - 1.8rem));
+  max-height: min(430px, calc(100% - 6rem));
+  overflow: auto;
+  padding: 0.95rem;
+  background: rgba(10, 10, 10, 0.86);
 }
 
-.details .eyebrow {
-  margin-bottom: 0.5rem;
+.concept-card[hidden] {
+  display: none;
 }
 
-.details dl {
-  margin: 1rem 0;
+.concept-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 1rem;
+}
+
+.icon-button {
+  border-color: var(--line);
+  padding: 0.36rem 0.52rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.concept-card .eyebrow {
+  margin-bottom: 0.46rem;
+}
+
+.concept-card dl {
+  margin: 0.9rem 0;
   display: grid;
-  gap: 0.65rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.6rem;
 }
 
-.details dl div {
-  padding: 0 0 0.62rem;
-  border-bottom: 1px solid var(--line);
+.concept-card dl div {
+  min-width: 0;
+  padding: 0.55rem 0.6rem;
+  border: 1px solid rgba(244, 241, 234, 0.09);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.025);
 }
 
 dt {
   color: var(--dim);
-  font-size: 0.68rem;
+  font-size: 0.62rem;
   font-weight: 800;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.11em;
   text-transform: uppercase;
 }
 
 dd {
-  margin: 0.2rem 0 0;
+  margin: 0.22rem 0 0;
   color: var(--text);
+  font-size: 0.84rem;
 }
 
 .description {
   color: var(--muted);
-  line-height: 1.52;
+  line-height: 1.46;
+  font-size: 0.91rem;
 }
 
 .details-actions {
-  margin-top: 1.25rem;
+  margin-top: 1rem;
 }
 
 .details-actions.stacked {
   display: grid;
-  gap: 0.65rem;
+  gap: 0.55rem;
 }
 
 footer {
-  padding: 12px 0 20px;
+  padding: 10px 0 18px;
   color: var(--dim);
-  font-size: 0.86rem;
-  line-height: 1.45;
+  font-size: 0.82rem;
+  line-height: 1.4;
 }
 
 .link {
@@ -347,13 +383,13 @@ footer {
   stroke: #050505;
   stroke-width: 4px;
   stroke-linejoin: round;
-  font-size: 0.74rem;
-  font-weight: 700;
+  font-size: 0.72rem;
+  font-weight: 650;
 }
 
 .node.level-2 text {
   fill: var(--muted);
-  font-size: 0.64rem;
+  font-size: 0.62rem;
   font-weight: 600;
 }
 
@@ -428,9 +464,7 @@ footer {
 }
 
 @media (max-width: 920px) {
-  .hero,
-  .layout,
-  .layout.wide-map {
+  .hero {
     grid-template-columns: 1fr;
   }
 
@@ -439,7 +473,6 @@ footer {
   }
 
   .map-card,
-  .details,
   .layout.wide-map {
     min-height: auto;
   }
@@ -450,6 +483,18 @@ footer {
   }
 
   .toolbar.advanced {
+    grid-template-columns: 1fr;
+  }
+
+  .concept-card {
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: 2rem;
+    width: auto;
+    max-height: 56vh;
+  }
+
+  .concept-card dl {
     grid-template-columns: 1fr;
   }
 }
