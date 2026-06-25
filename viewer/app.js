@@ -239,7 +239,16 @@ function handleWheelPan(event) {
 }
 
 function recenterMap() {
+  state.selectedId = "ai:artificial-intelligence";
   state.mapTransform = d3.zoomIdentity;
+  showConceptCard();
+
+  const selected = findNodeById(state.selectedId);
+  if (selected) {
+    updateDetails(selected);
+  }
+
+  svg.selectAll(".nodes g").attr("class", (node) => nodeClass(node));
 
   if (!zoomBehavior) return;
 
