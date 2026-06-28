@@ -166,6 +166,7 @@ toggleSelectedButton.addEventListener("click", () => {
 
 closeCardButton.addEventListener("click", () => {
   hideConceptCard();
+  svg.node().focus({ preventScroll: true });
 });
 
 document.addEventListener("keydown", (event) => {
