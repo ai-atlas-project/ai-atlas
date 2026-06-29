@@ -338,6 +338,13 @@ dd {
   line-height: 1.35;
 }
 
+.copy-link-status {
+  min-height: 1.1rem;
+  margin: 0.48rem 0 0;
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
 .details-actions {
   margin-top: 1rem;
 }
@@ -968,6 +975,11 @@ footer {
   .feedback-prompt {
     margin-top: 0.48rem;
     font-size: 0.68rem;
+  }
+
+  .copy-link-status {
+    margin-top: 0.36rem;
+    font-size: 0.66rem;
   }
 
   .details-actions.stacked {
