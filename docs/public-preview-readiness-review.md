@@ -16,7 +16,7 @@ Recommended public framing:
 
 > AI Atlas v0.1 — public preview of the Level 1 and Level 2 taxonomy of modern Artificial Intelligence.
 
-Do not present this release as a complete AI taxonomy, canonical Level 3 release, finished poster product, public website, or commercial educational product.
+Do not present this release as a complete AI taxonomy, canonical Level 3 release, finished poster product, complete public website/search product, or commercial educational product.
 
 ## Checklist result
 
@@ -24,11 +24,11 @@ Do not present this release as a complete AI taxonomy, canonical Level 3 release
 | --- | --- | --- |
 | Public scope is clear | Pass | README, project notes, and taxonomy README all define the current scope as Level 0–Level 2. |
 | Canonical source files are clear | Pass | Public docs identify `taxonomy/ai-taxonomy-l1-l2.json` and `taxonomy/ai-taxonomy-l1-l2.md` as canonical source files. |
-| Public/private separation is preserved | Pass | Public docs say the public repo contains public outputs only and private workflows/prompts/reviews stay outside. |
+| Public/private separation is preserved | Pass | Public docs say the public repo contains reviewed public outputs, public validation/export scripts, and static viewer assets, while private workflows/prompts/reviews stay outside. |
 | Level 3 boundaries are explicit | Pass | Level 3 is consistently described as draft/review work until reviewed and promoted. |
-| Public review request is focused | Pass | `PUBLIC_REVIEW.md` now gives reviewers a focused Level 1–Level 2 scope and feedback format. |
-| Generated views are release-safe | Pass with caution | Public policy says generated views must stay aligned with Level 1–Level 2. Draft/prototype visual work should not be framed as final product. |
-| Open issues are classified correctly | Pass with caution | Current open issues mostly concern Level 3, IDs, relations, schema, generated-view automation, or future website/search; these are next-phase work, not v0.1 blockers. |
+| Public review request is focused | Pass | `PUBLIC_REVIEW.md` gives reviewers a focused Level 1–Level 2 scope and feedback format. |
+| Generated views and viewer assets are release-safe | Pass with caution | Public policy says generated views and static viewer assets must stay aligned with Level 1–Level 2. Draft/prototype visual work should not be framed as final product. |
+| Open issues are classified correctly | Pass with caution | Current open issues mostly concern Level 3, IDs, relations, schema, generated-view automation, or future full website/search work; these are next-phase work, not v0.1 blockers. |
 | Release language avoids overclaiming | Pass if launch copy follows the suggested wording | The repository wording is conservative; social posts and public announcements must remain conservative too. |
 | Next-step path is visible | Pass | Public and private docs identify Level 3 as later draft/review work and not canonical promotion. |
 
@@ -57,7 +57,7 @@ The following items should not block the first public preview:
 - full Level 3 branch coverage,
 - stable ID migration beyond the current approved state,
 - relation graph implementation,
-- public website and search,
+- a complete public website/search product beyond the included static viewer,
 - final poster design,
 - commercial product packaging,
 - Level 4 or Level 5 expansion.
@@ -82,7 +82,7 @@ Issue and PR categories reviewed:
 - stable ID policy
 - public Level 3 promotion process
 - generated view synchronization
-- public website/search exploration
+- public website/search exploration beyond the current static viewer
 - open poster/readability prototype PR
 
 ## Public launch wording guardrail
@@ -106,6 +106,7 @@ The complete AI Atlas is ready.
 AI Atlas is the authoritative taxonomy of AI.
 Level 3 is now canonical.
 The full AI knowledge graph is available.
+The complete AI Atlas public website/search product is launched.
 The AI Atlas poster product is launched.
 ```
 

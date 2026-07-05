@@ -53,7 +53,7 @@ AI Atlas is an open AI taxonomy project.
 
 It is not intended to be an authoritative taxonomy yet. The goal is to create a useful, discussable, expandable mental model of AI that can be reviewed and improved by the community.
 
-The public repository contains the current public output files only. Internal workflows, review agents, prompts, generation scripts, and draft process notes are kept outside this repository.
+The public repository contains the current reviewed public outputs, public validation/export scripts, and static viewer assets needed to inspect the Level 1–Level 2 public preview. Private prompts, raw internal reviews, review-agent definitions, unpublished draft workflows, private links, and product planning remain outside this repository unless explicitly cleaned and approved for public release.
 
 For now, the canonical source is the Level 1 and Level 2 taxonomy in `taxonomy/`.
 
@@ -63,6 +63,7 @@ For now, the canonical source is the Level 1 and Level 2 taxonomy in `taxonomy/`
 - [Taxonomy](taxonomy/)
 - [Markmap view](markmap/)
 - [Obsidian vault](obsidian/)
+- Public validation/export scripts in [scripts](scripts/)
 
 ## Licensing
 

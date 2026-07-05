@@ -19,6 +19,7 @@ Please review the current public Level 1 and Level 2 taxonomy:
 
 Useful generated views:
 
+- `viewer/`
 - `markmap/`
 - `obsidian/`
 
@@ -45,7 +46,7 @@ Please do not treat these as part of the canonical v0.1 taxonomy:
 - products or company-specific systems
 - concrete model versions
 - temporary market labels
-- website/search ideas
+- complete public website/search ideas beyond the included static viewer
 - commercial poster/product packaging
 - Level 4 or Level 5 expansion
 
