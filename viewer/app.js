@@ -29,8 +29,6 @@ const zoomOutButton = document.querySelector("#zoom-out");
 const toggleSelectedButton = document.querySelector("#toggle-selected");
 const conceptCard = document.querySelector("#concept-card");
 const closeCardButton = document.querySelector("#close-card");
-const copyConceptLinkButton = document.querySelector("#copy-concept-link");
-const copyLinkStatus = document.querySelector("#copy-link-status");
 
 const detailsTitle = document.querySelector("#details-title");
 const nodeLevel = document.querySelector("#node-level");
@@ -43,7 +41,6 @@ let simulation;
 let zoomBehavior;
 let viewportLayer;
 let focusTimeout;
-let copyStatusTimeout;
 
 fetch(DATA_URL)
   .then((response) => {
@@ -55,20 +52,8 @@ fetch(DATA_URL)
   .then((taxonomy) => {
     state.taxonomy = taxonomy;
     populateFilters(taxonomy);
-
-    const initialConceptId = parseConceptHash();
-    const initialConcept = initialConceptId ? findNodeById(initialConceptId) : null;
-    if (initialConcept) {
-      applySelectedConcept(initialConcept, { revealCard: true });
-    }
-
     render();
-    if (initialConcept) {
-      showConceptCard();
-      scheduleFocusOnNode(initialConcept.id);
-    } else {
-      setInitialConceptCardVisibility();
-    }
+    setInitialConceptCardVisibility();
     setControlsCollapsed(false);
   })
   .catch((error) => {
@@ -184,40 +169,11 @@ closeCardButton.addEventListener("click", () => {
   svg.node().focus({ preventScroll: true });
 });
 
-copyConceptLinkButton.addEventListener("click", () => {
-  copySelectedConceptLink();
-});
-
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     hideConceptCard();
   }
 });
-
-window.addEventListener("hashchange", handleConceptHashChange);
-window.addEventListener("popstate", handleConceptHashChange);
-
-function handleConceptHashChange() {
-  if (!state.taxonomy) return;
-
-  const conceptId = parseConceptHash();
-
-  if (!conceptId) {
-    state.selectedId = ROOT_ID;
-    render();
-    setInitialConceptCardVisibility();
-    return;
-  }
-
-  if (!findNodeById(conceptId)) {
-    state.selectedId = ROOT_ID;
-    render();
-    setInitialConceptCardVisibility();
-    return;
-  }
-
-  selectConcept(conceptId, { renderMap: true, revealCard: true, focusNode: true });
-}
 
 function render() {
   if (!state.taxonomy) return;
@@ -258,7 +214,9 @@ function render() {
         .on("end", dragEnded),
     )
     .on("click", (_event, node) => {
-      selectConcept(node.id, { updateHash: true, renderMap: false, revealCard: true });
+      state.selectedId = node.id;
+      updateDetails(node);
+      showConceptCard();
       nodeLayer.selectAll("g").attr("class", (item) => nodeClass(item));
     });
 
@@ -351,9 +309,9 @@ function zoomMap(factor) {
 }
 
 function recenterMap() {
-  applySelectedConcept(findNodeById(ROOT_ID), { revealCard: true });
+  state.selectedId = ROOT_ID;
   state.mapTransform = centeredRootTransform();
-  updateConceptHash(ROOT_ID);
+  showConceptCard();
 
   const selected = findNodeById(state.selectedId);
   if (selected) {
@@ -414,126 +372,10 @@ function toggleRootView() {
     statusFilter.value = "";
   }
 
-  applySelectedConcept(findNodeById(ROOT_ID), { revealCard: true });
+  state.selectedId = ROOT_ID;
   state.mapTransform = d3.zoomIdentity;
-  updateConceptHash(ROOT_ID);
+  showConceptCard();
   render();
-}
-
-function selectConcept(nodeId, options = {}) {
-  const node = findNodeById(nodeId);
-  if (!node) return false;
-
-  applySelectedConcept(node, options);
-
-  if (options.updateHash) {
-    updateConceptHash(node.id);
-  }
-
-  if (options.renderMap) {
-    render();
-  } else {
-    updateDetails(node);
-  }
-
-  if (options.focusNode) {
-    scheduleFocusOnNode(node.id);
-  }
-
-  return true;
-}
-
-function applySelectedConcept(node, options = {}) {
-  if (!node) return;
-
-  state.rootOnly = false;
-  state.selectedId = node.id;
-  expandParentForNode(node);
-
-  if (options.revealCard) {
-    showConceptCard();
-  }
-}
-
-function expandParentForNode(node) {
-  if (node.hierarchy_level !== 2) return;
-
-  const parent = findParentAreaForNode(node.id);
-  if (parent) {
-    state.expanded.add(parent.id);
-  }
-}
-
-function findParentAreaForNode(nodeId) {
-  return state.taxonomy.level_1.find((area) => (area.level_2 || []).some((child) => child.id === nodeId));
-}
-
-function parseConceptHash() {
-  const hash = window.location.hash.slice(1);
-  if (!hash) return null;
-
-  const params = new URLSearchParams(hash);
-  return params.get("concept");
-}
-
-function updateConceptHash(nodeId) {
-  const nextUrl = `${window.location.pathname}${window.location.search}#concept=${formatConceptHashId(nodeId)}`;
-  const currentUrl = `${window.location.pathname}${window.location.search}${window.location.hash}`;
-
-  if (currentUrl === nextUrl) {
-    return;
-  }
-
-  window.history.pushState(null, "", nextUrl);
-}
-
-function conceptUrl(nodeId) {
-  return `${window.location.origin}${window.location.pathname}${window.location.search}#concept=${formatConceptHashId(nodeId)}`;
-}
-
-function formatConceptHashId(nodeId) {
-  return encodeURIComponent(nodeId).replaceAll("%3A", ":");
-}
-
-function copySelectedConceptLink() {
-  const url = conceptUrl(state.selectedId);
-
-  if (navigator.clipboard?.writeText) {
-    navigator.clipboard
-      .writeText(url)
-      .then(() => showCopyStatus("Link copied."))
-      .catch(() => fallbackCopyConceptLink(url));
-    return;
-  }
-
-  fallbackCopyConceptLink(url);
-}
-
-function fallbackCopyConceptLink(url) {
-  const input = document.createElement("input");
-  input.value = url;
-  input.setAttribute("readonly", "");
-  input.style.position = "fixed";
-  input.style.top = "-1000px";
-  document.body.append(input);
-  input.select();
-
-  try {
-    document.execCommand("copy");
-    showCopyStatus("Link copied.");
-  } catch {
-    showCopyStatus("Could not copy link.");
-  } finally {
-    input.remove();
-  }
-}
-
-function showCopyStatus(message) {
-  window.clearTimeout(copyStatusTimeout);
-  copyLinkStatus.textContent = message;
-  copyStatusTimeout = window.setTimeout(() => {
-    copyLinkStatus.textContent = "";
-  }, 2400);
 }
 
 function scheduleFocusOnNode(nodeId) {
