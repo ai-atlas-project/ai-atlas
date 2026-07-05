@@ -1,0 +1,14 @@
+# macOS metadata
+.DS_Store
+
+# Temporary files
+*.tmp
+*.log
+
+# Dependencies
+node_modules/
+
+# Local build/cache outputs
+dist/
+build/
+.cache/
