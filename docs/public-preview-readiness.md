@@ -17,7 +17,7 @@ It must not be presented as:
 - a canonical Level 3 taxonomy,
 - a finished educational product,
 - a commercial poster release,
-- a complete website or searchable knowledge graph.
+- a complete public website or production search product beyond the included static viewer.
 
 ## Public preview scope
 
@@ -27,7 +27,9 @@ The public preview scope is:
 - Level 1 — public major areas,
 - Level 2 — public main subareas,
 - public supporting documentation,
-- public generated views that remain aligned with Level 1 and Level 2.
+- public generated views that remain aligned with Level 1 and Level 2,
+- static viewer assets for exploring, filtering, and searching the public Level 1–Level 2 preview,
+- public validation/export scripts used to keep public files aligned.
 
 Level 3 may be mentioned only as draft/review work. Level 3 must not be described as canonical until it passes the promotion process.
 
@@ -63,12 +65,12 @@ Acceptance criteria:
 
 Requirement:
 
-The public repository must contain public outputs only, while private workflows, raw reviews, prompts, and internal planning stay outside the public release unless cleaned and approved.
+The public repository may contain public outputs, public validation/export scripts, and static viewer assets, while private workflows, raw reviews, prompts, internal review-agent definitions, private links, and unpublished planning stay outside the public release unless cleaned and approved.
 
 Acceptance criteria:
 
-- Public README describes the public repository as containing public output files only.
-- Private prompts, raw internal reviews, private links, and unpublished workflow material are not required for public readers.
+- Public README describes the public repository as containing reviewed public outputs, public validation/export scripts, and static viewer assets.
+- Private prompts, raw internal reviews, private links, internal review-agent definitions, unpublished workflow material, and private product planning are not required for public readers.
 - No private-only material is linked as required public reading.
 
 ### 4. Level 3 boundaries are explicit
@@ -96,16 +98,17 @@ Acceptance criteria:
 - Public review copy does not ask reviewers to treat Level 3 as complete.
 - Public review copy explains that deeper concepts will be developed through later draft/review cycles.
 
-### 6. Generated views are release-safe
+### 6. Generated views and viewer assets are release-safe
 
 Requirement:
 
-Public generated views should not contradict the canonical taxonomy scope.
+Public generated views and static viewer assets should not contradict the canonical taxonomy scope.
 
 Acceptance criteria:
 
-- Markmap, Obsidian, and poster/prototype views are either aligned with Level 1–Level 2 or clearly marked as draft/prototype.
+- Markmap, Obsidian, static viewer assets, and poster/prototype views are either aligned with Level 1–Level 2 or clearly marked as draft/prototype.
 - No generated public view presents draft Level 3 as canonical.
+- Search/filter features in the static viewer are scoped to the public Level 1–Level 2 preview and must not be described as a complete public knowledge graph.
 - Any visual metaphor is described as a visual aid, not as a dependency graph, learning path, or historical sequence unless explicitly designed as such.
 
 ### 7. Open issues are classified correctly
@@ -117,8 +120,8 @@ Open issues should not block the public preview unless they affect the correctne
 Acceptance criteria:
 
 - Level 3 schema, relation, ID, promotion, and graph issues are treated as next-phase work.
-- Public-preview blockers are limited to scope clarity, public/private separation, canonical file clarity, and obvious generated-view drift.
-- Future website, search, commercial product, poster polish, and full Level 3 promotion are not required for v0.1 public preview.
+- Public-preview blockers are limited to scope clarity, public/private separation, canonical file clarity, and obvious generated-view or viewer drift.
+- A complete public website/search product beyond the included static viewer, commercial product, poster polish, and full Level 3 promotion are not required for v0.1 public preview.
 
 ### 8. Release language avoids overclaiming
 
@@ -154,14 +157,14 @@ AI Atlas v0.1 may be shown publicly when all must-pass criteria below are satisf
 - [ ] Public/private separation is preserved.
 - [ ] Level 3 boundaries are explicit.
 - [ ] Public review request is focused.
-- [ ] Generated views are release-safe.
+- [ ] Generated views and viewer assets are release-safe.
 - [ ] Release language avoids overclaiming.
 
 The following are not required before the first public preview:
 
 - canonical Level 3 promotion,
 - full relation graph,
-- public website and search,
+- a complete public website/search product beyond the included static viewer,
 - commercial poster launch,
 - complete educational product packaging,
 - Level 4 or Level 5 expansion.
@@ -192,7 +195,7 @@ This checklist does not define:
 - stable ID migration details,
 - relation graph implementation,
 - generated-view automation,
-- website architecture,
+- full website architecture beyond the current static viewer,
 - poster design acceptance criteria,
 - commercial release criteria.
 
