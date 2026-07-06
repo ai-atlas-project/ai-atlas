@@ -125,6 +125,7 @@
     <main class="doc-page">
       <nav class="actions" aria-label="Viewer links">
         <a href="./">Back to viewer</a>
+        <a href="doc.html?doc=mission">Mission</a>
         <a href="doc.html?doc=taxonomy">Taxonomy</a>
         <a href="use-cases.html">Use cases</a>
         <a href="common-terms.html">Common terms</a>
@@ -143,6 +144,7 @@
       <nav class="footer-links" aria-label="Footer links">
         <a href="https://github.com/ai-atlas-project/ai-atlas">GitHub repository</a>
         <a href="https://www.linkedin.com/in/astzhalkouski/">Alyaksandr Stzhalkouski</a>
+        <a href="doc.html?doc=mission">Mission</a>
         <a href="use-cases.html">Use cases</a>
         <a href="common-terms.html">Common terms</a>
         <a href="reuse.html">Reuse</a>
@@ -155,6 +157,11 @@
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script>
       const DOCS = {
+        mission: {
+          title: "AI Atlas mission and vision",
+          path: "../docs/mission-and-vision.md",
+          type: "markdown",
+        },
         taxonomy: {
           title: "AI Atlas taxonomy",
           path: "../taxonomy/ai-taxonomy-l1-l2.md",
@@ -218,117 +225,100 @@
             </div>
             <a class="raw-link" href="../taxonomy/ai-taxonomy-l1-l2.json">Open raw JSON</a>
           </header>
-          <div class="json-toolbar" aria-label="JSON viewer controls">
-            <button id="json-expand-all" type="button">Expand all</button>
-            <button id="json-collapse-all" type="button">Collapse all</button>
-            <button id="json-collapse-children" type="button">Collapse children</button>
+          <div class="json-toolbar">
+            <button type="button" id="expand-json">Expand all</button>
+            <button type="button" id="collapse-json">Collapse all</button>
           </div>
-          <div id="json-tree" class="json-tree" role="tree" aria-label="Formatted taxonomy JSON"></div>
+          <pre id="json-tree" class="json-tree"></pre>
         `;
 
-        const tree = document.querySelector("#json-tree");
-        tree.append(renderJsonValue(data, "root"));
+        const root = document.querySelector("#json-tree");
+        root.appendChild(buildJsonNode(data, true));
 
-        document.querySelector("#json-expand-all").addEventListener("click", () => {
-          tree.querySelectorAll(".json-node.collapsed").forEach((node) => node.classList.remove("collapsed"));
+        document.querySelector("#expand-json").addEventListener("click", () => {
+          root.querySelectorAll(".json-node").forEach((node) => node.classList.remove("collapsed"));
         });
 
-        document.querySelector("#json-collapse-all").addEventListener("click", () => {
-          tree.querySelectorAll(".json-node").forEach((node) => node.classList.add("collapsed"));
-          tree.firstElementChild?.classList.remove("collapsed");
-        });
-
-        document.querySelector("#json-collapse-children").addEventListener("click", () => {
-          tree.querySelectorAll(".json-node").forEach((node) => node.classList.add("collapsed"));
-          tree.firstElementChild?.classList.remove("collapsed");
-          tree.firstElementChild?.querySelectorAll(":scope > .json-children > .json-node").forEach((node) => node.classList.remove("collapsed"));
+        document.querySelector("#collapse-json").addEventListener("click", () => {
+          root.querySelectorAll(".json-node").forEach((node) => node.classList.add("collapsed"));
         });
       }
 
-      function renderJsonValue(value, key = null) {
-        if (Array.isArray(value)) {
-          return renderExpandable(value, key, "array");
-        }
+      function buildJsonNode(value, isRoot = false, key = null) {
+        const wrapper = document.createElement("span");
+        wrapper.className = "json-node";
 
-        if (value && typeof value === "object") {
-          return renderExpandable(value, key, "object");
-        }
+        const isObject = value && typeof value === "object";
+        const isArray = Array.isArray(value);
 
-        const row = document.createElement("div");
-        row.className = "json-row";
-        row.append(blankToggle());
-        if (key !== null && key !== "root") {
-          row.append(renderKey(key), textNode(": "));
-        }
-        row.append(renderPrimitive(value));
-        return row;
-      }
-
-      function renderExpandable(value, key, type) {
-        const isArray = type === "array";
-        const entries = isArray ? value.map((item, index) => [index, item]) : Object.entries(value);
-        const node = document.createElement("div");
-        node.className = "json-node";
-
-        const row = document.createElement("div");
+        const row = document.createElement("span");
         row.className = "json-row";
 
-        const toggle = document.createElement("button");
-        toggle.className = "json-toggle";
-        toggle.type = "button";
-        toggle.setAttribute("aria-label", `Toggle ${key || type}`);
-        toggle.addEventListener("click", () => node.classList.toggle("collapsed"));
-        row.append(toggle);
-
-        if (key !== null && key !== "root") {
-          row.append(renderKey(key), textNode(": "));
+        if (isObject) {
+          const toggle = document.createElement("button");
+          toggle.type = "button";
+          toggle.className = "json-toggle";
+          toggle.setAttribute("aria-label", "Toggle JSON node");
+          toggle.addEventListener("click", () => wrapper.classList.toggle("collapsed"));
+          row.appendChild(toggle);
+        } else {
+          const spacer = document.createElement("span");
+          spacer.className = "json-toggle";
+          row.appendChild(spacer);
         }
 
-        row.append(span("json-punctuation", isArray ? "[" : "{"));
-        row.append(span("json-summary", ` ${entries.length} ${entries.length === 1 ? "item" : "items"} `));
-        row.append(span("json-punctuation", isArray ? "]" : "}"));
-        node.append(row);
+        if (key !== null) {
+          const keyEl = document.createElement("span");
+          keyEl.className = "json-key";
+          keyEl.textContent = JSON.stringify(key);
+          row.appendChild(keyEl);
+          row.appendChild(textNode(": "));
+        }
 
-        const children = document.createElement("div");
+        if (!isObject) {
+          row.appendChild(formatPrimitive(value));
+          wrapper.appendChild(row);
+          return wrapper;
+        }
+
+        const summary = document.createElement("span");
+        summary.className = "json-summary";
+        summary.textContent = isArray ? `Array(${value.length})` : `Object(${Object.keys(value).length})`;
+        row.appendChild(summary);
+        wrapper.appendChild(row);
+
+        const children = document.createElement("span");
         children.className = "json-children";
-        for (const [childKey, childValue] of entries) {
-          children.append(renderJsonValue(childValue, childKey));
-        }
-        node.append(children);
+        const entries = isArray ? value.map((item, index) => [index, item]) : Object.entries(value);
+        entries.forEach(([childKey, childValue]) => {
+          children.appendChild(buildJsonNode(childValue, false, childKey));
+        });
+        wrapper.appendChild(children);
 
-        return node;
+        if (!isRoot) {
+          wrapper.classList.add("collapsed");
+        }
+
+        return wrapper;
       }
 
-      function renderKey(key) {
-        return span("json-key", `"${escapeHtml(String(key))}"`);
-      }
-
-      function renderPrimitive(value) {
-        if (typeof value === "string") {
-          return span("json-string", `"${escapeHtml(value)}"`);
-        }
-        if (typeof value === "number") {
-          return span("json-number", String(value));
-        }
-        if (typeof value === "boolean") {
-          return span("json-boolean", String(value));
-        }
-        if (value === null) {
-          return span("json-null", "null");
-        }
-        return span("json-string", `"${escapeHtml(String(value))}"`);
-      }
-
-      function blankToggle() {
-        const spacer = document.createElement("span");
-        spacer.className = "json-toggle";
-        return spacer;
-      }
-
-      function span(className, text) {
+      function formatPrimitive(value) {
         const el = document.createElement("span");
-        el.className = className;
-        el.innerHTML = text;
+        if (typeof value === "string") {
+          el.className = "json-string";
+          el.textContent = JSON.stringify(value);
+        } else if (typeof value === "number") {
+          el.className = "json-number";
+          el.textContent = String(value);
+        } else if (typeof value === "boolean") {
+          el.className = "json-boolean";
+          el.textContent = String(value);
+        } else if (value === null) {
+          el.className = "json-null";
+          el.textContent = "null";
+        } else {
+          el.textContent = String(value);
+        }
         return el;
       }
 
@@ -337,12 +327,10 @@
       }
 
       function escapeHtml(value) {
-        return String(value)
-          .replaceAll("&", "&amp;")
-          .replaceAll("<", "&lt;")
-          .replaceAll(">", "&gt;")
-          .replaceAll('"', "&quot;")
-          .replaceAll("'", "&#039;");
+        return value.replace(/[&<>"]/g, (char) => {
+          const map = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" };
+          return map[char] || char;
+        });
       }
     </script>
   </body>
