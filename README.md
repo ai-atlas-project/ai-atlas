@@ -1,10 +1,18 @@
 # AI Atlas
 
-A clean, open map of modern Artificial Intelligence — built to make the AI landscape easier to navigate, review, and discuss.
+AI Atlas is an open, community-reviewed knowledge map of Artificial Intelligence, built on a structured taxonomy.
+
+It is built to make the AI landscape easier to navigate, review, and discuss.
 
 ## Mission
 
-To build an open, community-reviewed map of modern AI that helps people understand how the field fits together.
+AI Atlas helps people understand AI by mapping stable concepts, their meanings, and their relationships.
+
+## Vision
+
+AI Atlas aims to become a trusted conceptual navigation layer for AI, helping engineers, researchers, educators, builders, and decision-makers see how AI concepts connect across fields, systems, architectures, tools, and real-world applications.
+
+See also: [Mission and vision](docs/mission-and-vision.md).
 
 ## Why this exists
 
@@ -49,7 +57,7 @@ AI Atlas v0.1 may be shown publicly as a public preview of the Level 1 and Level
 
 ## What this is
 
-AI Atlas is an open AI taxonomy project.
+AI Atlas is an open, community-reviewed knowledge map built on a structured AI taxonomy.
 
 It is not intended to be an authoritative taxonomy yet. The goal is to create a useful, discussable, expandable mental model of AI that can be reviewed and improved by the community.
 
