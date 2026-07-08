@@ -10,25 +10,74 @@ const RELATION_DETAILS = {
   "related-to": "A general non-hierarchical association used when a more precise relation does not fit.",
   "narrower-than": "Source is a more specific form of the target concept."
 };
-const RELATION_COLORS = {
-  "has-part": "#f4f1ea",
-  "part-of": "#d6d0c4",
-  uses: "#9cc9ff",
-  "applies-to": "#c6d982",
-  evaluates: "#ffbf7a",
-  "related-to": "#b7a5ff",
-  "narrower-than": "#f08fb5"
-};
+
+const GROUPS = [
+  {
+    id: "core-parts",
+    title: "Core parts",
+    relationLabel: "AI Agent has-part",
+    note: "Components and capabilities represented as parts of the draft agent concept.",
+    edges: [
+      ["ai-agent", "goals", "has-part"],
+      ["ai-agent", "environment", "has-part"],
+      ["ai-agent", "planning", "has-part"],
+      ["ai-agent", "reasoning", "has-part"],
+      ["ai-agent", "memory", "has-part"],
+      ["ai-agent", "action-execution", "has-part"]
+    ]
+  },
+  {
+    id: "uses",
+    title: "Uses",
+    relationLabel: "AI Agent uses",
+    note: "Tool relationships remain typed as uses rather than hierarchy.",
+    edges: [["ai-agent", "tool-use", "uses"]],
+    children: {
+      "tool-use": [["tool-use", "function-calling", "uses"]]
+    }
+  },
+  {
+    id: "evaluated-by",
+    title: "Evaluated by",
+    relationLabel: "evaluates AI Agent",
+    note: "Assessment concepts point toward the agent concept.",
+    edges: [
+      ["evaluation", "ai-agent", "evaluates"],
+      ["monitoring", "ai-agent", "evaluates"]
+    ]
+  },
+  {
+    id: "governance-oversight",
+    title: "Governance / oversight",
+    relationLabel: "applies-to AI Agent",
+    note: "Oversight and control concepts apply to the draft agent concept.",
+    edges: [
+      ["guardrails", "ai-agent", "applies-to"],
+      ["human-oversight", "ai-agent", "applies-to"]
+    ]
+  },
+  {
+    id: "agent-family-context",
+    title: "Agent family / context",
+    relationLabel: "family and multi-agent context",
+    note: "Adjacent agent concepts and multi-agent coordination context.",
+    edges: [
+      ["autonomous-agents", "ai-agent", "narrower-than"],
+      ["multi-agent-systems", "ai-agent", "related-to"],
+      ["agent-communication", "multi-agent-systems", "applies-to"],
+      ["coordination-and-negotiation", "multi-agent-systems", "applies-to"]
+    ]
+  }
+];
 
 const state = {
   graph: null,
-  selectedId: null,
-  activeRelations: new Set(ALLOWED_RELATIONS),
-  transform: d3.zoomIdentity
+  nodeById: new Map(),
+  selectedId: "ai-agent"
 };
 
-const svg = d3.select("#agents-map");
-const filterContainer = document.querySelector("#relation-filters");
+const centralConcept = document.querySelector("#central-concept");
+const relationshipGroups = document.querySelector("#relationship-groups");
 const legend = document.querySelector("#relation-legend");
 const detailsTitle = document.querySelector("#details-title");
 const nodeType = document.querySelector("#node-type");
@@ -36,11 +85,6 @@ const nodeStatus = document.querySelector("#node-status");
 const nodeDescription = document.querySelector("#node-description");
 const feedbackLink = document.querySelector("#feedback-link");
 
-let viewportLayer;
-let simulation;
-let zoomBehavior;
-
-renderFilterControls();
 renderLegend();
 
 fetch(DATA_URL)
@@ -53,47 +97,18 @@ fetch(DATA_URL)
   .then((graph) => {
     validateGraph(graph);
     state.graph = graph;
-    state.selectedId = graph.nodes[0]?.id || null;
-    render();
+    state.nodeById = new Map(graph.nodes.map((node) => [node.id, node]));
+    renderRelationshipMap();
+    updateDetails(state.nodeById.get(state.selectedId) || graph.nodes[0]);
   })
   .catch((error) => {
     showLoadError(error);
   });
 
-window.addEventListener("resize", () => {
-  if (state.graph) {
-    render();
-  }
-});
-
-function renderFilterControls() {
-  for (const relation of ALLOWED_RELATIONS) {
-    const label = document.createElement("label");
-    const input = document.createElement("input");
-    input.type = "checkbox";
-    input.value = relation;
-    input.checked = true;
-    input.addEventListener("change", () => {
-      if (input.checked) {
-        state.activeRelations.add(relation);
-      } else {
-        state.activeRelations.delete(relation);
-      }
-      updateFilteredState();
-    });
-
-    label.append(input, document.createTextNode(relation));
-    filterContainer.append(label);
-  }
-}
-
 function renderLegend() {
   for (const relation of ALLOWED_RELATIONS) {
     const term = document.createElement("dt");
-    const swatch = document.createElement("span");
-    swatch.className = "legend-swatch";
-    swatch.style.setProperty("--relation-color", RELATION_COLORS[relation]);
-    term.append(swatch, relation);
+    term.textContent = relation;
 
     const description = document.createElement("dd");
     description.textContent = RELATION_DETAILS[relation];
@@ -114,165 +129,173 @@ function validateGraph(graph) {
   }
 
   for (const id of duplicateIds) {
-    console.warn(`Duplicate node id in AI Agents graph: ${id}`);
+    console.warn(`Duplicate node id in AI Agents relationship map: ${id}`);
   }
 
   for (const edge of graph.edges || []) {
     if (!seen.has(edge.source)) {
-      console.warn(`AI Agents graph edge references missing source node: ${edge.source}`);
+      console.warn(`AI Agents relationship map edge references missing source node: ${edge.source}`);
     }
     if (!seen.has(edge.target)) {
-      console.warn(`AI Agents graph edge references missing target node: ${edge.target}`);
+      console.warn(`AI Agents relationship map edge references missing target node: ${edge.target}`);
     }
     if (!ALLOWED_RELATIONS.includes(edge.type)) {
-      console.warn(`AI Agents graph edge has unsupported relation type: ${edge.type}`);
+      console.warn(`AI Agents relationship map edge has unsupported relation type: ${edge.type}`);
     }
   }
 }
 
-function render() {
-  const width = svg.node().clientWidth || 900;
-  const height = svg.node().clientHeight || 620;
-  const nodes = state.graph.nodes.map((node) => ({ ...node }));
-  const links = state.graph.edges.map((edge) => ({ ...edge }));
-  const nodeById = new Map(nodes.map((node) => [node.id, node]));
-
-  svg.selectAll("*").remove();
-  svg.attr("viewBox", [-width / 2, -height / 2, width, height]);
-
-  const defs = svg.append("defs");
-  defs
-    .append("marker")
-    .attr("id", "arrow-default")
-    .attr("viewBox", "0 -5 10 10")
-    .attr("refX", 17)
-    .attr("refY", 0)
-    .attr("markerWidth", 7)
-    .attr("markerHeight", 7)
-    .attr("orient", "auto")
-    .append("path")
-    .attr("fill", "rgba(244, 241, 234, 0.72)")
-    .attr("d", "M0,-5L10,0L0,5");
-
-  viewportLayer = svg.append("g").attr("class", "agents-viewport");
-  const linkLayer = viewportLayer.append("g").attr("class", "agent-links");
-  const labelLayer = viewportLayer.append("g").attr("class", "agent-labels");
-  const nodeLayer = viewportLayer.append("g").attr("class", "agent-nodes");
-
-  const linkSelection = linkLayer
-    .selectAll("line")
-    .data(links)
-    .join("line")
-    .attr("class", "agent-link")
-    .attr("stroke", (edge) => RELATION_COLORS[edge.type] || "var(--line-strong)");
-
-  linkSelection.append("title").text((edge) => `${labelFor(nodeById, edge.source)} ${edge.type} ${labelFor(nodeById, edge.target)}`);
-
-  const labelSelection = labelLayer
-    .selectAll("text")
-    .data(links)
-    .join("text")
-    .attr("class", "agent-link-label")
-    .text((edge) => edge.type);
-
-  const nodeSelection = nodeLayer
-    .selectAll("g")
-    .data(nodes, (node) => node.id)
-    .join("g")
-    .attr("class", (node) => nodeClass(node, links))
-    .call(
-      d3
-        .drag()
-        .on("start", dragStarted)
-        .on("drag", dragged)
-        .on("end", dragEnded)
-    )
-    .on("click", (_event, node) => {
-      state.selectedId = node.id;
-      updateDetails(node);
-      nodeLayer.selectAll("g").attr("class", (item) => nodeClass(item, links));
-    });
-
-  nodeSelection.append("circle").attr("r", (node) => radiusFor(node));
-  nodeSelection
-    .append("text")
-    .attr("x", (node) => radiusFor(node) + 8)
-    .attr("y", "0.32em")
-    .text((node) => node.label);
-  nodeSelection.append("title").text((node) => node.description);
-
-  setupZoom(width, height);
-
-  simulation?.stop();
-  simulation = d3
-    .forceSimulation(nodes)
-    .force(
-      "link",
-      d3
-        .forceLink(links)
-        .id((node) => node.id)
-        .distance((edge) => (edge.source.id === "ai-agent" || edge.target.id === "ai-agent" ? 150 : 120))
-        .strength(0.62)
-    )
-    .force("charge", d3.forceManyBody().strength(-520))
-    .force("center", d3.forceCenter(0, 0))
-    .force("collision", d3.forceCollide().radius((node) => radiusFor(node) + 46))
-    .force("x", d3.forceX((node) => (node.id === "ai-agent" ? 0 : 0)).strength((node) => (node.id === "ai-agent" ? 0.18 : 0.035)))
-    .force("y", d3.forceY((node) => (node.id === "ai-agent" ? 0 : 0)).strength((node) => (node.id === "ai-agent" ? 0.18 : 0.035)))
-    .alphaDecay(0.055)
-    .velocityDecay(0.58)
-    .on("tick", () => {
-      linkSelection
-        .attr("x1", (edge) => edge.source.x)
-        .attr("y1", (edge) => edge.source.y)
-        .attr("x2", (edge) => edge.target.x)
-        .attr("y2", (edge) => edge.target.y);
-
-      labelSelection
-        .attr("x", (edge) => (edge.source.x + edge.target.x) / 2)
-        .attr("y", (edge) => (edge.source.y + edge.target.y) / 2);
-
-      nodeSelection.attr("transform", (node) => `translate(${node.x},${node.y})`);
-    });
-
-  updateFilteredState();
-  updateDetails(nodeById.get(state.selectedId) || nodes[0]);
+function renderRelationshipMap() {
+  centralConcept.replaceChildren(renderConceptCard("ai-agent", { central: true }));
+  relationshipGroups.replaceChildren(...GROUPS.map((group) => renderGroup(group)));
 }
 
-function setupZoom(width, height) {
-  zoomBehavior = d3
-    .zoom()
-    .scaleExtent([0.45, 3])
-    .translateExtent([
-      [-width * 2, -height * 2],
-      [width * 2, height * 2]
-    ])
-    .filter((event) => !event.button && !event.target.closest(".agent-node"))
-    .on("zoom", (event) => {
-      state.transform = event.transform;
-      viewportLayer.attr("transform", state.transform);
-    });
+function renderGroup(group) {
+  const section = document.createElement("section");
+  section.className = "relationship-group";
+  section.setAttribute("aria-labelledby", `${group.id}-title`);
 
-  svg.call(zoomBehavior).call(zoomBehavior.transform, state.transform).on("dblclick.zoom", null);
-}
+  const header = document.createElement("div");
+  header.className = "relationship-group-header";
 
-function updateFilteredState() {
-  if (!state.graph) return;
+  const titleBlock = document.createElement("div");
+  const eyebrow = document.createElement("p");
+  eyebrow.className = "relationship-type";
+  eyebrow.textContent = group.relationLabel;
+  const title = document.createElement("h3");
+  title.id = `${group.id}-title`;
+  title.textContent = group.title;
+  titleBlock.append(eyebrow, title);
 
-  const activeNodeIds = new Set();
-  for (const edge of state.graph.edges) {
-    if (state.activeRelations.has(edge.type)) {
-      activeNodeIds.add(edge.source);
-      activeNodeIds.add(edge.target);
+  const note = document.createElement("p");
+  note.textContent = group.note;
+  header.append(titleBlock, note);
+
+  const list = document.createElement("div");
+  list.className = "relationship-card-list";
+
+  const topLevelTargets = new Set();
+  for (const [source, target] of group.edges) {
+    if (source === "ai-agent") {
+      topLevelTargets.add(target);
+    } else if (target === "ai-agent") {
+      topLevelTargets.add(source);
+    } else if (!isChildEdge(group, source, target)) {
+      topLevelTargets.add(source);
     }
   }
 
-  svg
-    .selectAll(".agent-link")
-    .classed("filtered-out", (edge) => !state.activeRelations.has(edge.type))
-    .attr("marker-end", (edge) => (state.activeRelations.has(edge.type) ? "url(#arrow-default)" : null));
-  svg.selectAll(".agent-link-label").classed("filtered-out", (edge) => !state.activeRelations.has(edge.type));
-  svg.selectAll(".agent-node").classed("filtered-out", (node) => !activeNodeIds.has(node.id));
+  for (const nodeId of topLevelTargets) {
+    const item = renderRelationshipItem(group, nodeId);
+    if (item) list.append(item);
+  }
+
+  section.append(header, list);
+  return section;
+}
+
+function renderRelationshipItem(group, nodeId) {
+  const node = state.nodeById.get(nodeId);
+  if (!node) return null;
+
+  const wrapper = document.createElement("div");
+  wrapper.className = "relationship-item";
+  wrapper.append(renderConceptCard(nodeId));
+
+  const childEdges = group.children?.[nodeId] || [];
+  if (childEdges.length) {
+    const childList = document.createElement("div");
+    childList.className = "nested-relationships";
+
+    for (const [source, target, type] of childEdges) {
+      const relation = document.createElement("span");
+      relation.className = "nested-relation";
+      relation.textContent = `${type} ->`;
+      const child = renderConceptCard(source === nodeId ? target : source, { compact: true });
+      childList.append(relation, child);
+    }
+
+    wrapper.append(childList);
+  }
+
+  const relationBadges = relationsFor(nodeId, group).map((edge) => renderRelationBadge(edge, nodeId));
+  if (relationBadges.length) {
+    const badges = document.createElement("div");
+    badges.className = "relation-badges";
+    badges.append(...relationBadges);
+    wrapper.append(badges);
+  }
+
+  return wrapper;
+}
+
+function renderConceptCard(nodeId, options = {}) {
+  const node = state.nodeById.get(nodeId);
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "concept-chip";
+  if (options.central) button.classList.add("central");
+  if (options.compact) button.classList.add("compact");
+  if (nodeId === state.selectedId) button.classList.add("selected");
+  button.dataset.nodeId = nodeId;
+
+  if (!node) {
+    button.textContent = nodeId;
+    button.disabled = true;
+    return button;
+  }
+
+  const label = document.createElement("span");
+  label.className = "concept-label";
+  label.textContent = node.label;
+
+  const meta = document.createElement("span");
+  meta.className = "concept-meta";
+  meta.textContent = node.type;
+
+  button.append(label, meta);
+  button.addEventListener("click", () => {
+    state.selectedId = node.id;
+    updateDetails(node);
+    refreshSelectedCards();
+  });
+
+  return button;
+}
+
+function renderRelationBadge(edge, nodeId) {
+  const badge = document.createElement("span");
+  badge.className = "relation-badge";
+
+  if (edge.source === nodeId && edge.target !== "ai-agent") {
+    badge.textContent = `${edge.type} -> ${labelFor(edge.target)}`;
+  } else if (edge.source === nodeId) {
+    badge.textContent = `${edge.type} -> AI Agent`;
+  } else if (edge.target === nodeId) {
+    badge.textContent = `${labelFor(edge.source)} -> ${edge.type}`;
+  } else {
+    badge.textContent = edge.type;
+  }
+
+  return badge;
+}
+
+function relationsFor(nodeId, group) {
+  return group.edges
+    .map(([source, target, type]) => ({ source, target, type }))
+    .filter((edge) => edge.source === nodeId || edge.target === nodeId);
+}
+
+function isChildEdge(group, source, target) {
+  return Object.values(group.children || {}).some((edges) =>
+    edges.some(([childSource, childTarget]) => childSource === source && childTarget === target)
+  );
+}
+
+function refreshSelectedCards() {
+  for (const card of document.querySelectorAll(".concept-chip")) {
+    card.classList.toggle("selected", card.dataset.nodeId === state.selectedId);
+  }
 }
 
 function updateDetails(node) {
@@ -282,46 +305,16 @@ function updateDetails(node) {
   nodeType.textContent = node.type;
   nodeStatus.textContent = node.status;
   nodeDescription.textContent = node.description;
-  feedbackLink.href = `${FEEDBACK_URL}?title=${encodeURIComponent(`AI Agents graph feedback: ${node.label}`)}`;
+  feedbackLink.href = `${FEEDBACK_URL}?title=${encodeURIComponent(`AI Agents relationship map feedback: ${node.label}`)}`;
 }
 
-function nodeClass(node) {
-  const classes = ["agent-node"];
-  if (node.id === state.selectedId) classes.push("selected");
-  return classes.join(" ");
-}
-
-function labelFor(nodeById, endpoint) {
-  const id = typeof endpoint === "string" ? endpoint : endpoint.id;
-  return nodeById.get(id)?.label || id;
-}
-
-function radiusFor(node) {
-  if (node.id === "ai-agent") return 16;
-  if (node.type.includes("related concept")) return 11;
-  return 8;
-}
-
-function dragStarted(event, node) {
-  if (!event.active) simulation.alphaTarget(0.18).restart();
-  node.fx = node.x;
-  node.fy = node.y;
-}
-
-function dragged(event, node) {
-  node.fx = event.x;
-  node.fy = event.y;
-}
-
-function dragEnded(event, node) {
-  if (!event.active) simulation.alphaTarget(0);
-  node.fx = null;
-  node.fy = null;
+function labelFor(nodeId) {
+  return state.nodeById.get(nodeId)?.label || nodeId;
 }
 
 function showLoadError(error) {
   console.error(error);
-  detailsTitle.textContent = "Graph failed to load";
+  detailsTitle.textContent = "Relationship map failed to load";
   nodeType.textContent = "error";
   nodeStatus.textContent = "unavailable";
   nodeDescription.textContent = error.message;

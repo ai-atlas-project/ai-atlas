@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AI Agents Graph Prototype</title>
+    <title>AI Agents Relationship Map</title>
     <meta
       name="description"
-      content="Draft AI Atlas graph prototype for AI Agents concepts and relationships."
+      content="Draft AI Atlas relationship map for AI Agents concepts and typed relationships."
     />
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="footer-icons.css" />
@@ -15,9 +15,9 @@
   <body>
     <header class="hero compact" aria-labelledby="page-title">
       <div>
-        <p class="eyebrow">AI Atlas / draft graph</p>
-        <h1 id="page-title">AI Agents: concepts and relationships</h1>
-        <p class="hero-subtitle">Draft graph prototype — not canonical taxonomy.</p>
+        <p class="eyebrow">AI Atlas / draft relationship map</p>
+        <h1 id="page-title">AI Agents Relationship Map</h1>
+        <p class="hero-subtitle">Draft relationship map — not canonical taxonomy.</p>
       </div>
       <nav class="actions" aria-label="Project links">
         <a href="index.html">Taxonomy viewer</a>
@@ -26,27 +26,39 @@
       </nav>
     </header>
 
-    <main class="layout wide-map">
-      <section class="map-card agents-map-card" aria-label="Interactive AI Agents draft graph">
-        <div class="toolbar agents-toolbar">
+    <main class="layout relationship-layout">
+      <section class="map-card relationship-map-card" aria-label="Interactive AI Agents draft relationship map">
+        <div class="relationship-intro">
           <div>
             <p class="eyebrow">Prototype status</p>
-            <p class="draft-notice">Draft graph prototype — not canonical taxonomy.</p>
+            <p class="draft-notice">Draft relationship map — not canonical taxonomy.</p>
           </div>
-          <fieldset id="relation-filters" class="relation-filters" aria-label="Relation type filters"></fieldset>
+          <p>
+            AI Atlas separates hierarchy from typed relationships. This draft keeps concepts non-canonical while showing
+            how parts, uses, evaluation, governance, and adjacent agent contexts relate.
+          </p>
         </div>
 
-        <div class="agents-graph-shell">
-          <div class="map-wrap agents-map-wrap">
-            <svg id="agents-map" tabindex="0" role="img" aria-label="Force-directed graph of AI agent concepts and relationships"></svg>
-          </div>
+        <div class="relationship-shell">
+          <section class="relationship-map" aria-labelledby="map-heading">
+            <div class="map-heading-row">
+              <div>
+                <p class="eyebrow">Central concept</p>
+                <h2 id="map-heading">Concept-first relationship map</h2>
+              </div>
+              <p class="map-hint">Select any concept to inspect draft metadata.</p>
+            </div>
 
-          <aside class="agents-side-panel" aria-label="Graph details and legend">
+            <div id="central-concept" class="central-concept" aria-live="polite"></div>
+            <div id="relationship-groups" class="relationship-groups"></div>
+          </section>
+
+          <aside class="agents-side-panel" aria-label="Concept details and relation legend">
             <section id="agent-details" class="concept-card agents-details" aria-labelledby="details-title" aria-live="polite">
               <div class="concept-card-header">
                 <p class="eyebrow">Concept details</p>
               </div>
-              <h2 id="details-title">Select a node</h2>
+              <h2 id="details-title">Select a concept</h2>
               <dl>
                 <div>
                   <dt>Type</dt>
@@ -57,9 +69,9 @@
                   <dd id="node-status">draft</dd>
                 </div>
               </dl>
-              <p id="node-description" class="description">Click a node to inspect its draft description.</p>
+              <p id="node-description" class="description">Click a concept card to inspect its draft description.</p>
               <div class="details-actions stacked">
-                <a id="feedback-link" href="https://github.com/ai-atlas-project/ai-atlas/issues/new">Give feedback on this graph</a>
+                <a id="feedback-link" href="https://github.com/ai-atlas-project/ai-atlas/issues/new">Give feedback on this map</a>
               </div>
             </section>
 
@@ -69,20 +81,17 @@
             </section>
           </aside>
         </div>
-
-        <p class="hint">Drag nodes to adjust the layout. Use relation filters to compare draft links.</p>
       </section>
     </main>
 
     <footer class="site-footer" aria-label="Site footer">
-      <p>AI Atlas draft graph prototype · Canonical taxonomy was not changed.</p>
+      <p>AI Atlas draft relationship map · Canonical taxonomy was not changed.</p>
       <nav class="footer-links" aria-label="Footer links">
         <a href="https://github.com/ai-atlas-project/ai-atlas">GitHub repository</a>
         <a href="https://github.com/ai-atlas-project/ai-atlas/issues/new">Feedback</a>
       </nav>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
     <script src="ai-agents-graph.js"></script>
   </body>
 </html>
