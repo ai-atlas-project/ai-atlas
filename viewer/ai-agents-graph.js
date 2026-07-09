@@ -11,61 +11,58 @@ const RELATION_DETAILS = {
   "narrower-than": "Source is a more specific form of the target concept."
 };
 
-const GROUPS = [
+const TREE_GROUPS = [
   {
     id: "core-parts",
-    title: "Core parts",
-    relationLabel: "AI Agent has-part",
-    note: "Components and capabilities represented as parts of the draft agent concept.",
-    edges: [
-      ["ai-agent", "goals", "has-part"],
-      ["ai-agent", "environment", "has-part"],
-      ["ai-agent", "planning", "has-part"],
-      ["ai-agent", "reasoning", "has-part"],
-      ["ai-agent", "memory", "has-part"],
-      ["ai-agent", "action-execution", "has-part"]
+    title: "Core parts / has-part",
+    relationHint: "AI Agent has-part",
+    children: [
+      conceptNode("goals", "has-part"),
+      conceptNode("environment", "has-part"),
+      conceptNode("planning", "has-part"),
+      conceptNode("reasoning", "has-part"),
+      conceptNode("memory", "has-part"),
+      conceptNode("action-execution", "has-part")
     ]
   },
   {
     id: "uses",
     title: "Uses",
-    relationLabel: "AI Agent uses",
-    note: "Tool relationships remain typed as uses rather than hierarchy.",
-    edges: [["ai-agent", "tool-use", "uses"]],
-    children: {
-      "tool-use": [["tool-use", "function-calling", "uses"]]
-    }
+    relationHint: "AI Agent uses",
+    children: [
+      conceptNode("tool-use", "uses", [
+        conceptNode("function-calling", "uses")
+      ])
+    ]
   },
   {
     id: "evaluated-by",
     title: "Evaluated by",
-    relationLabel: "evaluates AI Agent",
-    note: "Assessment concepts point toward the agent concept.",
-    edges: [
-      ["evaluation", "ai-agent", "evaluates"],
-      ["monitoring", "ai-agent", "evaluates"]
+    relationHint: "evaluates AI Agent",
+    children: [
+      conceptNode("evaluation", "evaluates"),
+      conceptNode("monitoring", "evaluates")
     ]
   },
   {
-    id: "governance-oversight",
-    title: "Governance / oversight",
-    relationLabel: "applies-to AI Agent",
-    note: "Oversight and control concepts apply to the draft agent concept.",
-    edges: [
-      ["guardrails", "ai-agent", "applies-to"],
-      ["human-oversight", "ai-agent", "applies-to"]
+    id: "governance",
+    title: "Governance / applies-to",
+    relationHint: "applies-to AI Agent",
+    children: [
+      conceptNode("guardrails", "applies-to"),
+      conceptNode("human-oversight", "applies-to")
     ]
   },
   {
     id: "agent-family-context",
     title: "Agent family / context",
-    relationLabel: "family and multi-agent context",
-    note: "Adjacent agent concepts and multi-agent coordination context.",
-    edges: [
-      ["autonomous-agents", "ai-agent", "narrower-than"],
-      ["multi-agent-systems", "ai-agent", "related-to"],
-      ["agent-communication", "multi-agent-systems", "applies-to"],
-      ["coordination-and-negotiation", "multi-agent-systems", "applies-to"]
+    relationHint: "agent family and multi-agent context",
+    children: [
+      conceptNode("autonomous-agents", "narrower-than"),
+      conceptNode("multi-agent-systems", "related-to", [
+        conceptNode("agent-communication", "applies-to"),
+        conceptNode("coordination-and-negotiation", "applies-to")
+      ])
     ]
   }
 ];
@@ -73,19 +70,31 @@ const GROUPS = [
 const state = {
   graph: null,
   nodeById: new Map(),
-  selectedId: "ai-agent"
+  selectedId: "ai-agent",
+  collapsedGroups: new Set()
 };
 
-const centralConcept = document.querySelector("#central-concept");
-const relationshipGroups = document.querySelector("#relationship-groups");
+const treeRoot = document.querySelector("#relationship-tree");
 const legend = document.querySelector("#relation-legend");
 const detailsTitle = document.querySelector("#details-title");
 const nodeType = document.querySelector("#node-type");
 const nodeStatus = document.querySelector("#node-status");
 const nodeDescription = document.querySelector("#node-description");
 const feedbackLink = document.querySelector("#feedback-link");
+const expandAllButton = document.querySelector("#expand-all");
+const collapseAllButton = document.querySelector("#collapse-all");
 
 renderLegend();
+
+expandAllButton.addEventListener("click", () => {
+  state.collapsedGroups.clear();
+  renderRelationshipTree();
+});
+
+collapseAllButton.addEventListener("click", () => {
+  state.collapsedGroups = new Set(TREE_GROUPS.map((group) => group.id));
+  renderRelationshipTree();
+});
 
 fetch(DATA_URL)
   .then((response) => {
@@ -98,12 +107,16 @@ fetch(DATA_URL)
     validateGraph(graph);
     state.graph = graph;
     state.nodeById = new Map(graph.nodes.map((node) => [node.id, node]));
-    renderRelationshipMap();
+    renderRelationshipTree();
     updateDetails(state.nodeById.get(state.selectedId) || graph.nodes[0]);
   })
   .catch((error) => {
     showLoadError(error);
   });
+
+function conceptNode(id, relation, children = []) {
+  return { id, relation, children };
+}
 
 function renderLegend() {
   for (const relation of ALLOWED_RELATIONS) {
@@ -129,172 +142,150 @@ function validateGraph(graph) {
   }
 
   for (const id of duplicateIds) {
-    console.warn(`Duplicate node id in AI Agents relationship map: ${id}`);
+    console.warn(`Duplicate node id in AI Agents relationship tree: ${id}`);
   }
 
   for (const edge of graph.edges || []) {
     if (!seen.has(edge.source)) {
-      console.warn(`AI Agents relationship map edge references missing source node: ${edge.source}`);
+      console.warn(`AI Agents relationship tree edge references missing source node: ${edge.source}`);
     }
     if (!seen.has(edge.target)) {
-      console.warn(`AI Agents relationship map edge references missing target node: ${edge.target}`);
+      console.warn(`AI Agents relationship tree edge references missing target node: ${edge.target}`);
     }
     if (!ALLOWED_RELATIONS.includes(edge.type)) {
-      console.warn(`AI Agents relationship map edge has unsupported relation type: ${edge.type}`);
+      console.warn(`AI Agents relationship tree edge has unsupported relation type: ${edge.type}`);
     }
   }
 }
 
-function renderRelationshipMap() {
-  centralConcept.replaceChildren(renderConceptCard("ai-agent", { central: true }));
-  relationshipGroups.replaceChildren(...GROUPS.map((group) => renderGroup(group)));
+function renderRelationshipTree() {
+  const rootList = document.createElement("div");
+  rootList.className = "tree-list";
+  rootList.append(renderConceptRow("ai-agent", { depth: 0, root: true }));
+
+  const groupsList = document.createElement("div");
+  groupsList.className = "tree-children root-children";
+
+  for (const group of TREE_GROUPS) {
+    groupsList.append(renderGroup(group));
+  }
+
+  rootList.append(groupsList);
+  treeRoot.replaceChildren(rootList);
 }
 
 function renderGroup(group) {
-  const section = document.createElement("section");
-  section.className = "relationship-group";
-  section.setAttribute("aria-labelledby", `${group.id}-title`);
+  const isCollapsed = state.collapsedGroups.has(group.id);
+  const groupEl = document.createElement("section");
+  groupEl.className = "tree-group";
+  groupEl.dataset.groupId = group.id;
 
-  const header = document.createElement("div");
-  header.className = "relationship-group-header";
+  const header = document.createElement("button");
+  header.type = "button";
+  header.className = "tree-row group-row";
+  header.setAttribute("aria-expanded", String(!isCollapsed));
+  header.style.setProperty("--depth", 1);
+  header.addEventListener("click", () => {
+    toggleGroup(group.id);
+  });
 
-  const titleBlock = document.createElement("div");
-  const eyebrow = document.createElement("p");
-  eyebrow.className = "relationship-type";
-  eyebrow.textContent = group.relationLabel;
-  const title = document.createElement("h3");
-  title.id = `${group.id}-title`;
-  title.textContent = group.title;
-  titleBlock.append(eyebrow, title);
+  const toggle = document.createElement("span");
+  toggle.className = "tree-toggle";
+  toggle.textContent = isCollapsed ? "+" : "-";
 
-  const note = document.createElement("p");
-  note.textContent = group.note;
-  header.append(titleBlock, note);
+  const label = document.createElement("span");
+  label.className = "tree-label";
+  label.textContent = group.title;
 
-  const list = document.createElement("div");
-  list.className = "relationship-card-list";
+  const hint = document.createElement("span");
+  hint.className = "tree-hint";
+  hint.textContent = group.relationHint;
 
-  const topLevelTargets = new Set();
-  for (const [source, target] of group.edges) {
-    if (source === "ai-agent") {
-      topLevelTargets.add(target);
-    } else if (target === "ai-agent") {
-      topLevelTargets.add(source);
-    } else if (!isChildEdge(group, source, target)) {
-      topLevelTargets.add(source);
+  header.append(toggle, label, hint);
+  groupEl.append(header);
+
+  if (!isCollapsed) {
+    const children = document.createElement("div");
+    children.className = "tree-children";
+    for (const child of group.children) {
+      children.append(renderTreeNode(child, 2));
     }
+    groupEl.append(children);
   }
 
-  for (const nodeId of topLevelTargets) {
-    const item = renderRelationshipItem(group, nodeId);
-    if (item) list.append(item);
-  }
-
-  section.append(header, list);
-  return section;
+  return groupEl;
 }
 
-function renderRelationshipItem(group, nodeId) {
-  const node = state.nodeById.get(nodeId);
-  if (!node) return null;
-
+function renderTreeNode(treeNode, depth) {
   const wrapper = document.createElement("div");
-  wrapper.className = "relationship-item";
-  wrapper.append(renderConceptCard(nodeId));
+  wrapper.className = "tree-node";
+  wrapper.append(renderConceptRow(treeNode.id, { depth, relation: treeNode.relation }));
 
-  const childEdges = group.children?.[nodeId] || [];
-  if (childEdges.length) {
-    const childList = document.createElement("div");
-    childList.className = "nested-relationships";
-
-    for (const [source, target, type] of childEdges) {
-      const relation = document.createElement("span");
-      relation.className = "nested-relation";
-      relation.textContent = `${type} ->`;
-      const child = renderConceptCard(source === nodeId ? target : source, { compact: true });
-      childList.append(relation, child);
+  if (treeNode.children.length) {
+    const children = document.createElement("div");
+    children.className = "tree-children";
+    for (const child of treeNode.children) {
+      children.append(renderTreeNode(child, depth + 1));
     }
-
-    wrapper.append(childList);
-  }
-
-  const relationBadges = relationsFor(nodeId, group).map((edge) => renderRelationBadge(edge, nodeId));
-  if (relationBadges.length) {
-    const badges = document.createElement("div");
-    badges.className = "relation-badges";
-    badges.append(...relationBadges);
-    wrapper.append(badges);
+    wrapper.append(children);
   }
 
   return wrapper;
 }
 
-function renderConceptCard(nodeId, options = {}) {
+function renderConceptRow(nodeId, options = {}) {
   const node = state.nodeById.get(nodeId);
-  const button = document.createElement("button");
-  button.type = "button";
-  button.className = "concept-chip";
-  if (options.central) button.classList.add("central");
-  if (options.compact) button.classList.add("compact");
-  if (nodeId === state.selectedId) button.classList.add("selected");
-  button.dataset.nodeId = nodeId;
+  const row = document.createElement("button");
+  row.type = "button";
+  row.className = "tree-row concept-row";
+  if (options.root) row.classList.add("root-row");
+  if (nodeId === state.selectedId) row.classList.add("selected");
+  row.dataset.nodeId = nodeId;
+  row.style.setProperty("--depth", options.depth || 0);
 
-  if (!node) {
-    button.textContent = nodeId;
-    button.disabled = true;
-    return button;
-  }
+  const spacer = document.createElement("span");
+  spacer.className = "tree-spacer";
 
   const label = document.createElement("span");
-  label.className = "concept-label";
-  label.textContent = node.label;
+  label.className = "tree-label";
+  label.textContent = node?.label || nodeId;
 
-  const meta = document.createElement("span");
-  meta.className = "concept-meta";
-  meta.textContent = node.type;
+  row.append(spacer, label);
 
-  button.append(label, meta);
-  button.addEventListener("click", () => {
-    state.selectedId = node.id;
-    updateDetails(node);
-    refreshSelectedCards();
-  });
-
-  return button;
-}
-
-function renderRelationBadge(edge, nodeId) {
-  const badge = document.createElement("span");
-  badge.className = "relation-badge";
-
-  if (edge.source === nodeId && edge.target !== "ai-agent") {
-    badge.textContent = `${edge.type} -> ${labelFor(edge.target)}`;
-  } else if (edge.source === nodeId) {
-    badge.textContent = `${edge.type} -> AI Agent`;
-  } else if (edge.target === nodeId) {
-    badge.textContent = `${labelFor(edge.source)} -> ${edge.type}`;
-  } else {
-    badge.textContent = edge.type;
+  if (options.relation) {
+    const chip = document.createElement("span");
+    chip.className = "relation-chip";
+    chip.textContent = options.relation;
+    row.append(chip);
   }
 
-  return badge;
+  const meta = document.createElement("span");
+  meta.className = "tree-meta";
+  meta.textContent = node?.type || "missing concept";
+  row.append(meta);
+
+  row.addEventListener("click", () => {
+    if (!node) return;
+    state.selectedId = node.id;
+    updateDetails(node);
+    refreshSelectedRows();
+  });
+
+  return row;
 }
 
-function relationsFor(nodeId, group) {
-  return group.edges
-    .map(([source, target, type]) => ({ source, target, type }))
-    .filter((edge) => edge.source === nodeId || edge.target === nodeId);
+function toggleGroup(groupId) {
+  if (state.collapsedGroups.has(groupId)) {
+    state.collapsedGroups.delete(groupId);
+  } else {
+    state.collapsedGroups.add(groupId);
+  }
+  renderRelationshipTree();
 }
 
-function isChildEdge(group, source, target) {
-  return Object.values(group.children || {}).some((edges) =>
-    edges.some(([childSource, childTarget]) => childSource === source && childTarget === target)
-  );
-}
-
-function refreshSelectedCards() {
-  for (const card of document.querySelectorAll(".concept-chip")) {
-    card.classList.toggle("selected", card.dataset.nodeId === state.selectedId);
+function refreshSelectedRows() {
+  for (const row of document.querySelectorAll(".concept-row")) {
+    row.classList.toggle("selected", row.dataset.nodeId === state.selectedId);
   }
 }
 
@@ -305,16 +296,12 @@ function updateDetails(node) {
   nodeType.textContent = node.type;
   nodeStatus.textContent = node.status;
   nodeDescription.textContent = node.description;
-  feedbackLink.href = `${FEEDBACK_URL}?title=${encodeURIComponent(`AI Agents relationship map feedback: ${node.label}`)}`;
-}
-
-function labelFor(nodeId) {
-  return state.nodeById.get(nodeId)?.label || nodeId;
+  feedbackLink.href = `${FEEDBACK_URL}?title=${encodeURIComponent(`AI Agents relationship tree feedback: ${node.label}`)}`;
 }
 
 function showLoadError(error) {
   console.error(error);
-  detailsTitle.textContent = "Relationship map failed to load";
+  detailsTitle.textContent = "Relationship tree failed to load";
   nodeType.textContent = "error";
   nodeStatus.textContent = "unavailable";
   nodeDescription.textContent = error.message;
