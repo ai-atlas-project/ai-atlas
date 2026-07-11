@@ -4,6 +4,8 @@ AI Atlas is an open, community-reviewed knowledge map of Artificial Intelligence
 
 It is built to make the AI landscape easier to navigate, review, and discuss.
 
+Created and maintained by Alexander Stzhalkouski in close collaboration with AI. Open to community review and contributions.
+
 ## Mission
 
 AI Atlas helps people understand AI by mapping stable concepts, their meanings, and their relationships.
