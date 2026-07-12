@@ -12,13 +12,13 @@ Related issues:
 
 ## Purpose
 
-Confirm where existing stable-looking IDs for public canonical Level 1 and Level 2 concepts should live before broad typed-relation migration or Level 3 promotion.
+Confirm where existing `ai:<slug>` IDs for public canonical Level 1 and Level 2 concepts should live before broad typed-relation migration or Level 3 promotion.
 
 This draft does not assign IDs, modify canonical taxonomy files, update generated views, or authorize Level 3 promotion.
 
 ## Problem
 
-The Surface Realization private pilot showed that relation targets need stable IDs for graph-readiness. Public canonical L1/L2 concepts now have stable-looking IDs in canonical JSON, but those IDs still require policy confirmation and validation before broad relation migration.
+The Surface Realization private pilot showed that relation targets need stable IDs for graph-readiness. Public canonical L1/L2 concepts now have `ai:<slug>` IDs in canonical JSON, and those IDs should be used as the current public canonical ID format before broad relation migration.
 
 The project therefore needs a storage decision before it can safely:
 
@@ -139,7 +139,7 @@ Disadvantages:
 
 ## Recommended draft direction
 
-Use **Option A: store stable IDs directly in `taxonomy/ai-taxonomy-l1-l2.json`**. The current canonical JSON already follows this storage model; whether the existing IDs are accepted as approved stable IDs remains under review.
+Use **Option A: store stable IDs directly in `taxonomy/ai-taxonomy-l1-l2.json`**. The current canonical JSON already follows this storage model with `ai:<slug>` IDs.
 
 Reasoning:
 
@@ -217,7 +217,7 @@ This issue should confirm whether the existing direct storage in canonical JSON 
 
 ### #15
 
-Stable ID convention can proceed using `ai:<slug>` as the preferred draft format, but existing IDs should not be considered approved until uniqueness, format, and lifecycle handling are reviewed.
+Stable ID convention can proceed using `ai:<slug>` as the current public canonical format. Further lifecycle handling for aliases, former IDs, successors, and deprecation still needs review.
 
 ### #16
 
@@ -237,7 +237,7 @@ Structured draft schema can continue using provisional private IDs until public 
 
 ## Current main-state note
 
-The current public canonical taxonomy JSON already stores stable-looking `id` fields directly on Level 0, Level 1, and Level 2 nodes. This matches the recommended Option A storage model.
+The current public canonical taxonomy JSON already stores `ai:<slug>` `id` fields directly on Level 0, Level 1, and Level 2 nodes. This matches the recommended Option A storage model.
 
 The next policy step is not initial storage selection, but confirmation:
 

@@ -74,7 +74,7 @@ The actual assignment PR must:
 
 ## ID format
 
-Use the current preferred draft format:
+Use the current public canonical format:
 
 ```text
 ai:<slug>

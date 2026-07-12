@@ -10,9 +10,9 @@ Define stable, semantic identifiers for taxonomy nodes without coupling identity
 
 ## ID classes during review
 
-### Proposed canonical IDs
+### Current public canonical IDs
 
-The preferred draft direction is a stable semantic slug:
+Current public Level 0, Level 1, and Level 2 canonical IDs use a stable semantic slug:
 
 ```text
 ai:<slug>
@@ -28,7 +28,7 @@ ai:text-summarization
 ai:surface-realization
 ```
 
-This format is proposed, not approved. No existing identifier becomes canonical merely because it matches the example.
+The current public canonical taxonomy stores this ID format directly in `taxonomy/ai-taxonomy-l1-l2.json`. No future or draft identifier becomes canonical merely because it matches the format.
 
 ### Current private draft IDs
 
@@ -44,7 +44,7 @@ These IDs remain valid references inside existing private review work, but they 
 
 If a separate draft namespace is adopted later, it must remain visibly non-canonical and must not imply that a draft concept has passed promotion review.
 
-## Proposed canonical ID rules
+## Canonical ID rules
 
 Canonical IDs should:
 
@@ -60,9 +60,9 @@ Hierarchy level, primary parent, concept type, and status belong in separate met
 
 ## Public L1/L2 stable ID assignment
 
-Public canonical Level 1 and Level 2 concepts should receive approved stable IDs before broad typed-relation migration.
+Public canonical Level 0, Level 1, and Level 2 concepts have `ai:<slug>` IDs stored directly in `taxonomy/ai-taxonomy-l1-l2.json`.
 
-The preferred draft direction is:
+The current public ID direction is:
 
 - derive IDs from canonical English names;
 - do not encode hierarchy level;
@@ -70,9 +70,9 @@ The preferred draft direction is:
 - do not encode parent placement;
 - keep IDs stable when a node moves, changes concept type, or changes hierarchy depth.
 
-Draft examples for current public concepts:
+Current examples from public canonical concepts:
 
-| Public canonical name | Proposed stable ID |
+| Public canonical name | Current canonical ID |
 | --- | --- |
 | Natural Language and Speech | `ai:natural-language-and-speech` |
 | Natural Language Processing | `ai:natural-language-processing` |
@@ -85,7 +85,7 @@ Draft examples for current public concepts:
 | Evaluation, Measurement and Benchmarking | `ai:evaluation-measurement-and-benchmarking` |
 | Large Language Models | `ai:large-language-models` |
 
-These are draft proposals, not approved canonical IDs.
+Old dotted IDs remain legacy or provisional references only. They are not recommended for new public canonical content.
 
 Any future ID correction or identity metadata expansion should occur in a separate explicit PR. That PR should update identity metadata without changing taxonomy meaning, hierarchy placement, concept type, names, or generated views unless those additional changes are separately authorized.
 
@@ -95,11 +95,10 @@ That PR should also include an alias and deprecation plan for existing private p
 
 The current public canonical taxonomy JSON already contains `id` fields for Level 0, Level 1, and Level 2 nodes.
 
-This policy should therefore treat the remaining work as review, validation, and lifecycle finalization rather than initial ID assignment.
+This policy should therefore treat the remaining work as validation and lifecycle finalization rather than initial ID assignment.
 
 Remaining work:
 
-- confirm the `ai:<slug>` delimiter and slug rules;
 - validate uniqueness and format across public canonical nodes;
 - decide alias, former ID, and successor metadata;
 - decide how IDs appear, or do not appear, in Markdown and generated views;

@@ -91,7 +91,7 @@ Example:
   "type": "related-to",
   "target_name": "Text Generation",
   "target_status": "canonical_pending_id",
-  "note": "Public canonical Level 2 concept; validation and approval of its existing stable-looking ID are pending."
+  "note": "Public canonical Level 2 concept using the current ai:<slug> canonical ID format."
 }
 ```
 
@@ -260,14 +260,14 @@ Any such mapping requires explicit review because it may change target meaning.
 
 ## Migration dependency
 
-Current public L1/L2 IDs appear to exist in canonical JSON. Before broad relation migration, validators should confirm that these IDs are unique, well-formed, and accepted as approved stable IDs.
+Current public L1/L2 IDs exist in canonical JSON using the `ai:<slug>` format. Before broad relation migration, validators should confirm that these IDs are unique and well-formed.
 
 After that confirmation, relation targets pointing to public L1/L2 concepts should migrate from `canonical_pending_id` toward `canonical` with `target_id`.
 
 Broad migration must wait until:
 
 - the stable ID convention is approved;
-- public L1/L2 stable IDs are validated and accepted, or transitional target-status handling is explicitly approved;
+- public L1/L2 stable IDs are validated, or transitional target-status handling is explicitly approved;
 - validator behavior for `canonical_pending_id` is defined.
 
 Otherwise relation targets could be migrated twice or linked to IDs that later change.
