@@ -1,0 +1,145 @@
+{
+  "id": "draft-graph:ai-agents",
+  "title": "AI Agents: concepts and relationships",
+  "status": "draft",
+  "description": "Draft graph prototype for exploring AI agent concepts and selected relationships. This graph is not canonical taxonomy and does not promote Level 3 concepts.",
+  "nodes": [
+    {
+      "id": "ai-agent",
+      "label": "AI Agent",
+      "type": "draft concept",
+      "status": "draft",
+      "description": "A system that can pursue goals by reasoning, planning, using tools, and acting within an environment."
+    },
+    {
+      "id": "autonomous-agents",
+      "label": "Autonomous Agents",
+      "type": "draft related concept",
+      "status": "draft",
+      "description": "Agents designed to operate with limited direct human intervention over a task or workflow."
+    },
+    {
+      "id": "goals",
+      "label": "Goals",
+      "type": "draft component",
+      "status": "draft",
+      "description": "Objectives, instructions, or desired outcomes that guide an agent's behavior."
+    },
+    {
+      "id": "environment",
+      "label": "Environment",
+      "type": "draft component",
+      "status": "draft",
+      "description": "The context, system, application, or world state that an agent observes and acts within."
+    },
+    {
+      "id": "planning",
+      "label": "Planning",
+      "type": "draft capability",
+      "status": "draft",
+      "description": "The ability to form steps, strategies, or task decompositions before or during action."
+    },
+    {
+      "id": "reasoning",
+      "label": "Reasoning",
+      "type": "draft capability",
+      "status": "draft",
+      "description": "The ability to infer, decide, compare options, or draw conclusions in support of agent behavior."
+    },
+    {
+      "id": "memory",
+      "label": "Memory",
+      "type": "draft component",
+      "status": "draft",
+      "description": "Stored context, history, facts, or state used to inform future agent decisions."
+    },
+    {
+      "id": "tool-use",
+      "label": "Tool Use",
+      "type": "draft capability",
+      "status": "draft",
+      "description": "The ability for an agent to call external tools, services, APIs, or software functions."
+    },
+    {
+      "id": "function-calling",
+      "label": "Function Calling",
+      "type": "draft technique",
+      "status": "draft",
+      "description": "A structured method for selecting and invoking functions or APIs from a model or agent workflow."
+    },
+    {
+      "id": "action-execution",
+      "label": "Action Execution",
+      "type": "draft process",
+      "status": "draft",
+      "description": "The act of carrying out planned steps, tool calls, or environment actions."
+    },
+    {
+      "id": "monitoring",
+      "label": "Monitoring",
+      "type": "draft process",
+      "status": "draft",
+      "description": "Observing agent behavior, outputs, state, and failures during operation."
+    },
+    {
+      "id": "human-oversight",
+      "label": "Human Oversight",
+      "type": "draft governance concept",
+      "status": "draft",
+      "description": "Human review, intervention, approval, or supervision applied to agent behavior."
+    },
+    {
+      "id": "evaluation",
+      "label": "Evaluation",
+      "type": "draft assessment concept",
+      "status": "draft",
+      "description": "Methods for measuring, testing, benchmarking, or auditing an agent's behavior and outcomes."
+    },
+    {
+      "id": "guardrails",
+      "label": "Guardrails",
+      "type": "draft safety concept",
+      "status": "draft",
+      "description": "Constraints, checks, policies, or controls intended to keep agent behavior within acceptable bounds."
+    },
+    {
+      "id": "multi-agent-systems",
+      "label": "Multi-Agent Systems",
+      "type": "draft related concept",
+      "status": "draft",
+      "description": "Systems involving multiple agents that may cooperate, coordinate, compete, or communicate."
+    },
+    {
+      "id": "agent-communication",
+      "label": "Agent Communication",
+      "type": "draft capability",
+      "status": "draft",
+      "description": "Information exchange between agents, systems, or participants in a multi-agent setting."
+    },
+    {
+      "id": "coordination-and-negotiation",
+      "label": "Coordination and Negotiation",
+      "type": "draft capability",
+      "status": "draft",
+      "description": "Processes for aligning actions, resolving conflicts, allocating work, or reaching agreements among agents."
+    }
+  ],
+  "edges": [
+    { "source": "ai-agent", "target": "goals", "type": "has-part" },
+    { "source": "ai-agent", "target": "environment", "type": "has-part" },
+    { "source": "ai-agent", "target": "planning", "type": "has-part" },
+    { "source": "ai-agent", "target": "reasoning", "type": "has-part" },
+    { "source": "ai-agent", "target": "memory", "type": "has-part" },
+    { "source": "ai-agent", "target": "tool-use", "type": "uses" },
+    { "source": "tool-use", "target": "function-calling", "type": "uses" },
+    { "source": "ai-agent", "target": "action-execution", "type": "has-part" },
+    { "source": "monitoring", "target": "ai-agent", "type": "evaluates" },
+    { "source": "evaluation", "target": "ai-agent", "type": "evaluates" },
+    { "source": "guardrails", "target": "ai-agent", "type": "applies-to" },
+    { "source": "human-oversight", "target": "ai-agent", "type": "applies-to" },
+    { "source": "autonomous-agents", "target": "ai-agent", "type": "narrower-than" },
+    { "source": "multi-agent-systems", "target": "ai-agent", "type": "related-to" },
+    { "source": "agent-communication", "target": "multi-agent-systems", "type": "applies-to" },
+    { "source": "coordination-and-negotiation", "target": "multi-agent-systems", "type": "applies-to" }
+  ]
+}
