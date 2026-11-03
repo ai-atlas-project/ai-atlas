@@ -10,6 +10,9 @@ on:
     paths:
       - 'index.html'
       - 'viewer/**'
+      - 'docs/**'
+      - 'taxonomy/**'
+      - 'PUBLIC_REVIEW.md'
       - 'scripts/check-site-links.mjs'
       - 'tests/site-links.test.mjs'
       - '.github/workflows/check-site-links.yml'
@@ -17,6 +20,9 @@ on:
     paths:
       - 'index.html'
       - 'viewer/**'
+      - 'docs/**'
+      - 'taxonomy/**'
+      - 'PUBLIC_REVIEW.md'
       - 'scripts/check-site-links.mjs'
       - 'tests/site-links.test.mjs'
       - '.github/workflows/check-site-links.yml'
