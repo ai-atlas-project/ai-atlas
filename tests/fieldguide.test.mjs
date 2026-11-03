@@ -1,0 +1,38 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import {flattenTaxonomy,escapeHTML,searchConcepts,readRoute,conceptURL,safeNotebook,exportNotebook,exportPathwayChecklist} from '../viewer/fieldguide/core.mjs';
+import {editorial,pathways,sources} from '../viewer/fieldguide/content.mjs';
+const data=JSON.parse(await readFile(new URL('../viewer/fieldguide/data/taxonomy.json',import.meta.url),'utf8'));
+const nodes=flattenTaxonomy(data),ids=nodes.map(n=>n.id);
+test('worked cases and their evidence remain in downloaded checklists',()=>{
+  for(const id of ['rag','agents']){
+    const p=pathways.find(p=>p.id===id),step=p.steps[3],c=step.practice;
+    const output=exportPathwayChecklist(p,nodes,sources,[id+':3']);
+    assert.ok(output.includes(c.title));assert.ok(output.includes(c.takeaway));
+    for(const row of c.rows)for(const cell of row)assert.ok(output.includes(cell));
+    for(const key of c.sourceIds)assert.ok(output.includes(sources[key].url));
+    assert.ok(output.includes('- [x] '+step.task));
+    assert.ok(output.includes('Proposed editorial pathway, not canonical taxonomy.'));
+  }
+});
+test('checklist export supports pathways without worked cases and escapes table separators',()=>{
+  const training=pathways.find(p=>p.id==='training');
+  assert.ok(exportPathwayChecklist(training,nodes,sources).includes(training.steps[0].task));
+  const p={...pathways[0],steps:[{...pathways[0].steps[3],practice:{title:'Example',intro:'Scenario',columns:['A','B'],rows:[['x|y','line one\nline two']],takeaway:'Result',sourceIds:['rag']}}]};
+  const output=exportPathwayChecklist(p,nodes,sources);
+  assert.ok(output.includes('| x\\|y | line one line two |'));
+});
+test('canonical data remains complete and has unique persistent identifiers',()=>{assert.equal(nodes.length,125);assert.equal(new Set(ids).size,125);assert.equal(nodes.filter(n=>n.hierarchy_level===2).length,111);});
+test('exact acronym is ranked above broad definition matches',()=>{assert.equal(searchConcepts(nodes,'LLM',editorial)[0].id,'ai:large-language-models');assert.equal(searchConcepts(nodes,'RL',editorial)[0].id,'ai:reinforcement-learning');});
+test('multiword search is case insensitive and punctuation tolerant',()=>{assert.equal(searchConcepts(nodes,'SELF supervised',editorial)[0].id,'ai:self-supervised-learning');});
+test('branch, type, and stability filters combine',()=>{const result=searchConcepts(nodes,'',editorial,{branch:'ai:machine-learning',type:'Paradigm',stability:'stable'});assert.ok(result.length>1);assert.ok(result.every(n=>n.parent==='Machine Learning'&&n.concept_type==='Paradigm'&&n.stability==='stable'));assert.ok(!result.some(n=>n.id==='ai:data-centric-ai'));});
+test('no-result search does not replace data with invented entries',()=>assert.deepEqual(searchConcepts(nodes,'qzxnotaconcept',editorial),[]));
+test('all canonical IDs round-trip through stable URLs',()=>{for(const id of ids){const route=readRoute(conceptURL(id));assert.equal(route.page,'explore');assert.equal(route.params.get('concept'),id);}});
+test('root and populated routes parse consistently',()=>{assert.equal(readRoute('').page,'home');assert.equal(readRoute('#/').page,'home');assert.equal(readRoute('#/compare?a=ai%3Amachine-learning').params.get('a'),'ai:machine-learning');});
+test('unsafe notebook fields and stale IDs cannot enter persistent selection',()=>{const v=safeNotebook({saved:['ai:machine-learning','unknown','ai:machine-learning'],notes:{'ai:machine-learning':'hello','unknown':'bad'},checks:[42,'rag:0','invalid'],brief:[]},ids,['rag:0']);assert.deepEqual(v,{saved:['ai:machine-learning'],notes:{'ai:machine-learning':'hello'},checks:['rag:0'],brief:''});});
+test('invalid or missing notebook data has a usable empty state',()=>{for(const v of [null,undefined,[],42,'bad'])assert.deepEqual(safeNotebook(v,ids),{saved:[],notes:{},checks:[],brief:''});});
+test('HTML escaping keeps note and feedback text inert',()=>{const value='<img src=x onerror="alert(1)"> & \'test\'';assert.equal(escapeHTML(value),'&lt;img src=x onerror=&quot;alert(1)&quot;&gt; &amp; &#39;test&#39;');});
+test('notebook export preserves text, source references and completed steps',()=>{const v={saved:['ai:machine-learning'],notes:{'ai:machine-learning':'My hypothesis\nA second line'},checks:['rag:0'],brief:'Build a test'};const out=exportNotebook(v,nodes,'https://example.test',pathways);assert.ok(out.includes('My hypothesis\nA second line'));assert.ok(out.includes('https://example.test/#/explore?concept=ai%3Amachine-learning'));assert.ok(out.includes('- [x] Start with the information need'));assert.ok(out.includes('CC BY-SA 4.0'));});
+test('notebook serialization round-trips personal text and Unicode',()=>{const v={saved:['ai:machine-learning'],notes:{'ai:machine-learning':'Данные → модель\n<example>'},checks:['rag:0'],brief:'Учусь'};assert.deepEqual(safeNotebook(JSON.parse(JSON.stringify(v)),ids),v);});
+test('exported links work when the app is opened through an HTML filename',()=>{const v={saved:['ai:machine-learning'],notes:{},checks:[],brief:''};const out=exportNotebook(v,nodes,'https://example.test/index.html');assert.ok(out.includes('https://example.test/index.html#/explore?concept=ai%3Amachine-learning'));assert.ok(!out.includes('index.html/'));});

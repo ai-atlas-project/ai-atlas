@@ -4,6 +4,8 @@ AI Atlas is an open, community-reviewed knowledge map of Artificial Intelligence
 
 It is built to make the AI landscape easier to navigate, review, and discuss.
 
+Created and maintained by Alexander Stzhalkouski in close collaboration with AI. Open to community review and contributions.
+
 ## Mission
 
 AI Atlas helps people understand AI by mapping stable concepts, their meanings, and their relationships.
@@ -36,7 +38,8 @@ If you are new to AI Atlas, do not start with the JSON file.
 
 Use one of these entry points:
 
-- [Visual D3 viewer](viewer/) — explore the Level 1–Level 2 taxonomy without reading JSON.
+- [AI Atlas website](viewer/) — explore concepts, follow practical pathways, compare ideas, and keep a local notebook. Editorial guides are labeled proposals.
+- [Classic D3 map](viewer/classic.html) — explore the original visual hierarchy.
 - [Human-readable taxonomy](taxonomy/ai-taxonomy-l1-l2.md) — read the current public hierarchy.
 - [Public review guide](PUBLIC_REVIEW.md) — see what kind of feedback is useful now.
 - [Release notes](docs/releases/v0.1-public-preview.md) — understand v0.1 scope and boundaries.
@@ -67,7 +70,7 @@ For now, the canonical source is the Level 1 and Level 2 taxonomy in `taxonomy/`
 
 ## Public outputs
 
-- [Visual D3 viewer](viewer/)
+- [AI Atlas website](viewer/) and [classic D3 map](viewer/classic.html)
 - [Taxonomy](taxonomy/)
 - [Markmap view](markmap/)
 - [Obsidian vault](obsidian/)

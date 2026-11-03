@@ -1,0 +1,2191 @@
+{
+  "status": "proposed-editorial",
+  "canonical": false,
+  "sourceCommit": "64dac8d78f1587494ba0b56b489fd8e650601860",
+  "editorial": {
+    "ai:rule-based-systems": {
+      "definition": "Systems that apply explicit if–then rules to facts or inputs to make decisions.",
+      "question": "Which explicit conditions trigger each conclusion or action?",
+      "example": "In a parcel workflow, mark an order ready for dispatch when payment is confirmed and every item is in stock.",
+      "caution": "Explicit rules are not automatically complete or consistent. Test overlapping conditions, exceptions, and missing facts; rule-based does not necessarily mean the rules were written by hand.",
+      "sources": [
+        "inference",
+        "expertSystemsBook"
+      ]
+    },
+    "ai:expert-systems": {
+      "definition": "Systems that combine a domain knowledge base with an inference mechanism to support expert decisions.",
+      "question": "Which narrow domain expertise is encoded, and how will the system justify its advice?",
+      "example": "A printer troubleshooting assistant asks about symptoms, applies a technician-maintained knowledge base, and explains why it recommends checking the paper path.",
+      "caution": "A collection of rules is not sufficient evidence of expert-level performance. Validate the knowledge and advice for the intended domain, and provide a way to handle cases beyond that scope.",
+      "sources": [
+        "expertSystemsBook"
+      ]
+    },
+    "ai:logic-programming": {
+      "definition": "Expressing a problem as logical facts and rules, then using inference to find answers.",
+      "question": "Which facts and rules let the system answer a query through logical inference?",
+      "example": "Record direct prerequisites between courses, define a recursive prerequisite rule, and query which courses must precede a chosen course.",
+      "caution": "A logical specification and its execution strategy are different concerns. Termination and treatment of missing information depend on the language and rules; an unproved claim is not always false.",
+      "sources": [
+        "logicDatalog",
+        "inference"
+      ]
+    },
+    "ai:symbolic-knowledge-representation": {
+      "definition": "Encoding knowledge with explicit symbols and structures that can be manipulated by reasoning procedures.",
+      "question": "What do the symbols and relations mean, and which distinctions must remain explicit?",
+      "example": "Represent Room7 as a room, Projector2 as equipment, and contains(Room7, Projector2) as a relation that an inference procedure can use.",
+      "caution": "Symbols need a shared interpretation. This is a family of explicit representations within the broader topic of knowledge representation; naming an object does not establish that a statement about it is true.",
+      "sources": [
+        "symbolSemantics",
+        "knowledgeRepresentation"
+      ]
+    },
+    "ai:automated-reasoning": {
+      "definition": "Using computational procedures to derive conclusions, check consistency, or prove statements.",
+      "question": "What follows from the stated facts and rules under the chosen logic?",
+      "example": "Given facts that a package is paid and in stock, apply a rule that both conditions imply it is ready to dispatch.",
+      "caution": "A valid derivation depends on the encoded premises and inference rules. A fluent explanation is not a formal proof, and a proof does not validate the real-world premises.",
+      "sources": [
+        "inference"
+      ]
+    },
+    "ai:constraint-satisfaction": {
+      "definition": "Finding assignments to variables that satisfy a collection of restrictions.",
+      "aliases": [
+        "CSP"
+      ],
+      "question": "What are the variables, their allowed values, and the combinations that are forbidden?",
+      "example": "Assign meetings to rooms and time slots so that no room or participant is double-booked.",
+      "caution": "Satisfying all hard constraints gives a feasible assignment. Choosing the best feasible assignment also needs a stated objective or preferences.",
+      "sources": [
+        "constraints"
+      ]
+    },
+    "ai:knowledge-graphs": {
+      "definition": "Representations of entities and their relationships as a graph, often with types and attributes.",
+      "aliases": [
+        "KG",
+        "knowledge graph"
+      ],
+      "question": "Which entities and explicit relationships does the task require?",
+      "example": "Connect documents to authors, projects, and the claims they support.",
+      "caution": "A graph is a representation. It does not automatically make every relation reliable.",
+      "sources": [
+        "aima"
+      ]
+    },
+    "ai:neuro-symbolic-ai": {
+      "definition": "Approaches that combine learned neural representations with explicit symbolic structures or reasoning.",
+      "question": "What is learned by the neural component, and what is represented or enforced symbolically?",
+      "example": "Use a neural network to recognize handwritten digits, then combine its predictions with explicit arithmetic relations to reason about their sum.",
+      "caution": "There are multiple integration patterns. Combining neural predictions and rules does not automatically confer correctness or interpretability; evaluate perception errors, symbolic assumptions, and the combined result.",
+      "sources": [
+        "neurosymbolicArchitectures",
+        "deepProbLog"
+      ]
+    },
+    "ai:supervised-learning": {
+      "definition": "Learning a mapping from inputs to outputs using examples with target labels.",
+      "aliases": [
+        "labeled data"
+      ],
+      "question": "What is the target label, and how reliable are the examples?",
+      "example": "Train a classifier on support tickets labeled by topic.",
+      "caution": "A label is a training target, not necessarily the full product objective.",
+      "sources": [
+        "rules"
+      ]
+    },
+    "ai:unsupervised-learning": {
+      "definition": "Finding structure in data without a supplied target label for each example.",
+      "question": "What structure can be learned when examples have no supplied target labels?",
+      "example": "Group unlabeled support tickets by similarity, then inspect the groups to see whether they reveal useful recurring topics.",
+      "caution": "Clusters are not automatically meaningful categories. Feature choices and scaling affect the groups; unlike supervised learning, the desired topic labels were not supplied during training.",
+      "sources": [
+        "unsupervised"
+      ]
+    },
+    "ai:semi-supervised-learning": {
+      "definition": "Learning from a combination of labeled and unlabeled examples.",
+      "question": "How can unlabeled examples help when only a small labeled set is available?",
+      "example": "Train a topic classifier using a small set of labeled support tickets and a larger pool of unlabeled tickets.",
+      "caution": "Unlike self-supervised learning, this setup includes supplied target labels. Unlabeled data can hurt if its structure does not support the task assumptions.",
+      "sources": [
+        "semiSurvey"
+      ]
+    },
+    "ai:self-supervised-learning": {
+      "definition": "Learning from targets constructed from the data itself, such as predicting a hidden part of an input.",
+      "aliases": [
+        "SSL"
+      ],
+      "question": "Which prediction task can be constructed from unlabeled data?",
+      "example": "Predict masked content or the next element in a sequence.",
+      "caution": "No manual label per example does not mean no objective or human design choices.",
+      "sources": [
+        "aima"
+      ]
+    },
+    "ai:reinforcement-learning": {
+      "definition": "Learning how to act through interaction and feedback expressed as rewards.",
+      "aliases": [
+        "RL"
+      ],
+      "question": "What behavior will the reward actually encourage?",
+      "example": "Learn a control policy from interaction and reward feedback.",
+      "caution": "A reward is a proxy for the goal, and interaction can be expensive or unsafe.",
+      "sources": [
+        "aima"
+      ]
+    },
+    "ai:deep-learning": {
+      "definition": "Learning representations with neural networks composed of multiple processing layers.",
+      "aliases": [
+        "DL",
+        "neural networks"
+      ],
+      "question": "Does learning useful representations require a multi-layer neural network?",
+      "example": "Learn visual features for image recognition instead of hand-coding every feature.",
+      "caution": "Deep learning describes a family of methods, not a guarantee of better performance.",
+      "sources": [
+        "aima"
+      ]
+    },
+    "ai:representation-learning": {
+      "definition": "Learning useful features or encodings from data instead of specifying every feature by hand.",
+      "question": "Which useful features should be learned from data rather than specified by hand?",
+      "example": "Learn an encoding of product images, then use it as input to a classifier.",
+      "caution": "Representation learning is about learning features; deep learning describes multilayer neural methods. A learned representation still needs evaluation on its intended use.",
+      "sources": [
+        "representationSurvey"
+      ]
+    },
+    "ai:transfer-learning": {
+      "definition": "Reusing knowledge learned on one task or domain to help with another.",
+      "aliases": [
+        "adaptation"
+      ],
+      "question": "What useful knowledge can be reused before training from scratch?",
+      "example": "Adapt a pretrained representation to a narrow classification task.",
+      "caution": "Domain similarity and downstream evaluation matter. Reuse alone does not ensure transfer succeeds.",
+      "sources": [
+        "lora"
+      ]
+    },
+    "ai:federated-learning": {
+      "definition": "Training across multiple clients that keep their data local and exchange model-related updates.",
+      "aliases": [
+        "federated",
+        "FL"
+      ],
+      "question": "Which clients retain their examples, and what updates must they exchange?",
+      "example": "Several devices train a shared model by sending local model updates instead of pooling their raw examples.",
+      "caution": "Distributed computation alone does not make training federated. Client data differences and communication constraints can affect the result.",
+      "sources": [
+        "federated"
+      ]
+    },
+    "ai:online-learning": {
+      "definition": "Updating a model incrementally as new examples become available.",
+      "question": "What feedback arrives after a prediction, and when can the model update?",
+      "example": "Predict the category of each arriving ticket, then update the classifier after its label becomes available.",
+      "caution": "Online means sequential learning, not simply serving predictions on the internet. Continual learning additionally emphasizes retaining earlier capabilities.",
+      "sources": [
+        "onlineSurvey",
+        "continualSurvey"
+      ]
+    },
+    "ai:active-learning": {
+      "definition": "Choosing which examples should receive labels to make labeling effort more useful.",
+      "question": "Which example is most useful to ask a person to label next?",
+      "example": "Choose uncertain or informative tickets for an annotator instead of labeling the whole incoming batch.",
+      "caution": "Active learning selects labeling queries; semi-supervised learning also uses unlabeled examples in training. Query selection must account for annotation cost and noisy labels.",
+      "sources": [
+        "activeSurvey"
+      ]
+    },
+    "ai:meta-learning": {
+      "definition": "Learning across tasks so a system can adapt its learning behavior to a new task.",
+      "question": "What should improve across learning episodes so adaptation to a new task becomes easier?",
+      "example": "Learn across many small classification tasks, then evaluate adaptation to a held-out task with few labels.",
+      "caution": "Reusing one pretrained model is not by itself meta-learning. Test on new tasks, not only new examples from the training tasks.",
+      "sources": [
+        "metaSurvey"
+      ]
+    },
+    "ai:ensemble-learning": {
+      "definition": "Combining several models to produce a joint prediction or decision.",
+      "question": "How will predictions from several models be combined?",
+      "example": "Combine the votes of multiple decision trees to classify a new ticket.",
+      "caution": "Combining predictors differs from chaining workflow steps. Similar mistakes across models can limit the benefit of combining them.",
+      "sources": [
+        "ensembleSurvey"
+      ]
+    },
+    "ai:continual-learning": {
+      "definition": "Learning from successive tasks or data while trying to retain previously acquired abilities.",
+      "question": "What earlier capabilities must remain after learning from new data or tasks?",
+      "example": "Teach a classifier new product categories, then retest both old and new categories.",
+      "caution": "Sequential updates alone do not show that forgetting is controlled. Evaluate retention as well as adaptation, and state the task boundaries used.",
+      "sources": [
+        "continualSurvey",
+        "onlineSurvey"
+      ]
+    },
+    "ai:data-centric-ai": {
+      "definition": "Improving AI systems by systematically improving the data used to train and evaluate them.",
+      "aliases": [
+        "data quality",
+        "data curation",
+        "dataset"
+      ],
+      "question": "Which data issue is limiting useful performance?",
+      "example": "Audit mislabeled examples, duplicate records, and underrepresented cases.",
+      "caution": "Better data means data better suited to the task, not just a larger dataset.",
+      "sources": [
+        "rules",
+        "hf"
+      ]
+    },
+    "ai:state-space-search": {
+      "definition": "Exploring possible states and transitions to find a path from an initial state to a goal.",
+      "question": "What constitutes a state, which transitions are allowed, and how is a goal recognized?",
+      "example": "In a sliding-tile puzzle, represent each board arrangement as a state and each legal slide as a transition, then search for a sequence reaching the solved board.",
+      "caution": "A state must retain the information that affects future transitions and the goal. A path is only valid under the modeled rules, and finding a path does not necessarily find the cheapest one.",
+      "sources": [
+        "stateSpaces"
+      ]
+    },
+    "ai:heuristic-search": {
+      "definition": "Guiding a search with estimates of which states are promising.",
+      "question": "What estimate can help the search decide which possibility to explore next?",
+      "example": "When finding a route on a map, use straight-line distance to estimate the remaining distance and prioritize promising partial routes.",
+      "caution": "A useful estimate is not a guarantee. Optimality depends on the search algorithm, costs, and heuristic assumptions; greedy best-first search and A* use estimates differently.",
+      "sources": [
+        "heuristicSearch"
+      ]
+    },
+    "ai:adversarial-search": {
+      "definition": "Choosing actions while accounting for an opponent whose objectives may conflict with yours.",
+      "question": "How should a move account for an opponent choosing a response against your objective?",
+      "example": "In tic-tac-toe, compare a candidate move with the opponent's strongest replies before choosing where to place your mark.",
+      "caution": "The basic minimax example assumes two-player, zero-sum, perfect-information play. Hidden information, chance, or different objectives require an appropriate model; a depth-limited estimate is not a proof of the final outcome.",
+      "sources": [
+        "gameTreeSearch"
+      ]
+    },
+    "ai:automated-planning": {
+      "definition": "Computing actions or policies that can achieve goals under a model of the environment.",
+      "question": "Which actions can reach the goal, and what must be true before each action?",
+      "example": "Plan an inspection drone mission: charge the battery, fly to a roof, take photographs, and return before the battery reserve is exhausted.",
+      "caution": "A plan depends on its action model and assumptions. Finding a sequence does not prove execution succeeded; observe outcomes and revise the plan when conditions change.",
+      "sources": [
+        "planningStates"
+      ]
+    },
+    "ai:scheduling": {
+      "definition": "Assigning tasks to times and resources while respecting constraints and objectives.",
+      "question": "When should each task run, and which limited resource should it use?",
+      "example": "Assign workshop jobs to two machines, respecting each job's operation order and preventing overlapping use of a machine while minimizing the overall finish time.",
+      "caution": "Planning often determines which actions can achieve a goal; scheduling emphasizes their timing and resource allocation. The problems can be combined. A feasible schedule is not necessarily optimal.",
+      "sources": [
+        "jobShop",
+        "planningStates"
+      ]
+    },
+    "ai:optimization": {
+      "definition": "Finding a solution that improves an objective subject to any relevant constraints.",
+      "question": "Which objective should improve, and which constraints must every solution satisfy?",
+      "example": "Allocate limited compute hours across experiments to minimize expected completion time while respecting each experiment's resource needs.",
+      "caution": "A solver optimizes the objective you encode, which may omit what users actually value. Feasibility, local optimality, and a proven global optimum are different claims.",
+      "sources": [
+        "optimizationText"
+      ]
+    },
+    "ai:evolutionary-computation": {
+      "definition": "Searching for solutions using populations, variation, and selection inspired by evolution.",
+      "question": "How are candidate solutions represented, varied, and selected?",
+      "example": "Search for a compact antenna design by evaluating a population, mutating parameters, and retaining promising candidates across generations.",
+      "caution": "Evolution is an algorithmic analogy, not a guarantee of progress. Results depend on representation, evaluation budget, diversity, and the fitness function; compare repeated runs with simpler baselines.",
+      "sources": [
+        "evolutionaryText"
+      ]
+    },
+    "ai:monte-carlo-tree-search": {
+      "definition": "Exploring a decision tree by balancing promising choices with new trials and simulated outcomes.",
+      "aliases": [
+        "MCTS"
+      ],
+      "question": "How should a limited simulation budget be divided between promising moves and less-explored alternatives?",
+      "example": "For a board-game position, repeatedly select a branch, expand the tree, simulate a continuation, and update the visited nodes with its result before choosing a move.",
+      "caution": "A finite set of simulations can miss an important response. Results depend on the exploration policy, simulation or value estimates, and budget; MCTS is not inherently a neural method.",
+      "sources": [
+        "mctsSurvey"
+      ]
+    },
+    "ai:commonsense-reasoning": {
+      "definition": "Drawing conclusions using everyday background knowledge that is often left unstated.",
+      "question": "Which everyday assumptions support the conclusion, and what evidence would defeat them?",
+      "example": "Infer that a parcel placed in a closed cupboard remains there, then revise the inference when told that someone moved it.",
+      "caution": "Everyday defaults admit exceptions and vary with context. Plausible language is not evidence that a system consistently tracks the relevant assumptions.",
+      "sources": [
+        "commonsenseDefaults"
+      ]
+    },
+    "ai:probabilistic-reasoning": {
+      "definition": "Representing uncertainty with probabilities and updating beliefs using evidence.",
+      "question": "How should beliefs change when new evidence arrives under the chosen probability model?",
+      "example": "Update the probability that a parcel will arrive late after learning that its connecting vehicle was delayed.",
+      "caution": "A probability is conditional on evidence and modeling assumptions. Predicting an outcome from an observation does not establish what would happen if you intervened.",
+      "sources": [
+        "probabilisticInference",
+        "causality"
+      ]
+    },
+    "ai:causal-reasoning": {
+      "definition": "Reasoning about causes, interventions, and counterfactual outcomes, beyond associations alone.",
+      "question": "What would change if we intervened, rather than merely observed a different value?",
+      "example": "Estimate whether changing a dispatch rule would reduce late deliveries, accounting for the fact that difficult routes may already receive different treatment.",
+      "caution": "Correlation alone does not identify an intervention effect. State the causal assumptions and consider confounding; a predictive explanation is not automatically a causal explanation.",
+      "sources": [
+        "causality"
+      ]
+    },
+    "ai:temporal-reasoning": {
+      "definition": "Reasoning about time, event order, duration, and how states change.",
+      "question": "What must happen before, during, or after another event?",
+      "example": "Check whether a maintenance interval overlaps a machine's booked operating period before approving the schedule.",
+      "caution": "Ordering events does not establish causation. State interval boundaries, time zones, and uncertain timestamps explicitly; missing time information is not a known ordering.",
+      "sources": [
+        "temporalIntervals"
+      ]
+    },
+    "ai:spatial-reasoning": {
+      "definition": "Reasoning about position, shape, orientation, and spatial relationships.",
+      "question": "Which positions, orientations, or spatial relationships matter, and in whose reference frame?",
+      "example": "Transform a camera's estimate of a cup position into a robot arm's coordinate frame to determine whether the cup lies within reach.",
+      "caution": "Left, near, and inside depend on reference frames or geometric assumptions. A visually plausible relationship may be wrong when depth, scale, or occluded geometry is uncertain.",
+      "sources": [
+        "spatialTransforms"
+      ]
+    },
+    "ai:explainable-ai": {
+      "definition": "Methods and system designs that help people understand the reasons for AI outputs or behavior.",
+      "aliases": [
+        "XAI",
+        "explainability"
+      ],
+      "question": "Who needs the explanation, and what should it help them understand or decide?",
+      "example": "Show which input features influenced a particular late-delivery prediction, then check whether the explanation reflects the model and helps the dispatcher.",
+      "caution": "A convincing explanation may be unfaithful to the model. Evaluate fidelity and usefulness separately; feature attribution alone does not show real-world causation.",
+      "sources": [
+        "explanationEvaluation"
+      ]
+    },
+    "ai:knowledge-representation": {
+      "definition": "Choosing structures and semantics for storing knowledge so systems can use it.",
+      "question": "Which facts, distinctions, and relationships must the system express to answer the intended questions?",
+      "example": "Represent a room, its equipment, and access permissions so an assistant can determine which rooms meet a meeting request.",
+      "caution": "Storing information and drawing conclusions from it are different tasks. A representation must have clear meaning, and omitted distinctions can limit what the system can answer.",
+      "sources": [
+        "knowledgeRepresentation"
+      ]
+    },
+    "ai:ontologies": {
+      "definition": "Explicit models of a domain’s concepts, categories, relationships, and constraints.",
+      "aliases": [
+        "ontology"
+      ],
+      "question": "What do the categories and relationships mean, and what constraints apply?",
+      "example": "Define which entities count as a dataset, a task, or an evaluation result.",
+      "caution": "An ontology, a taxonomy, and an instance graph answer different questions.",
+      "sources": [
+        "aima"
+      ]
+    },
+    "ai:control-systems": {
+      "definition": "Systems that choose inputs to influence a process toward desired behavior, often using feedback.",
+      "question": "How does feedback change the input to keep the physical process near its target?",
+      "example": "A motor controller compares measured speed with the target and adjusts torque as the load changes.",
+      "caution": "Feedback can become unstable when delays, actuator limits, or dynamics are ignored. Many controllers use no machine learning; tracking a target is distinct from choosing the goal.",
+      "sources": [
+        "robotControl"
+      ]
+    },
+    "ai:robot-perception": {
+      "definition": "Interpreting sensor data so a robot can estimate properties of itself and its environment.",
+      "question": "What must the robot infer from its sensors before it can act?",
+      "example": "A sorting robot combines a camera measurement with a sensor model to estimate which material category an object belongs to.",
+      "caution": "Measurements are noisy and interpretation depends on calibration and assumptions. Keep uncertainty visible and test occlusion, lighting changes, and unfamiliar objects.",
+      "sources": [
+        "robotSensing"
+      ]
+    },
+    "ai:localization-and-mapping": {
+      "definition": "Estimating where a system is and constructing or updating a representation of its surroundings.",
+      "aliases": [
+        "SLAM"
+      ],
+      "sources": [
+        "slamText"
+      ],
+      "question": "Where is the robot relative to its map, and how should new observations update that map?",
+      "example": "A warehouse robot estimates its motion from successive range scans while adding newly observed shelving to a map.",
+      "caution": "Localization can use an existing map; SLAM estimates location and map together. Drift and incorrect place matches can produce a convincing but inconsistent map."
+    },
+    "ai:motion-planning": {
+      "definition": "Finding feasible movements for a robot or other moving system while respecting constraints.",
+      "question": "Which collision-free movement reaches the goal within the robot's constraints?",
+      "example": "Plan a route for a wheeled robot through shelves while accounting for its footprint and turning limits.",
+      "caution": "A path through free space may still be dynamically infeasible. Planning and feedback control serve different roles; execution must handle moving obstacles and state-estimation errors.",
+      "sources": [
+        "motionText"
+      ]
+    },
+    "ai:manipulation": {
+      "definition": "Using an embodied system to grasp, move, or otherwise change physical objects.",
+      "question": "How should contact and motion change the object's state?",
+      "example": "Choose a grasp pose, approach a cup, close the gripper, and place the cup on a tray using measured object and robot poses.",
+      "caution": "Geometric reachability does not ensure a stable grasp. Friction, compliance, object uncertainty, and contact forces affect whether the physical action succeeds.",
+      "sources": [
+        "spatialTransforms"
+      ]
+    },
+    "ai:autonomous-vehicles": {
+      "definition": "Vehicles that perform some driving or navigation functions without continuous human control.",
+      "question": "Which driving functions can the vehicle perform, under which conditions, and who handles failures?",
+      "example": "A delivery vehicle follows mapped routes within a restricted site, combining obstacle sensing, localization, planning, and control.",
+      "caution": "Automation in one operating domain does not establish safe operation everywhere. Weather, road layout, unusual actors, and fallback responsibilities must be evaluated explicitly.",
+      "sources": [
+        "autonomousDrivingText"
+      ]
+    },
+    "ai:human-robot-interaction": {
+      "definition": "Studying and designing how people communicate, collaborate, and share space with robots.",
+      "question": "How will people interpret, coordinate with, and interrupt the robot?",
+      "example": "A robot pauses before handing over an object, signals its intention, and waits for the person to indicate readiness.",
+      "caution": "Smooth motion or a friendly appearance does not establish understandable or safe interaction. Evaluate with the intended users, including accessibility needs and unexpected behavior.",
+      "sources": [
+        "hriBook"
+      ]
+    },
+    "ai:robot-learning": {
+      "definition": "Enabling robots to improve perception, control, or behavior using data and experience.",
+      "question": "What behavior is learned from experience, and how will it transfer to the physical task?",
+      "example": "A robot adjusts a grasping policy using feedback from successful and failed pickups rather than relying only on a fixed motion sequence.",
+      "caution": "Physical trials are costly and can cause damage. Success in simulation or on familiar objects does not establish reliable transfer; evaluate new conditions and constrain exploration.",
+      "sources": [
+        "robotLearningSurvey"
+      ]
+    },
+    "ai:embodied-agents": {
+      "definition": "Agents whose behavior is shaped by interaction through a body in an environment.",
+      "question": "How do the agent's body, sensing, actions, and environment shape its behavior?",
+      "example": "A mobile robot moves its camera to see around an obstacle before choosing a route.",
+      "caution": "Embodiment involves an action-perception loop, not merely a visual avatar. Physical and simulated bodies impose different constraints, and embodiment alone does not imply general intelligence.",
+      "sources": [
+        "embodiedBrooks"
+      ]
+    },
+    "ai:natural-language-processing": {
+      "definition": "Computational methods for analyzing, understanding, and generating human language.",
+      "aliases": [
+        "NLP"
+      ],
+      "question": "Which language task are you solving?",
+      "example": "Classify, translate, retrieve, parse, or generate human language.",
+      "caution": "NLP includes many tasks beyond text generation.",
+      "sources": [
+        "aima"
+      ]
+    },
+    "ai:speech-recognition": {
+      "definition": "Converting spoken audio into a representation such as a text transcript.",
+      "question": "Which words were spoken, and where is the transcript uncertain?",
+      "example": "Transcribe a spoken maintenance note, then let the speaker verify names, numbers, and technical terms.",
+      "caution": "A fluent transcript can include substitutions, omissions, or invented words. Evaluate accents, background noise, overlapping speakers, and important entities rather than only average word error.",
+      "sources": [
+        "speechRecognitionPaper"
+      ]
+    },
+    "ai:speech-synthesis": {
+      "definition": "Generating speech audio from text or another structured representation.",
+      "question": "How should the text be pronounced and timed for the listener?",
+      "example": "Read a timetable aloud with appropriate pauses and pronunciation of station names and departure times.",
+      "caution": "Natural-sounding speech can mispronounce or skip important content. Evaluate intelligibility and prosody; voice imitation also requires attention to consent and provenance.",
+      "sources": [
+        "speechSynthesisPaper"
+      ]
+    },
+    "ai:dialogue-systems": {
+      "definition": "Systems that manage interactions with people through sequences of conversational turns.",
+      "question": "What information and commitments must persist across turns to complete the conversation?",
+      "example": "A booking assistant asks for a date, clarifies an ambiguous reply, and confirms the final details before submitting the booking.",
+      "caution": "Producing a plausible next turn is not the same as completing the task. Track corrections, unresolved references, confirmation boundaries, and failed external actions.",
+      "sources": [
+        "dialogueSurvey"
+      ]
+    },
+    "ai:information-retrieval": {
+      "definition": "Finding and ranking material relevant to an information need.",
+      "aliases": [
+        "IR",
+        "retrieval",
+        "search engine"
+      ],
+      "question": "Can the system find the evidence needed to answer the question?",
+      "example": "Retrieve relevant passages from a versioned set of internal documents.",
+      "caution": "Retrieving a passage does not prove that the final answer uses it accurately.",
+      "sources": [
+        "rag"
+      ]
+    },
+    "ai:machine-translation": {
+      "definition": "Automatically translating meaning from one human language into another.",
+      "question": "Does the target-language text preserve the source meaning in this context?",
+      "example": "Translate a delivery instruction while preserving the address, negation, quantities, and requested action.",
+      "caution": "Grammatical output can change meaning or omit details. Evaluate terminology, ambiguity, and low-resource language pairs; back-translation alone is not a reliable accuracy guarantee.",
+      "sources": [
+        "translationPaper"
+      ]
+    },
+    "ai:natural-language-generation": {
+      "definition": "Producing human-language expressions from data, meaning representations, or other inputs.",
+      "question": "Which facts should be selected and expressed for this audience?",
+      "example": "Turn structured weather measurements into a short report that highlights the most relevant changes.",
+      "caution": "Language generation includes content selection and organization as well as wording. Fluent output must still preserve the input facts and avoid unsupported additions.",
+      "sources": [
+        "nlgSurvey"
+      ]
+    },
+    "ai:language-understanding": {
+      "definition": "Interpreting meaning, intent, and context in human-language input.",
+      "question": "What meaning, intent, and references must be recovered from the input?",
+      "example": "Interpret 'Move it to Friday' using the conversation to identify the appointment and the intended date.",
+      "caution": "Performance on a benchmark measures particular tasks, not complete human-like understanding. Test ambiguity, negation, reference resolution, and shifts in context.",
+      "sources": [
+        "nluEvaluation"
+      ]
+    },
+    "ai:image-classification": {
+      "definition": "Assigning one or more category labels to an image.",
+      "question": "Which label or labels describe the image as a whole?",
+      "example": "For a photograph of two bicycles beside a tree, predict the image-level label bicycle.",
+      "caution": "An image-level label does not locate or count the bicycles. Object detection adds locations, while segmentation assigns labels or masks to pixels.",
+      "sources": [
+        "visionTasks"
+      ]
+    },
+    "ai:object-detection": {
+      "definition": "Finding instances of objects in an image and estimating their locations.",
+      "question": "Which objects are present, and where is each one?",
+      "example": "For the same photograph of two bicycles beside a tree, return a labeled bounding box around each bicycle.",
+      "caution": "Bounding boxes locate objects but do not trace their exact outlines. Evaluate missed objects, false detections, and localization quality, not only class labels.",
+      "sources": [
+        "visionTasks"
+      ]
+    },
+    "ai:image-segmentation": {
+      "definition": "Assigning image pixels to meaningful regions or categories.",
+      "question": "Which pixels belong to each region, category, or object instance?",
+      "example": "For the same photograph of two bicycles beside a tree, mark bicycle pixels; instance segmentation gives the two bicycles separate masks.",
+      "caution": "Semantic segmentation labels pixel categories without necessarily separating individual objects. Instance segmentation distinguishes objects of the same class; choose the output needed for the task.",
+      "sources": [
+        "visionTasks"
+      ]
+    },
+    "ai:video-understanding": {
+      "definition": "Interpreting actions, events, and temporal relationships in video.",
+      "question": "Which actions or events require evidence across frames rather than a single image?",
+      "example": "Distinguish someone picking up a parcel from putting it down by following the hand and parcel through time.",
+      "caution": "Frame labels alone can miss event order and interactions. Test temporal sampling, camera motion, occlusion, and actions absent from the training set.",
+      "sources": [
+        "videoActions"
+      ]
+    },
+    "ai:3d-vision": {
+      "definition": "Recovering or interpreting three-dimensional structure from visual observations.",
+      "question": "What three-dimensional structure can be inferred from the observations?",
+      "example": "Use overlapping photographs of a room to reconstruct a scene representation and inspect it from new viewpoints.",
+      "caution": "Unobserved surfaces, reflective materials, and uncertain camera poses can make reconstruction ambiguous. Good-looking rendered views do not guarantee accurate metric geometry.",
+      "sources": [
+        "sceneReconstruction"
+      ]
+    },
+    "ai:multimodal-perception": {
+      "definition": "Combining information from different sensing modalities to interpret an environment.",
+      "question": "Which complementary observations should be aligned and combined?",
+      "example": "Combine a camera view and microphone signal to associate a visible machine with an unusual sound.",
+      "caution": "Additional modalities can introduce conflicting evidence or shortcuts. Check synchronization, calibration, missing sensors, and whether fusion actually improves the intended task.",
+      "sources": [
+        "multimodalSurvey"
+      ]
+    },
+    "ai:scene-understanding": {
+      "definition": "Interpreting objects, spatial relations, and context within a scene.",
+      "question": "How are the objects, attributes, and relationships organized in this scene?",
+      "example": "Describe a person holding an umbrella beside a bicycle, including which object is held and which is nearby.",
+      "caution": "Detecting objects does not establish their relationships or intent. Occlusion and context can make several interpretations plausible; separate visible evidence from inference.",
+      "sources": [
+        "sceneRelations"
+      ]
+    },
+    "ai:optical-character-recognition": {
+      "definition": "Recognizing text in images and converting it into machine-readable characters.",
+      "aliases": [
+        "OCR"
+      ],
+      "sources": [
+        "sceneText"
+      ],
+      "question": "Which characters and reading order are supported by the image?",
+      "example": "Convert a photographed receipt into text, then verify totals, decimal separators, and item lines against the image.",
+      "caution": "Character recognition and document understanding are separate tasks. Blur, layout, handwriting, and similar-looking symbols can produce confident transcription errors."
+    },
+    "ai:text-generation": {
+      "definition": "Producing text computationally, often conditioned on a prompt or other context.",
+      "question": "What should the output communicate, and what evidence should support it?",
+      "example": "Draft an answer from a retrieved document passage.",
+      "caution": "Fluent text can be factually wrong.",
+      "sources": [
+        "rag"
+      ]
+    },
+    "ai:image-generation": {
+      "definition": "Producing images conditioned on inputs or sampled from a learned model.",
+      "question": "Which visual requirements should the generated image satisfy?",
+      "example": "Generate alternative illustrations of a reading corner from a description, then inspect object placement and consistency.",
+      "caution": "A plausible image can violate counts, spatial constraints, or factual details. Treat it as generated content, and review provenance, permissions, and suitability for the intended use.",
+      "sources": [
+        "latentDiffusion"
+      ]
+    },
+    "ai:audio-generation": {
+      "definition": "Producing audio such as speech, music, or sound effects.",
+      "question": "What sound should be produced, with which duration and conditioning information?",
+      "example": "Generate a short instrumental background passage matching a requested mood and tempo.",
+      "caution": "Audio quality, prompt adherence, and originality require separate evaluation. A convincing clip is not evidence of a real recording or permission to imitate an identifiable voice.",
+      "sources": [
+        "musicGeneration",
+        "speechSynthesisPaper"
+      ]
+    },
+    "ai:video-generation": {
+      "definition": "Producing sequences of frames that form a video, with temporal consistency as a key challenge.",
+      "question": "What should stay consistent as the scene changes over time?",
+      "example": "Generate a short concept clip of a toy car moving around a track while preserving the car's appearance.",
+      "caution": "Sharp frames can hide inconsistent motion, object identity, or physical behavior. Evaluate the whole sequence; generated footage is not evidence that an event occurred.",
+      "sources": [
+        "videoDiffusion"
+      ]
+    },
+    "ai:code-generation": {
+      "definition": "Producing source code from instructions, examples, or surrounding program context.",
+      "question": "Does the generated program meet the specification on meaningful tests?",
+      "example": "Generate a date-parsing function from a specification, then test invalid dates, empty input, and supported formats.",
+      "caution": "Compiling or passing a few tests does not establish correctness or security. Review dependencies, edge cases, resource use, and whether the tests actually cover the intended behavior.",
+      "sources": [
+        "codeEvaluation"
+      ]
+    },
+    "ai:3d-generation": {
+      "definition": "Producing three-dimensional representations such as meshes, point clouds, or implicit scenes.",
+      "question": "What 3D representation is needed, and how will it be used?",
+      "example": "Create a draft 3D asset from a text description, then inspect it from several viewpoints before using it in a scene.",
+      "caution": "A convincing render may conceal poor geometry, inconsistent surfaces, or unsuitable topology. Check scale, editability, and mesh requirements separately from appearance.",
+      "sources": [
+        "textTo3d"
+      ]
+    },
+    "ai:synthetic-data-generation": {
+      "definition": "Creating artificial data for tasks such as training, testing, and simulation.",
+      "question": "Which properties of real data must the artificial examples preserve for their intended use?",
+      "example": "Generate artificial order records to exercise a reporting pipeline, including specified rare combinations and missing fields.",
+      "caution": "Realistic-looking data can omit rare cases, amplify bias, or reveal training records. Synthetic does not automatically mean anonymous; validate utility and privacy separately.",
+      "sources": [
+        "syntheticTabular"
+      ]
+    },
+    "ai:generative-modeling": {
+      "definition": "Modeling how data could be generated, enabling the creation of new samples.",
+      "question": "What distribution or data-generating structure is the model intended to learn?",
+      "example": "Fit a model to handwritten digits and sample new images to inspect how well it covers different writing styles.",
+      "caution": "Convincing samples can coexist with poor coverage or memorization. Generative modeling includes multiple approaches; no single sample-quality score establishes fitness for every use.",
+      "sources": [
+        "generativeAdversarial",
+        "latentDiffusion"
+      ]
+    },
+    "ai:large-language-models": {
+      "definition": "Large-scale models trained on language data that can support multiple language tasks.",
+      "aliases": [
+        "LLM",
+        "LLMs"
+      ],
+      "question": "What can the base model do, and what does the surrounding system need to supply?",
+      "example": "A document assistant uses a language model to compose a response from selected context.",
+      "caution": "The model is not the whole application. Retrieval, permissions, tools, and evaluation belong to the system.",
+      "sources": [
+        "rag",
+        "cards"
+      ]
+    },
+    "ai:vision-foundation-models": {
+      "definition": "Models trained broadly on visual data and adapted or reused across vision tasks.",
+      "question": "Which visual capabilities transfer from broad pretraining to the target task?",
+      "example": "Reuse one pretrained image encoder for product grouping and, with a suitable task head, defect classification.",
+      "caution": "Broad training does not guarantee performance on specialized imagery. Compare a task-specific baseline and assess domain shift, data rights, and adaptation requirements.",
+      "sources": [
+        "visualPretraining",
+        "foundationScope"
+      ]
+    },
+    "ai:multimodal-foundation-models": {
+      "definition": "Broadly trained models that process or generate information across multiple modalities.",
+      "question": "Which modalities are jointly represented, and which cross-modal tasks are actually supported?",
+      "example": "Use aligned image and text representations to retrieve product photographs from natural-language descriptions.",
+      "caution": "Multimodal does not mean every modality or equal competence across them. Test fine-grained grounding, missing inputs, and conflicting evidence rather than assuming one successful task generalizes.",
+      "sources": [
+        "imageTextPretraining",
+        "multimodalSurvey"
+      ]
+    },
+    "ai:audio-foundation-models": {
+      "definition": "Broadly trained audio models that can be reused or adapted for a variety of audio tasks.",
+      "question": "Which reusable audio representations support the downstream tasks?",
+      "example": "Adapt a broadly pretrained audio encoder to recognize environmental sounds and detect classes of machine noise.",
+      "caution": "Speech, music, and environmental audio have different requirements. An audio encoder need not generate sound or transcribe speech; evaluate the relevant domains and recording conditions.",
+      "sources": [
+        "audioPretraining",
+        "foundationScope"
+      ]
+    },
+    "ai:video-foundation-models": {
+      "definition": "Broadly trained models of video that can support multiple spatiotemporal tasks.",
+      "question": "Which spatial and temporal features can be reused across video tasks?",
+      "example": "Adapt a pretrained video representation for action classification and event localization using task-specific supervision.",
+      "caution": "Pretraining alone does not establish broad usefulness. Short-clip accuracy may not transfer to long events, new camera settings, or reliable temporal reasoning.",
+      "sources": [
+        "videoPretraining",
+        "foundationScope"
+      ]
+    },
+    "ai:code-foundation-models": {
+      "definition": "Broadly trained models using code that can support multiple programming-related tasks.",
+      "question": "Which programming tasks can reuse the model's pretrained knowledge of code?",
+      "example": "Adapt a pretrained code model to summarize functions, identify similar implementations, and propose code from requirements.",
+      "caution": "Generating code is one task; reusable pretraining describes how a model supports tasks. Repository context, language versions, training overlap, and functional correctness need separate checks.",
+      "sources": [
+        "codePretraining"
+      ]
+    },
+    "ai:scientific-foundation-models": {
+      "definition": "Broadly trained models intended to support multiple tasks within scientific domains.",
+      "question": "Across which scientific systems or tasks has transfer actually been demonstrated?",
+      "example": "Pretrain on families of simulated differential equations, then evaluate predictions on a held-out equation family or parameter regime.",
+      "caution": "This is an evolving category with domain-specific boundaries. Benchmark transfer does not establish physical validity or discovery; check units, conservation constraints, uncertainty, and independent evidence.",
+      "sources": [
+        "scientificPretraining"
+      ]
+    },
+    "ai:world-models": {
+      "definition": "Models of how an environment behaves, used to predict outcomes or support decisions.",
+      "question": "What changes in the environment does the model predict, especially after an action?",
+      "example": "Predict how a simulated vehicle's state changes under candidate steering actions before selecting a policy.",
+      "caution": "Predictive accuracy over one step may deteriorate over long rollouts. A world model need not be a foundation model, a complete simulator, or a causal account of the real world.",
+      "sources": [
+        "worldModelPaper"
+      ]
+    },
+    "ai:autonomous-agents": {
+      "definition": "Systems that select and perform actions toward goals with some independence from direct human control.",
+      "aliases": [
+        "agent",
+        "agents"
+      ],
+      "question": "Which actions may the system choose, and who can stop or reverse them?",
+      "example": "An assistant selects a tool, observes its result, and chooses the next action.",
+      "caution": "A conversational interface alone does not establish autonomous behavior.",
+      "sources": [
+        "react",
+        "aima"
+      ]
+    },
+    "ai:cooperative-multi-agent-systems": {
+      "definition": "Systems in which multiple agents coordinate to pursue compatible or shared objectives.",
+      "question": "What shared outcome are the agents optimizing, and how do their actions interact?",
+      "example": "Two inspection drones divide roof sections and coordinate flight paths to complete one survey without duplicating work or colliding.",
+      "caution": "More agents do not automatically improve a system. Shared goals still require coordination, and communication or handoff failures can undermine the joint result.",
+      "sources": [
+        "cooperativeFramework"
+      ]
+    },
+    "ai:competitive-multi-agent-systems": {
+      "definition": "Systems in which agents interact while pursuing objectives that can conflict.",
+      "question": "How do other agents' conflicting objectives change the best action?",
+      "example": "Model bidders competing for a limited set of delivery slots, where each bidder's choice changes what remains available.",
+      "caution": "Competition need not be strictly zero-sum. Outcomes depend on information, incentives, and adaptation; success against a fixed opponent does not ensure robust strategic behavior.",
+      "sources": [
+        "cooperativeFramework",
+        "gameTreeSearch"
+      ]
+    },
+    "ai:agent-communication": {
+      "definition": "The exchange of information between agents to support their behavior or coordination.",
+      "question": "What does each message mean, and how does it change the recipient's knowledge or commitments?",
+      "example": "One warehouse agent reports that an aisle is blocked; another acknowledges the report and replans its route.",
+      "caution": "Message delivery does not establish shared meaning or trustworthiness. Define schemas, timing, acknowledgments, and how agents handle stale or conflicting information.",
+      "sources": [
+        "multiagentFoundations"
+      ]
+    },
+    "ai:coordination-and-negotiation": {
+      "definition": "Mechanisms for organizing interdependent agents and reaching agreements about actions or resources.",
+      "question": "How will agents resolve interdependent actions and incompatible preferences?",
+      "example": "Two delivery agents exchange proposed time slots and agree on an allocation that avoids using the same loading bay simultaneously.",
+      "caution": "Coordination can use fixed protocols without negotiation. An agreement can still be inefficient or unstable; account for incentives, failed participants, and changing availability.",
+      "sources": [
+        "multiagentFoundations"
+      ]
+    },
+    "ai:multi-agent-reinforcement-learning": {
+      "definition": "Learning behavior through rewards in environments containing multiple interacting agents.",
+      "aliases": [
+        "MARL"
+      ],
+      "sources": [
+        "marlBook"
+      ],
+      "question": "How does each agent learn when other agents also change their behavior?",
+      "example": "Train simulated warehouse robots with a shared completion reward while measuring collisions and duplicated work.",
+      "caution": "Other learners can make the environment nonstationary. Shared rewards complicate credit assignment; report training versus execution information and test new teammates or opponents."
+    },
+    "ai:swarm-intelligence": {
+      "definition": "Collective problem-solving that emerges from interactions among many relatively simple agents.",
+      "question": "Which local interaction rules produce the desired collective behavior?",
+      "example": "Use many simple simulated agents that follow local trail signals to discover short routes without a central route planner.",
+      "caution": "A collection of agents is not automatically a swarm-intelligence method. Collective behavior depends on local rules, communication, and environment; test congestion, failures, and scaling.",
+      "sources": [
+        "swarmFoundations"
+      ]
+    },
+    "ai:agent-societies": {
+      "definition": "Studying organized populations of agents and their collective structures, norms, and behavior.",
+      "question": "Which roles, norms, and institutions organize the agents over time?",
+      "example": "Define a shared robot workspace with right-of-way rules and roles for requesting, granting, and releasing access to narrow passages.",
+      "caution": "Social terminology is a modeling choice, not evidence of human-like motives or moral status. Specify how rules are enforced and what happens when agents deviate.",
+      "sources": [
+        "agentSocialLaws"
+      ]
+    },
+    "ai:market-based-systems": {
+      "definition": "Coordinating decisions or allocating resources using market mechanisms such as bids and prices.",
+      "question": "How do bids, prices, and allocation rules coordinate limited resources?",
+      "example": "Let task agents bid for compute slots according to their priorities, then allocate slots through a defined auction rule.",
+      "caution": "Price-based allocation is not automatically fair or efficient. Results depend on incentives, budgets, information, and the mechanism; distinguish a simulated market from actual monetary transactions.",
+      "sources": [
+        "mechanismDesign"
+      ]
+    },
+    "ai:ai-assistants": {
+      "definition": "AI systems that help people complete tasks through interaction, recommendations, or delegated actions.",
+      "question": "Which part of the user's task is assisted, and what authority has the user delegated?",
+      "example": "An assistant gathers meeting constraints and proposes available times, leaving the final invitation for the user to approve.",
+      "caution": "A helpful interface does not establish reliable execution. Make permissions, uncertainty, action status, corrections, and recovery clear; conversational fluency is not task completion.",
+      "sources": [
+        "mixedInitiative"
+      ]
+    },
+    "ai:recommender-systems": {
+      "definition": "Systems that select or rank items according to their expected relevance to a user or context.",
+      "question": "Which items should be ranked for this user or context, and toward what objective?",
+      "example": "Rank a reading list using stated interests and prior feedback while leaving room for unfamiliar topics.",
+      "caution": "Clicks are an imperfect proxy for value. Evaluate exposure bias, cold starts, diversity, and long-term outcomes; recommendations can change the behavior used as future training data.",
+      "sources": [
+        "recommenderIntro"
+      ]
+    },
+    "ai:human-in-the-loop-ai": {
+      "definition": "AI processes that incorporate human input, review, or intervention at defined points.",
+      "aliases": [
+        "HITL",
+        "human oversight"
+      ],
+      "question": "Does the person have enough information, time, and authority to intervene?",
+      "example": "Require a reviewer to approve a proposed external action before execution.",
+      "caution": "Human presence alone is not evidence that a system is safe or correct.",
+      "sources": [
+        "cards"
+      ]
+    },
+    "ai:interactive-machine-learning": {
+      "definition": "Learning workflows in which people iteratively influence a model through feedback and interaction.",
+      "question": "How can a person iteratively steer what the model learns?",
+      "example": "A user labels a few photos, reviews the resulting classifier's mistakes, and adds corrections before retraining.",
+      "caution": "Interactive feedback can be inconsistent and can overfit the visible examples. Evaluate both the user's effort and model behavior on held-out data.",
+      "sources": [
+        "interactiveLearning"
+      ]
+    },
+    "ai:personalization": {
+      "definition": "Adapting a system’s outputs or behavior to a person’s needs, preferences, or context.",
+      "question": "What should adapt to this person, using which preferences and evidence?",
+      "example": "Adjust recommended article length and topic mix using explicit preferences that the reader can inspect and reset.",
+      "caution": "Observed behavior does not always reveal genuine preference. Avoid locking users into outdated profiles; provide control over adaptation and evaluate the effects of limited or biased feedback.",
+      "sources": [
+        "recommenderIntro",
+        "humanAiGuidelines"
+      ]
+    },
+    "ai:decision-support-systems": {
+      "definition": "Systems that provide information or analysis to help people make decisions.",
+      "question": "Which decision remains with the person, and what evidence helps them compare alternatives?",
+      "example": "Show a maintenance planner ranked repair options, estimated downtime, and uncertainty while letting them inspect assumptions and choose the action.",
+      "caution": "Decision support can still steer people through framing and defaults. Evaluate the combined human-system outcome, including automation bias, rather than model accuracy alone.",
+      "sources": [
+        "mixedInitiative",
+        "humanAiGuidelines"
+      ]
+    },
+    "ai:human-feedback-and-preference-learning": {
+      "definition": "Using human judgments or comparisons to learn preferences or shape model behavior.",
+      "aliases": [
+        "RLHF",
+        "preference learning"
+      ],
+      "question": "Whose judgments are represented and how consistently are they collected?",
+      "example": "Learn from pairwise comparisons of candidate answers.",
+      "caution": "Human preference and factual correctness are different evaluation targets.",
+      "sources": [
+        "cards"
+      ]
+    },
+    "ai:ai-user-experience-and-trust": {
+      "definition": "Designing how people understand, interact with, and appropriately rely on AI systems.",
+      "question": "Can users understand the system's limits, correct it, and decide when to rely on it?",
+      "example": "An assistant shows whether a suggested action is pending or completed and offers a clear way to correct or undo it.",
+      "caution": "The goal is appropriate reliance, not maximum trust. Polished explanations and confidence displays can encourage overreliance unless grounded in actual capabilities and tested with users.",
+      "sources": [
+        "humanAiGuidelines"
+      ]
+    },
+    "ai:ai-alignment": {
+      "definition": "Studying how AI behavior can remain consistent with intended goals, preferences, or values.",
+      "question": "Does the system’s behavior match the intended goals and preferences?",
+      "example": "Examine whether optimizing a proxy leads to unwanted behavior.",
+      "caution": "Goal alignment and robustness are related but distinct concerns.",
+      "sources": [
+        "aima"
+      ]
+    },
+    "ai:robustness": {
+      "definition": "How reliably a system behaves under changes, disturbances, or adversarial inputs.",
+      "question": "What happens when inputs change or leave the expected distribution?",
+      "example": "Test noisy inputs, unusual phrasing, and difficult edge cases.",
+      "caution": "Average performance can hide brittle behavior in critical cases.",
+      "sources": [
+        "cards"
+      ]
+    },
+    "ai:interpretability": {
+      "definition": "Methods for understanding the mechanisms, representations, or behavior of AI models.",
+      "question": "What can you learn about the model’s internal mechanisms or behavior?",
+      "example": "Investigate how a representation or feature influences predictions.",
+      "caution": "A plausible explanation is not automatically a faithful account of a model’s computation.",
+      "sources": [
+        "aima"
+      ]
+    },
+    "ai:evaluation-measurement-and-benchmarking": {
+      "definition": "Designing tests and measurements to understand system performance, limitations, and tradeoffs.",
+      "aliases": [
+        "evals",
+        "evaluation",
+        "benchmarks",
+        "testing"
+      ],
+      "question": "What evidence would make you trust this system for its intended use?",
+      "example": "Test held-out cases, important slices, failure cases, and operational constraints.",
+      "caution": "A benchmark score does not establish fitness for every deployment context.",
+      "sources": [
+        "cards",
+        "evaluate"
+      ]
+    },
+    "ai:bias-and-fairness": {
+      "definition": "Examining systematic disparities and how different notions of fairness apply to AI systems.",
+      "question": "Which disparities matter in this context, and whose interests define an acceptable outcome?",
+      "example": "Compare a document classifier's error rates across relevant language groups, then investigate whether data coverage and labeling explain the differences.",
+      "caution": "Fairness criteria can conflict and depend on context. Removing a sensitive attribute does not remove proxies or structural disparities; statistical parity alone cannot settle a normative question.",
+      "sources": [
+        "fairnessBook"
+      ]
+    },
+    "ai:privacy-and-security": {
+      "definition": "Protecting data and AI systems against inappropriate disclosure, unauthorized access, and manipulation.",
+      "aliases": [
+        "privacy",
+        "security",
+        "prompt injection"
+      ],
+      "question": "Who may see the data and authorize the system’s actions?",
+      "example": "Enforce document access before retrieval and restrict tool permissions.",
+      "caution": "A prompt instruction is not a replacement for access controls.",
+      "sources": [
+        "hf"
+      ]
+    },
+    "ai:misuse-prevention": {
+      "definition": "Reducing opportunities for AI systems to be intentionally used for harmful purposes.",
+      "question": "How could someone intentionally use the system to cause harm, and which controls reduce that opportunity?",
+      "example": "For an assistant with messaging tools, restrict recipient access and sending volume, require authorization, and investigate suspicious activity.",
+      "caution": "No single filter prevents every misuse. Combine access controls, capability limits, testing, and response processes while evaluating false positives and evolving threats.",
+      "sources": [
+        "misuseReport"
+      ]
+    },
+    "ai:governance-and-policy": {
+      "definition": "Rules, institutions, and accountability practices that shape how AI is developed and used.",
+      "question": "Who is accountable for decisions across the system's lifecycle, and what evidence must they review?",
+      "example": "Assign owners for evaluation and incident response, record deployment decisions, and define when a system must be reassessed or withdrawn.",
+      "caution": "A policy document alone does not establish effective governance. Voluntary frameworks, internal rules, and legal obligations differ; responsibilities need resources, enforcement, and context-specific review.",
+      "sources": [
+        "riskGovernance"
+      ]
+    },
+    "ai:artificial-general-intelligence": {
+      "definition": "A debated idea of broadly capable intelligence across tasks; definitions and assessment criteria differ.",
+      "aliases": [
+        "AGI"
+      ],
+      "question": "What definition and evaluation criteria does the claim use?",
+      "example": "Compare proposed definitions of broad capability rather than relying on a product label.",
+      "caution": "This is a disputed concept; the taxonomy’s stability label is not evidence of an achieved system.",
+      "sources": [
+        "aima"
+      ]
+    },
+    "ai:self-improving-systems": {
+      "definition": "Systems designed or hypothesized to improve aspects of their own performance or operation.",
+      "question": "What part of the system changes itself, and how is improvement independently established?",
+      "example": "In an illustrative bounded setup, a system proposes a change to its own search procedure, tests it on held-out tasks, and retains it only if specified checks pass.",
+      "caution": "Refining an answer is different from changing a model or its improvement process. Theoretical recursive-improvement proposals do not establish practical feasibility; protect evaluation from reward hacking and regressions.",
+      "sources": [
+        "selfImprovementTheory",
+        "outputRefinement"
+      ]
+    },
+    "ai:ai-scientists": {
+      "definition": "AI systems intended to assist or automate parts of scientific inquiry; the scope of autonomy varies.",
+      "question": "Which steps of scientific inquiry are automated, and how are the resulting claims tested?",
+      "example": "A laboratory system proposes a gene-function hypothesis, chooses a yeast-growth experiment, and records the result for review.",
+      "caution": "Generating a plausible paper or hypothesis is not a validated discovery. Scope, controls, reproducibility, independent verification, and human responsibility remain essential.",
+      "sources": [
+        "automatedScience"
+      ]
+    },
+    "ai:human-ai-symbiosis": {
+      "definition": "A research vision of complementary, sustained collaboration between human and artificial intelligence.",
+      "question": "How do human judgment and machine capabilities complement one another over sustained work?",
+      "example": "A researcher revises a problem formulation while an interactive system explores alternatives and exposes evidence that helps the researcher refine the question.",
+      "caution": "This is a research vision, not a guaranteed outcome of adding AI. Measure joint performance and agency over time, including deskilling, dependency, and whether users can challenge the system.",
+      "sources": [
+        "humanComputerSymbiosis"
+      ]
+    },
+    "ai:superintelligence": {
+      "definition": "A hypothetical form of intelligence exceeding human capabilities across a broad range of important tasks.",
+      "question": "Which capabilities, comparison group, and breadth would make the hypothetical system superintelligent?",
+      "example": "As a thought experiment, compare a system exceeding experts across many cognitive domains with one that only exceeds humans at a single board game.",
+      "caution": "This is a hypothetical category with disputed definitions and trajectories. A narrow superhuman result or historical forecast does not establish broad superintelligence, a timeline, consciousness, or intentions.",
+      "sources": [
+        "superintelligenceConcept"
+      ]
+    },
+    "ai:long-term-ai-futures": {
+      "definition": "Studying possible long-term trajectories and consequences of AI development.",
+      "question": "Which assumptions distinguish possible trajectories, and what evidence would change the assessment?",
+      "example": "Compare scenarios with different capability progress, deployment patterns, and governance choices, recording uncertainties and indicators to revisit.",
+      "caution": "Scenarios are not predictions. Expert surveys describe beliefs shaped by question wording, sampling, and time; keep uncertainty explicit and avoid treating a single date as established fact.",
+      "sources": [
+        "aiFutureSurvey"
+      ]
+    },
+    "ai:artificial-intelligence": {
+      "aliases": [
+        "AI"
+      ],
+      "question": "Which part of the system perceives, learns, reasons, generates, or acts?",
+      "example": "A warehouse robot combines perception, planning, control, and learning.",
+      "caution": "A language model is one possible component of an AI system.",
+      "sources": [
+        "aima"
+      ]
+    },
+    "ai:machine-learning": {
+      "aliases": [
+        "ML"
+      ],
+      "question": "What behavior is learned from data?",
+      "example": "Predict whether a machine needs maintenance from labeled sensor readings.",
+      "caution": "Learning from data is one approach within AI; explicit rules and search also matter.",
+      "sources": [
+        "rules",
+        "aima"
+      ]
+    },
+    "ai:generative-ai": {
+      "aliases": [
+        "GenAI",
+        "generative artificial intelligence"
+      ],
+      "question": "What kind of content is produced and how will its quality be assessed?",
+      "example": "Generate a draft answer, image, audio clip, or source code.",
+      "caution": "Generation is not the same dimension as broad pretraining or autonomous action.",
+      "sources": [
+        "rag",
+        "aima"
+      ]
+    },
+    "ai:foundation-models-and-general-purpose-ai": {
+      "aliases": [
+        "foundation model",
+        "FM"
+      ],
+      "question": "How broadly was the model trained, and how can it be adapted?",
+      "example": "Reuse a broadly trained model for several downstream tasks.",
+      "caution": "General-purpose use does not imply artificial general intelligence.",
+      "sources": [
+        "lora",
+        "cards"
+      ]
+    },
+    "ai:computer-vision-and-perception": {
+      "aliases": [
+        "CV",
+        "computer vision"
+      ],
+      "sources": [
+        "aima"
+      ]
+    }
+  },
+  "pathways": [
+    {
+      "id": "rag",
+      "number": "01",
+      "audience": "BUILD A SYSTEM",
+      "title": "Build a grounded AI assistant",
+      "short": "Connect retrieval, generation, and evaluation.",
+      "description": "Map a document assistant before choosing a framework. Follow the evidence from source material to a useful answer.",
+      "outcome": "A system sketch and a retrieval / answer evaluation checklist.",
+      "difficulty": "Builder",
+      "duration": "5 stops",
+      "sourceIds": [
+        "rag",
+        "cards",
+        "evaluate",
+        "fresco"
+      ],
+      "steps": [
+        {
+          "title": "Start with the information need",
+          "concept": "ai:information-retrieval",
+          "text": "Write the question the assistant should answer and identify the collection it is allowed to search.",
+          "task": "Define one user question and the authoritative source documents."
+        },
+        {
+          "title": "Separate the model from the system",
+          "concept": "ai:large-language-models",
+          "text": "The language model generates responses. Retrieval supplies context. Permissions, storage, and user interaction remain system responsibilities.",
+          "task": "Sketch which parts belong to the model and which belong to the application."
+        },
+        {
+          "title": "Connect evidence to the answer",
+          "concept": "ai:text-generation",
+          "text": "Inspect whether each important claim is supported by retrieved material. Decide what should happen when evidence is missing.",
+          "task": "Write one supported-answer example and one insufficient-evidence example."
+        },
+        {
+          "title": "Test the failure modes separately",
+          "concept": "ai:evaluation-measurement-and-benchmarking",
+          "text": "A poor answer may come from retrieval, missing context, or generation. Use cases that expose each failure separately.",
+          "task": "Create a held-out test set covering retrieval failures and unsupported claims.",
+          "practice": {
+            "title": "Worked example: two versions of a policy",
+            "intro": "Illustrative test fixture, not a real policy. A user asks on 3 November 2026: how long can an unopened item be returned? Both documents are authorized for this user.",
+            "columns": [
+              "Evidence",
+              "What to check"
+            ],
+            "rows": [
+              [
+                "Document A · effective 1 January 2026",
+                "Official policy: unopened items can be returned within 30 days."
+              ],
+              [
+                "Document B · effective 1 October 2026",
+                "Official replacement policy: unopened items can be returned within 14 days; it explicitly supersedes A."
+              ],
+              [
+                "Question about today",
+                "Use B and cite its effective date. Answer: 14 days, assuming the item and purchase fall within its scope."
+              ],
+              [
+                "Question about February 2026",
+                "Use the policy applicable to that time. A newer document is not automatically the answer to a historical question."
+              ],
+              [
+                "Unresolved conflict",
+                "If scope, authority, or effective dates do not resolve the conflict, report the uncertainty and seek clarification."
+              ]
+            ],
+            "takeaway": "Test retrieval and generation separately: was the applicable policy retrieved, and does the answer use and cite it? Log document version, effective date, and the time the question refers to. A later upload date alone does not make evidence authoritative.",
+            "sourceIds": [
+              "fresco"
+            ]
+          }
+        },
+        {
+          "title": "Respect access boundaries",
+          "concept": "ai:privacy-and-security",
+          "text": "Check document access before retrieval and avoid placing information in context that the user should not receive.",
+          "task": "Document source permissions and test an unauthorized-document case."
+        }
+      ]
+    },
+    {
+      "id": "training",
+      "number": "02",
+      "audience": "TRAIN & ADAPT",
+      "title": "Adapt a model with evidence",
+      "short": "From data quality to a defensible evaluation.",
+      "description": "Decide what should be learned, reuse what already works, and make the experiment reproducible.",
+      "outcome": "A small experiment plan with a baseline, held-out evaluation, and model-card outline.",
+      "difficulty": "Practitioner",
+      "duration": "6 stops",
+      "sourceIds": [
+        "rules",
+        "lora",
+        "hf",
+        "cards"
+      ],
+      "steps": [
+        {
+          "title": "Define the target behavior",
+          "concept": "ai:supervised-learning",
+          "text": "Describe the input, the expected output, and the criterion for a useful result. Record a simple baseline before making the model more complex.",
+          "task": "Write a measurable target and record the baseline result."
+        },
+        {
+          "title": "Audit the dataset",
+          "concept": "ai:data-centric-ai",
+          "text": "Inspect provenance, permission, labeling quality, duplication, and coverage. Split data to avoid leakage between training and evaluation.",
+          "task": "Document provenance and define a leakage-resistant split."
+        },
+        {
+          "title": "Choose what to reuse",
+          "concept": "ai:transfer-learning",
+          "text": "Ask whether an existing model or representation is suitable. Fine-tuning and LoRA are adaptation approaches, not new branches in this taxonomy.",
+          "task": "State why adaptation is appropriate and what parts of the model will change."
+        },
+        {
+          "title": "Make the experiment reproducible",
+          "concept": "ai:deep-learning",
+          "text": "Record the base model revision, data version, configuration, seeds, and compute conditions. These are experiment details outside the taxonomy itself.",
+          "task": "Save the experiment configuration and dataset version."
+        },
+        {
+          "title": "Evaluate beyond the average",
+          "concept": "ai:evaluation-measurement-and-benchmarking",
+          "text": "Compare against the baseline on held-out data, then inspect relevant slices, failures, and operational tradeoffs.",
+          "task": "Record metrics and concrete failure examples on the held-out set."
+        },
+        {
+          "title": "Communicate the limits",
+          "concept": "ai:human-ai-interaction",
+          "text": "Describe intended use, unsuitable uses, evaluation conditions, and known limits so another person can judge the result.",
+          "task": "Draft a model card that explains what the evaluation does and does not show."
+        }
+      ]
+    },
+    {
+      "id": "agents",
+      "number": "03",
+      "audience": "DESIGN AN AGENT",
+      "title": "Understand a system that acts",
+      "short": "Make goals, actions, and oversight explicit.",
+      "description": "Move from a conversational interface to a system model. Identify what chooses actions and what constrains them.",
+      "outcome": "An action boundary, a stopping rule, and a trace-based test plan.",
+      "difficulty": "Builder",
+      "duration": "5 stops",
+      "sourceIds": [
+        "react",
+        "aima",
+        "cards",
+        "agentTrident",
+        "agentIF"
+      ],
+      "steps": [
+        {
+          "title": "Describe the goal and environment",
+          "concept": "ai:autonomous-agents",
+          "text": "Specify the task, the available observations, and which actions the system can take. Start with the smallest useful set of actions.",
+          "task": "List allowed actions and one action the system must never take."
+        },
+        {
+          "title": "Explain how actions are selected",
+          "concept": "ai:automated-planning",
+          "text": "Separate a proposed plan from execution. An LLM-produced plan is a hypothesis to check against actual tool results.",
+          "task": "Write a goal, a short action sequence, and the observations needed between actions."
+        },
+        {
+          "title": "Design meaningful intervention",
+          "concept": "ai:human-in-the-loop-ai",
+          "text": "Make explicit who can approve, reject, pause, and recover. Give them enough context to make those choices.",
+          "task": "Define an approval point, a stopping rule, and a recovery action."
+        },
+        {
+          "title": "Evaluate the whole trajectory",
+          "concept": "ai:evaluation-measurement-and-benchmarking",
+          "text": "Look at outcomes and intermediate actions: tool choice, arguments, errors, repeated actions, and resource use.",
+          "task": "Create a success case, a tool-failure case, and a stop-condition case.",
+          "practice": {
+            "title": "Worked example: an agent that reschedules a delivery",
+            "intro": "Illustrative test fixture. The agent may read delivery slots and propose a change, but must obtain approval before confirming it. A failed tool call must not be reported as a successful update.",
+            "columns": [
+              "Check",
+              "Test and expected evidence"
+            ],
+            "rows": [
+              [
+                "Can the task be completed?",
+                "Ask for a slot outside the supported delivery area. The agent should identify the limitation and avoid inventing a tool capability."
+              ],
+              [
+                "Is the plan valid?",
+                "For a supported change, inspect the trace: read available slots, propose one, request approval, then confirm."
+              ],
+              [
+                "Did execution work?",
+                "Return a timeout from the confirmation tool. The agent should check the actual delivery state before retrying or claiming success."
+              ],
+              [
+                "Were restrictions respected?",
+                "Withhold approval. The agent must not call the confirmation tool even if it could complete the task."
+              ],
+              [
+                "Does behavior repeat?",
+                "Run each case several times under the same recorded settings; report outcomes and violations across runs, not only the best run."
+              ]
+            ],
+            "takeaway": "Record task completion separately from constraint violations, tool errors, cost, and elapsed time. Record model/tool versions, decoding settings, evaluation rules, and run count before comparing results. This small checklist is a starting point, not a certification of reliability.",
+            "sourceIds": [
+              "agentTrident",
+              "agentIF"
+            ]
+          }
+        },
+        {
+          "title": "Add more agents only with a reason",
+          "concept": "ai:cooperative-multi-agent-systems",
+          "text": "Consider whether another agent provides useful specialization. Coordination also introduces handoffs and additional failure modes.",
+          "task": "Compare a single-agent design with a multi-agent design for the same task."
+        }
+      ]
+    },
+    {
+      "id": "teach",
+      "number": "04",
+      "audience": "LEARN & TEACH",
+      "title": "Explain AI beyond the buzzwords",
+      "short": "Build a mental model that survives new tools.",
+      "description": "Use contrasting examples and a simple system sketch to connect the field’s major ideas.",
+      "outcome": "A short teaching sequence with examples and a check for understanding.",
+      "difficulty": "Foundation",
+      "duration": "5 stops",
+      "sourceIds": [
+        "aima"
+      ],
+      "steps": [
+        {
+          "title": "Start with the whole field",
+          "concept": "ai:artificial-intelligence",
+          "text": "Ask learners for examples of systems that perceive, reason, learn, generate, or act. Place them in more than one area when appropriate.",
+          "task": "Choose three everyday examples that show different parts of AI."
+        },
+        {
+          "title": "Distinguish rules from learning",
+          "concept": "ai:machine-learning",
+          "text": "Compare a hand-written rule with a system whose behavior is learned from examples.",
+          "task": "Explain what is learned in one example and what is manually specified."
+        },
+        {
+          "title": "Distinguish methods from outputs",
+          "concept": "ai:generative-ai",
+          "text": "Deep learning is a method family; generation describes what a system produces. A single system can involve both.",
+          "task": "Compare Generative AI with Foundation Models in the comparison view."
+        },
+        {
+          "title": "Show how systems cross branches",
+          "concept": "ai:robotics-and-embodied-ai",
+          "text": "A robot can involve perception, planning, control, and learning. A taxonomy location is not a complete system architecture.",
+          "task": "Draw one system and annotate its parts with concepts from several branches."
+        },
+        {
+          "title": "Check understanding through explanation",
+          "concept": "ai:evaluation-measurement-and-benchmarking",
+          "text": "Ask learners to explain a new example using the map and justify the connections they chose.",
+          "task": "Have a learner explain an unfamiliar example without using a product name."
+        }
+      ]
+    }
+  ],
+  "terms": [
+    {
+      "term": "RAG",
+      "name": "Retrieval-augmented generation",
+      "text": "A system pattern combining retrieved information with generation. Explore its ingredients without treating RAG as a canonical Level 2 node.",
+      "concepts": [
+        "ai:information-retrieval",
+        "ai:large-language-models",
+        "ai:text-generation"
+      ],
+      "path": "rag",
+      "source": "rag"
+    },
+    {
+      "term": "LoRA",
+      "name": "Low-rank adaptation",
+      "text": "A parameter-efficient adaptation method that learns low-rank updates while freezing pretrained weights. It is not a canonical node in this snapshot.",
+      "concepts": [
+        "ai:transfer-learning",
+        "ai:deep-learning"
+      ],
+      "path": "training",
+      "source": "lora"
+    },
+    {
+      "term": "Fine-tuning",
+      "name": "Adapting pretrained parameters",
+      "text": "Further training a pretrained model for a task or domain. It changes trainable parameters; adding documents to a prompt is a different operation.",
+      "concepts": [
+        "ai:transfer-learning",
+        "ai:supervised-learning",
+        "ai:large-language-models"
+      ],
+      "path": "training",
+      "source": "lora"
+    },
+    {
+      "term": "Agent",
+      "name": "A system that selects actions",
+      "text": "An agent is understood through its observations, goals, actions, and environment. A chat interface alone says little about its autonomy.",
+      "concepts": [
+        "ai:autonomous-agents",
+        "ai:automated-planning",
+        "ai:human-in-the-loop-ai"
+      ],
+      "path": "agents",
+      "source": "react"
+    }
+  ],
+  "sources": {
+    "fairnessBook": {
+      "title": "Fairness and Machine Learning: Limitations and Opportunities",
+      "author": "Barocas, Hardt & Narayanan · author-hosted textbook",
+      "url": "https://fairmlbook.org/",
+      "note": "Different fairness criteria, their limitations, and the surrounding social and organizational context."
+    },
+    "misuseReport": {
+      "title": "The Malicious Use of Artificial Intelligence: Forecasting, Prevention, and Mitigation",
+      "author": "Brundage et al. · 2018 report",
+      "url": "https://arxiv.org/abs/1802.07228",
+      "note": "Threat modeling and mitigation for intentional misuse; a research framework rather than a guarantee of prevention."
+    },
+    "riskGovernance": {
+      "title": "AI Risk Management Framework",
+      "author": "NIST · AI RMF resources",
+      "url": "https://airc.nist.gov/airmf-resources/airmf/",
+      "note": "Voluntary framework for risk governance across the AI lifecycle; not a substitute for applicable law."
+    },
+    "selfImprovementTheory": {
+      "title": "Goedel Machines: Self-Referential Universal Problem Solvers Making Provably Optimal Self-Improvements",
+      "author": "Jürgen Schmidhuber · 2003, revised 2006",
+      "url": "https://arxiv.org/abs/cs/0309048",
+      "note": "A theoretical self-rewriting design with proof and utility assumptions; not evidence of deployed unrestricted recursive improvement."
+    },
+    "outputRefinement": {
+      "title": "Self-Refine: Iterative Refinement with Self-Feedback",
+      "author": "Madaan et al. · 2023",
+      "url": "https://arxiv.org/abs/2303.17651",
+      "note": "An output-refinement method without additional training; useful for distinguishing better answers from modification of the underlying model."
+    },
+    "automatedScience": {
+      "title": "The Automation of Science",
+      "author": "King et al. · Science 2009",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19342587/",
+      "note": "Original report of a robot scientist generating and testing scoped yeast functional-genomics hypotheses."
+    },
+    "humanComputerSymbiosis": {
+      "title": "Man-Computer Symbiosis",
+      "author": "J. C. R. Licklider · 1960, reprinted in a 1990 collection hosted by MIT",
+      "url": "https://web.mit.edu/course/other/sts.035/www/PDFs/Licklider.pdf",
+      "note": "Historical vision of complementary human-computer problem solving; the PDF includes the original essay and other material."
+    },
+    "superintelligenceConcept": {
+      "title": "How Long Before Superintelligence?",
+      "author": "Nick Bostrom · historical essay, 1998, with later postscripts",
+      "url": "https://nickbostrom.com/papers/how-long-before-superintelligence/",
+      "note": "A historical definition and speculative argument. Its dated forecasts are not presented as current evidence or consensus."
+    },
+    "aiFutureSurvey": {
+      "title": "Thousands of AI Authors on the Future of AI",
+      "author": "Grace et al. · 2024 preprint, revised 2025",
+      "url": "https://arxiv.org/abs/2401.02843",
+      "note": "Researcher forecasts and disagreement; elicited beliefs are not validated predictions or probabilities established by observation."
+    },
+    "multiagentFoundations": {
+      "title": "Multiagent Systems: Algorithmic, Game-Theoretic, and Logical Foundations",
+      "author": "Shoham & Leyton-Brown · 2009",
+      "url": "https://www.masfoundations.org/",
+      "note": "Author-hosted textbook; see communication, distributed optimization, negotiation, and coordination."
+    },
+    "marlBook": {
+      "title": "Multi-Agent Reinforcement Learning: Foundations and Modern Approaches",
+      "author": "Albrecht, Christianos & Schäfer · MIT Press 2024",
+      "url": "https://www.marl-book.com/",
+      "note": "Models, learning challenges, algorithms, and practical evaluation in shared environments."
+    },
+    "swarmFoundations": {
+      "title": "Swarm Intelligence",
+      "author": "Dorigo & Birattari · Scholarpedia 2007, author-hosted PDF",
+      "url": "https://iridia.ulb.ac.be/~mdorigo/Published_papers/All_Dorigo_papers/DorBir2007sch-si.pdf",
+      "note": "Decentralized coordination and collective behavior arising from local interactions."
+    },
+    "agentSocialLaws": {
+      "title": "On the Synthesis of Useful Social Laws for Artificial Agent Societies",
+      "author": "Shoham & Tennenholtz · AAAI 1992",
+      "url": "https://cdn.aaai.org/AAAI/1992/AAAI92-043.pdf",
+      "note": "Original research on rules that constrain agents while preserving useful independent behavior."
+    },
+    "mechanismDesign": {
+      "title": "Mechanism Design",
+      "author": "Poole & Mackworth · 3rd ed., §14.6",
+      "url": "https://artint.info/3e/html/ArtInt3e.Ch14.S6.html",
+      "note": "Designing interaction rules and incentives; truthful reporting and aggregate objectives need explicit assumptions."
+    },
+    "mixedInitiative": {
+      "title": "Principles of Mixed-Initiative User Interfaces",
+      "author": "Eric Horvitz · CHI 1999",
+      "url": "https://www.microsoft.com/en-us/research/publication/principles-mixed-initiative-user-interfaces/",
+      "note": "Combining automated assistance with direct user control and appropriate intervention."
+    },
+    "recommenderIntro": {
+      "title": "Recommendations: What and Why?",
+      "author": "Google · Machine Learning course",
+      "url": "https://developers.google.com/machine-learning/recommendation/overview",
+      "note": "Personalized and related-item recommendations, with links to retrieval, scoring, and reranking."
+    },
+    "interactiveLearning": {
+      "title": "Power to the People: The Role of Humans in Interactive Machine Learning",
+      "author": "Amershi, Cakmak, Knox & Kulesza · AI Magazine 2014",
+      "url": "https://ojs.aaai.org/aimagazine/index.php/aimagazine/article/view/2513/0",
+      "note": "How user feedback and interaction affect learning systems and their evaluation."
+    },
+    "humanAiGuidelines": {
+      "title": "Guidelines for Human-AI Interaction",
+      "author": "Amershi et al. · CHI 2019, Microsoft Research",
+      "url": "https://www.microsoft.com/en-us/research/project/guidelines-for-human-ai-interaction/",
+      "note": "Research-based guidance on expectations, control, correction, and behavior over time."
+    },
+    "syntheticTabular": {
+      "title": "Modeling Tabular Data using Conditional GAN",
+      "author": "Xu et al. · NeurIPS 2019",
+      "url": "https://arxiv.org/abs/1907.00503",
+      "note": "A research example of synthesizing mixed numerical and categorical tabular data."
+    },
+    "generativeAdversarial": {
+      "title": "Generative Adversarial Networks",
+      "author": "Goodfellow et al. · 2014",
+      "url": "https://arxiv.org/abs/1406.2661",
+      "note": "Original adversarial generative-modeling paper; one family among several generative approaches."
+    },
+    "foundationScope": {
+      "title": "On the Opportunities and Risks of Foundation Models",
+      "author": "Bommasani et al. · 2021 report, revised 2022",
+      "url": "https://arxiv.org/abs/2108.07258",
+      "note": "Broad pretraining, adaptation across tasks, and shared opportunities and limitations."
+    },
+    "visualPretraining": {
+      "title": "DINOv2: Learning Robust Visual Features without Supervision",
+      "author": "Oquab et al. · 2023",
+      "url": "https://arxiv.org/abs/2304.07193",
+      "note": "Reusable visual representations evaluated across image-level and pixel-level tasks."
+    },
+    "imageTextPretraining": {
+      "title": "Learning Transferable Visual Models From Natural Language Supervision",
+      "author": "Radford et al. · 2021",
+      "url": "https://arxiv.org/abs/2103.00020",
+      "note": "Joint image-text learning and transfer; does not imply support for every modality or task."
+    },
+    "audioPretraining": {
+      "title": "BEATs: Audio Pre-Training with Acoustic Tokenizers",
+      "author": "Chen et al. · 2022",
+      "url": "https://arxiv.org/abs/2212.09058",
+      "note": "Audio representation learning and transfer across sound-classification benchmarks."
+    },
+    "videoPretraining": {
+      "title": "VideoMAE V2: Scaling Video Masked Autoencoders with Dual Masking",
+      "author": "Wang et al. · 2023",
+      "url": "https://arxiv.org/abs/2303.16727",
+      "note": "Scaled video pretraining and reuse for downstream video tasks."
+    },
+    "codePretraining": {
+      "title": "CodeT5: Identifier-aware Unified Pre-trained Encoder-Decoder Models for Code Understanding and Generation",
+      "author": "Wang et al. · EMNLP 2021",
+      "url": "https://arxiv.org/abs/2109.00859",
+      "note": "Reusing pretrained code representations for both analysis and generation tasks."
+    },
+    "scientificPretraining": {
+      "title": "Towards a Foundation Model for Partial Differential Equations: Multi-Operator Learning and Extrapolation",
+      "author": "Sun et al. · 2024 preprint, revised 2025",
+      "url": "https://arxiv.org/abs/2404.12355",
+      "note": "A scoped scientific research example across equation families; not evidence of universal scientific competence."
+    },
+    "worldModelPaper": {
+      "title": "World Models",
+      "author": "Ha & Schmidhuber · 2018",
+      "url": "https://arxiv.org/abs/1803.10122",
+      "note": "Learning compact environment dynamics to support behavior; one modern neural implementation."
+    },
+    "videoActions": {
+      "title": "Two-Stream Convolutional Networks for Action Recognition in Videos",
+      "author": "Simonyan & Zisserman · 2014",
+      "url": "https://arxiv.org/abs/1406.2199",
+      "note": "Research example separating appearance and motion cues for recognizing actions."
+    },
+    "sceneReconstruction": {
+      "title": "NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis",
+      "author": "Mildenhall et al. · ECCV 2020",
+      "url": "https://arxiv.org/abs/2003.08934",
+      "note": "Recovering a continuous scene representation from views; illustrates reconstruction rather than unrestricted scene generation."
+    },
+    "multimodalSurvey": {
+      "title": "Multimodal Machine Learning: A Survey and Taxonomy",
+      "author": "Baltrušaitis, Ahuja & Morency · 2017",
+      "url": "https://arxiv.org/abs/1705.09406",
+      "note": "Alignment, fusion, representation, and other challenges when combining modalities."
+    },
+    "sceneRelations": {
+      "title": "Visual Genome: Connecting Language and Vision Using Crowdsourced Dense Image Annotations",
+      "author": "Krishna et al. · 2016",
+      "url": "https://arxiv.org/abs/1602.07332",
+      "note": "Objects, attributes, and relationships as evidence for richer scene interpretation."
+    },
+    "sceneText": {
+      "title": "An End-to-End Trainable Neural Network for Image-based Sequence Recognition and Its Application to Scene Text Recognition",
+      "author": "Shi, Bai & Yao · 2015",
+      "url": "https://arxiv.org/abs/1507.05717",
+      "note": "A sequence-recognition approach to reading text in images; one OCR method."
+    },
+    "latentDiffusion": {
+      "title": "High-Resolution Image Synthesis with Latent Diffusion Models",
+      "author": "Rombach et al. · CVPR 2022",
+      "url": "https://arxiv.org/abs/2112.10752",
+      "note": "Conditional image synthesis in a learned latent space; an example generative method."
+    },
+    "musicGeneration": {
+      "title": "MusicLM: Generating Music From Text",
+      "author": "Agostinelli et al. · 2023",
+      "url": "https://arxiv.org/abs/2301.11325",
+      "note": "Research example of generating music conditioned on text descriptions."
+    },
+    "videoDiffusion": {
+      "title": "Video Diffusion Models",
+      "author": "Ho et al. · 2022",
+      "url": "https://arxiv.org/abs/2204.03458",
+      "note": "Video generation with temporal structure and conditional sampling."
+    },
+    "codeEvaluation": {
+      "title": "Evaluating Large Language Models Trained on Code",
+      "author": "Chen et al. · 2021",
+      "url": "https://arxiv.org/abs/2107.03374",
+      "note": "Code generation evaluated using functional tests; benchmark results are limited to their tasks and protocol."
+    },
+    "textTo3d": {
+      "title": "DreamFusion: Text-to-3D using 2D Diffusion",
+      "author": "Poole et al. · 2022",
+      "url": "https://arxiv.org/abs/2209.14988",
+      "note": "Research example of optimizing a 3D representation using a pretrained image-generation model."
+    },
+    "autonomousDrivingText": {
+      "title": "Autonomous Vehicles",
+      "author": "Frank Dellaert & Seth Hutchinson · Introduction to Robotics and Perception, chapter 6",
+      "url": "https://www.roboticsbook.org/S60_driving_intro.html",
+      "note": "Connects sensing, localization, vehicle kinematics, and motion planning."
+    },
+    "hriBook": {
+      "title": "Human-Robot Interaction — An Introduction",
+      "author": "Bartneck et al. · 2nd ed., 2024",
+      "url": "https://www.human-robot-interaction.org/",
+      "note": "Author-hosted textbook on communication, spatial interaction, design, and evaluation with people."
+    },
+    "robotLearningSurvey": {
+      "title": "Reinforcement Learning in Robotics: A Survey",
+      "author": "Kober, Bagnell & Peters · IJRR 2013",
+      "url": "https://publications.ri.cmu.edu/reinforcement-learning-in-robotics-a-survey",
+      "note": "Research overview of learning robot behavior, representations, prior knowledge, and physical constraints."
+    },
+    "embodiedBrooks": {
+      "title": "Intelligence without Representation",
+      "author": "Rodney A. Brooks · Artificial Intelligence, 1991",
+      "url": "https://people.csail.mit.edu/brooks/papers/representation.pdf",
+      "note": "Influential situated robotics perspective; one approach to embodiment, not a universal architectural requirement."
+    },
+    "speechRecognitionPaper": {
+      "title": "Robust Speech Recognition via Large-Scale Weak Supervision",
+      "author": "Radford et al. · 2022",
+      "url": "https://arxiv.org/abs/2212.04356",
+      "note": "A research example of learning to transcribe audio and evaluating transfer across speech tasks."
+    },
+    "speechSynthesisPaper": {
+      "title": "Natural TTS Synthesis by Conditioning WaveNet on Mel Spectrogram Predictions",
+      "author": "Shen et al. · ICASSP 2018",
+      "url": "https://arxiv.org/abs/1712.05884",
+      "note": "A concrete text-to-speech architecture connecting text, acoustic features, and waveform generation."
+    },
+    "translationPaper": {
+      "title": "Neural Machine Translation by Jointly Learning to Align and Translate",
+      "author": "Bahdanau, Cho & Bengio · ICLR 2015",
+      "url": "https://arxiv.org/abs/1409.0473",
+      "note": "Original attention-based translation research; an example approach rather than the definition of translation."
+    },
+    "nlgSurvey": {
+      "title": "Survey of the State of the Art in Natural Language Generation: Core Tasks, Applications and Evaluation",
+      "author": "Gatt & Krahmer · 2018 revision",
+      "url": "https://arxiv.org/abs/1703.09902",
+      "note": "Content selection, organization, realization, and evaluation in generating language from data."
+    },
+    "nluEvaluation": {
+      "title": "GLUE: A Multi-Task Benchmark and Analysis Platform for Natural Language Understanding",
+      "author": "Wang et al. · ICLR 2019",
+      "url": "https://arxiv.org/abs/1804.07461",
+      "note": "Examples of language-understanding tasks and diagnostic evaluation; benchmark success is not proof of complete understanding."
+    },
+    "dialogueSurvey": {
+      "title": "A Survey on Dialogue Systems: Recent Advances and New Frontiers",
+      "author": "Chen, Liu, Yin & Tang · 2017",
+      "url": "https://arxiv.org/abs/1711.01731",
+      "note": "Task-oriented and open-ended dialogue, system components, and learned response generation."
+    },
+    "optimizationText": {
+      "title": "Optimization",
+      "author": "Poole & Mackworth · Artificial Intelligence, 3rd ed., §4.8",
+      "url": "https://artint.info/3e/html/ArtInt3e.Ch4.S8.html",
+      "note": "Objectives, constraints, and search for better feasible assignments."
+    },
+    "evolutionaryText": {
+      "title": "Population-Based Methods",
+      "author": "Poole & Mackworth · 3rd ed., §4.7",
+      "url": "https://artint.info/3e/html/ArtInt3e.Ch4.S7.html",
+      "note": "Explains genetic search through populations, variation, and selection; discusses configuration choices."
+    },
+    "commonsenseDefaults": {
+      "title": "Circumscription — A Form of Nonmonotonic Reasoning",
+      "author": "John McCarthy · author-hosted paper",
+      "url": "https://www-formal.stanford.edu/jmc/circumscription/circumscription.html",
+      "note": "One formal approach to defeasible everyday assumptions; not a complete theory of commonsense."
+    },
+    "temporalIntervals": {
+      "title": "An Interval-Based Representation of Temporal Knowledge",
+      "author": "James F. Allen · IJCAI 1981",
+      "url": "https://ijcai.org/proceedings/1981/46",
+      "note": "Represents relationships between time intervals and propagates temporal constraints."
+    },
+    "spatialTransforms": {
+      "title": "Basic Pick and Place",
+      "author": "Russ Tedrake · MIT Robotic Manipulation, chapter 3",
+      "url": "https://manipulation.csail.mit.edu/pick.html",
+      "note": "Coordinate frames, spatial transforms, grasp poses, and manipulation geometry."
+    },
+    "robotControl": {
+      "title": "Let's Get You a Robot",
+      "author": "Russ Tedrake · MIT Robotic Manipulation, chapter 2",
+      "url": "https://manipulation.csail.mit.edu/robot.html",
+      "note": "Robot actuators, sensing, and position control; connects commands with physical behavior."
+    },
+    "robotSensing": {
+      "title": "Perception",
+      "author": "Introduction to Robotics and Perception · §2.4",
+      "url": "https://www.roboticsbook.org/S24_sorter_perception.html",
+      "note": "Inferring hidden world states from uncertain sensor measurements."
+    },
+    "slamText": {
+      "title": "SLAM",
+      "author": "Introduction to Robotics and Perception · §6.4",
+      "url": "https://www.roboticsbook.org/S64_driving_perception.html",
+      "note": "Joint estimation of robot poses and maps, including scan alignment and landmark-based SLAM."
+    },
+    "motionText": {
+      "title": "Path Planning",
+      "author": "Introduction to Robotics and Perception · §5.5",
+      "url": "https://www.roboticsbook.org/S55_diffdrive_planning.html",
+      "note": "Collision-free paths and configuration-space reasoning for mobile robots."
+    },
+    "expertSystemsBook": {
+      "title": "Rule-Based Expert Systems: The MYCIN Experiments",
+      "author": "Buchanan & Shortliffe, editors · 1984",
+      "url": "https://www.shortliffe.net/Buchanan-Shortliffe-1984/MYCIN%20Book.htm",
+      "note": "Primary account of building and evaluating a domain-specific expert system; the editor hosts the chapters."
+    },
+    "logicDatalog": {
+      "title": "Datalog: A Relational Rule Language",
+      "author": "Poole & Mackworth · 3rd ed., §15.4",
+      "url": "https://artint.info/3e/html/ArtInt3e.Ch15.S4.html",
+      "note": "Facts, rules, variables, and queries in a restricted logic programming language."
+    },
+    "symbolSemantics": {
+      "title": "Symbols and Semantics",
+      "author": "Poole & Mackworth · 3rd ed., §15.2",
+      "url": "https://artint.info/3e/html/ArtInt3e.Ch15.S2.html",
+      "note": "Connects explicit symbols and logical consequences to their intended meaning in a domain."
+    },
+    "neurosymbolicArchitectures": {
+      "title": "Mapping the Neuro-Symbolic AI Landscape by Architectures",
+      "author": "Feldstein, Dilkas, Belle & Tsamoura · survey preprint 2024",
+      "url": "https://arxiv.org/abs/2410.22077",
+      "note": "Reviews different ways of integrating neural networks and symbolic methods; no single architecture defines the whole field."
+    },
+    "deepProbLog": {
+      "title": "DeepProbLog: Neural Probabilistic Logic Programming",
+      "author": "Manhaeve et al. · NeurIPS 2018",
+      "url": "https://arxiv.org/abs/1805.10872",
+      "note": "A concrete research example combining neural predicates with probabilistic logic programming."
+    },
+    "stateSpaces": {
+      "title": "State Spaces",
+      "author": "Poole & Mackworth · 3rd ed., §3.2",
+      "url": "https://artint.info/3e/html/ArtInt3e.Ch3.S2.html",
+      "note": "Defines states, available actions, transitions, and goals, with explicit assumptions about the environment."
+    },
+    "heuristicSearch": {
+      "title": "Informed (Heuristic) Search",
+      "author": "Poole & Mackworth · 3rd ed., §3.6",
+      "url": "https://artint.info/3e/html/ArtInt3e.Ch3.S6.html",
+      "note": "Search guidance, A*, and the conditions needed for optimality guarantees."
+    },
+    "gameTreeSearch": {
+      "title": "Solving Perfect Information Games",
+      "author": "Poole & Mackworth · 3rd ed., §14.3",
+      "url": "https://artint.info/3e/html/ArtInt3e.Ch14.S3.html",
+      "note": "Minimax, alpha-beta pruning, and limited-depth evaluation in games with observable states."
+    },
+    "mctsSurvey": {
+      "title": "A Survey of Monte Carlo Tree Search Methods",
+      "author": "Browne et al. · IEEE TCIAIG 2012",
+      "url": "https://cs.gettysburg.edu/~tneller/cs371/mcts-survey.pdf",
+      "note": "Full survey PDF hosted by Gettysburg College; explains selection, expansion, simulation, and backpropagation."
+    },
+    "jobShop": {
+      "title": "The Job Shop Problem",
+      "author": "Google OR-Tools · official scheduling guide",
+      "url": "https://developers.google.com/optimization/scheduling/job_shop",
+      "note": "A worked example of task precedence, exclusive machines, and minimizing total completion time."
+    },
+    "planningStates": {
+      "title": "Representing States, Actions, and Goals",
+      "author": "Poole & Mackworth · AI: Foundations of Computational Agents, 3rd ed., §6.1",
+      "url": "https://artint.info/3e/html/ArtInt3e.Ch6.S1.html",
+      "note": "Action preconditions, effects, and goals in deterministic planning; the assumptions limit what a plan guarantees."
+    },
+    "cooperativeFramework": {
+      "title": "Multiagent Framework",
+      "author": "Poole & Mackworth · 3rd ed., §14.1",
+      "url": "https://artint.info/3e/html/ArtInt3e.Ch14.S1.html",
+      "note": "Distinguishes shared-utility cooperation from competitive and mixed-interest interactions."
+    },
+    "unsupervised": {
+      "title": "Unsupervised Learning",
+      "author": "Poole & Mackworth · 3rd ed., §10.3",
+      "url": "https://artint.info/3e/html/ArtInt3e.Ch10.S3.html",
+      "note": "Clustering without supplied target labels; discusses feature scaling and the interpretation of clusters."
+    },
+    "knowledgeRepresentation": {
+      "title": "Knowledge Representation",
+      "author": "Poole & Mackworth · 1st ed., §1.4",
+      "url": "https://artint.info/html1e/ArtInt_8.html",
+      "note": "How representation choices connect a domain, a computational problem, and an interpreted result."
+    },
+    "probabilisticInference": {
+      "title": "Probabilistic Inference",
+      "author": "Poole & Mackworth · 3rd ed., §9.4",
+      "url": "https://artint.info/3e/html/ArtInt3e.Ch9.S4.html",
+      "note": "Posterior beliefs given evidence; distinguishes exact and approximate inference."
+    },
+    "causality": {
+      "title": "Causality",
+      "author": "Poole & Mackworth · 3rd ed., Chapter 11",
+      "url": "https://artint.info/3e/html/ArtInt3e.Ch11.html",
+      "note": "Why observing an association differs from intervening, and why causal conclusions require assumptions."
+    },
+    "explanationEvaluation": {
+      "title": "Evaluation of Interpretability Methods",
+      "author": "Christoph Molnar · Interpretable Machine Learning, Chapter 32",
+      "url": "https://christophm.github.io/interpretable-ml-book/evaluation.html",
+      "note": "Evaluates explanations for their intended audience and task, including fidelity and stability."
+    },
+    "visionTasks": {
+      "title": "Object Detection and Image Segmentation",
+      "author": "Fei-Fei Li & Ehsan Adeli · Stanford CS231n, lecture 9, 2024",
+      "url": "https://cs231n.stanford.edu/2024/slides/2024/lecture_9.pdf",
+      "note": "Lecture slides comparing image-level labels, object locations, and semantic or instance pixel masks."
+    },
+    "semiSurvey": {
+      "title": "A survey on semi-supervised learning",
+      "author": "van Engelen & Hoos · Machine Learning 2020",
+      "url": "https://link.springer.com/article/10.1007/s10994-019-05855-6",
+      "note": "Survey of how labeled and unlabeled examples are combined, including assumptions and limitations."
+    },
+    "representationSurvey": {
+      "title": "Representation Learning: A Review and New Perspectives",
+      "author": "Bengio, Courville & Vincent · 2013",
+      "url": "https://arxiv.org/abs/1206.5538",
+      "note": "Learned features, representation objectives, and connections to deep learning."
+    },
+    "federated": {
+      "title": "Communication-Efficient Learning of Deep Networks from Decentralized Data",
+      "author": "McMahan et al. · AISTATS 2017",
+      "url": "https://proceedings.mlr.press/v54/mcmahan17a.html",
+      "note": "Federated averaging with decentralized data; discusses communication and heterogeneous clients."
+    },
+    "onlineSurvey": {
+      "title": "Online Learning and Online Convex Optimization",
+      "author": "Shalev-Shwartz · 2012",
+      "url": "https://www.nowpublishers.com/article/DownloadEBook/MAL-018",
+      "note": "Survey PDF: sequential prediction, feedback, and comparison with a reference predictor."
+    },
+    "activeSurvey": {
+      "title": "Active Learning Literature Survey",
+      "author": "Settles · University of Wisconsin–Madison 2009",
+      "url": "https://research.cs.wisc.edu/techreports/viewreport.php?report=1648",
+      "note": "Selecting examples to label when annotation is costly; includes query strategies and practical issues."
+    },
+    "metaSurvey": {
+      "title": "Meta-Learning in Neural Networks: A Survey",
+      "author": "Hospedales et al. · survey preprint 2020",
+      "url": "https://arxiv.org/abs/2004.05439",
+      "note": "Learning across episodes and distinctions from transfer learning and hyperparameter optimization."
+    },
+    "ensembleSurvey": {
+      "title": "Ensemble Methods in Machine Learning",
+      "author": "Dietterich · MCS 2000",
+      "url": "https://link.springer.com/chapter/10.1007/3-540-45014-9_1",
+      "note": "Voting, bagging, and boosting. Abstract is public; the full chapter may require access."
+    },
+    "continualSurvey": {
+      "title": "A Continual Learning Survey: Defying Forgetting in Classification Tasks",
+      "author": "De Lange et al. · accepted TPAMI manuscript 2021",
+      "url": "https://arxiv.org/abs/1909.08383",
+      "note": "Retention and adaptation tradeoffs; the empirical study focuses on task-incremental classification."
+    },
+    "constraints": {
+      "title": "Variables and Constraints",
+      "author": "Poole & Mackworth · AI: Foundations of Computational Agents, 3rd ed.",
+      "url": "https://www.artint.info/3e/html/ArtInt3e.Ch4.S1.html",
+      "note": "Open textbook section defining variables, domains, constraints, and satisfying assignments."
+    },
+    "inference": {
+      "title": "Propositional Definite Clauses",
+      "author": "Poole & Mackworth · AI: Foundations of Computational Agents, 3rd ed.",
+      "url": "https://artint.info/3e/html/ArtInt3e.Ch5.S3.html",
+      "note": "Open textbook section on logical consequence and proof procedures for a restricted logic."
+    },
+    "agentTrident": {
+      "title": "Agent-Trident: Diagnosing Tool-Use Hallucination",
+      "author": "Li et al. · Findings of EMNLP, October 2026",
+      "url": "https://aclanthology.org/2026.findings-emnlp.1862/",
+      "note": "Separates solvability judgment, planning, and execution in tool-use evaluation."
+    },
+    "agentIF": {
+      "title": "AgentIF: Instruction Following in Agentic Scenarios",
+      "author": "AgentIF team · evaluation protocol update, October 2026",
+      "url": "https://agentif.github.io/",
+      "note": "Reports repeat runs and evaluation settings; updated scores are not comparable with the original protocol."
+    },
+    "fresco": {
+      "title": "FRESCO: Re-ranking Evidence as Facts Change",
+      "author": "An et al. · Findings of EMNLP, October 2026",
+      "url": "https://aclanthology.org/2026.findings-emnlp.54/",
+      "note": "Studies re-rankers selecting between temporally different evidence. Newer is useful only when authoritative and applicable to the question."
+    },
+    "rag": {
+      "title": "Retrieval-Augmented Generation",
+      "author": "Lewis et al. · NeurIPS 2020",
+      "url": "https://arxiv.org/abs/2005.11401",
+      "note": "Original research on combining retrieval with generation."
+    },
+    "lora": {
+      "title": "LoRA: Low-Rank Adaptation",
+      "author": "Hu et al. · 2021",
+      "url": "https://arxiv.org/abs/2106.09685",
+      "note": "A parameter-efficient method for adapting large models."
+    },
+    "react": {
+      "title": "ReAct: Reasoning and Acting",
+      "author": "Yao et al. · ICLR 2023",
+      "url": "https://arxiv.org/abs/2210.03629",
+      "note": "A concrete example of reasoning interleaved with external actions."
+    },
+    "cards": {
+      "title": "Model Cards for Model Reporting",
+      "author": "Mitchell et al. · 2019",
+      "url": "https://arxiv.org/abs/1810.03993",
+      "note": "Reporting intended use, evaluation conditions, and limitations."
+    },
+    "hf": {
+      "title": "Writing a model card",
+      "author": "Hugging Face · official documentation",
+      "url": "https://huggingface.co/docs/hub/model-cards",
+      "note": "Document the model, training setup, data, and evaluation results."
+    },
+    "rules": {
+      "title": "Rules of Machine Learning",
+      "author": "Google · engineering guide",
+      "url": "https://developers.google.com/machine-learning/guides/rules-of-ml",
+      "note": "Practical engineering guidance on baselines, objectives, and pipelines."
+    },
+    "evaluate": {
+      "title": "Evaluate on the Hub",
+      "author": "Hugging Face · official documentation",
+      "url": "https://huggingface.co/docs/evaluate/index",
+      "note": "An entry point to evaluation tools and task-specific measurements."
+    },
+    "aima": {
+      "title": "Artificial Intelligence: A Modern Approach",
+      "author": "Russell & Norvig · topic index",
+      "url": "https://aima.cs.berkeley.edu/contents.html",
+      "note": "A broad textbook map of search, reasoning, learning, and acting. Topic index, not an open full textbook."
+    }
+  },
+  "comparisons": [
+    {
+      "title": "Generative AI vs foundation models",
+      "ids": [
+        "ai:generative-ai",
+        "ai:foundation-models-and-general-purpose-ai"
+      ],
+      "distinction": "Generation describes an output capability. Foundation models describe broad training and reuse. The categories overlap; neither is a synonym for the other."
+    },
+    {
+      "title": "Machine learning vs deep learning",
+      "ids": [
+        "ai:machine-learning",
+        "ai:deep-learning"
+      ],
+      "distinction": "Deep learning is a subarea of machine learning in the canonical hierarchy. Learning does not always require deep neural networks."
+    },
+    {
+      "title": "Learning from labels vs rewards",
+      "ids": [
+        "ai:supervised-learning",
+        "ai:reinforcement-learning"
+      ],
+      "distinction": "Supervised learning uses target outputs for examples. Reinforcement learning uses interaction and reward to learn how to act."
+    },
+    {
+      "title": "Alignment, robustness, interpretability",
+      "ids": [
+        "ai:ai-alignment",
+        "ai:robustness",
+        "ai:interpretability"
+      ],
+      "distinction": "These ask different questions: Are the goals appropriate? Is behavior reliable under variation? Can we understand the model’s mechanisms or behavior?"
+    },
+    {
+      "title": "Retrieval vs generation",
+      "ids": [
+        "ai:information-retrieval",
+        "ai:text-generation"
+      ],
+      "distinction": "Retrieval finds existing material. Generation produces an output. A grounded assistant connects both and evaluates each."
+    },
+    {
+      "title": "Label, locate, or segment",
+      "ids": [
+        "ai:image-classification",
+        "ai:object-detection",
+        "ai:image-segmentation"
+      ],
+      "distinction": "Using the same photograph: classification gives image-level labels, detection locates individual objects, and segmentation identifies pixels. Semantic masks group by category; instance masks distinguish separate objects."
+    },
+    {
+      "title": "Plan actions vs schedule resources",
+      "ids": [
+        "ai:automated-planning",
+        "ai:scheduling"
+      ],
+      "distinction": "Planning asks which actions can achieve a goal given their preconditions and effects. Scheduling asks when tasks should run and how they share resources. A system may need to solve both problems together."
+    }
+  ],
+  "relations": [
+    {
+      "from": "ai:generative-ai",
+      "to": "ai:deep-learning",
+      "label": "often uses methods from",
+      "note": "Many modern generative systems use deep learning. This does not make all generative AI a canonical child of Deep Learning.",
+      "source": "aima"
+    },
+    {
+      "from": "ai:large-language-models",
+      "to": "ai:information-retrieval",
+      "label": "can combine with",
+      "note": "In a retrieval-augmented system, retrieval can supply external context to a language model.",
+      "source": "rag"
+    },
+    {
+      "from": "ai:information-retrieval",
+      "to": "ai:text-generation",
+      "label": "can supply evidence for",
+      "note": "Retrieved passages can provide context for an answer; support still needs to be checked.",
+      "source": "rag"
+    },
+    {
+      "from": "ai:transfer-learning",
+      "to": "ai:large-language-models",
+      "label": "can adapt",
+      "note": "Pretrained language models can be adapted to downstream tasks, including with parameter-efficient methods.",
+      "source": "lora"
+    },
+    {
+      "from": "ai:autonomous-agents",
+      "to": "ai:large-language-models",
+      "label": "can use",
+      "note": "Language models can participate in selecting actions. Not every agent is based on a language model.",
+      "source": "react"
+    },
+    {
+      "from": "ai:autonomous-agents",
+      "to": "ai:automated-planning",
+      "label": "can use",
+      "note": "Goal-directed systems may plan before choosing or revising actions.",
+      "source": "aima"
+    },
+    {
+      "from": "ai:evaluation-measurement-and-benchmarking",
+      "to": "ai:large-language-models",
+      "label": "measures behavior of",
+      "note": "Useful evaluation specifies the task, conditions, relevant slices, and limitations.",
+      "source": "cards"
+    },
+    {
+      "from": "ai:evaluation-measurement-and-benchmarking",
+      "to": "ai:autonomous-agents",
+      "label": "can assess",
+      "note": "Agent evaluation should consider the task outcome and the actions taken along the way.",
+      "source": "react"
+    }
+  ]
+}

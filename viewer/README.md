@@ -1,6 +1,24 @@
-# AI Atlas v0.1 Viewer
+# AI Atlas website and classic viewer
 
-This directory contains a small static D3 explorer for the AI Atlas v0.1 public preview.
+The main website uses the Fieldguide interface: concept exploration, four pathways, comparisons, and a browser-local notebook. The original D3 explorer remains at `classic.html`. Existing document pages and their assets are preserved.
+
+Editorial explanations and relationships remain proposals, separate from the canonical taxonomy. No Level 3 promotion is included. Notebook data does not move automatically from the private preview domain: export its JSON backup and import it on the public site.
+
+## Fieldguide maintenance
+
+Serve the repository root and open `/viewer/`. No build or dependencies are required. Validate with:
+
+```sh
+node scripts/fieldguide-generate-data.mjs
+node scripts/fieldguide-validate.mjs
+node --test tests/fieldguide.test.mjs
+```
+
+The bundled taxonomy must match `taxonomy/ai-taxonomy-l1-l2.json` byte-for-byte; CI checks this. When a reviewed canonical update is adopted, refresh the copy and its source commit in `fieldguide/core.mjs`, then regenerate provenance. The editorial export is generated from `fieldguide/content.mjs`.
+
+Rollback: revert the website adoption commit. The classic map also remains accessible without a rollback.
+
+## Classic viewer
 
 The viewer is designed as a public-facing entry point for people who want to explore AI Atlas without reading raw JSON.
 
@@ -26,7 +44,9 @@ The viewer is a visual aid only. The GitHub repository and canonical taxonomy fi
 
 ## Files
 
-- `index.html` — main visual taxonomy viewer.
+- `index.html` — main Fieldguide website.
+- `fieldguide/` — static modules, styles, and separately labeled editorial data.
+- `classic.html` — preserved original D3 taxonomy viewer.
 - `app.js` — D3 graph, filters, map controls, concept card, and feedback-link behavior.
 - `styles.css` — shared desktop/mobile styling for the viewer and document pages.
 - `mobile-controls.css` — mobile-specific controls drawer and zoom-control layout.
@@ -94,3 +114,42 @@ The viewer is intended to work as a static GitHub Pages-compatible page when the
 - No CMS.
 - No account system.
 - No full relation graph implementation.
+
+## Website link health
+
+`Website link health` runs each Monday at 05:23 UTC (07:23 Tallinn in winter,
+08:23 in summer), on relevant pushes to `main`, and manually from Actions.
+Pull requests run deterministic local-file checks and checker tests only;
+external services do not gate a content PR.
+
+```sh
+node --test tests/site-links.test.mjs
+node scripts/check-site-links.mjs --local-only
+node scripts/check-site-links.mjs
+```
+
+The inventory covers static HTTP links and assets in the root landing page and
+`viewer/` HTML, JS modules and CSS, all Fieldguide source URLs, and composed
+repository/provenance links, plus inline links/images and reference links in
+Markdown documents displayed by the classic document viewer. Document-map files and downloadable JSON are checked
+locally. The report lists where each URL is used. It is saved in the Actions job
+summary and the `website-link-health` artifact (`report.md` and `report.json`,
+30-day retention); local reports go into ignored `.cache/link-health/`.
+
+Missing local files or repeated HTTP 404/410 fail the job. Network/server failures
+are retried once, remain explicitly **unreachable** if unresolved, and also fail
+it. HTTP 401/403/429/451/999 and sign-in redirects are **manual review**, not dead
+links and not silently counted as working. Successful redirects include their
+final destinations. Requests use no credentials, have timeouts, run at most three
+hosts concurrently, and are sequential within each host. No automatic link
+removal, replacement, issue creation, or deployment is performed by this job.
+
+Review the latest report during the weekly site review. Verify a broken URL,
+find an equivalent authoritative source, update the source registry or page,
+then rerun the job. A successful HTTP response cannot establish relevance or
+catch every soft-404. External fragments, dynamically constructed links beyond
+the registered project URLs, complex Markdown syntax, and SPA route behavior are
+outside the HTTP check; keep content review and application tests. GitHub may
+delay scheduled runs and disables schedules in public repositories after 60 days
+without repository activity. Notifications depend on the maintainer's GitHub
+Actions notification settings; the report remains available in Actions.

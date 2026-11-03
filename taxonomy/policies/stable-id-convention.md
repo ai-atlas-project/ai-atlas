@@ -18,14 +18,12 @@ Current public Level 0, Level 1, and Level 2 canonical IDs use a stable semantic
 ai:<slug>
 ```
 
-Examples:
+Examples already present in canonical JSON:
 
 ```text
 ai:large-language-models
 ai:text-generation
-ai:retrieval-augmented-generation
-ai:text-summarization
-ai:surface-realization
+ai:deep-learning
 ```
 
 The current public canonical taxonomy stores this ID format directly in `taxonomy/ai-taxonomy-l1-l2.json`. No future or draft identifier becomes canonical merely because it matches the format.
@@ -44,7 +42,7 @@ These IDs remain valid references inside existing private review work, but they 
 
 If a separate draft namespace is adopted later, it must remain visibly non-canonical and must not imply that a draft concept has passed promotion review.
 
-## Canonical ID rules
+## Proposed lifecycle rules for canonical IDs
 
 Canonical IDs should:
 
@@ -99,7 +97,7 @@ This policy should therefore treat the remaining work as validation and lifecycl
 
 Remaining work:
 
-- validate uniqueness and format across public canonical nodes;
+- retain the existing uniqueness and format checks in `scripts/validate-canonical-l1-l2-json.mjs`;
 - decide alias, former ID, and successor metadata;
 - decide how IDs appear, or do not appear, in Markdown and generated views;
 - document how renamed L1/L2 nodes preserve IDs.
@@ -143,24 +141,23 @@ Deprecated IDs should remain resolvable. They should carry status and successor 
 A future migration should:
 
 1. inventory current public concepts and private provisional IDs;
-2. approve the stable ID format;
-3. validate and approve the existing public L1/L2 IDs, correcting them only through a separate explicit PR if needed;
+2. preserve the current public `ai:<slug>` format and review the migration rules;
+3. validate the existing public L0–L2 IDs, correcting them only through a separate explicit PR if needed;
 4. record old-to-new aliases or successor mappings;
 5. update relation targets only after relation-target typing is approved;
 6. validate that no ID was changed solely because of level, parent, or concept type.
 
 This draft does not authorize that migration.
 
+The public delimiter (`:`), direct storage in canonical JSON, and presence of L0–L2 IDs are implemented facts. This document remains a draft for lifecycle and private migration decisions; documenting those facts does not approve the remaining policy.
+
 ## Open questions
 
-- Should the namespace delimiter be `:` or `.`?
 - Do private drafts need a separate namespace?
 - How should multilingual aliases resolve to one canonical ID?
 - How should deprecated IDs redirect in files, APIs, and generated views?
 - Should canonical slugs be generated only from English canonical names?
 - What exact alias and successor metadata fields are required?
-- Should every public L1/L2 node receive a stable ID before any Level 3 promotion?
-- Should stable IDs live in canonical JSON, a sidecar registry, or generated metadata?
 - How should IDs be represented in Markdown taxonomy views?
 - How should renamed L1/L2 nodes preserve old IDs?
 

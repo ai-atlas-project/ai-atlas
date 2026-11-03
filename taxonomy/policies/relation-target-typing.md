@@ -52,11 +52,15 @@ Every typed relation target should include:
 
 `target_name` remains required even when `target_id` is present so reviews and diffs remain readable.
 
-## Canonical targets before approved stable IDs
+## Current public IDs
+
+Public L0–L2 IDs use `ai:<slug>` and are checked for format and uniqueness by `scripts/validate-canonical-l1-l2-json.mjs`. A new reference to an existing public concept should use its actual ID, not omit it because ID assignment is supposedly pending. This does not approve this draft relation schema, private migrations, or any relation assertion.
+
+## Historical transition before public ID validation
 
 `target_status: "canonical"` should eventually and consistently require `target_id`.
 
-During the transition, do not use `target_status: "canonical"` without `target_id`. Use:
+The transitional guidance below records the earlier private migration phase. During that phase, do not use `target_status: "canonical"` without `target_id`. Use:
 
 ```text
 canonical_pending_id
@@ -91,7 +95,7 @@ Example:
   "type": "related-to",
   "target_name": "Text Generation",
   "target_status": "canonical_pending_id",
-  "note": "Public canonical Level 2 concept using the current ai:<slug> canonical ID format."
+  "note": "Historical transitional example from before public ID validation; current public Text Generation resolves to ai:text-generation. Not for new references to this existing node."
 }
 ```
 

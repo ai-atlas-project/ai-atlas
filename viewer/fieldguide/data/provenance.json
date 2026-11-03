@@ -1,0 +1,34 @@
+{
+  "project": "AI Atlas Fieldguide",
+  "kind": "Public fieldguide with proposed editorial guidance",
+  "retrievedOn": "2026-10-29",
+  "upstream": {
+    "repository": "https://github.com/ai-atlas-project/ai-atlas",
+    "commit": "64dac8d78f1587494ba0b56b489fd8e650601860",
+    "file": "taxonomy/ai-taxonomy-l1-l2.json",
+    "sha256": "d10262e96f76c7b2b822f4f46c1ff758ea2d546aa753f4fab84d6193a3cda63a",
+    "version": "0.1",
+    "canonicalLevels": [
+      0,
+      1,
+      2
+    ]
+  },
+  "layers": {
+    "canonical": "Unmodified upstream file, including all names, IDs, parents, types, stability labels and original descriptions.",
+    "editorial": "Proposed explanations, contextual search terms, pathways, comparisons and relationships. Not community-reviewed or canonical.",
+    "personal": "Browser-local notes, saved concept IDs and self-reported checklists. Not part of the taxonomy."
+  },
+  "attribution": "AI Atlas by Alyaksandr Stzhalkouski",
+  "contentLicense": "CC BY-SA 4.0",
+  "codeLicense": "MIT",
+  "brandNote": "AI Atlas brand and official paid designs are not automatically licensed for commercial reuse.",
+  "limitations": [
+    "Static snapshot, not live synchronization",
+    "No Level 3 promotion",
+    "Editorial guidance requires review",
+    "No model training or inference",
+    "No cloud synchronization of notes",
+    "No user interviews or usage analytics were used to validate design hypotheses"
+  ]
+}

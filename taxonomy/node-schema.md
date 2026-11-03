@@ -56,6 +56,10 @@ If a display name changes but the concept stays the same, keep the same `id`.
 
 If a concept is split, merged, or replaced, preserve the old ID as deprecated rather than silently reusing it for a different meaning.
 
+## Current stored shape and future examples
+
+The current canonical JSON uses name-based `parent` and `children` references and nests Level 2 records in `level_2`. The examples below describe a future schema, not the current stored shape; they do not authorize migration. The current validator is `scripts/validate-canonical-l1-l2-json.mjs`, which enforces `^ai:[a-z0-9]+(?:-[a-z0-9]+)*$`, uniqueness, levels, and hierarchy references.
+
 ## Required fields
 
 Recommended required fields for future canonical nodes:
@@ -174,11 +178,11 @@ Aliases do not create separate nodes.
 
 ## Future Level 3 draft example
 
-This example is illustrative only. It is not a promoted Level 3 taxonomy node.
+This example is illustrative only. Its dotted ID is a provisional draft example, not a public canonical ID or a newly adopted draft namespace. It is not a promoted Level 3 taxonomy node.
 
 ```json
 {
-  "id": "draft:transformers",
+  "id": "ai.architecture.transformers",
   "name": "Transformers",
   "aliases": ["Transformer Architecture"],
   "hierarchy_level": 3,
