@@ -1,6 +1,24 @@
-# AI Atlas v0.1 Viewer
+# AI Atlas website and classic viewer
 
-This directory contains a small static D3 explorer for the AI Atlas v0.1 public preview.
+The main website uses the Fieldguide interface: concept exploration, four pathways, comparisons, and a browser-local notebook. The original D3 explorer remains at `classic.html`. Existing document pages and their assets are preserved.
+
+Editorial explanations and relationships remain proposals, separate from the canonical taxonomy. No Level 3 promotion is included. Notebook data does not move automatically from the private preview domain: export its JSON backup and import it on the public site.
+
+## Fieldguide maintenance
+
+Serve the repository root and open `/viewer/`. No build or dependencies are required. Validate with:
+
+```sh
+node scripts/fieldguide-generate-data.mjs
+node scripts/fieldguide-validate.mjs
+node --test tests/fieldguide.test.mjs
+```
+
+The bundled taxonomy must match `taxonomy/ai-taxonomy-l1-l2.json` byte-for-byte; CI checks this. When a reviewed canonical update is adopted, refresh the copy and its source commit in `fieldguide/core.mjs`, then regenerate provenance. The editorial export is generated from `fieldguide/content.mjs`.
+
+Rollback: revert the website adoption commit. The classic map also remains accessible without a rollback.
+
+## Classic viewer
 
 The viewer is designed as a public-facing entry point for people who want to explore AI Atlas without reading raw JSON.
 
@@ -26,7 +44,9 @@ The viewer is a visual aid only. The GitHub repository and canonical taxonomy fi
 
 ## Files
 
-- `index.html` — main visual taxonomy viewer.
+- `index.html` — main Fieldguide website.
+- `fieldguide/` — static modules, styles, and separately labeled editorial data.
+- `classic.html` — preserved original D3 taxonomy viewer.
 - `app.js` — D3 graph, filters, map controls, concept card, and feedback-link behavior.
 - `styles.css` — shared desktop/mobile styling for the viewer and document pages.
 - `mobile-controls.css` — mobile-specific controls drawer and zoom-control layout.
