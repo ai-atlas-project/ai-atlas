@@ -44,7 +44,7 @@ Use one of these entry points:
 - [Public review guide](PUBLIC_REVIEW.md) — see what kind of feedback is useful now.
 - [Release notes](docs/releases/v0.1-public-preview.md) — understand v0.1 scope and boundaries.
 
-The JSON file is the canonical structured source, mainly for validation, generation, and future tooling.
+The JSON file is the canonical structured source, mainly for validation, generation, and future tooling. Markdown, Markmap, Mermaid, the Obsidian concept notes, and the website taxonomy bundle are generated from it. See [generated-view maintenance](docs/generated-taxonomy-views.md) for regeneration and CI checks.
 
 ## Public review
 

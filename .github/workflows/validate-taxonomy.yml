@@ -19,6 +19,10 @@ jobs:
           node-version: 20
       - name: Validate canonical L1/L2 taxonomy JSON
         run: node scripts/validate-canonical-l1-l2-json.mjs
+      - name: Check generated taxonomy views for drift
+        run: node scripts/generate-taxonomy-views.mjs --check
+      - name: Test taxonomy view generation and stale-file handling
+        run: node --test tests/generated-views.test.mjs
       - name: Validate fieldguide data, provenance, and assets
         run: node scripts/fieldguide-validate.mjs
       - name: Test fieldguide behavior

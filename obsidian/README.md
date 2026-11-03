@@ -17,10 +17,9 @@ This folder contains the Obsidian version of AI Atlas.
 
 The canonical source remains:
 
-- `../taxonomy/ai-taxonomy-l1-l2.md`
 - `../taxonomy/ai-taxonomy-l1-l2.json`
 
-This vault is generated from that taxonomy.
+The root concept note and the Level 1/Level 2 directories are generated from that JSON. Keep personal notes outside these directories. Supporting notes such as `Boundary Notes.md` remain manually maintained. See [generation and drift checks](../docs/generated-taxonomy-views.md).
 
 ## Current scope
 
