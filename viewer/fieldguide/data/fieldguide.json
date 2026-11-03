@@ -296,10 +296,22 @@
       ]
     },
     "ai:optimization": {
-      "definition": "Finding a solution that improves an objective subject to any relevant constraints."
+      "definition": "Finding a solution that improves an objective subject to any relevant constraints.",
+      "question": "Which objective should improve, and which constraints must every solution satisfy?",
+      "example": "Allocate limited compute hours across experiments to minimize expected completion time while respecting each experiment's resource needs.",
+      "caution": "A solver optimizes the objective you encode, which may omit what users actually value. Feasibility, local optimality, and a proven global optimum are different claims.",
+      "sources": [
+        "optimizationText"
+      ]
     },
     "ai:evolutionary-computation": {
-      "definition": "Searching for solutions using populations, variation, and selection inspired by evolution."
+      "definition": "Searching for solutions using populations, variation, and selection inspired by evolution.",
+      "question": "How are candidate solutions represented, varied, and selected?",
+      "example": "Search for a compact antenna design by evaluating a population, mutating parameters, and retaining promising candidates across generations.",
+      "caution": "Evolution is an algorithmic analogy, not a guarantee of progress. Results depend on representation, evaluation budget, diversity, and the fitness function; compare repeated runs with simpler baselines.",
+      "sources": [
+        "evolutionaryText"
+      ]
     },
     "ai:monte-carlo-tree-search": {
       "definition": "Exploring a decision tree by balancing promising choices with new trials and simulated outcomes.",
@@ -314,7 +326,13 @@
       ]
     },
     "ai:commonsense-reasoning": {
-      "definition": "Drawing conclusions using everyday background knowledge that is often left unstated."
+      "definition": "Drawing conclusions using everyday background knowledge that is often left unstated.",
+      "question": "Which everyday assumptions support the conclusion, and what evidence would defeat them?",
+      "example": "Infer that a parcel placed in a closed cupboard remains there, then revise the inference when told that someone moved it.",
+      "caution": "Everyday defaults admit exceptions and vary with context. Plausible language is not evidence that a system consistently tracks the relevant assumptions.",
+      "sources": [
+        "commonsenseDefaults"
+      ]
     },
     "ai:probabilistic-reasoning": {
       "definition": "Representing uncertainty with probabilities and updating beliefs using evidence.",
@@ -336,10 +354,22 @@
       ]
     },
     "ai:temporal-reasoning": {
-      "definition": "Reasoning about time, event order, duration, and how states change."
+      "definition": "Reasoning about time, event order, duration, and how states change.",
+      "question": "What must happen before, during, or after another event?",
+      "example": "Check whether a maintenance interval overlaps a machine's booked operating period before approving the schedule.",
+      "caution": "Ordering events does not establish causation. State interval boundaries, time zones, and uncertain timestamps explicitly; missing time information is not a known ordering.",
+      "sources": [
+        "temporalIntervals"
+      ]
     },
     "ai:spatial-reasoning": {
-      "definition": "Reasoning about position, shape, orientation, and spatial relationships."
+      "definition": "Reasoning about position, shape, orientation, and spatial relationships.",
+      "question": "Which positions, orientations, or spatial relationships matter, and in whose reference frame?",
+      "example": "Transform a camera's estimate of a cup position into a robot arm's coordinate frame to determine whether the cup lies within reach.",
+      "caution": "Left, near, and inside depend on reference frames or geometric assumptions. A visually plausible relationship may be wrong when depth, scale, or occluded geometry is uncertain.",
+      "sources": [
+        "spatialTransforms"
+      ]
     },
     "ai:explainable-ai": {
       "definition": "Methods and system designs that help people understand the reasons for AI outputs or behavior.",
@@ -376,10 +406,22 @@
       ]
     },
     "ai:control-systems": {
-      "definition": "Systems that choose inputs to influence a process toward desired behavior, often using feedback."
+      "definition": "Systems that choose inputs to influence a process toward desired behavior, often using feedback.",
+      "question": "How does feedback change the input to keep the physical process near its target?",
+      "example": "A motor controller compares measured speed with the target and adjusts torque as the load changes.",
+      "caution": "Feedback can become unstable when delays, actuator limits, or dynamics are ignored. Many controllers use no machine learning; tracking a target is distinct from choosing the goal.",
+      "sources": [
+        "robotControl"
+      ]
     },
     "ai:robot-perception": {
-      "definition": "Interpreting sensor data so a robot can estimate properties of itself and its environment."
+      "definition": "Interpreting sensor data so a robot can estimate properties of itself and its environment.",
+      "question": "What must the robot infer from its sensors before it can act?",
+      "example": "A sorting robot combines a camera measurement with a sensor model to estimate which material category an object belongs to.",
+      "caution": "Measurements are noisy and interpretation depends on calibration and assumptions. Keep uncertainty visible and test occlusion, lighting changes, and unfamiliar objects.",
+      "sources": [
+        "robotSensing"
+      ]
     },
     "ai:localization-and-mapping": {
       "definition": "Estimating where a system is and constructing or updating a representation of its surroundings.",
@@ -387,14 +429,29 @@
         "SLAM"
       ],
       "sources": [
-        "aima"
-      ]
+        "slamText"
+      ],
+      "question": "Where is the robot relative to its map, and how should new observations update that map?",
+      "example": "A warehouse robot estimates its motion from successive range scans while adding newly observed shelving to a map.",
+      "caution": "Localization can use an existing map; SLAM estimates location and map together. Drift and incorrect place matches can produce a convincing but inconsistent map."
     },
     "ai:motion-planning": {
-      "definition": "Finding feasible movements for a robot or other moving system while respecting constraints."
+      "definition": "Finding feasible movements for a robot or other moving system while respecting constraints.",
+      "question": "Which collision-free movement reaches the goal within the robot's constraints?",
+      "example": "Plan a route for a wheeled robot through shelves while accounting for its footprint and turning limits.",
+      "caution": "A path through free space may still be dynamically infeasible. Planning and feedback control serve different roles; execution must handle moving obstacles and state-estimation errors.",
+      "sources": [
+        "motionText"
+      ]
     },
     "ai:manipulation": {
-      "definition": "Using an embodied system to grasp, move, or otherwise change physical objects."
+      "definition": "Using an embodied system to grasp, move, or otherwise change physical objects.",
+      "question": "How should contact and motion change the object's state?",
+      "example": "Choose a grasp pose, approach a cup, close the gripper, and place the cup on a tray using measured object and robot poses.",
+      "caution": "Geometric reachability does not ensure a stable grasp. Friction, compliance, object uncertainty, and contact forces affect whether the physical action succeeds.",
+      "sources": [
+        "spatialTransforms"
+      ]
     },
     "ai:autonomous-vehicles": {
       "definition": "Vehicles that perform some driving or navigation functions without continuous human control."
@@ -1365,6 +1422,60 @@
       "author": "Russell & Norvig · topic index",
       "url": "https://aima.cs.berkeley.edu/contents.html",
       "note": "A broad textbook map of search, reasoning, learning, and acting. Topic index, not an open full textbook."
+    },
+    "optimizationText": {
+      "title": "Optimization",
+      "author": "Poole & Mackworth · Artificial Intelligence, 3rd ed., §4.8",
+      "url": "https://artint.info/3e/html/ArtInt3e.Ch4.S8.html",
+      "note": "Objectives, constraints, and search for better feasible assignments."
+    },
+    "evolutionaryText": {
+      "title": "Population-Based Methods",
+      "author": "Poole & Mackworth · 3rd ed., §4.7",
+      "url": "https://artint.info/3e/html/ArtInt3e.Ch4.S7.html",
+      "note": "Explains genetic search through populations, variation, and selection; discusses configuration choices."
+    },
+    "commonsenseDefaults": {
+      "title": "Circumscription — A Form of Nonmonotonic Reasoning",
+      "author": "John McCarthy · author-hosted paper",
+      "url": "https://www-formal.stanford.edu/jmc/circumscription/circumscription.html",
+      "note": "One formal approach to defeasible everyday assumptions; not a complete theory of commonsense."
+    },
+    "temporalIntervals": {
+      "title": "An Interval-Based Representation of Temporal Knowledge",
+      "author": "James F. Allen · IJCAI 1981",
+      "url": "https://ijcai.org/proceedings/1981/46",
+      "note": "Represents relationships between time intervals and propagates temporal constraints."
+    },
+    "spatialTransforms": {
+      "title": "Basic Pick and Place",
+      "author": "Russ Tedrake · MIT Robotic Manipulation, chapter 3",
+      "url": "https://manipulation.csail.mit.edu/pick.html",
+      "note": "Coordinate frames, spatial transforms, grasp poses, and manipulation geometry."
+    },
+    "robotControl": {
+      "title": "Let's Get You a Robot",
+      "author": "Russ Tedrake · MIT Robotic Manipulation, chapter 2",
+      "url": "https://manipulation.csail.mit.edu/robot.html",
+      "note": "Robot actuators, sensing, and position control; connects commands with physical behavior."
+    },
+    "robotSensing": {
+      "title": "Perception",
+      "author": "Introduction to Robotics and Perception · §2.4",
+      "url": "https://www.roboticsbook.org/S24_sorter_perception.html",
+      "note": "Inferring hidden world states from uncertain sensor measurements."
+    },
+    "slamText": {
+      "title": "SLAM",
+      "author": "Introduction to Robotics and Perception · §6.4",
+      "url": "https://www.roboticsbook.org/S64_driving_perception.html",
+      "note": "Joint estimation of robot poses and maps, including scan alignment and landmark-based SLAM."
+    },
+    "motionText": {
+      "title": "Path Planning",
+      "author": "Introduction to Robotics and Perception · §5.5",
+      "url": "https://www.roboticsbook.org/S55_diffdrive_planning.html",
+      "note": "Collision-free paths and configuration-space reasoning for mobile robots."
     }
   },
   "comparisons": [
