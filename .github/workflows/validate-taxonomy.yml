@@ -19,3 +19,7 @@ jobs:
           node-version: 20
       - name: Validate canonical L1/L2 taxonomy JSON
         run: node scripts/validate-canonical-l1-l2-json.mjs
+      - name: Validate fieldguide data, provenance, and assets
+        run: node scripts/fieldguide-validate.mjs
+      - name: Test fieldguide behavior
+        run: node --test tests/fieldguide.test.mjs
