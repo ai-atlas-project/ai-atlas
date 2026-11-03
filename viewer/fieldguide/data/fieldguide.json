@@ -833,10 +833,22 @@
       ]
     },
     "ai:agent-communication": {
-      "definition": "The exchange of information between agents to support their behavior or coordination."
+      "definition": "The exchange of information between agents to support their behavior or coordination.",
+      "question": "What does each message mean, and how does it change the recipient's knowledge or commitments?",
+      "example": "One warehouse agent reports that an aisle is blocked; another acknowledges the report and replans its route.",
+      "caution": "Message delivery does not establish shared meaning or trustworthiness. Define schemas, timing, acknowledgments, and how agents handle stale or conflicting information.",
+      "sources": [
+        "multiagentFoundations"
+      ]
     },
     "ai:coordination-and-negotiation": {
-      "definition": "Mechanisms for organizing interdependent agents and reaching agreements about actions or resources."
+      "definition": "Mechanisms for organizing interdependent agents and reaching agreements about actions or resources.",
+      "question": "How will agents resolve interdependent actions and incompatible preferences?",
+      "example": "Two delivery agents exchange proposed time slots and agree on an allocation that avoids using the same loading bay simultaneously.",
+      "caution": "Coordination can use fixed protocols without negotiation. An agreement can still be inefficient or unstable; account for incentives, failed participants, and changing availability.",
+      "sources": [
+        "multiagentFoundations"
+      ]
     },
     "ai:multi-agent-reinforcement-learning": {
       "definition": "Learning behavior through rewards in environments containing multiple interacting agents.",
@@ -844,23 +856,56 @@
         "MARL"
       ],
       "sources": [
-        "aima"
-      ]
+        "marlBook"
+      ],
+      "question": "How does each agent learn when other agents also change their behavior?",
+      "example": "Train simulated warehouse robots with a shared completion reward while measuring collisions and duplicated work.",
+      "caution": "Other learners can make the environment nonstationary. Shared rewards complicate credit assignment; report training versus execution information and test new teammates or opponents."
     },
     "ai:swarm-intelligence": {
-      "definition": "Collective problem-solving that emerges from interactions among many relatively simple agents."
+      "definition": "Collective problem-solving that emerges from interactions among many relatively simple agents.",
+      "question": "Which local interaction rules produce the desired collective behavior?",
+      "example": "Use many simple simulated agents that follow local trail signals to discover short routes without a central route planner.",
+      "caution": "A collection of agents is not automatically a swarm-intelligence method. Collective behavior depends on local rules, communication, and environment; test congestion, failures, and scaling.",
+      "sources": [
+        "swarmFoundations"
+      ]
     },
     "ai:agent-societies": {
-      "definition": "Studying organized populations of agents and their collective structures, norms, and behavior."
+      "definition": "Studying organized populations of agents and their collective structures, norms, and behavior.",
+      "question": "Which roles, norms, and institutions organize the agents over time?",
+      "example": "Define a shared robot workspace with right-of-way rules and roles for requesting, granting, and releasing access to narrow passages.",
+      "caution": "Social terminology is a modeling choice, not evidence of human-like motives or moral status. Specify how rules are enforced and what happens when agents deviate.",
+      "sources": [
+        "agentSocialLaws"
+      ]
     },
     "ai:market-based-systems": {
-      "definition": "Coordinating decisions or allocating resources using market mechanisms such as bids and prices."
+      "definition": "Coordinating decisions or allocating resources using market mechanisms such as bids and prices.",
+      "question": "How do bids, prices, and allocation rules coordinate limited resources?",
+      "example": "Let task agents bid for compute slots according to their priorities, then allocate slots through a defined auction rule.",
+      "caution": "Price-based allocation is not automatically fair or efficient. Results depend on incentives, budgets, information, and the mechanism; distinguish a simulated market from actual monetary transactions.",
+      "sources": [
+        "mechanismDesign"
+      ]
     },
     "ai:ai-assistants": {
-      "definition": "AI systems that help people complete tasks through interaction, recommendations, or delegated actions."
+      "definition": "AI systems that help people complete tasks through interaction, recommendations, or delegated actions.",
+      "question": "Which part of the user's task is assisted, and what authority has the user delegated?",
+      "example": "An assistant gathers meeting constraints and proposes available times, leaving the final invitation for the user to approve.",
+      "caution": "A helpful interface does not establish reliable execution. Make permissions, uncertainty, action status, corrections, and recovery clear; conversational fluency is not task completion.",
+      "sources": [
+        "mixedInitiative"
+      ]
     },
     "ai:recommender-systems": {
-      "definition": "Systems that select or rank items according to their expected relevance to a user or context."
+      "definition": "Systems that select or rank items according to their expected relevance to a user or context.",
+      "question": "Which items should be ranked for this user or context, and toward what objective?",
+      "example": "Rank a reading list using stated interests and prior feedback while leaving room for unfamiliar topics.",
+      "caution": "Clicks are an imperfect proxy for value. Evaluate exposure bias, cold starts, diversity, and long-term outcomes; recommendations can change the behavior used as future training data.",
+      "sources": [
+        "recommenderIntro"
+      ]
     },
     "ai:human-in-the-loop-ai": {
       "definition": "AI processes that incorporate human input, review, or intervention at defined points.",
@@ -876,10 +921,23 @@
       ]
     },
     "ai:interactive-machine-learning": {
-      "definition": "Learning workflows in which people iteratively influence a model through feedback and interaction."
+      "definition": "Learning workflows in which people iteratively influence a model through feedback and interaction.",
+      "question": "How can a person iteratively steer what the model learns?",
+      "example": "A user labels a few photos, reviews the resulting classifier's mistakes, and adds corrections before retraining.",
+      "caution": "Interactive feedback can be inconsistent and can overfit the visible examples. Evaluate both the user's effort and model behavior on held-out data.",
+      "sources": [
+        "interactiveLearning"
+      ]
     },
     "ai:personalization": {
-      "definition": "Adapting a system’s outputs or behavior to a person’s needs, preferences, or context."
+      "definition": "Adapting a system’s outputs or behavior to a person’s needs, preferences, or context.",
+      "question": "What should adapt to this person, using which preferences and evidence?",
+      "example": "Adjust recommended article length and topic mix using explicit preferences that the reader can inspect and reset.",
+      "caution": "Observed behavior does not always reveal genuine preference. Avoid locking users into outdated profiles; provide control over adaptation and evaluate the effects of limited or biased feedback.",
+      "sources": [
+        "recommenderIntro",
+        "humanAiGuidelines"
+      ]
     },
     "ai:decision-support-systems": {
       "definition": "Systems that provide information or analysis to help people make decisions."
@@ -1373,6 +1431,60 @@
     }
   ],
   "sources": {
+    "multiagentFoundations": {
+      "title": "Multiagent Systems: Algorithmic, Game-Theoretic, and Logical Foundations",
+      "author": "Shoham & Leyton-Brown · 2009",
+      "url": "https://www.masfoundations.org/",
+      "note": "Author-hosted textbook; see communication, distributed optimization, negotiation, and coordination."
+    },
+    "marlBook": {
+      "title": "Multi-Agent Reinforcement Learning: Foundations and Modern Approaches",
+      "author": "Albrecht, Christianos & Schäfer · MIT Press 2024",
+      "url": "https://www.marl-book.com/",
+      "note": "Models, learning challenges, algorithms, and practical evaluation in shared environments."
+    },
+    "swarmFoundations": {
+      "title": "Swarm Intelligence",
+      "author": "Dorigo & Birattari · Scholarpedia 2007, author-hosted PDF",
+      "url": "https://iridia.ulb.ac.be/~mdorigo/Published_papers/All_Dorigo_papers/DorBir2007sch-si.pdf",
+      "note": "Decentralized coordination and collective behavior arising from local interactions."
+    },
+    "agentSocialLaws": {
+      "title": "On the Synthesis of Useful Social Laws for Artificial Agent Societies",
+      "author": "Shoham & Tennenholtz · AAAI 1992",
+      "url": "https://cdn.aaai.org/AAAI/1992/AAAI92-043.pdf",
+      "note": "Original research on rules that constrain agents while preserving useful independent behavior."
+    },
+    "mechanismDesign": {
+      "title": "Mechanism Design",
+      "author": "Poole & Mackworth · 3rd ed., §14.6",
+      "url": "https://artint.info/3e/html/ArtInt3e.Ch14.S6.html",
+      "note": "Designing interaction rules and incentives; truthful reporting and aggregate objectives need explicit assumptions."
+    },
+    "mixedInitiative": {
+      "title": "Principles of Mixed-Initiative User Interfaces",
+      "author": "Eric Horvitz · CHI 1999",
+      "url": "https://www.microsoft.com/en-us/research/publication/principles-mixed-initiative-user-interfaces/",
+      "note": "Combining automated assistance with direct user control and appropriate intervention."
+    },
+    "recommenderIntro": {
+      "title": "Recommendations: What and Why?",
+      "author": "Google · Machine Learning course",
+      "url": "https://developers.google.com/machine-learning/recommendation/overview",
+      "note": "Personalized and related-item recommendations, with links to retrieval, scoring, and reranking."
+    },
+    "interactiveLearning": {
+      "title": "Power to the People: The Role of Humans in Interactive Machine Learning",
+      "author": "Amershi, Cakmak, Knox & Kulesza · AI Magazine 2014",
+      "url": "https://ojs.aaai.org/aimagazine/index.php/aimagazine/article/view/2513/0",
+      "note": "How user feedback and interaction affect learning systems and their evaluation."
+    },
+    "humanAiGuidelines": {
+      "title": "Guidelines for Human-AI Interaction",
+      "author": "Amershi et al. · CHI 2019, Microsoft Research",
+      "url": "https://www.microsoft.com/en-us/research/project/guidelines-for-human-ai-interaction/",
+      "note": "Research-based guidance on expectations, control, correction, and behavior over time."
+    },
     "syntheticTabular": {
       "title": "Modeling Tabular Data using Conditional GAN",
       "author": "Xu et al. · NeurIPS 2019",
