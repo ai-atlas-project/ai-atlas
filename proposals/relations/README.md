@@ -2,7 +2,7 @@
 
 **Status: proposed design and evidence-backed candidates; not adopted policy or canonical relations.**
 
-Tracks [#52](https://github.com/ai-atlas-project/ai-atlas/issues/52). All five assertions have `review_status: "pending"`. Passing validation or opening this PR does not approve them. This proposal does not change canonical concepts, hierarchy, IDs, types, definitions, Level 3 status, or the live site's existing editorial connections.
+Tracks [#52](https://github.com/ai-atlas-project/ai-atlas/issues/52). All four active assertions have `review_status: "pending"`. One earlier candidate is [deferred for concept-boundary review](deferred-text-generation-nlg.md). Passing validation or opening this PR does not approve them. This proposal does not change canonical concepts, hierarchy, IDs, types, definitions, Level 3 status, or the live site's existing editorial connections.
 
 ## Proposed storage and identity
 
@@ -26,19 +26,22 @@ Reuse a small subset of the existing [relation semantics](../../taxonomy/relatio
 
 Store a symmetric edge once. The validator rejects its reversed duplicate. Consumers may derive inverse labels for navigation but must not persist a second assertion. The pilot excludes `alternative-parent`, broader/narrower links, inverse duplicates, and proposed new types such as `overlaps_with` or `uses_methods_from`. They need separate decisions if later required.
 
-## Five candidate assertions
+`related-to` remains supported by the proposed validator, but has no active candidate after deferring `rel-pilot-004`. Its duplicate checks use synthetic test data rather than treating that deferred edge as accepted evidence.
+
+## Four candidate assertions
 
 These are technical pre-review conclusions, not community acceptance. Each row is independently rejectable or revisable; acceptance is not all-or-nothing. Full scope, rationale, source URL, and evidence locator are in the JSON.
 
 | ID | Proposed connection | Boundary checked | Evidence | Remaining review question |
 | --- | --- | --- | --- | --- |
-| `rel-pilot-001` | Large Language Models **uses** Self-Supervised Learning | Autoregressive pretraining only; not every training/adaptation stage | [Brown et al., sections 2 and 5](https://arxiv.org/abs/2005.14165) | Is this training-stage scope sufficiently clear at model-family level? |
-| `rel-pilot-002` | Generative AI **uses** Deep Learning | Neural implementations such as GANs; not all generative methods, and not hierarchy containment | [Goodfellow et al., abstract and section 3](https://arxiv.org/abs/1406.2661) | Accept a scoped implementation example at L1, or narrow the source concept before promotion? |
-| `rel-pilot-003` | Robot Learning **uses** Reinforcement Learning | Reward-driven setups; robot learning also has other approaches | [Kober et al., abstract and survey](https://publications.ri.cmu.edu/reinforcement-learning-in-robotics-a-survey) | Is the stated scope sufficient to avoid equating these fields? |
-| `rel-pilot-004` | Text Generation **related-to** Natural Language Generation | An intersection, not equivalence; NLG includes planning/grounding and may produce speech | [Gatt and Krahmer, abstract and core tasks](https://arxiv.org/abs/1703.09902) | Does this precise explanation justify `related-to`, or should it await a reviewed overlap type? |
-| `rel-pilot-005` | Bias and Fairness **applies-to** Machine Learning | Context-dependent analysis across data, predictions, and deployment; no universal fairness metric | [Barocas et al., introduction](https://fairmlbook.org/introduction.html) | Is the connection useful enough at this broad target level? |
+| `rel-pilot-001` | Autoregressive Large Language Models **can use** Self-Supervised Learning **during pretraining** | Predict the next token from preceding tokens, with targets supplied by the text; not every training/adaptation stage | [Brown et al., sections 2 and 5](https://arxiv.org/abs/2005.14165) | Is this training-stage scope sufficiently clear at model-family level? |
+| `rel-pilot-002` | Generative AI **can use** Deep Learning **in deep neural implementations** | A GAN is an implementation example; not a universal dependency or subtype claim | [Goodfellow et al., abstract and section 3](https://arxiv.org/abs/1406.2661) | Is this scoped implementation option useful at the existing concept level? |
+| `rel-pilot-003` | Robot Learning **can use** Reinforcement Learning **as one approach** | Reward-objective learning; learning from demonstrations and other approaches need not use RL | [Kober et al., abstract and survey](https://publications.ri.cmu.edu/reinforcement-learning-in-robotics-a-survey); [Argall et al., abstract](https://publications.ri.cmu.edu/a-survey-of-robot-learning-from-demonstration) | Is the stated scope sufficient to avoid equating these fields? |
+| `rel-pilot-005` | Bias and Fairness **applies to** Machine Learning **in a specified social context** | Analysis across data, models, and deployment; criteria depend on the setting and no metric is universal | [Barocas et al., introduction](https://fairmlbook.org/introduction.html) | Is the connection useful enough at this broad target level? |
 
-The papers establish examples or scope. Mapping those observations into AI Atlas relation assertions is our proposed interpretation. In particular, the NLG link does not claim that the survey endorses AI Atlas's taxonomy division.
+The papers establish examples or scope. Mapping those observations into AI Atlas relation assertions is our proposed interpretation. The readable wording above preserves qualifiers; the stored relation types remain `uses` and `applies-to`.
+
+`rel-pilot-004` (Text Generation / Natural Language Generation) is absent from the active JSON. Literature uses the terms with overlapping or synonymous meanings, so a `related-to` edge would prematurely imply a settled boundary between distinct concepts. The [deferred review note](deferred-text-generation-nlg.md) records the evidence and the questions to resolve. Its ID remains reserved; `rel-pilot-005` is not renumbered. Deferral neither merges the concepts nor approves an alias or a new relation type.
 
 ## Validation contract
 
@@ -74,11 +77,15 @@ Keep #52 open while these decisions are pending. This draft PR provides an execu
 
 The current website, Obsidian, Markmap, and Mermaid generators do not read this proposal. After approval, a separate implementation should:
 
-- show directed edges with their type and required scope, source references, and review status;
+- treat `scope` as part of the assertion: show its complete text alongside the relationship, with its type, source references, and review status; a tooltip alone is insufficient;
+- preserve qualifiers such as "can use", "during pretraining", and "one approach" in shortened labels; an unqualified `A uses B` label is not a complete statement of these candidates;
+- preserve the complete `scope` with every relation in Markdown, Obsidian, diagram, and structured exports; a diagram that cannot display it must include an adjacent keyed scope table or omit the relationship;
 - present symmetric associations without implying an arrow direction;
 - keep hierarchy and relation views independently selectable; never move nodes or infer new parents from an edge;
 - put any approved Obsidian connections in a separate typed section, leaving Parent/Children unchanged;
 - show evidence and limits alongside each relationship rather than reducing it to an unqualified arrow;
 - avoid merging the experimental D3 overlay or Fieldguide editorial links automatically into canonical data.
+
+Any future consumer must include a rendering/export check that scope survives display and export. The current validator requires substantive `scope` text, but cannot verify a renderer that does not yet exist. These requirements do not enable any current consumer or promote the deferred candidate.
 
 No transitive closure is implied: `A uses B` and `B uses C` do not automatically justify `A uses C`. The familiar AI → ML → Deep Learning → Generative AI chain must not be rendered as one homogeneous containment chain: the first hierarchy links and the final scoped method-use link have different meanings and directions.

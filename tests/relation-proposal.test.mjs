@@ -6,8 +6,8 @@ const raw=await readFile(new URL('../taxonomy/ai-taxonomy-l1-l2.json',import.met
 const pilot=JSON.parse(await readFile(new URL('../proposals/relations/l0-l2-pilot.json',import.meta.url),'utf8'));
 const altered=mutate=>{const d=structuredClone(pilot); mutate(d); return d;};
 
-test('proposal resolves five scoped relations with evidence without promoting them',()=>{
-  assert.deepEqual(validateRelationProposal(pilot,raw),{relations:5,sources:5});
+test('proposal resolves four scoped relations with evidence without promoting them',()=>{
+  assert.deepEqual(validateRelationProposal(pilot,raw),{relations:4,sources:5});
 });
 test('canonical promotion and unreviewed approval are rejected',()=>{
   for(const mutate of [d=>d.canonical=true,d=>d.status='approved',d=>d.relations[0].review_status='approved']) assert.throws(()=>validateRelationProposal(altered(mutate),raw));
@@ -22,15 +22,19 @@ test('self-links and primary hierarchy duplicates fail',()=>{
   }
 });
 test('repeated edges and reversed symmetric duplicates fail even with different IDs',()=>{
-  for(const reverse of [false,true]){
-    const data=structuredClone(pilot), r=structuredClone(data.relations.find(r=>r.type==='related-to'));
+  for(const [type,reverse] of [['uses',false],['related-to',false],['related-to',true]]){
+    const data=structuredClone(pilot);
+    // Exercise symmetric validation with a synthetic fixture, not a deferred candidate.
+    data.relations[0].type=type;
+    assert.deepEqual(validateRelationProposal(data,raw),{relations:4,sources:5});
+    const r=structuredClone(data.relations[0]);
     r.id='rel-duplicate';
     if(reverse){[r.source_id,r.target_id]=[r.target_id,r.source_id];[r.source_name,r.target_name]=[r.target_name,r.source_name];}
     data.relations.push(r);assert.throws(()=>validateRelationProposal(data,raw),/Duplicate relation/);
   }
 });
-test('missing evidence, insecure URLs, and empty scope are rejected',()=>{
-  for(const mutate of [d=>d.relations[0].evidence=[],d=>d.relations[0].evidence[0].source_id='missing',d=>d.sources['language-pretraining'].url='http://example.org',d=>d.relations[0].scope='']) assert.throws(()=>validateRelationProposal(altered(mutate),raw));
+test('missing evidence, insecure URLs, and missing or insufficient scope are rejected',()=>{
+  for(const mutate of [d=>d.relations[0].evidence=[],d=>d.relations[0].evidence[0].source_id='missing',d=>d.sources['language-pretraining'].url='http://example.org',d=>delete d.relations[0].scope,d=>d.relations[0].scope='',d=>d.relations[0].scope=' '.repeat(80),d=>d.relations[0].scope='Uses this method.']) assert.throws(()=>validateRelationProposal(altered(mutate),raw));
 });
 test('a changed taxonomy requires a fresh review of the proposal snapshot',()=>{
   assert.throws(()=>validateRelationProposal(pilot,raw+'\n'),/Taxonomy changed/);
