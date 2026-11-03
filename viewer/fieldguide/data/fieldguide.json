@@ -700,10 +700,23 @@
       ]
     },
     "ai:synthetic-data-generation": {
-      "definition": "Creating artificial data for tasks such as training, testing, and simulation."
+      "definition": "Creating artificial data for tasks such as training, testing, and simulation.",
+      "question": "Which properties of real data must the artificial examples preserve for their intended use?",
+      "example": "Generate artificial order records to exercise a reporting pipeline, including specified rare combinations and missing fields.",
+      "caution": "Realistic-looking data can omit rare cases, amplify bias, or reveal training records. Synthetic does not automatically mean anonymous; validate utility and privacy separately.",
+      "sources": [
+        "syntheticTabular"
+      ]
     },
     "ai:generative-modeling": {
-      "definition": "Modeling how data could be generated, enabling the creation of new samples."
+      "definition": "Modeling how data could be generated, enabling the creation of new samples.",
+      "question": "What distribution or data-generating structure is the model intended to learn?",
+      "example": "Fit a model to handwritten digits and sample new images to inspect how well it covers different writing styles.",
+      "caution": "Convincing samples can coexist with poor coverage or memorization. Generative modeling includes multiple approaches; no single sample-quality score establishes fitness for every use.",
+      "sources": [
+        "generativeAdversarial",
+        "latentDiffusion"
+      ]
     },
     "ai:large-language-models": {
       "definition": "Large-scale models trained on language data that can support multiple language tasks.",
@@ -720,25 +733,71 @@
       ]
     },
     "ai:vision-foundation-models": {
-      "definition": "Models trained broadly on visual data and adapted or reused across vision tasks."
+      "definition": "Models trained broadly on visual data and adapted or reused across vision tasks.",
+      "question": "Which visual capabilities transfer from broad pretraining to the target task?",
+      "example": "Reuse one pretrained image encoder for product grouping and, with a suitable task head, defect classification.",
+      "caution": "Broad training does not guarantee performance on specialized imagery. Compare a task-specific baseline and assess domain shift, data rights, and adaptation requirements.",
+      "sources": [
+        "visualPretraining",
+        "foundationScope"
+      ]
     },
     "ai:multimodal-foundation-models": {
-      "definition": "Broadly trained models that process or generate information across multiple modalities."
+      "definition": "Broadly trained models that process or generate information across multiple modalities.",
+      "question": "Which modalities are jointly represented, and which cross-modal tasks are actually supported?",
+      "example": "Use aligned image and text representations to retrieve product photographs from natural-language descriptions.",
+      "caution": "Multimodal does not mean every modality or equal competence across them. Test fine-grained grounding, missing inputs, and conflicting evidence rather than assuming one successful task generalizes.",
+      "sources": [
+        "imageTextPretraining",
+        "multimodalSurvey"
+      ]
     },
     "ai:audio-foundation-models": {
-      "definition": "Broadly trained audio models that can be reused or adapted for a variety of audio tasks."
+      "definition": "Broadly trained audio models that can be reused or adapted for a variety of audio tasks.",
+      "question": "Which reusable audio representations support the downstream tasks?",
+      "example": "Adapt a broadly pretrained audio encoder to recognize environmental sounds and detect classes of machine noise.",
+      "caution": "Speech, music, and environmental audio have different requirements. An audio encoder need not generate sound or transcribe speech; evaluate the relevant domains and recording conditions.",
+      "sources": [
+        "audioPretraining",
+        "foundationScope"
+      ]
     },
     "ai:video-foundation-models": {
-      "definition": "Broadly trained models of video that can support multiple spatiotemporal tasks."
+      "definition": "Broadly trained models of video that can support multiple spatiotemporal tasks.",
+      "question": "Which spatial and temporal features can be reused across video tasks?",
+      "example": "Adapt a pretrained video representation for action classification and event localization using task-specific supervision.",
+      "caution": "Pretraining alone does not establish broad usefulness. Short-clip accuracy may not transfer to long events, new camera settings, or reliable temporal reasoning.",
+      "sources": [
+        "videoPretraining",
+        "foundationScope"
+      ]
     },
     "ai:code-foundation-models": {
-      "definition": "Broadly trained models using code that can support multiple programming-related tasks."
+      "definition": "Broadly trained models using code that can support multiple programming-related tasks.",
+      "question": "Which programming tasks can reuse the model's pretrained knowledge of code?",
+      "example": "Adapt a pretrained code model to summarize functions, identify similar implementations, and propose code from requirements.",
+      "caution": "Generating code is one task; reusable pretraining describes how a model supports tasks. Repository context, language versions, training overlap, and functional correctness need separate checks.",
+      "sources": [
+        "codePretraining"
+      ]
     },
     "ai:scientific-foundation-models": {
-      "definition": "Broadly trained models intended to support multiple tasks within scientific domains."
+      "definition": "Broadly trained models intended to support multiple tasks within scientific domains.",
+      "question": "Across which scientific systems or tasks has transfer actually been demonstrated?",
+      "example": "Pretrain on families of simulated differential equations, then evaluate predictions on a held-out equation family or parameter regime.",
+      "caution": "This is an evolving category with domain-specific boundaries. Benchmark transfer does not establish physical validity or discovery; check units, conservation constraints, uncertainty, and independent evidence.",
+      "sources": [
+        "scientificPretraining"
+      ]
     },
     "ai:world-models": {
-      "definition": "Models of how an environment behaves, used to predict outcomes or support decisions."
+      "definition": "Models of how an environment behaves, used to predict outcomes or support decisions.",
+      "question": "What changes in the environment does the model predict, especially after an action?",
+      "example": "Predict how a simulated vehicle's state changes under candidate steering actions before selecting a policy.",
+      "caution": "Predictive accuracy over one step may deteriorate over long rollouts. A world model need not be a foundation model, a complete simulator, or a causal account of the real world.",
+      "sources": [
+        "worldModelPaper"
+      ]
     },
     "ai:autonomous-agents": {
       "definition": "Systems that select and perform actions toward goals with some independence from direct human control.",
@@ -764,7 +823,14 @@
       ]
     },
     "ai:competitive-multi-agent-systems": {
-      "definition": "Systems in which agents interact while pursuing objectives that can conflict."
+      "definition": "Systems in which agents interact while pursuing objectives that can conflict.",
+      "question": "How do other agents' conflicting objectives change the best action?",
+      "example": "Model bidders competing for a limited set of delivery slots, where each bidder's choice changes what remains available.",
+      "caution": "Competition need not be strictly zero-sum. Outcomes depend on information, incentives, and adaptation; success against a fixed opponent does not ensure robust strategic behavior.",
+      "sources": [
+        "cooperativeFramework",
+        "gameTreeSearch"
+      ]
     },
     "ai:agent-communication": {
       "definition": "The exchange of information between agents to support their behavior or coordination."
@@ -1307,6 +1373,66 @@
     }
   ],
   "sources": {
+    "syntheticTabular": {
+      "title": "Modeling Tabular Data using Conditional GAN",
+      "author": "Xu et al. · NeurIPS 2019",
+      "url": "https://arxiv.org/abs/1907.00503",
+      "note": "A research example of synthesizing mixed numerical and categorical tabular data."
+    },
+    "generativeAdversarial": {
+      "title": "Generative Adversarial Networks",
+      "author": "Goodfellow et al. · 2014",
+      "url": "https://arxiv.org/abs/1406.2661",
+      "note": "Original adversarial generative-modeling paper; one family among several generative approaches."
+    },
+    "foundationScope": {
+      "title": "On the Opportunities and Risks of Foundation Models",
+      "author": "Bommasani et al. · 2021 report, revised 2022",
+      "url": "https://arxiv.org/abs/2108.07258",
+      "note": "Broad pretraining, adaptation across tasks, and shared opportunities and limitations."
+    },
+    "visualPretraining": {
+      "title": "DINOv2: Learning Robust Visual Features without Supervision",
+      "author": "Oquab et al. · 2023",
+      "url": "https://arxiv.org/abs/2304.07193",
+      "note": "Reusable visual representations evaluated across image-level and pixel-level tasks."
+    },
+    "imageTextPretraining": {
+      "title": "Learning Transferable Visual Models From Natural Language Supervision",
+      "author": "Radford et al. · 2021",
+      "url": "https://arxiv.org/abs/2103.00020",
+      "note": "Joint image-text learning and transfer; does not imply support for every modality or task."
+    },
+    "audioPretraining": {
+      "title": "BEATs: Audio Pre-Training with Acoustic Tokenizers",
+      "author": "Chen et al. · 2022",
+      "url": "https://arxiv.org/abs/2212.09058",
+      "note": "Audio representation learning and transfer across sound-classification benchmarks."
+    },
+    "videoPretraining": {
+      "title": "VideoMAE V2: Scaling Video Masked Autoencoders with Dual Masking",
+      "author": "Wang et al. · 2023",
+      "url": "https://arxiv.org/abs/2303.16727",
+      "note": "Scaled video pretraining and reuse for downstream video tasks."
+    },
+    "codePretraining": {
+      "title": "CodeT5: Identifier-aware Unified Pre-trained Encoder-Decoder Models for Code Understanding and Generation",
+      "author": "Wang et al. · EMNLP 2021",
+      "url": "https://arxiv.org/abs/2109.00859",
+      "note": "Reusing pretrained code representations for both analysis and generation tasks."
+    },
+    "scientificPretraining": {
+      "title": "Towards a Foundation Model for Partial Differential Equations: Multi-Operator Learning and Extrapolation",
+      "author": "Sun et al. · 2024 preprint, revised 2025",
+      "url": "https://arxiv.org/abs/2404.12355",
+      "note": "A scoped scientific research example across equation families; not evidence of universal scientific competence."
+    },
+    "worldModelPaper": {
+      "title": "World Models",
+      "author": "Ha & Schmidhuber · 2018",
+      "url": "https://arxiv.org/abs/1803.10122",
+      "note": "Learning compact environment dynamics to support behavior; one modern neural implementation."
+    },
     "videoActions": {
       "title": "Two-Stream Convolutional Networks for Action Recognition in Videos",
       "author": "Simonyan & Zisserman · 2014",
