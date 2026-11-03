@@ -65,7 +65,13 @@
       ]
     },
     "ai:unsupervised-learning": {
-      "definition": "Finding structure in data without a supplied target label for each example."
+      "definition": "Finding structure in data without a supplied target label for each example.",
+      "question": "What structure can be learned when examples have no supplied target labels?",
+      "example": "Group unlabeled support tickets by similarity, then inspect the groups to see whether they reveal useful recurring topics.",
+      "caution": "Clusters are not automatically meaningful categories. Feature choices and scaling affect the groups; unlike supervised learning, the desired topic labels were not supplied during training.",
+      "sources": [
+        "unsupervised"
+      ]
     },
     "ai:semi-supervised-learning": {
       "definition": "Learning from a combination of labeled and unlabeled examples.",
@@ -219,7 +225,13 @@
       "definition": "Choosing actions while accounting for an opponent whose objectives may conflict with yours."
     },
     "ai:automated-planning": {
-      "definition": "Computing actions or policies that can achieve goals under a model of the environment."
+      "definition": "Computing actions or policies that can achieve goals under a model of the environment.",
+      "question": "Which actions can reach the goal, and what must be true before each action?",
+      "example": "Plan an inspection drone mission: charge the battery, fly to a roof, take photographs, and return before the battery reserve is exhausted.",
+      "caution": "A plan depends on its action model and assumptions. Finding a sequence does not prove execution succeeded; observe outcomes and revise the plan when conditions change.",
+      "sources": [
+        "planningStates"
+      ]
     },
     "ai:scheduling": {
       "definition": "Assigning tasks to times and resources while respecting constraints and objectives."
@@ -243,10 +255,23 @@
       "definition": "Drawing conclusions using everyday background knowledge that is often left unstated."
     },
     "ai:probabilistic-reasoning": {
-      "definition": "Representing uncertainty with probabilities and updating beliefs using evidence."
+      "definition": "Representing uncertainty with probabilities and updating beliefs using evidence.",
+      "question": "How should beliefs change when new evidence arrives under the chosen probability model?",
+      "example": "Update the probability that a parcel will arrive late after learning that its connecting vehicle was delayed.",
+      "caution": "A probability is conditional on evidence and modeling assumptions. Predicting an outcome from an observation does not establish what would happen if you intervened.",
+      "sources": [
+        "probabilisticInference",
+        "causality"
+      ]
     },
     "ai:causal-reasoning": {
-      "definition": "Reasoning about causes, interventions, and counterfactual outcomes, beyond associations alone."
+      "definition": "Reasoning about causes, interventions, and counterfactual outcomes, beyond associations alone.",
+      "question": "What would change if we intervened, rather than merely observed a different value?",
+      "example": "Estimate whether changing a dispatch rule would reduce late deliveries, accounting for the fact that difficult routes may already receive different treatment.",
+      "caution": "Correlation alone does not identify an intervention effect. State the causal assumptions and consider confounding; a predictive explanation is not automatically a causal explanation.",
+      "sources": [
+        "causality"
+      ]
     },
     "ai:temporal-reasoning": {
       "definition": "Reasoning about time, event order, duration, and how states change."
@@ -260,12 +285,21 @@
         "XAI",
         "explainability"
       ],
+      "question": "Who needs the explanation, and what should it help them understand or decide?",
+      "example": "Show which input features influenced a particular late-delivery prediction, then check whether the explanation reflects the model and helps the dispatcher.",
+      "caution": "A convincing explanation may be unfaithful to the model. Evaluate fidelity and usefulness separately; feature attribution alone does not show real-world causation.",
       "sources": [
-        "aima"
+        "explanationEvaluation"
       ]
     },
     "ai:knowledge-representation": {
-      "definition": "Choosing structures and semantics for storing knowledge so systems can use it."
+      "definition": "Choosing structures and semantics for storing knowledge so systems can use it.",
+      "question": "Which facts, distinctions, and relationships must the system express to answer the intended questions?",
+      "example": "Represent a room, its equipment, and access permissions so an assistant can determine which rooms meet a meeting request.",
+      "caution": "Storing information and drawing conclusions from it are different tasks. A representation must have clear meaning, and omitted distinctions can limit what the system can answer.",
+      "sources": [
+        "knowledgeRepresentation"
+      ]
     },
     "ai:ontologies": {
       "definition": "Explicit models of a domain’s concepts, categories, relationships, and constraints.",
@@ -357,13 +391,31 @@
       "definition": "Interpreting meaning, intent, and context in human-language input."
     },
     "ai:image-classification": {
-      "definition": "Assigning one or more category labels to an image."
+      "definition": "Assigning one or more category labels to an image.",
+      "question": "Which label or labels describe the image as a whole?",
+      "example": "For a photograph of two bicycles beside a tree, predict the image-level label bicycle.",
+      "caution": "An image-level label does not locate or count the bicycles. Object detection adds locations, while segmentation assigns labels or masks to pixels.",
+      "sources": [
+        "visionTasks"
+      ]
     },
     "ai:object-detection": {
-      "definition": "Finding instances of objects in an image and estimating their locations."
+      "definition": "Finding instances of objects in an image and estimating their locations.",
+      "question": "Which objects are present, and where is each one?",
+      "example": "For the same photograph of two bicycles beside a tree, return a labeled bounding box around each bicycle.",
+      "caution": "Bounding boxes locate objects but do not trace their exact outlines. Evaluate missed objects, false detections, and localization quality, not only class labels.",
+      "sources": [
+        "visionTasks"
+      ]
     },
     "ai:image-segmentation": {
-      "definition": "Assigning image pixels to meaningful regions or categories."
+      "definition": "Assigning image pixels to meaningful regions or categories.",
+      "question": "Which pixels belong to each region, category, or object instance?",
+      "example": "For the same photograph of two bicycles beside a tree, mark bicycle pixels; instance segmentation gives the two bicycles separate masks.",
+      "caution": "Semantic segmentation labels pixel categories without necessarily separating individual objects. Instance segmentation distinguishes objects of the same class; choose the output needed for the task.",
+      "sources": [
+        "visionTasks"
+      ]
     },
     "ai:video-understanding": {
       "definition": "Interpreting actions, events, and temporal relationships in video."
@@ -466,7 +518,13 @@
       ]
     },
     "ai:cooperative-multi-agent-systems": {
-      "definition": "Systems in which multiple agents coordinate to pursue compatible or shared objectives."
+      "definition": "Systems in which multiple agents coordinate to pursue compatible or shared objectives.",
+      "question": "What shared outcome are the agents optimizing, and how do their actions interact?",
+      "example": "Two inspection drones divide roof sections and coordinate flight paths to complete one survey without duplicating work or colliding.",
+      "caution": "More agents do not automatically improve a system. Shared goals still require coordination, and communication or handoff failures can undermine the joint result.",
+      "sources": [
+        "cooperativeFramework"
+      ]
     },
     "ai:competitive-multi-agent-systems": {
       "definition": "Systems in which agents interact while pursuing objectives that can conflict."
@@ -1012,6 +1070,54 @@
     }
   ],
   "sources": {
+    "planningStates": {
+      "title": "Representing States, Actions, and Goals",
+      "author": "Poole & Mackworth · AI: Foundations of Computational Agents, 3rd ed., §6.1",
+      "url": "https://artint.info/3e/html/ArtInt3e.Ch6.S1.html",
+      "note": "Action preconditions, effects, and goals in deterministic planning; the assumptions limit what a plan guarantees."
+    },
+    "cooperativeFramework": {
+      "title": "Multiagent Framework",
+      "author": "Poole & Mackworth · 3rd ed., §14.1",
+      "url": "https://artint.info/3e/html/ArtInt3e.Ch14.S1.html",
+      "note": "Distinguishes shared-utility cooperation from competitive and mixed-interest interactions."
+    },
+    "unsupervised": {
+      "title": "Unsupervised Learning",
+      "author": "Poole & Mackworth · 3rd ed., §10.3",
+      "url": "https://artint.info/3e/html/ArtInt3e.Ch10.S3.html",
+      "note": "Clustering without supplied target labels; discusses feature scaling and the interpretation of clusters."
+    },
+    "knowledgeRepresentation": {
+      "title": "Knowledge Representation",
+      "author": "Poole & Mackworth · 1st ed., §1.4",
+      "url": "https://artint.info/html1e/ArtInt_8.html",
+      "note": "How representation choices connect a domain, a computational problem, and an interpreted result."
+    },
+    "probabilisticInference": {
+      "title": "Probabilistic Inference",
+      "author": "Poole & Mackworth · 3rd ed., §9.4",
+      "url": "https://artint.info/3e/html/ArtInt3e.Ch9.S4.html",
+      "note": "Posterior beliefs given evidence; distinguishes exact and approximate inference."
+    },
+    "causality": {
+      "title": "Causality",
+      "author": "Poole & Mackworth · 3rd ed., Chapter 11",
+      "url": "https://artint.info/3e/html/ArtInt3e.Ch11.html",
+      "note": "Why observing an association differs from intervening, and why causal conclusions require assumptions."
+    },
+    "explanationEvaluation": {
+      "title": "Evaluation of Interpretability Methods",
+      "author": "Christoph Molnar · Interpretable Machine Learning, Chapter 32",
+      "url": "https://christophm.github.io/interpretable-ml-book/evaluation.html",
+      "note": "Evaluates explanations for their intended audience and task, including fidelity and stability."
+    },
+    "visionTasks": {
+      "title": "Object Detection and Image Segmentation",
+      "author": "Fei-Fei Li & Ehsan Adeli · Stanford CS231n, lecture 9, 2024",
+      "url": "https://cs231n.stanford.edu/2024/slides/2024/lecture_9.pdf",
+      "note": "Lecture slides comparing image-level labels, object locations, and semantic or instance pixel masks."
+    },
     "semiSurvey": {
       "title": "A survey on semi-supervised learning",
       "author": "van Engelen & Hoos · Machine Learning 2020",
@@ -1180,6 +1286,15 @@
         "ai:text-generation"
       ],
       "distinction": "Retrieval finds existing material. Generation produces an output. A grounded assistant connects both and evaluates each."
+    },
+    {
+      "title": "Label, locate, or segment",
+      "ids": [
+        "ai:image-classification",
+        "ai:object-detection",
+        "ai:image-segmentation"
+      ],
+      "distinction": "Using the same photograph: classification gives image-level labels, detection locates individual objects, and segmentation identifies pixels. Semantic masks group by category; instance masks distinguish separate objects."
     }
   ],
   "relations": [

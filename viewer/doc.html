@@ -206,6 +206,15 @@
 
           marked.setOptions({ gfm: true, breaks: false });
           docEl.innerHTML = marked.parse(content);
+          // Markdown assets are relative to the source document, not this viewer.
+          const documentURL = new URL(doc.path, window.location.href);
+          docEl.querySelectorAll('a[href], img[src]').forEach((element) => {
+            const attribute = element.tagName === 'A' ? 'href' : 'src';
+            const value = element.getAttribute(attribute);
+            if (value && !value.startsWith('#')) {
+              element.setAttribute(attribute, new URL(value, documentURL).href);
+            }
+          });
         })
         .catch((error) => {
           docEl.innerHTML = `
