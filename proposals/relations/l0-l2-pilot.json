@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "status": "proposed",
+  "canonical": false,
+  "taxonomy": {
+    "path": "taxonomy/ai-taxonomy-l1-l2.json",
+    "sha256": "d10262e96f76c7b2b822f4f46c1ff758ea2d546aa753f4fab84d6193a3cda63a"
+  },
+  "sources": {
+    "language-pretraining": {
+      "title": "Language Models are Few-Shot Learners",
+      "authors": "Brown et al., 2020",
+      "url": "https://arxiv.org/abs/2005.14165"
+    },
+    "adversarial-generation": {
+      "title": "Generative Adversarial Networks",
+      "authors": "Goodfellow et al., 2014",
+      "url": "https://arxiv.org/abs/1406.2661"
+    },
+    "robot-reinforcement-learning": {
+      "title": "Reinforcement Learning in Robotics: A Survey",
+      "authors": "Kober, Bagnell and Peters, 2013",
+      "url": "https://publications.ri.cmu.edu/reinforcement-learning-in-robotics-a-survey"
+    },
+    "language-generation": {
+      "title": "Survey of the State of the Art in Natural Language Generation: Core tasks, applications and evaluation",
+      "authors": "Gatt and Krahmer, 2018 revision",
+      "url": "https://arxiv.org/abs/1703.09902"
+    },
+    "fairness-ml": {
+      "title": "Fairness and Machine Learning: Limitations and Opportunities — Introduction",
+      "authors": "Barocas, Hardt and Narayanan",
+      "url": "https://fairmlbook.org/introduction.html"
+    }
+  },
+  "relations": [
+    {
+      "id": "rel-pilot-001",
+      "type": "uses",
+      "source_id": "ai:large-language-models",
+      "source_name": "Large Language Models",
+      "target_id": "ai:self-supervised-learning",
+      "target_name": "Self-Supervised Learning",
+      "target_status": "canonical",
+      "scope": "Autoregressive language-model pretraining can learn by predicting tokens from surrounding text. This concerns a training stage, not every adaptation stage or every language-model design.",
+      "rationale": "Connect a model-family concept to the learning paradigm used in this pretraining example; do not classify all language-model training as self-supervised.",
+      "evidence": [
+        {
+          "source_id": "language-pretraining",
+          "locator": "Abstract; Section 2 (Approach); Section 5 (Limitations)",
+          "support": "The paper describes autoregressive pretraining and explicitly discusses self-supervised prediction and its limits. The model release is evidence for a scoped method-use relation, not a new taxonomy node."
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "id": "rel-pilot-002",
+      "type": "uses",
+      "source_id": "ai:generative-ai",
+      "source_name": "Generative AI",
+      "target_id": "ai:deep-learning",
+      "target_name": "Deep Learning",
+      "target_status": "canonical",
+      "scope": "Neural generative implementations, including the multilayer-perceptron GAN example, use deep-learning methods. This is not a universal dependency, a synonym, or a claim that all generative methods are neural.",
+      "rationale": "Provide a useful cross-branch route from generation to one implementation family while retaining Generative AI as its existing Level 1 area.",
+      "evidence": [
+        {
+          "source_id": "adversarial-generation",
+          "locator": "Abstract; Section 3 (Adversarial nets)",
+          "support": "The paper describes a generative model and discriminator implemented with multilayer perceptrons and trained by backpropagation. This supports the stated implementation example, not a universal hierarchy."
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "id": "rel-pilot-003",
+      "type": "uses",
+      "source_id": "ai:robot-learning",
+      "source_name": "Robot Learning",
+      "target_id": "ai:reinforcement-learning",
+      "target_name": "Reinforcement Learning",
+      "target_status": "canonical",
+      "scope": "Robot-learning setups that improve behavior through reward feedback can use reinforcement learning. Robot learning also includes approaches that do not use reward-driven learning.",
+      "rationale": "Connect the robotics branch to a relevant learning paradigm without making the two concepts equivalent or changing either primary parent.",
+      "evidence": [
+        {
+          "source_id": "robot-reinforcement-learning",
+          "locator": "Abstract and survey discussion of behavior generation",
+          "support": "The authors survey reinforcement learning for robot behavior, including policy search and value-based methods, along with practical limits and prior knowledge."
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "id": "rel-pilot-004",
+      "type": "related-to",
+      "source_id": "ai:text-generation",
+      "source_name": "Text Generation",
+      "target_id": "ai:natural-language-generation",
+      "target_name": "Natural Language Generation",
+      "target_status": "canonical",
+      "scope": "The concepts intersect when a system produces natural-language text. This is not an equivalence: NLG also concerns input grounding, content planning, and organization, and may produce speech.",
+      "rationale": "Retain two independently placed canonical concepts while explaining their scoped intersection. No current, more precise non-hierarchical relation type expresses this intersection without overstating it.",
+      "evidence": [
+        {
+          "source_id": "language-generation",
+          "locator": "Abstract and overview of core NLG tasks",
+          "support": "The survey describes generation of text or speech from non-linguistic input and the tasks and architectures involved. Mapping this intersection to the two AI Atlas concepts is a proposed editorial interpretation."
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "id": "rel-pilot-005",
+      "type": "applies-to",
+      "source_id": "ai:bias-and-fairness",
+      "source_name": "Bias and Fairness",
+      "target_id": "ai:machine-learning",
+      "target_name": "Machine Learning",
+      "target_status": "canonical",
+      "scope": "Bias and fairness analysis applies to machine-learning data, predictions, and deployment decisions in a social context. No single metric or successful check establishes fairness in every setting.",
+      "rationale": "Show a cross-cutting assessment concern without implying that fairness is a subclass of machine learning or that only machine-learning systems raise fairness concerns.",
+      "evidence": [
+        {
+          "source_id": "fairness-ml",
+          "locator": "Chapter 1: Introduction, especially the machine-learning loop and limitations",
+          "support": "The authors examine disparities across the machine-learning decision process and explain the limits of technical fairness interventions in their surrounding social context."
+        }
+      ],
+      "review_status": "pending"
+    }
+  ]
+}
