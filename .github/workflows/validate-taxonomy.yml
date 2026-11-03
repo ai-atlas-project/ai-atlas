@@ -23,6 +23,10 @@ jobs:
         run: node scripts/generate-taxonomy-views.mjs --check
       - name: Test taxonomy view generation and stale-file handling
         run: node --test tests/generated-views.test.mjs
+      - name: Validate non-canonical relation proposal
+        run: node scripts/validate-relation-proposal.mjs
+      - name: Test relation proposal boundaries and references
+        run: node --test tests/relation-proposal.test.mjs
       - name: Validate fieldguide data, provenance, and assets
         run: node scripts/fieldguide-validate.mjs
       - name: Test fieldguide behavior
