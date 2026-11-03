@@ -4,16 +4,43 @@
   "sourceCommit": "64dac8d78f1587494ba0b56b489fd8e650601860",
   "editorial": {
     "ai:rule-based-systems": {
-      "definition": "Systems that apply explicit if–then rules to facts or inputs to make decisions."
+      "definition": "Systems that apply explicit if–then rules to facts or inputs to make decisions.",
+      "question": "Which explicit conditions trigger each conclusion or action?",
+      "example": "In a parcel workflow, mark an order ready for dispatch when payment is confirmed and every item is in stock.",
+      "caution": "Explicit rules are not automatically complete or consistent. Test overlapping conditions, exceptions, and missing facts; rule-based does not necessarily mean the rules were written by hand.",
+      "sources": [
+        "inference",
+        "expertSystemsBook"
+      ]
     },
     "ai:expert-systems": {
-      "definition": "Systems that combine a domain knowledge base with an inference mechanism to support expert decisions."
+      "definition": "Systems that combine a domain knowledge base with an inference mechanism to support expert decisions.",
+      "question": "Which narrow domain expertise is encoded, and how will the system justify its advice?",
+      "example": "A printer troubleshooting assistant asks about symptoms, applies a technician-maintained knowledge base, and explains why it recommends checking the paper path.",
+      "caution": "A collection of rules is not sufficient evidence of expert-level performance. Validate the knowledge and advice for the intended domain, and provide a way to handle cases beyond that scope.",
+      "sources": [
+        "expertSystemsBook"
+      ]
     },
     "ai:logic-programming": {
-      "definition": "Expressing a problem as logical facts and rules, then using inference to find answers."
+      "definition": "Expressing a problem as logical facts and rules, then using inference to find answers.",
+      "question": "Which facts and rules let the system answer a query through logical inference?",
+      "example": "Record direct prerequisites between courses, define a recursive prerequisite rule, and query which courses must precede a chosen course.",
+      "caution": "A logical specification and its execution strategy are different concerns. Termination and treatment of missing information depend on the language and rules; an unproved claim is not always false.",
+      "sources": [
+        "logicDatalog",
+        "inference"
+      ]
     },
     "ai:symbolic-knowledge-representation": {
-      "definition": "Encoding knowledge with explicit symbols and structures that can be manipulated by reasoning procedures."
+      "definition": "Encoding knowledge with explicit symbols and structures that can be manipulated by reasoning procedures.",
+      "question": "What do the symbols and relations mean, and which distinctions must remain explicit?",
+      "example": "Represent Room7 as a room, Projector2 as equipment, and contains(Room7, Projector2) as a relation that an inference procedure can use.",
+      "caution": "Symbols need a shared interpretation. This is a family of explicit representations within the broader topic of knowledge representation; naming an object does not establish that a statement about it is true.",
+      "sources": [
+        "symbolSemantics",
+        "knowledgeRepresentation"
+      ]
     },
     "ai:automated-reasoning": {
       "definition": "Using computational procedures to derive conclusions, check consistency, or prove statements.",
@@ -50,7 +77,14 @@
       ]
     },
     "ai:neuro-symbolic-ai": {
-      "definition": "Approaches that combine learned neural representations with explicit symbolic structures or reasoning."
+      "definition": "Approaches that combine learned neural representations with explicit symbolic structures or reasoning.",
+      "question": "What is learned by the neural component, and what is represented or enforced symbolically?",
+      "example": "Use a neural network to recognize handwritten digits, then combine its predictions with explicit arithmetic relations to reason about their sum.",
+      "caution": "There are multiple integration patterns. Combining neural predictions and rules does not automatically confer correctness or interpretability; evaluate perception errors, symbolic assumptions, and the combined result.",
+      "sources": [
+        "neurosymbolicArchitectures",
+        "deepProbLog"
+      ]
     },
     "ai:supervised-learning": {
       "definition": "Learning a mapping from inputs to outputs using examples with target labels.",
@@ -216,13 +250,31 @@
       ]
     },
     "ai:state-space-search": {
-      "definition": "Exploring possible states and transitions to find a path from an initial state to a goal."
+      "definition": "Exploring possible states and transitions to find a path from an initial state to a goal.",
+      "question": "What constitutes a state, which transitions are allowed, and how is a goal recognized?",
+      "example": "In a sliding-tile puzzle, represent each board arrangement as a state and each legal slide as a transition, then search for a sequence reaching the solved board.",
+      "caution": "A state must retain the information that affects future transitions and the goal. A path is only valid under the modeled rules, and finding a path does not necessarily find the cheapest one.",
+      "sources": [
+        "stateSpaces"
+      ]
     },
     "ai:heuristic-search": {
-      "definition": "Guiding a search with estimates of which states are promising."
+      "definition": "Guiding a search with estimates of which states are promising.",
+      "question": "What estimate can help the search decide which possibility to explore next?",
+      "example": "When finding a route on a map, use straight-line distance to estimate the remaining distance and prioritize promising partial routes.",
+      "caution": "A useful estimate is not a guarantee. Optimality depends on the search algorithm, costs, and heuristic assumptions; greedy best-first search and A* use estimates differently.",
+      "sources": [
+        "heuristicSearch"
+      ]
     },
     "ai:adversarial-search": {
-      "definition": "Choosing actions while accounting for an opponent whose objectives may conflict with yours."
+      "definition": "Choosing actions while accounting for an opponent whose objectives may conflict with yours.",
+      "question": "How should a move account for an opponent choosing a response against your objective?",
+      "example": "In tic-tac-toe, compare a candidate move with the opponent's strongest replies before choosing where to place your mark.",
+      "caution": "The basic minimax example assumes two-player, zero-sum, perfect-information play. Hidden information, chance, or different objectives require an appropriate model; a depth-limited estimate is not a proof of the final outcome.",
+      "sources": [
+        "gameTreeSearch"
+      ]
     },
     "ai:automated-planning": {
       "definition": "Computing actions or policies that can achieve goals under a model of the environment.",
@@ -234,7 +286,14 @@
       ]
     },
     "ai:scheduling": {
-      "definition": "Assigning tasks to times and resources while respecting constraints and objectives."
+      "definition": "Assigning tasks to times and resources while respecting constraints and objectives.",
+      "question": "When should each task run, and which limited resource should it use?",
+      "example": "Assign workshop jobs to two machines, respecting each job's operation order and preventing overlapping use of a machine while minimizing the overall finish time.",
+      "caution": "Planning often determines which actions can achieve a goal; scheduling emphasizes their timing and resource allocation. The problems can be combined. A feasible schedule is not necessarily optimal.",
+      "sources": [
+        "jobShop",
+        "planningStates"
+      ]
     },
     "ai:optimization": {
       "definition": "Finding a solution that improves an objective subject to any relevant constraints."
@@ -247,8 +306,11 @@
       "aliases": [
         "MCTS"
       ],
+      "question": "How should a limited simulation budget be divided between promising moves and less-explored alternatives?",
+      "example": "For a board-game position, repeatedly select a branch, expand the tree, simulate a continuation, and update the visited nodes with its result before choosing a move.",
+      "caution": "A finite set of simulations can miss an important response. Results depend on the exploration policy, simulation or value estimates, and budget; MCTS is not inherently a neural method.",
       "sources": [
-        "aima"
+        "mctsSurvey"
       ]
     },
     "ai:commonsense-reasoning": {
@@ -1070,6 +1132,66 @@
     }
   ],
   "sources": {
+    "expertSystemsBook": {
+      "title": "Rule-Based Expert Systems: The MYCIN Experiments",
+      "author": "Buchanan & Shortliffe, editors · 1984",
+      "url": "https://www.shortliffe.net/Buchanan-Shortliffe-1984/MYCIN%20Book.htm",
+      "note": "Primary account of building and evaluating a domain-specific expert system; the editor hosts the chapters."
+    },
+    "logicDatalog": {
+      "title": "Datalog: A Relational Rule Language",
+      "author": "Poole & Mackworth · 3rd ed., §15.4",
+      "url": "https://artint.info/3e/html/ArtInt3e.Ch15.S4.html",
+      "note": "Facts, rules, variables, and queries in a restricted logic programming language."
+    },
+    "symbolSemantics": {
+      "title": "Symbols and Semantics",
+      "author": "Poole & Mackworth · 3rd ed., §15.2",
+      "url": "https://artint.info/3e/html/ArtInt3e.Ch15.S2.html",
+      "note": "Connects explicit symbols and logical consequences to their intended meaning in a domain."
+    },
+    "neurosymbolicArchitectures": {
+      "title": "Mapping the Neuro-Symbolic AI Landscape by Architectures",
+      "author": "Feldstein, Dilkas, Belle & Tsamoura · survey preprint 2024",
+      "url": "https://arxiv.org/abs/2410.22077",
+      "note": "Reviews different ways of integrating neural networks and symbolic methods; no single architecture defines the whole field."
+    },
+    "deepProbLog": {
+      "title": "DeepProbLog: Neural Probabilistic Logic Programming",
+      "author": "Manhaeve et al. · NeurIPS 2018",
+      "url": "https://arxiv.org/abs/1805.10872",
+      "note": "A concrete research example combining neural predicates with probabilistic logic programming."
+    },
+    "stateSpaces": {
+      "title": "State Spaces",
+      "author": "Poole & Mackworth · 3rd ed., §3.2",
+      "url": "https://artint.info/3e/html/ArtInt3e.Ch3.S2.html",
+      "note": "Defines states, available actions, transitions, and goals, with explicit assumptions about the environment."
+    },
+    "heuristicSearch": {
+      "title": "Informed (Heuristic) Search",
+      "author": "Poole & Mackworth · 3rd ed., §3.6",
+      "url": "https://artint.info/3e/html/ArtInt3e.Ch3.S6.html",
+      "note": "Search guidance, A*, and the conditions needed for optimality guarantees."
+    },
+    "gameTreeSearch": {
+      "title": "Solving Perfect Information Games",
+      "author": "Poole & Mackworth · 3rd ed., §14.3",
+      "url": "https://artint.info/3e/html/ArtInt3e.Ch14.S3.html",
+      "note": "Minimax, alpha-beta pruning, and limited-depth evaluation in games with observable states."
+    },
+    "mctsSurvey": {
+      "title": "A Survey of Monte Carlo Tree Search Methods",
+      "author": "Browne et al. · IEEE TCIAIG 2012",
+      "url": "https://cs.gettysburg.edu/~tneller/cs371/mcts-survey.pdf",
+      "note": "Full survey PDF hosted by Gettysburg College; explains selection, expansion, simulation, and backpropagation."
+    },
+    "jobShop": {
+      "title": "The Job Shop Problem",
+      "author": "Google OR-Tools · official scheduling guide",
+      "url": "https://developers.google.com/optimization/scheduling/job_shop",
+      "note": "A worked example of task precedence, exclusive machines, and minimizing total completion time."
+    },
     "planningStates": {
       "title": "Representing States, Actions, and Goals",
       "author": "Poole & Mackworth · AI: Foundations of Computational Agents, 3rd ed., §6.1",
@@ -1295,6 +1417,14 @@
         "ai:image-segmentation"
       ],
       "distinction": "Using the same photograph: classification gives image-level labels, detection locates individual objects, and segmentation identifies pixels. Semantic masks group by category; instance masks distinguish separate objects."
+    },
+    {
+      "title": "Plan actions vs schedule resources",
+      "ids": [
+        "ai:automated-planning",
+        "ai:scheduling"
+      ],
+      "distinction": "Planning asks which actions can achieve a goal given their preconditions and effects. Scheduling asks when tasks should run and how they share resources. A system may need to solve both problems together."
     }
   ],
   "relations": [

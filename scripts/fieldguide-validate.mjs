@@ -28,7 +28,15 @@ const provenance=JSON.parse(await readFile(root+'viewer/fieldguide/data/provenan
 assert.equal(provenance.upstream.commit,SOURCE_COMMIT);assert.equal(provenance.upstream.sha256,createHash('sha256').update(raw).digest('hex'));
 const exported=JSON.parse(await readFile(root+'viewer/fieldguide/data/fieldguide.json','utf8'));assert.deepEqual(exported.editorial,JSON.parse(JSON.stringify(editorial)));assert.deepEqual(exported.pathways,pathways);
 assert.deepEqual(exported.sources,sources);
-const html=await readFile(root+'viewer/index.html','utf8');assert.ok(!/<script[^>]+src=["']https?:/i.test(html));
+const html=await readFile(root+'viewer/index.html','utf8');
+// The public entry point deliberately loads Umami; reject other remote scripts.
+for(const match of html.matchAll(/<script\b[^>]*\bsrc=["']([^"']+)["'][^>]*>/gi)){
+  if(/^(?:https?:)?\/\//i.test(match[1])){
+    assert.equal(match[1],'https://cloud.umami.is/script.js','Unexpected remote script');
+    assert.ok(/\bdefer\b/i.test(match[0]),'Analytics must not block rendering');
+    assert.ok(/data-website-id=["']cd95cd52-d2f8-40e0-9c48-78f829b5700f["']/i.test(match[0]),'Unexpected analytics website');
+  }
+}
 for(const match of html.matchAll(/(?:src|href)="\.\/([^"#?]+)"/g))await readFile(root+'viewer/'+match[1]);
 for(const source of Object.values(sources))assert.equal(new URL(source.url).protocol,'https:');
 console.log('PASS: 125 canonical concepts; 111 proposed definitions; all pathways, comparisons, relationships, sources, exports and local assets valid.');
