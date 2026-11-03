@@ -8,3 +8,14 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
 @media print{body{background:white;color:#111;font-size:11pt}.site-header,.site-footer,.toast,.toolbar,.hero-map,.mobile-menu,.notebook-summary,.remove-button,.detail-actions,.download-row{display:none!important}.wrap{max-width:none;padding:0}.notebook-layout,.pathway-layout,.body-grid{display:block}.note-card,.insight,.step,.source-card{background:white!important;border-color:#ccc;break-inside:avoid}.note-card textarea,.brief-card textarea{color:#111;background:white;border:0;min-height:180px}p,small,.muted{color:#444}.tag{color:#333;border-color:#aaa}h1,h2,h3{color:#111}.eyebrow{color:#555}a{color:#222}main{padding:15px}.page-top{padding-top:0}.pathway-aside{position:static}.path-card{background:white}}
 @media(max-width:760px){.toolbar>div:nth-child(2){flex-basis:100%}.toolbar select{font-size:12px}.hero-map .node-label{font-size:14px}}
+
+/* Worked cases remain readable and scroll within the pathway on narrow screens. */
+.pathway-layout>*{min-width:0}
+.practice-case{margin:24px 0;padding-top:20px;border-top:1px solid var(--line)}
+.practice-case h3{margin-bottom:12px}
+.practice-case .comparison-wrap{margin:16px 0;max-width:100%}
+.practice-table{width:100%;min-width:440px;border-collapse:collapse;font-size:14px;line-height:1.6}
+.practice-table th,.practice-table td{padding:14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+.practice-table th:first-child{width:29%}
+.practice-table td{color:var(--muted)}
+.practice-sources{margin-top:18px}

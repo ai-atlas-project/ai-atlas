@@ -44,3 +44,14 @@ export function exportNotebook(notebook,nodes,origin,pathways=[]) {
   const progress=pathways.map(p=>`### ${p.title}\n\n`+p.steps.map((s,i)=>`- [${notebook.checks.includes(p.id+':'+i)?'x':' '}] ${s.title}`).join('\n')).join('\n\n');
   return `# AI Atlas field notebook\n\n${notebook.brief||'My learning and project notes.'}\n\n${sections.join('\n\n')}\n\n## Pathway progress\n\n${progress}\n\n---\nTaxonomy: AI Atlas v0.1, snapshot ${SNAPSHOT_DATE}, commit ${SOURCE_COMMIT}.\nAI Atlas by Alyaksandr Stzhalkouski. Canonical content: CC BY-SA 4.0.\nEditorial pathways are proposals, not canonical taxonomy.\n`;
 }
+
+export function exportPathwayChecklist(pathway,nodes,sources,checks=[]) {
+  const names=new Map(nodes.map(n=>[n.id,n.name]));
+  const cell=value=>String(value).replace(/\|/g,'\\|').replace(/\r?\n/g,' ');
+  const steps=pathway.steps.map((step,i)=>{
+    const practice=step.practice;
+    const example=practice?`\n\n### ${practice.title}\n\n${practice.intro}\n\n| ${practice.columns.map(cell).join(' | ')} |\n| ${practice.columns.map(()=>'---').join(' | ')} |\n${practice.rows.map(row=>'| '+row.map(cell).join(' | ')+' |').join('\n')}\n\n${practice.takeaway}\n\nSupporting sources:\n${practice.sourceIds.map(k=>`- ${sources[k].title}: ${sources[k].url}`).join('\n')}`:'';
+    return `## ${i+1}. ${step.title}\n\n${step.text}\n\nConcept: ${names.get(step.concept)||step.concept} (${step.concept})${example}\n\n- [${checks.includes(pathway.id+':'+i)?'x':' '}] ${step.task}`;
+  }).join('\n\n');
+  return `# ${pathway.title}\n\n${pathway.description}\n\nOutcome: ${pathway.outcome}\n\n${steps}\n\nPrimary sources:\n${pathway.sourceIds.map(k=>`- ${sources[k].title}: ${sources[k].url}`).join('\n')}\n\nProposed editorial pathway, not canonical taxonomy.\nTaxonomy snapshot ${SNAPSHOT_DATE}, commit ${SOURCE_COMMIT}.\nAI Atlas by Alyaksandr Stzhalkouski · CC BY-SA 4.0.\n`;
+}
