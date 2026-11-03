@@ -1,10 +1,28 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {flattenTaxonomy,escapeHTML,searchConcepts,readRoute,conceptURL,safeNotebook,exportNotebook} from '../viewer/fieldguide/core.mjs';
-import {editorial,pathways} from '../viewer/fieldguide/content.mjs';
+import {flattenTaxonomy,escapeHTML,searchConcepts,readRoute,conceptURL,safeNotebook,exportNotebook,exportPathwayChecklist} from '../viewer/fieldguide/core.mjs';
+import {editorial,pathways,sources} from '../viewer/fieldguide/content.mjs';
 const data=JSON.parse(await readFile(new URL('../viewer/fieldguide/data/taxonomy.json',import.meta.url),'utf8'));
 const nodes=flattenTaxonomy(data),ids=nodes.map(n=>n.id);
+test('worked cases and their evidence remain in downloaded checklists',()=>{
+  for(const id of ['rag','agents']){
+    const p=pathways.find(p=>p.id===id),step=p.steps[3],c=step.practice;
+    const output=exportPathwayChecklist(p,nodes,sources,[id+':3']);
+    assert.ok(output.includes(c.title));assert.ok(output.includes(c.takeaway));
+    for(const row of c.rows)for(const cell of row)assert.ok(output.includes(cell));
+    for(const key of c.sourceIds)assert.ok(output.includes(sources[key].url));
+    assert.ok(output.includes('- [x] '+step.task));
+    assert.ok(output.includes('Proposed editorial pathway, not canonical taxonomy.'));
+  }
+});
+test('checklist export supports pathways without worked cases and escapes table separators',()=>{
+  const training=pathways.find(p=>p.id==='training');
+  assert.ok(exportPathwayChecklist(training,nodes,sources).includes(training.steps[0].task));
+  const p={...pathways[0],steps:[{...pathways[0].steps[3],practice:{title:'Example',intro:'Scenario',columns:['A','B'],rows:[['x|y','line one\nline two']],takeaway:'Result',sourceIds:['rag']}}]};
+  const output=exportPathwayChecklist(p,nodes,sources);
+  assert.ok(output.includes('| x\\|y | line one line two |'));
+});
 test('canonical data remains complete and has unique persistent identifiers',()=>{assert.equal(nodes.length,125);assert.equal(new Set(ids).size,125);assert.equal(nodes.filter(n=>n.hierarchy_level===2).length,111);});
 test('exact acronym is ranked above broad definition matches',()=>{assert.equal(searchConcepts(nodes,'LLM',editorial)[0].id,'ai:large-language-models');assert.equal(searchConcepts(nodes,'RL',editorial)[0].id,'ai:reinforcement-learning');});
 test('multiword search is case insensitive and punctuation tolerant',()=>{assert.equal(searchConcepts(nodes,'SELF supervised',editorial)[0].id,'ai:self-supervised-learning');});
