@@ -15,7 +15,7 @@ Hierarchy level and concept type must remain separate.
 
 ## Stable node IDs
 
-Each canonical node should eventually have a stable machine-readable `id`.
+Each public canonical Level 0, Level 1, and Level 2 node has a stable machine-readable `id` in `taxonomy/ai-taxonomy-l1-l2.json`.
 
 The `id` is not the same as the display `name`.
 
@@ -23,46 +23,32 @@ A display name may be improved for readability. A stable ID should not change fo
 
 ### ID format
 
-Recommended format:
+Current public canonical format:
 
 ```text
-ai.<scope>.<slug>
+ai:<slug>
 ```
 
 Rules:
 
 - lowercase only,
-- ASCII letters, numbers, dots, and underscores,
+- ASCII letters, numbers, hyphens, and one namespace colon,
 - no spaces,
+- words separated by hyphens,
 - stable across minor display-name changes,
+- does not encode hierarchy level, parent placement, or concept type,
 - not vendor-specific unless concrete products are explicitly in scope at a later level.
-
-Suggested scopes:
-
-- `field` — root field,
-- `area` — Level 1 major or cross-cutting area,
-- `subarea` — Level 2 main subarea,
-- `method` — method,
-- `architecture` — architecture,
-- `model_family` — model family,
-- `technique` — technique,
-- `component` — system/model component,
-- `system_pattern` — recurring system pattern,
-- `safety` — safety/alignment concept,
-- `evaluation` — evaluation concept,
-- `governance` — governance concept,
-- `future` — future-facing or speculative concept.
 
 Examples:
 
 ```text
-ai.field.artificial_intelligence
-ai.area.machine_learning
-ai.subarea.supervised_learning
-ai.architecture.transformers
+ai:artificial-intelligence
+ai:machine-learning
+ai:supervised-learning
+ai:deep-learning
 ```
 
-The future `Transformers` example is illustrative only. It is not a promoted Level 3 node.
+Old dotted forms such as `ai.area.machine_learning`, `ai.subarea.supervised_learning`, and `ai.model_family.large_language_models` may appear in private or legacy draft material. They are not the current public canonical ID format and should not be used for new public canonical nodes.
 
 ### Renaming and deprecation
 
@@ -70,18 +56,22 @@ If a display name changes but the concept stays the same, keep the same `id`.
 
 If a concept is split, merged, or replaced, preserve the old ID as deprecated rather than silently reusing it for a different meaning.
 
+## Current stored shape and future examples
+
+The current canonical JSON uses name-based `parent` and `children` references and nests Level 2 records in `level_2`. The examples below describe a future schema, not the current stored shape; they do not authorize migration. The current validator is `scripts/validate-canonical-l1-l2-json.mjs`, which enforces `^ai:[a-z0-9]+(?:-[a-z0-9]+)*$`, uniqueness, levels, and hierarchy references.
+
 ## Required fields
 
 Recommended required fields for future canonical nodes:
 
 ```json
 {
-  "id": "ai.area.machine_learning",
+  "id": "ai:machine-learning",
   "name": "Machine Learning",
   "hierarchy_level": 1,
   "hierarchy_level_name": "Major Area",
   "concept_type": "Major Area",
-  "primary_parent": "ai.field.artificial_intelligence",
+  "primary_parent": "ai:artificial-intelligence",
   "children": [],
   "stability": "stable",
   "status": "stable",
@@ -124,7 +114,7 @@ A future node may represent relations like this:
   "relations": [
     {
       "type": "alternative-parent",
-      "target": "ai.area.foundation_models_and_general_purpose_ai",
+      "target": "ai:foundation-models-and-general-purpose-ai",
       "note": "Plausible placement during draft review."
     }
   ]
@@ -149,16 +139,16 @@ Aliases do not create separate nodes.
 
 ```json
 {
-  "id": "ai.area.machine_learning",
+  "id": "ai:machine-learning",
   "name": "Machine Learning",
   "aliases": [],
   "hierarchy_level": 1,
   "hierarchy_level_name": "Major Area",
   "concept_type": "Major Area",
-  "primary_parent": "ai.field.artificial_intelligence",
+  "primary_parent": "ai:artificial-intelligence",
   "children": [
-    "ai.subarea.supervised_learning",
-    "ai.subarea.unsupervised_learning"
+    "ai:supervised-learning",
+    "ai:unsupervised-learning"
   ],
   "relations": [],
   "stability": "stable",
@@ -171,13 +161,13 @@ Aliases do not create separate nodes.
 
 ```json
 {
-  "id": "ai.subarea.supervised_learning",
+  "id": "ai:supervised-learning",
   "name": "Supervised Learning",
   "aliases": [],
   "hierarchy_level": 2,
   "hierarchy_level_name": "Main Subarea",
   "concept_type": "Paradigm",
-  "primary_parent": "ai.area.machine_learning",
+  "primary_parent": "ai:machine-learning",
   "children": [],
   "relations": [],
   "stability": "stable",
@@ -188,7 +178,7 @@ Aliases do not create separate nodes.
 
 ## Future Level 3 draft example
 
-This example is illustrative only. It is not a promoted Level 3 taxonomy node.
+This example is illustrative only. Its dotted ID is a provisional draft example, not a public canonical ID or a newly adopted draft namespace. It is not a promoted Level 3 taxonomy node.
 
 ```json
 {
@@ -198,12 +188,12 @@ This example is illustrative only. It is not a promoted Level 3 taxonomy node.
   "hierarchy_level": 3,
   "hierarchy_level_name": "Method, Architecture, or Model Family",
   "concept_type": "Architecture",
-  "primary_parent": "ai.subarea.deep_learning",
+  "primary_parent": "ai:deep-learning",
   "children": [],
   "relations": [
     {
       "type": "alternative-parent",
-      "target": "ai.area.foundation_models_and_general_purpose_ai",
+      "target": "ai:foundation-models-and-general-purpose-ai",
       "note": "Important for foundation models, but primary technical identity is architectural."
     }
   ],
