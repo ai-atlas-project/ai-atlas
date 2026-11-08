@@ -1,3 +1,5 @@
+> Historical proposal: the JSON preserves the original pending review snapshot. See [accepted data and maintainer decision](../../taxonomy/relations/README.md). Proposal records are not consumed as canonical relations.
+
 # L0–L2 relation pilot for review
 
 **Status: proposed design and evidence-backed candidates; not adopted policy or canonical relations.**
